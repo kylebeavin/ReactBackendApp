@@ -20,7 +20,6 @@ mongoose
 	role: 'Partner'
 */
 
-
 // Add a new entry
 app.post('/', (req, res) => {
 	const newUser = new User({
@@ -29,6 +28,8 @@ app.post('/', (req, res) => {
 		email: req.body.email,
 		name: req.body.name,
 		role: req.body.role,
+		status: 'active',
+		dateOfEntry: Date.now()
 	});
 	newUser
 		.save()
