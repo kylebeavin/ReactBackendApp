@@ -39,21 +39,21 @@ app.get('/', (req, res) => {
 	User.find()
 	  .sort({ date: -1 })
 	  .then(items => console.log(res.json(items)));
-});
+	});
 
 // Delete an entry
 app.delete('/:id', (req, res) => {
 	User.findOneAndDelete({ _id: req.params.id })
 	  .then(() => res.json({ success: true }))
 	  .catch(err => res.status(404).json({ success: false }));
-});
+	});
 
 // Update an entry
 app.put('/:id', (req, res) => {
 	User.findOneAndUpdate({ _id: req.params.id }, req.body)
 	  .then(() => res.json({ success: true }))
 	  .catch(err => res.status(404).json({ success: false }));
-});
+  });
 
-const port = 5005;
+const port = 5000;
 app.listen(port, () => console.log(`Server started on port: http://localhost:${port}`));
