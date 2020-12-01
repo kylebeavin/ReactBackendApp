@@ -28,8 +28,8 @@ app.post('/', (req, res) => {
 		email: req.body.email,
 		name: req.body.name,
 		role: req.body.role,
-		status: 'active',
-		dateOfEntry: Date.now()
+		status: req.body.status,
+		dateOfEntry: req.body.dateOfEntry,
 	});
 	newUser
 		.save()
