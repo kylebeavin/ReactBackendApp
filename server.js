@@ -21,7 +21,7 @@ mongoose
 */
 
 // Add a new entry
-app.post('/', (req, res) => {
+app.post('/user', (req, res) => {
 	const newUser = new User({
 		user_id: req.body.user_id,
 		google_group_id: req.body.google_group_id,
@@ -35,21 +35,21 @@ app.post('/', (req, res) => {
 });
 
 // Read all entries
-app.get('/', (req, res) => {
+app.get('/user', (req, res) => {
 	User.find()
 	  .sort({ date: -1 })
 	  .then(items => console.log(res.json(items)));
 	});
 
 // Delete an entry
-app.delete('/:id', (req, res) => {
+app.delete('/user:user_id', (req, res) => {
 	User.findOneAndDelete({ _id: req.params.id })
 	  .then(() => res.json({ success: true }))
 	  .catch(err => res.status(404).json({ success: false }));
 	});
 
 // Update an entry
-app.put('/:id', (req, res) => {
+app.put('/user:user_id', (req, res) => {
 	User.findOneAndUpdate({ _id: req.params.id }, req.body)
 	  .then(() => res.json({ success: true }))
 	  .catch(err => res.status(404).json({ success: false }));
