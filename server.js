@@ -20,8 +20,8 @@ mongoose
 	role: 'Partner'
 */
 
-// Add a new entry
-app.post('/user', (req, res) => {
+// Create a new user entry
+app.post('/create_user', (req, res) => {
 	const newUser = new User({
 		user_id: req.body.user_id,
 		google_group_id: req.body.google_group_id,
@@ -34,15 +34,22 @@ app.post('/user', (req, res) => {
 		.then(item => res.json(item));
 });
 
-// Read all entries
-app.get('/user', (req, res) => {
+// Read a single user properties
+app.get('/read_user', (req, res) => {
+	User.find()
+	  .sort({ date: -1 })
+	  .then(items => console.log(res.json(items)));
+	});
+
+// Read all user entries
+app.get('/read_all_users', (req, res) => {
 	User.find()
 	  .sort({ date: -1 })
 	  .then(items => console.log(res.json(items)));
 	});
 
 // Delete an entry
-app.delete('/user:user_id', (req, res) => {
+app.delete('/delete_user:user_id', (req, res) => {
 	User.findOneAndDelete({ _id: req.params.id })
 	  .then(() => res.json({ success: true }))
 	  .catch(err => res.status(404).json({ success: false }));
@@ -55,5 +62,5 @@ app.put('/user:user_id', (req, res) => {
 	  .catch(err => res.status(404).json({ success: false }));
   });
 
-const port = 5000;
+const port = 5001;
 app.listen(port, () => console.log(`Server started on port: http://localhost:${port}`));
