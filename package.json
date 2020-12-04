@@ -1,5 +1,5 @@
 {
-  "name": "firstrest",
+  "name": "smt_api",
   "version": "1.0.0",
   "description": "Create RestAPI using node.js, express and mongodb",
   "main": "smt_server.js",
@@ -10,7 +10,7 @@
   "keywords": [
     "restapi"
   ],
-  "author": "Sudeep Timalsina",
+  "author": "TCMC",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
