@@ -23,5 +23,6 @@ router.route('/user/:user_id')
     .put(userController.update)
     .delete(userController.delete);
 
+
 //Export API routes
 module.exports = router;

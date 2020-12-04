@@ -38,9 +38,9 @@ exports.add = function (req, res) {
     });
 };
 
-// View User
+// View User by mongo object id
 exports.view = function (req, res) {
-    User.findById(req.params.user_id, function (err, user) {
+    User.findById(req.params.useruser_id, function (err, user) {
         if (err)
             res.send(err);
         res.json({

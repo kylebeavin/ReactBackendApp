@@ -4,6 +4,7 @@
   "description": "Create RestAPI using node.js, express and mongodb",
   "main": "smt_server.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
