@@ -35,7 +35,7 @@ else
     console.log("DB Connected Successfully");
 
 // Server Port
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 // Welcome message
 app.get('/', (req, res) => res.send('Welcome to Express'));
@@ -45,5 +45,5 @@ app.use('/api', apiRoutes)
 
 // Launch app to the specified port
 app.listen(port, function() {
-    console.log("Running FirstRest on Port "+ port);
+    console.log("Running Smash API on Port "+ port);
 });
