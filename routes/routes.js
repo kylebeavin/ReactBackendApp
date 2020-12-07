@@ -66,7 +66,7 @@ router.route('/contacts/:contact_id')
     .delete(contactController.delete);
 
 //Import Truck Controller
-var contactController = require('../controllers/truckController.js');  
+var truckController = require('../controllers/truckController.js');  
 
 // Truck routes
 router.route('/truck')
