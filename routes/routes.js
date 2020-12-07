@@ -80,18 +80,46 @@ router.route('/truck/:truck_id')
     .delete(truckController.delete);
 
 //Import Inspection Controller
-var inspectionController = require('../controllers/truckController.js');  
+var inspectionController = require('../controllers/inspectionController.js');  
 
 // Inspection routes
 router.route('/inspection')
     .get(inspectionController.server)
     .post(inspectionController.add);
 
-router.route('/truck/:truck_id')
+router.route('/inspection/:inspection_id')
     .get(inspectionController.view)
     .patch(inspectionController.update)
     .put(inspectionController.update)
     .delete(inspectionController.delete);
+
+//Import Invoice Controller
+var invoiceController = require('../controllers/invoiceController.js');  
+
+// Inspection routes
+router.route('/invoice')
+    .get(invoiceController.server)
+    .post(invoiceController.add);
+
+router.route('/invoice/:invoice_id')
+    .get(invoiceController.view)
+    .patch(invoiceController.update)
+    .put(invoiceController.update)
+    .delete(invoiceController.delete);
+
+//Import Location Controller
+var locationController = require('../controllers/locationController.js');  
+
+// Inspection routes
+router.route('/location')
+    .get(locationController.server)
+    .post(locationController.add);
+
+router.route('/location/:location_id')
+    .get(locationController.view)
+    .patch(locationController.update)
+    .put(locationController.update)
+    .delete(locationController.delete);
 
 //Export API routes
 module.exports = router;

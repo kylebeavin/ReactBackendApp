@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 
 //schema
-var truckSchema = mongoose.Schema({
+var inspectionSchema = mongoose.Schema({
   
     group_id: {
         type: String,
         required: true
     },
-    truck_id: {
+    inspection_id: {
         type: String,
         required: true
     },
@@ -38,9 +38,9 @@ var truckSchema = mongoose.Schema({
     },
 });
 
-// Export Truck Model
-var Truck = module.exports = mongoose.model('truck', truckSchema);
+// Export Inspection Model
+var Inspection = module.exports = mongoose.model('inspection', inspectionSchema);
 
 module.exports.get = function (callback, limit) {
-   Truck.find(callback).limit(limit); 
+   Inspection.find(callback).limit(limit); 
 }
