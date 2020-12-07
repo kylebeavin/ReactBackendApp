@@ -65,5 +65,19 @@ router.route('/contacts/:contact_id')
     .put(contactController.update)
     .delete(contactController.delete);
 
+//Import Truck Controller
+var contactController = require('../controllers/truckController.js');  
+
+// Account routes
+router.route('/truck')
+    .get(contactController.server)
+    .post(contactController.add);
+
+router.route('/truck/:truck_id')
+    .get(truckController.view)
+    .patch(truckController.update)
+    .put(truckController.update)
+    .delete(truckController.delete);
+
 //Export API routes
 module.exports = router;
