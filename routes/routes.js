@@ -96,7 +96,7 @@ router.route('/inspection/:inspection_id')
 //Import Invoice Controller
 var invoiceController = require('../controllers/invoiceController.js');  
 
-// Inspection routes
+// Invoice routes
 router.route('/invoice')
     .get(invoiceController.server)
     .post(invoiceController.add);
@@ -110,7 +110,7 @@ router.route('/invoice/:invoice_id')
 //Import Location Controller
 var locationController = require('../controllers/locationController.js');  
 
-// Inspection routes
+// Location routes
 router.route('/location')
     .get(locationController.server)
     .post(locationController.add);
