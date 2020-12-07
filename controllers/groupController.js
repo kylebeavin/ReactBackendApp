@@ -17,26 +17,38 @@ exports.server = function (req, res) {
     });
 };
 
-// //For creating new group
-// exports.add = function (req, res) {
-//     var group = new Group();
-//     group.group_id = req.body.group_id? req.body.group_id: group.group_id;
-//     group.email = req.body.email;
-//     group.role = req.body.role;
-//     group.group_id = req.body.group_id;
-//     group.status = true;
+//For creating new group
+exports.add = function (req, res) {
+    var group = new Group();
+    group.group_id = req.body.group_id? req.body.group_id: group.group_id;
+    group.name = req.body.name;
+    group.email = req.body.email;
+    group.status = true;
+    group.address = req.body.address;
+    group.ein = req.body.ein;
+    group.region = req.body.region;
+    group.time_zone = req.body.time_zone;
+    group.signing_date = req.body.signing_date;
+    group.launch_date = req.body.launch_date;
+    group.phone = req.body.phone;
+    group.webpage = req.body.webpage;
+    group.legal_company = req.body.legal_company;
+    group.dba = req.body.dba;
+    group.tax_rate = req.body.tax_rate;
+    group.email = req.body.email;
+    group.created = req.body.created;
 
-//     //Save and check error
-//     group.save(function (err) {
-//         if (err)
-//             res.json(err);
+    //Save and check error
+    group.save(function (err) {
+        if (err)
+            res.json(err);
 
-//         res.json({
-//             message: "New Group Added!",
-//             data: group
-//         });
-//     });
-// };
+        res.json({
+            message: "New Group Added!",
+            data: group
+        });
+    });
+};
 
 // View Group by mongo object id
 exports.view = function (req, res) {
@@ -56,11 +68,23 @@ exports.update = function (req, res) {
     Group.findById(req.params.group_id, function (err, group) {
         if (err)
             res.send(err);
-        group.group_id = req.body.group_id ? req.body.group_id : group.group_id;
+        group.group_id = req.body.group_id? req.body.group_id: group.group_id;
+        group.name = req.body.name;
         group.email = req.body.email;
-        group.role = req.body.role;
-        group.group_id = req.body.group_id;
-        group.status = req.body.status;
+        group.status = true;
+        group.address = req.body.address;
+        group.ein = req.body.ein;
+        group.region = req.body.region;
+        group.time_zone = req.body.time_zone;
+        group.signing_date = req.body.signing_date;
+        group.launch_date = req.body.launch_date;
+        group.phone = req.body.phone;
+        group.webpage = req.body.webpage;
+        group.legal_company = req.body.legal_company;
+        group.dba = req.body.dba;
+        group.tax_rate = req.body.tax_rate;
+        group.email = req.body.email;
+        group.created = req.body.created;
 
         //save and check errors
         group.save(function (err) {
