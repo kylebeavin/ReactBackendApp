@@ -10,11 +10,11 @@ router.get('/', function(req, res) {
 });
 
 //Import User Controller
-var userController = require('../controllers/userController');
+var userController = require('../controllers/userController.js');
 
 // User routes
-router.route('/user')
-    .get(userController.smt_server)
+router.route('/all_users')
+    .get(userController.server)
     .post(userController.add);
 
 router.route('/user/:user_id')

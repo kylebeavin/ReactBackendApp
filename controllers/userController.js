@@ -1,8 +1,8 @@
 //Import User Model
-User = require('../models/userModel');
+User = require('../models/userModel.js');
 
-//For smt_server
-exports.smt_server = function (req, res) {
+//For server
+exports.server = function (req, res) {
     User.get(function (err, user) {
         if (err)
             res.json({
@@ -40,7 +40,7 @@ exports.add = function (req, res) {
 
 // View User by mongo object id
 exports.view = function (req, res) {
-    User.findById(req.params.useruser_id, function (err, user) {
+    User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
         res.json({
@@ -86,3 +86,16 @@ exports.delete = function (req, res) {
         });
     });
 };
+
+// Group Stuff
+// // View all users with same group ID
+// exports.view = function (req, res) {
+//     User.findById(req.params.useruser_id, function (err, user) {
+//         if (err)
+//             res.send(err);
+//         res.json({
+//             message: 'Users in group',
+//             data: user
+//         });
+//     });
+// };
