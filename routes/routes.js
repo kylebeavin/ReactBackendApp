@@ -64,5 +64,6 @@ router.route('/user/:contact_id')
     .patch(contactController.update)
     .put(contactController.update)
     .delete(contactController.delete);
+    
 //Export API routes
 module.exports = router;

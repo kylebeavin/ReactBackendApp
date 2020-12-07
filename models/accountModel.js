@@ -59,7 +59,7 @@ var accountSchema = mongoose.Schema({
         required: false
     },
     hauling_contract: {
-        type: Boolean,
+        type: Date,
         required: false
     },
     hauling_expiration: {
