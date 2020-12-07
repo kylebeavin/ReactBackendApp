@@ -31,7 +31,7 @@ router.route('/groups')
     .post(groupController.add);
 
 // Group routes
-router.route('/user/:group_id')
+router.route('/groups/:group_id')
     .get(groupController.view)
     .patch(groupController.update)
     .put(groupController.update)
@@ -45,7 +45,7 @@ router.route('/accounts')
     .get(accountController.server)
     .post(accountController.add);
 
-router.route('/user/:account_id')
+router.route('/accounts/:account_id')
     .get(accountController.view)
     .patch(accountController.update)
     .put(accountController.update)
@@ -59,11 +59,11 @@ router.route('/contacts')
     .get(contactController.server)
     .post(contactController.add);
 
-router.route('/user/:contact_id')
+router.route('/contacts/:contact_id')
     .get(contactController.view)
     .patch(contactController.update)
     .put(contactController.update)
     .delete(contactController.delete);
-    
+
 //Export API routes
 module.exports = router;

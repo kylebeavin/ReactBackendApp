@@ -11,7 +11,7 @@ exports.server = function (req, res) {
             });
         res.json({
             status: "success",
-            message: "Got Contact Successfully!",
+            message: "Got Contacts Successfully!",
             data: contact       
         });
     });
@@ -45,7 +45,6 @@ exports.add = function (req, res) {
 exports.view = function (req, res) {
     Contact.findById(req.params.contact_id, function (err, contact) {
         if (err)
-            console.log('Cannot return contact');
             res.send(err);
         res.json({
             message: 'Contact Details',
