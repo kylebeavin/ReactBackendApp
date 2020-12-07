@@ -35,6 +35,7 @@ exports.add = function (req, res) {
     account.hauling_contract = req.body.hauling_contract;
     account.hauling_expiration = req.body.hauling_expiration;
     account.status = true;
+    account.stage = req.body.stage;
 
     //Save and check error
     account.save(function (err) {
@@ -81,6 +82,7 @@ exports.update = function (req, res) {
         account.hauling_contract = req.body.hauling_contract;
         account.hauling_expiration = req.body.hauling_expiration;
         account.status = true;
+        account.stage = req.body.stage;
 
         //save and check errors
         account.save(function (err) {

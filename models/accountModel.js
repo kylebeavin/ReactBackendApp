@@ -14,6 +14,14 @@ var accountSchema = mongoose.Schema({
         type: Boolean,
         required: true
     },
+    status: {
+        type: Boolean,
+        required: true
+    },
+    stage: {
+        type: String,
+        required: true
+    },
     addressStreet: {
         type: String,
         required: true
