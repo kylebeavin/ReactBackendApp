@@ -17,7 +17,7 @@ router.route('/users')
     .get(userController.server)
     .post(userController.add);
 
-router.route('/user/:user_id')
+router.route('/users/:user_id')
     .get(userController.view)
     .patch(userController.update)
     .put(userController.update)
@@ -69,25 +69,25 @@ router.route('/contacts/:contact_id')
 var truckController = require('../controllers/truckController.js');  
 
 // Truck routes
-router.route('/truck')
+router.route('/trucks')
     .get(truckController.server)
     .post(truckController.add);
 
-router.route('/truck/:truck_id')
+router.route('/trucks/:truck_id')
     .get(truckController.view)
     .patch(truckController.update)
     .put(truckController.update)
     .delete(truckController.delete);
 
 //Import Inspection Controller
-var inspectionController = require('../controllers/inspectionController.js');  
+var inspectionController = require('../controllers/inspectionController.js');
 
 // Inspection routes
-router.route('/inspection')
+router.route('/inspections')
     .get(inspectionController.server)
     .post(inspectionController.add);
 
-router.route('/inspection/:inspection_id')
+router.route('/inspections/:inspection_id')
     .get(inspectionController.view)
     .patch(inspectionController.update)
     .put(inspectionController.update)
@@ -97,11 +97,11 @@ router.route('/inspection/:inspection_id')
 var invoiceController = require('../controllers/invoiceController.js');  
 
 // Invoice routes
-router.route('/invoice')
+router.route('/invoices')
     .get(invoiceController.server)
     .post(invoiceController.add);
 
-router.route('/invoice/:invoice_id')
+router.route('/invoices/:invoice_id')
     .get(invoiceController.view)
     .patch(invoiceController.update)
     .put(invoiceController.update)
@@ -111,11 +111,11 @@ router.route('/invoice/:invoice_id')
 var locationController = require('../controllers/locationController.js');  
 
 // Location routes
-router.route('/location')
+router.route('/locations')
     .get(locationController.server)
     .post(locationController.add);
 
-router.route('/location/:location_id')
+router.route('/locations/:location_id')
     .get(locationController.view)
     .patch(locationController.update)
     .put(locationController.update)
