@@ -68,16 +68,30 @@ router.route('/contacts/:contact_id')
 //Import Truck Controller
 var contactController = require('../controllers/truckController.js');  
 
-// Account routes
+// Truck routes
 router.route('/truck')
-    .get(contactController.server)
-    .post(contactController.add);
+    .get(truckController.server)
+    .post(truckController.add);
 
 router.route('/truck/:truck_id')
     .get(truckController.view)
     .patch(truckController.update)
     .put(truckController.update)
     .delete(truckController.delete);
+
+//Import Inspection Controller
+var inspectionController = require('../controllers/truckController.js');  
+
+// Inspection routes
+router.route('/inspection')
+    .get(inspectionController.server)
+    .post(inspectionController.add);
+
+router.route('/truck/:truck_id')
+    .get(inspectionController.view)
+    .patch(inspectionController.update)
+    .put(inspectionController.update)
+    .delete(inspectionController.delete);
 
 //Export API routes
 module.exports = router;
