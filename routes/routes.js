@@ -5,7 +5,7 @@ let router = require('express').Router();
 router.get('/', function(req, res) {
     res.json({
         status: 'API Works',
-        message: 'Welcome to FirstRest API'
+        message: 'Welcome to SMT API'
     });
 });
 
@@ -23,6 +23,20 @@ router.route('/user/:user_id')
     .put(userController.update)
     .delete(userController.delete);
 
+
+//Import Group Controller
+var groupController = require('../controllers/groupController.js');  
+
+// Group routes
+router.route('/user/:group_id')
+    .get(groupController.view)
+
+//Import Accounts Controller
+var accountController = require('../controllers/accountController.js');  
+
+// Account routes
+router.route('/user/:account_id')
+    .get(accountController.view)
 
 //Export API routes
 module.exports = router;

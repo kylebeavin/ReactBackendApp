@@ -87,15 +87,3 @@ exports.delete = function (req, res) {
     });
 };
 
-// Group Stuff
-// // View all users with same group ID
-// exports.view = function (req, res) {
-//     User.findById(req.params.useruser_id, function (err, user) {
-//         if (err)
-//             res.send(err);
-//         res.json({
-//             message: 'Users in group',
-//             data: user
-//         });
-//     });
-// };
