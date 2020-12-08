@@ -2,8 +2,8 @@
 Group = require('../models/groupModel.js')
 
 //For server
-exports.server = function (req, res) {
-    Group.get(function (err, group) {
+exports.server = function(req, res) {
+    Group.get(function(err, group) {
         if (err)
             res.json({
                 status: "error",
@@ -12,15 +12,15 @@ exports.server = function (req, res) {
         res.json({
             status: "success",
             message: "Got Group Successfully!",
-            data: group       
+            data: group
         });
     });
 };
 
 //For creating new group
-exports.add = function (req, res) {
+exports.add = function(req, res) {
     var group = new Group();
-    group.group_id = req.body.group_id? req.body.group_id: group.group_id;
+    group.group_id = req.body.group_id ? req.body.group_id : group.group_id;
     group.name = req.body.name;
     group.email = req.body.email;
     group.status = true;
@@ -39,7 +39,7 @@ exports.add = function (req, res) {
     group.created = req.body.created;
 
     //Save and check error
-    group.save(function (err) {
+    group.save(function(err) {
         if (err)
             res.json(err);
 
@@ -51,11 +51,11 @@ exports.add = function (req, res) {
 };
 
 // View Group by mongo object id
-exports.view = function (req, res) {
-    Group.findById(req.params.group_id, function (err, group) {
+exports.view = function(req, res) {
+    Group.findById(req.params.group_id, function(err, group) {
         if (err)
             console.log('Cannot return group');
-            res.send(err);
+        res.send(err);
         res.json({
             message: 'Group Details',
             data: group
@@ -64,11 +64,11 @@ exports.view = function (req, res) {
 };
 
 // Update Group
-exports.update = function (req, res) {
-    Group.findById(req.params.group_id, function (err, group) {
+exports.update = function(req, res) {
+    Group.findById(req.params.group_id, function(err, group) {
         if (err)
             res.send(err);
-        group.group_id = req.body.group_id? req.body.group_id: group.group_id;
+        group.group_id = req.body.group_id ? req.body.group_id : group.group_id;
         group.name = req.body.name;
         group.email = req.body.email;
         group.status = true;
@@ -87,7 +87,7 @@ exports.update = function (req, res) {
         group.created = req.body.created;
 
         //save and check errors
-        group.save(function (err) {
+        group.save(function(err) {
             if (err)
                 res.json(err)
             res.json({
@@ -99,10 +99,10 @@ exports.update = function (req, res) {
 };
 
 // Delete Group
-exports.delete = function (req, res) {
+exports.delete = function(req, res) {
     Group.deleteOne({
         _id: req.params.group_id
-    }, function (err, contact) {
+    }, function(err, contact) {
         if (err)
             res.send(err)
         res.json({
@@ -111,4 +111,3 @@ exports.delete = function (req, res) {
         });
     });
 };
-

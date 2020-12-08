@@ -18,7 +18,7 @@ router.route('/users')
     .post(userController.add);
 
 router.route('/users/:user_id')
-    .get(userController.view)
+    .get(userController.viewById)
     .patch(userController.update)
     .put(userController.update)
     .delete(userController.delete);
@@ -38,7 +38,7 @@ router.route('/groups/:group_id')
     .delete(groupController.delete);
 
 //Import Accounts Controller
-var accountController = require('../controllers/accountController.js');  
+var accountController = require('../controllers/accountController.js');
 
 // Account routes
 router.route('/accounts')
@@ -52,9 +52,9 @@ router.route('/accounts/:account_id')
     .delete(accountController.delete);
 
 //Import Contact Controller
-var contactController = require('../controllers/contactController.js');  
+var contactController = require('../controllers/contactController.js');
 
-// Account routes
+// Contact routes
 router.route('/contacts')
     .get(contactController.server)
     .post(contactController.add);
@@ -66,7 +66,7 @@ router.route('/contacts/:contact_id')
     .delete(contactController.delete);
 
 //Import Truck Controller
-var truckController = require('../controllers/truckController.js');  
+var truckController = require('../controllers/truckController.js');
 
 // Truck routes
 router.route('/trucks')
@@ -94,7 +94,7 @@ router.route('/inspections/:inspection_id')
     .delete(inspectionController.delete);
 
 //Import Invoice Controller
-var invoiceController = require('../controllers/invoiceController.js');  
+var invoiceController = require('../controllers/invoiceController.js');
 
 // Invoice routes
 router.route('/invoices')
@@ -108,7 +108,7 @@ router.route('/invoices/:invoice_id')
     .delete(invoiceController.delete);
 
 //Import Location Controller
-var locationController = require('../controllers/locationController.js');  
+var locationController = require('../controllers/locationController.js');
 
 // Location routes
 router.route('/locations')
