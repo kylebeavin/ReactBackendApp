@@ -1,5 +1,5 @@
 let express = require('express')
-//import body parser
+    //import body parser
 let bodyParser = require('body-parser');
 //import mongoose
 let mongoose = require('mongoose');
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 //connect to mongoose
 const dbPath = config.get('mongoURI');
-const options = {useNewUrlParser: true, useUnifiedTopology: true}
+const options = { useNewUrlParser: true, useUnifiedTopology: true }
 const mongo = mongoose.connect(dbPath, options);
 
 mongo.then(() => {
@@ -26,7 +26,7 @@ mongo.then(() => {
 }, error => {
     console.log(error, 'error');
 });
-var db=mongoose.connection;
+var db = mongoose.connection;
 
 //Check DB Connection
 if (!db)
@@ -37,13 +37,15 @@ else
 // Server Port
 const port = process.env.PORT || 3000;
 
-// Welcome message
-app.get('/', (req, res) => res.send('Welcome to Express'));
+// Welcome/Login Site
+var path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
 //Use API routes in the App
 app.use('/api', apiRoutes)
 
 // Launch app to the specified port
 app.listen(port, function() {
-    console.log("Running Smash API on Port "+ port);
+    console.log("Running Smash API on Port " + port);
 });

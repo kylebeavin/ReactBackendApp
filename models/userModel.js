@@ -6,6 +6,14 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    first_name: {
+        type: String,
+        required: true
+    },
+    last_name: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
@@ -31,6 +39,6 @@ var userSchema = mongoose.Schema({
 // Export User Model
 var User = module.exports = mongoose.model('user', userSchema);
 
-module.exports.get = function (callback, limit) {
-   User.find(callback).limit(limit); 
+module.exports.get = function(callback, limit) {
+    User.find(callback).limit(limit);
 }

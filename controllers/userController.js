@@ -2,8 +2,8 @@
 User = require('../models/userModel.js');
 
 //For server
-exports.server = function (req, res) {
-    User.get(function (err, user) {
+exports.server = function(req, res) {
+    User.get(function(err, user) {
         if (err)
             res.json({
                 status: "error",
@@ -12,22 +12,24 @@ exports.server = function (req, res) {
         res.json({
             status: "success",
             message: "Got User Successfully!",
-            data: user       
+            data: user
         });
     });
 };
 
 //For creating new user
-exports.add = function (req, res) {
+exports.add = function(req, res) {
     var user = new User();
-    user.user_id = req.body.user_id? req.body.user_id: user.user_id;
+    user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
     user.email = req.body.email;
+    user.first_name = req.body.first_name;
+    user.last_name = req.body.last_name;
     user.role = req.body.role;
     user.group_id = req.body.group_id;
     user.status = true;
 
     //Save and check error
-    user.save(function (err) {
+    user.save(function(err) {
         if (err)
             res.json(err);
 
@@ -39,8 +41,8 @@ exports.add = function (req, res) {
 };
 
 // View User by mongo object id
-exports.view = function (req, res) {
-    User.findById(req.params.user_id, function (err, user) {
+exports.view = function(req, res) {
+    User.findById(req.params.user_id, function(err, user) {
         if (err)
             res.send(err);
         res.json({
@@ -51,18 +53,20 @@ exports.view = function (req, res) {
 };
 
 // Update User
-exports.update = function (req, res) {
-    User.findById(req.params.user_id, function (err, user) {
+exports.update = function(req, res) {
+    User.findById(req.params.user_id, function(err, user) {
         if (err)
             res.send(err);
         user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
         user.email = req.body.email;
+        user.first_name = req.body.first_name;
+        user.last_name = req.body.last_name;
         user.role = req.body.role;
         user.group_id = req.body.group_id;
         user.status = req.body.status;
 
         //save and check errors
-        user.save(function (err) {
+        user.save(function(err) {
             if (err)
                 res.json(err)
             res.json({
@@ -74,10 +78,10 @@ exports.update = function (req, res) {
 };
 
 // Delete User
-exports.delete = function (req, res) {
+exports.delete = function(req, res) {
     User.deleteOne({
         _id: req.params.user_id
-    }, function (err, contact) {
+    }, function(err, contact) {
         if (err)
             res.send(err)
         res.json({
@@ -86,4 +90,3 @@ exports.delete = function (req, res) {
         });
     });
 };
-
