@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
 //Use API routes in the App
-app.use('/api' + token, apiRoutes)
+app.use('/api', apiRoutes)
 
 // Launch app to the specified port
 app.listen(port, function() {
