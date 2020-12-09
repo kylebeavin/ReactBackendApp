@@ -1,0 +1,1 @@
+const keygen = console.log(Math.ceil(Math.random() * 10000000));

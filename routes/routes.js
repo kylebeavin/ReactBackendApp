@@ -121,5 +121,19 @@ router.route('/locations/:location_id')
     .put(locationController.update)
     .delete(locationController.delete);
 
+//Import Admin Controller
+var adminController = require('../controllers/adminController.js');
+
+// Admin routes
+router.route('/admins')
+    .get(adminController.server)
+    .post(adminController.add);
+
+router.route('/admins/:admin_id')
+    .get(adminController.view)
+    .patch(adminController.update)
+    .put(adminController.update)
+    .delete(adminController.delete);
+
 //Export API routes
 module.exports = router;
