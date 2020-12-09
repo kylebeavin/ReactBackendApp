@@ -44,6 +44,7 @@
                 </li>
             </ul>
         </div>
+
     </div>
     <div class="content-page">
         <div class="content-code"></div>
@@ -59,7 +60,11 @@
                     The Smash My Trash API provides programmatic access to read SMT data. Retrieve a user, group, details, filter them, etc.
                 </p>
                 <p>
-                    To use this API, you need to be logged in with <strong>Authorized Account</strong>.
+                    To use this API, you need to be logged in with and authorized <strong>Token</strong>.
+                </p>
+                <p>
+                    To get a token you need to make a GET call to the following url passing your credentials :<br>
+                    <code class="higlighted">https://smash-app-backend.herokuapp.com/api/admins/</code>
                 </p>
             </div>
             <div class="overflow-hidden content-section" id="content-get-users">
