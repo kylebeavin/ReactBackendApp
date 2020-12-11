@@ -1,5 +1,5 @@
-let express = require('express')
-    //import body parser
+let express = require('express');
+//import body parser
 let bodyParser = require('body-parser');
 //import mongoose
 let mongoose = require('mongoose');
@@ -7,7 +7,7 @@ let app = express();
 //import mongodb connection string
 const config = require('config');
 //import routes
-let apiRoutes = require("./routes/routes")
+let apiRoutes = require("./routes/routes");
 
 //configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({

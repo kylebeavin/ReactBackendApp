@@ -1,4 +1,5 @@
 // keygen.js
-module.exports = function keygen() {
+function keygen() {
     return Math.ceil(Math.random() * 10000000);
 };
+module.exports = keygen();
