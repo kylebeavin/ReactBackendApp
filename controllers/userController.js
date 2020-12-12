@@ -53,6 +53,7 @@ exports.viewById = function(req, res) {
 };
 
 
+
 // Update User
 exports.update = function(req, res) {
     User.findById(req.params.user_id, function(err, user) {

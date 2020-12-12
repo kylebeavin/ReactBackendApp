@@ -23,6 +23,11 @@ router.route('/users/:user_id')
     .put(userController.update)
     .delete(userController.delete);
 
+router.route('/users/:role')
+    .get(userController.viewByRole)
+
+
+
 //Import Group Controller
 var groupController = require('../controllers/groupController.js');
 
