@@ -1,13 +1,14 @@
-let express = require('express');
+const express = require('express');
 //import body parser
-let bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 //import mongoose
-let mongoose = require('mongoose');
-let app = express();
+const mongoose = require('mongoose');
+const app = express();
 //import mongodb connection string
 const config = require('config');
 //import routes
-let apiRoutes = require("./routes/routes");
+const apiRoutes = require("./routes/routes");
+
 
 //configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
@@ -43,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
 //Use API routes in the App
-app.use('/api', apiRoutes)
+app.use('/api', apiRoutes);
 
 // Launch app to the specified port
 app.listen(port, function() {

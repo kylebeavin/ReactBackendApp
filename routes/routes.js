@@ -1,35 +1,69 @@
 //initialize express router
 let router = require('express').Router();
+//Import Controllers
+var userController = require('../controllers/userController.js');
+var groupController = require('../controllers/groupController.js');
+var accountController = require('../controllers/accountController.js');
+var contactController = require('../controllers/contactController.js');
+var truckController = require('../controllers/truckController.js');
+var inspectionController = require('../controllers/inspectionController.js');
+var invoiceController = require('../controllers/invoiceController.js');
+var locationController = require('../controllers/locationController.js');
+var adminController = require('../controllers/adminController.js');
 
 //set default API response
-router.get('/', function(req, res) {
-    res.json({
-        status: 'API Works',
-        message: 'Welcome to SMT API'
+router
+    .get('/', function (req, res) {
+        res.json({
+            status: 'API Works',
+            message: 'Welcome to SMT API'
+        });
     });
-});
 
-//Import User Controller
-var userController = require('../controllers/userController.js');
+
+
 
 // User routes
 router.route('/users')
     .get(userController.server)
     .post(userController.add);
 
-router.route('/users/:user_id')
+router.route('/userByStatus/:status')
+    .get(userController.viewByStatus)
+// .patch(userController.update)
+// .put(userController.update)
+// .delete(userController.delete);
+
+router.route('/userById/:_id')
     .get(userController.viewById)
     .patch(userController.update)
     .put(userController.update)
     .delete(userController.delete);
 
-router.route('/users/:role')
+router.route('/userByCreation/:created_at')
+    .get(userController.viewByCreation)
+// .patch(userController.update)
+// .put(userController.update)
+// .delete(userController.delete);
+
+router.route('/userByEmail/:email')
+    .get(userController.viewByEmail)
+// .patch(userController.update)
+// .put(userController.update)
+// .delete(userController.delete);
+
+router.route('/userById/:user_id')
+    .get(userController.viewByUserId)
+// .patch(userController.update)
+// .put(userController.update)
+// .delete(userController.delete);
+
+router.route('/userByRole/:role') // TODO: Fix this.
     .get(userController.viewByRole)
+// .patch(userController.update)
+// .put(userController.update)
+// .delete(userController.delete);
 
-
-
-//Import Group Controller
-var groupController = require('../controllers/groupController.js');
 
 router.route('/groups')
     .get(groupController.server)
@@ -42,8 +76,7 @@ router.route('/groups/:group_id')
     .put(groupController.update)
     .delete(groupController.delete);
 
-//Import Accounts Controller
-var accountController = require('../controllers/accountController.js');
+
 
 // Account routes
 router.route('/accounts')
@@ -56,8 +89,6 @@ router.route('/accounts/:account_id')
     .put(accountController.update)
     .delete(accountController.delete);
 
-//Import Contact Controller
-var contactController = require('../controllers/contactController.js');
 
 // Contact routes
 router.route('/contacts')
@@ -70,8 +101,7 @@ router.route('/contacts/:contact_id')
     .put(contactController.update)
     .delete(contactController.delete);
 
-//Import Truck Controller
-var truckController = require('../controllers/truckController.js');
+
 
 // Truck routes
 router.route('/trucks')
@@ -84,8 +114,7 @@ router.route('/trucks/:truck_id')
     .put(truckController.update)
     .delete(truckController.delete);
 
-//Import Inspection Controller
-var inspectionController = require('../controllers/inspectionController.js');
+
 
 // Inspection routes
 router.route('/inspections')
@@ -98,8 +127,7 @@ router.route('/inspections/:inspection_id')
     .put(inspectionController.update)
     .delete(inspectionController.delete);
 
-//Import Invoice Controller
-var invoiceController = require('../controllers/invoiceController.js');
+
 
 // Invoice routes
 router.route('/invoices')
@@ -112,8 +140,7 @@ router.route('/invoices/:invoice_id')
     .put(invoiceController.update)
     .delete(invoiceController.delete);
 
-//Import Location Controller
-var locationController = require('../controllers/locationController.js');
+
 
 // Location routes
 router.route('/locations')
@@ -126,8 +153,7 @@ router.route('/locations/:location_id')
     .put(locationController.update)
     .delete(locationController.delete);
 
-//Import Admin Controller
-var adminController = require('../controllers/adminController.js');
+
 
 // Admin routes
 router.route('/admins')

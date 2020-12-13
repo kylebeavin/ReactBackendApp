@@ -7,20 +7,20 @@ mongoose
         throw err;
     });
 const UserModel = require('../models/userModel.js');
-function getUsers(query = {}){
-UserModel
-    .find(query)
-    .exec()
-    .then((users) => {
-        users
-            .forEach((user) => {
-                console.log (user);
-            });
-        mongoose.connection.close();
-    })
-    .catch((err) => {
-        mongoose.connection.close();
-        throw err;
-    })
+ function getUsers(query = {}) {
+     UserModel
+
+        .find(query)
+        .exec()
+        .then((users) => {
+        //     users.forEach((doc) => {
+                console.log(users);
+        //     });
+            mongoose.connection.close();
+        })
+        .catch((err) => {
+            mongoose.connection.close();
+            throw err;
+        })
 };
-getUsers({email : 'lizard.king@smashmytrash.com'});
+(getUsers({ status: 'true' }));
