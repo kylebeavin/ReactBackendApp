@@ -28,31 +28,31 @@ router.route('/users')
     .get(userController.server)
     .post(userController.add);
 
-router.route('/users/:_id')
+router.route('/usersById/:_id')
     .get(userController.viewById)
     .patch(userController.update)
     .put(userController.update)
     .delete(userController.delete);
 
-// router.route('/userByQuery/:role') // Get all users by role
-//     .get(userController.viewByQuery)
-// // .patch(userController.update)
-// // .put(userController.update)
-// // .delete(userController.delete);
+router.route('/usersByQuery/:role') // Get all users by role
+    .get(userController.viewByQuery)
+// .patch(userController.update)
+// .put(userController.update)
+// .delete(userController.delete);
 
-router.route('/users/:group_id') // Get all users by group
+router.route('/usersByGroup/:group_id') // Get all users by group
     .get(userController.viewByGroup)
 // .patch(userController.update)
 // .put(userController.update)
 // .delete(userController.delete);
 
-router.route('/users/:role') // Get all users by role
+router.route('/usersByRole/:role') // Get all users by role
     .get(userController.viewByRole)
 // .patch(userController.update)
 // .put(userController.update)
 // .delete(userController.delete);
 
-router.route('/users/:email') // Gets user by email
+router.route('/usersByEmail/:email') // Gets user by email
     .get(userController.viewByEmail)
 // .patch(userController.update)
 // .put(userController.update)

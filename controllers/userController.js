@@ -39,17 +39,17 @@ exports.add = function (req, res) {
         });
     });
 };
-// // View Users by query
-// exports.viewByQuery = function (req, res) {
-//     User.find({ role: req.params.role}, function (err, user) {
-//         if (err)
-//             res.send(err);
-//         res.json({
-//             message: 'Got users by role',
-//             data: user
-//         });
-//     });
-// };
+// View Users by query
+exports.viewByQuery = function (req, res) {
+    User.find({ role: req.params.role}, function (err, user) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: 'Got users by role',
+            data: user
+        });
+    });
+};
 
 // View Users by group
 exports.viewByGroup = function (req, res) {
@@ -89,7 +89,7 @@ exports.viewById = function (req, res) {
 
 // View User by email
 exports.viewByEmail = function (req, res) {
-    User.findOne({ email: req.params.email}, function (err, user) {
+    User.find({ email: req.params.email}, function (err, user) {
         if (err)
             res.send(err);
         res.json({
