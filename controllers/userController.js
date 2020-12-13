@@ -40,12 +40,12 @@ exports.add = function (req, res) {
     });
 };
 // View Users by status
-exports.viewByStatus = function (req, res) {
-    User.find(req.query.status, function (err, user) {
+exports.viewByQuery = function (req, res) {
+    User.findOne({ email: req.params.email}, function (err, user) {
         if (err)
             res.send(err);
         res.json({
-            message: 'User Details',
+            message: 'Got users by email',
             data: user
         });
     });
@@ -57,7 +57,7 @@ exports.viewById = function (req, res) {
         if (err)
             res.send(err);
         res.json({
-            message: 'User Details',
+            message: 'Got user by Document Object ID',
             data: user
         });
     });
@@ -69,7 +69,7 @@ exports.viewByCreation = function (req, res) {
         if (err)
             res.send(err);
         res.json({
-            message: 'User Details',
+            message: 'Got user by creation time/date',
             data: user
         });
     });
@@ -81,7 +81,7 @@ exports.viewByEmail = function (req, res) {
         if (err)
             res.send(err);
         res.json({
-            message: 'User Details',
+            message: 'Got user by email address',
             data: user
         });
     });
@@ -93,7 +93,7 @@ exports.viewByUserId = function (req, res) {
         if (err)
             res.send(err);
         res.json({
-            message: 'User Details',
+            message: 'Got user by interal user id',
             data: user
         });
     });
@@ -105,26 +105,11 @@ exports.viewByRole = function (req, res) {
         if (err)
             res.send(err);
         res.json({
-            message: 'User Details',
+            message: 'Got users by role',
             data: user
         });
     });
 };
-
-// View User by mongo object id
-exports.viewByGroup = function (req, res) {
-    User.find(req.query.group_id, function (err, user) {
-        if (err)
-            res.send(err);
-        res.json({
-            message: 'User Details',
-            data: user
-        });
-    });
-};
-
-
-
 
 
 // Update User

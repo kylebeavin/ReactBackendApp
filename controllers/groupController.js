@@ -63,6 +63,20 @@ exports.view = function(req, res) {
     });
 };
 
+// View Group by mongo object id
+exports.viewByEmail = function(req, res) {
+    Group.findById(req.query.email, function(err, group) {
+        if (err)
+            console.log('Cannot return group');
+        res.send(err);
+        res.json({
+            message: 'Group Details',
+            data: group
+        });
+    });
+};
+
+
 // Update Group
 exports.update = function(req, res) {
     Group.findById(req.params.group_id, function(err, group) {

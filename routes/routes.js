@@ -28,8 +28,8 @@ router.route('/users')
     .get(userController.server)
     .post(userController.add);
 
-router.route('/userByStatus/:status')
-    .get(userController.viewByStatus)
+router.route('/userByQuery/:email') // TODO: Test this more.
+    .get(userController.viewByQuery)
 // .patch(userController.update)
 // .put(userController.update)
 // .delete(userController.delete);
@@ -52,7 +52,7 @@ router.route('/userByEmail/:email')
 // .put(userController.update)
 // .delete(userController.delete);
 
-router.route('/userById/:user_id')
+router.route('/userById/:user_id') // TODO: Test this. Will probably be removed anyway.
     .get(userController.viewByUserId)
 // .patch(userController.update)
 // .put(userController.update)
@@ -70,11 +70,17 @@ router.route('/groups')
     .post(groupController.add);
 
 // Group routes
-router.route('/groups/:group_id')
+router.route('/groupById/:group_id')
     .get(groupController.view)
     .patch(groupController.update)
     .put(groupController.update)
     .delete(groupController.delete);
+
+router.route('/groupByEmail/:email')
+    .get(groupController.viewByEmail)
+// .patch(userController.update)
+// .put(userController.update)
+// .delete(userController.delete);
 
 
 
