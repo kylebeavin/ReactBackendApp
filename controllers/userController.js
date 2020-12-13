@@ -63,21 +63,9 @@ exports.viewById = function (req, res) {
     });
 };
 
-// View Users by creation time/date
-exports.viewByCreation = function (req, res) {
-    User.findOne(req.query.created_at, function (err, user) {
-        if (err)
-            res.send(err);
-        res.json({
-            message: 'Got user by creation time/date',
-            data: user
-        });
-    });
-};
-
 // View User by email
 exports.viewByEmail = function (req, res) {
-    User.findOne(req.query.email, function (err, user) {
+    User.findOne({ email: req.params.email}, function (err, user) {
         if (err)
             res.send(err);
         res.json({
@@ -86,31 +74,6 @@ exports.viewByEmail = function (req, res) {
         });
     });
 };
-
-// View User by mongo object id
-exports.viewByUserId = function (req, res) {
-    User.findOne(req.query.User_Id, function (err, user) {
-        if (err)
-            res.send(err);
-        res.json({
-            message: 'Got user by interal user id',
-            data: user
-        });
-    });
-};
-
-// View Users by role
-exports.viewByRole = function (req, res) {
-    User.find(req.query.role, function (err, user) {
-        if (err)
-            res.send(err);
-        res.json({
-            message: 'Got users by role',
-            data: user
-        });
-    });
-};
-
 
 // Update User
 exports.update = function (req, res) {

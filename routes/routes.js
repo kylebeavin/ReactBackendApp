@@ -28,38 +28,20 @@ router.route('/users')
     .get(userController.server)
     .post(userController.add);
 
-router.route('/userByQuery/:email') // TODO: Test this more.
-    .get(userController.viewByQuery)
-// .patch(userController.update)
-// .put(userController.update)
-// .delete(userController.delete);
-
 router.route('/userById/:_id')
     .get(userController.viewById)
     .patch(userController.update)
     .put(userController.update)
     .delete(userController.delete);
 
-router.route('/userByCreation/:created_at')
-    .get(userController.viewByCreation)
+router.route('/userByQuery/:email') // TODO: Test this more.
+    .get(userController.viewByQuery)
 // .patch(userController.update)
 // .put(userController.update)
 // .delete(userController.delete);
 
-router.route('/userByEmail/:email')
+router.route('/userByEmail/:email') // TODO: Test this more.
     .get(userController.viewByEmail)
-// .patch(userController.update)
-// .put(userController.update)
-// .delete(userController.delete);
-
-router.route('/userById/:user_id') // TODO: Test this. Will probably be removed anyway.
-    .get(userController.viewByUserId)
-// .patch(userController.update)
-// .put(userController.update)
-// .delete(userController.delete);
-
-router.route('/userByRole/:role') // TODO: Fix this.
-    .get(userController.viewByRole)
 // .patch(userController.update)
 // .put(userController.update)
 // .delete(userController.delete);
@@ -75,14 +57,6 @@ router.route('/groupById/:group_id')
     .patch(groupController.update)
     .put(groupController.update)
     .delete(groupController.delete);
-
-router.route('/groupByEmail/:email')
-    .get(groupController.viewByEmail)
-// .patch(userController.update)
-// .put(userController.update)
-// .delete(userController.delete);
-
-
 
 // Account routes
 router.route('/accounts')
