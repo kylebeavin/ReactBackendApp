@@ -39,13 +39,13 @@ exports.add = function (req, res) {
         });
     });
 };
-// View Users by status
+// View Users by query
 exports.viewByQuery = function (req, res) {
     User.findOne({ email: req.params.email}, function (err, user) {
         if (err)
             res.send(err);
         res.json({
-            message: 'Got users by email',
+            message: 'Got users by query',
             data: user
         });
     });
