@@ -28,19 +28,31 @@ router.route('/users')
     .get(userController.server)
     .post(userController.add);
 
-router.route('/userById/:_id')
+router.route('/users/:_id')
     .get(userController.viewById)
     .patch(userController.update)
     .put(userController.update)
     .delete(userController.delete);
 
-router.route('/userByQuery/:email') // TODO: Test this more.
-    .get(userController.viewByQuery)
+// router.route('/userByQuery/:role') // Get all users by role
+//     .get(userController.viewByQuery)
+// // .patch(userController.update)
+// // .put(userController.update)
+// // .delete(userController.delete);
+
+router.route('/users/:group_id') // Get all users by group
+    .get(userController.viewByGroup)
 // .patch(userController.update)
 // .put(userController.update)
 // .delete(userController.delete);
 
-router.route('/userByEmail/:email') // TODO: Test this more.
+router.route('/users/:role') // Get all users by role
+    .get(userController.viewByRole)
+// .patch(userController.update)
+// .put(userController.update)
+// .delete(userController.delete);
+
+router.route('/users/:email') // Gets user by email
     .get(userController.viewByEmail)
 // .patch(userController.update)
 // .put(userController.update)

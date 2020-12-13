@@ -39,13 +39,37 @@ exports.add = function (req, res) {
         });
     });
 };
-// View Users by query
-exports.viewByQuery = function (req, res) {
-    User.findOne({ email: req.params.email}, function (err, user) {
+// // View Users by query
+// exports.viewByQuery = function (req, res) {
+//     User.find({ role: req.params.role}, function (err, user) {
+//         if (err)
+//             res.send(err);
+//         res.json({
+//             message: 'Got users by role',
+//             data: user
+//         });
+//     });
+// };
+
+// View Users by group
+exports.viewByGroup = function (req, res) {
+    User.find({ group_id: req.params.group_id}, function (err, user) {
         if (err)
             res.send(err);
         res.json({
-            message: 'Got users by query',
+            message: 'Got users by group',
+            data: user
+        });
+    });
+};
+
+// View Users by role
+exports.viewByRole = function (req, res) {
+    User.find({ role: req.params.role}, function (err, user) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: 'Got users by role',
             data: user
         });
     });

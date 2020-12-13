@@ -36,7 +36,7 @@ else
     console.log("DB Connected Successfully");
 
 // Server Port
-const port = process.env.PORT || 9665;
+const port = process.env.PORT || 3000;
 
 // Welcome/Login Site
 var path = require('path');
