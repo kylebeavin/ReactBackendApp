@@ -29,10 +29,10 @@ router.route('/users')
     .post(userController.add);
 
 router.route('/usersById/:_id')
-    .get(userController.viewById)
-    .patch(userController.updateById)
-    .put(userController.updateById)
-    .delete(userController.deleteById);
+    .get(userController.viewUserById)
+    .patch(userController.updateUserById)
+    .put(userController.updateUserById)
+    .delete(userController.deleteUserById);
 
 // router.route('/usersByQuery/:role') // Get all users by role
 //     .get(userController.viewByQuery)
@@ -41,34 +41,34 @@ router.route('/usersById/:_id')
 // .delete(userController.delete);
 
 router.route('/usersByGroup/:group_id') // Get all users in group
-    .get(userController.viewByGroup)
-    .patch(userController.updateByGroup)
-    .put(userController.updateByGroup)
-    .delete(userController.deleteByGroup);
+    .get(userController.viewUserByGroup)
+    .patch(userController.updateUserByGroup)
+    .put(userController.updateUserByGroup)
+    .delete(userController.deleteUserByGroup);
 
 router.route('/usersByRole/:role') // Get all users by role
-    .get(userController.viewByRole)
-    .patch(userController.updateByRole)
-    .put(userController.updateByRole)
-    .delete(userController.deleteByRole);
+    .get(userController.viewUserByRole)
+    .patch(userController.updateUserByRole)
+    .put(userController.updateUserByRole)
+    .delete(userController.deleteUserByRole);
 
 router.route('/usersByEmail/:email') // Gets user by email
-    .get(userController.viewByEmail)
-    .patch(userController.updateByEmail)
-    .put(userController.updateByEmail)
-    .delete(userController.deleteByEmail);
+    .get(userController.viewUserByEmail)
+    .patch(userController.updateUserByEmail)
+    .put(userController.updateUserByEmail)
+    .delete(userController.deleteUserByEmail);
 
 router.route('/usersByStatus/:status') // Gets users by status
-    .get(userController.viewByStatus)
-    .patch(userController.updateByStatus)
-    .put(userController.updateByStatus)
-    .delete(userController.deleteByStatus);
+    .get(userController.viewUserByStatus)
+    .patch(userController.updateUserByStatus)
+    .put(userController.updateUserByStatus)
+    .delete(userController.deleteUserByStatus);
 
 router.route('/usersByCreated/:created') // Gets users by status
-    .get(userController.viewByCreated)
-    .patch(userController.updateByCreated)
-    .put(userController.updateByCreated)
-    .delete(userController.deleteByCreated);
+    .get(userController.viewUserByCreated)
+    .patch(userController.updateUserByCreated)
+    .put(userController.updateUserByCreated)
+    .delete(userController.deleteUserByCreated);
 
 
 
@@ -79,11 +79,17 @@ router.route('/groups')
     .post(groupController.add);
 
 
-router.route('/groupById/:group_id')
-    .get(groupController.view)
+router.route('/groupsByObjectId/:_id')
+    .get(groupController.viewGroupById)
     .patch(groupController.update)
     .put(groupController.update)
     .delete(groupController.delete);
+
+// router.route('/groupsByEmail/:email')
+//     .get(groupController.viewGroupByEmail)
+// //     // .patch(groupController.update)
+// //     // .put(groupController.update)
+// //     // .delete(groupController.delete);
 
 // Account routes
 router.route('/accounts')

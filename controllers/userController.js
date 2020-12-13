@@ -40,7 +40,7 @@ exports.add = function (req, res) {
     });
 };
 // // View Users by query
-// exports.viewByQuery = function (req, res) {
+// exports.viewByUserQuery = function (req, res) {
 //     User.find({ role: req.params.role }, function (err, user) {
 //         if (err)
 //             res.send(err);
@@ -52,7 +52,7 @@ exports.add = function (req, res) {
 // };
 
 // View Users by group
-exports.viewByGroup = function (req, res) {
+exports.viewUserByGroup = function (req, res) {
     User.find({ group_id: req.params.group_id }, function (err, user) {
         if (err)
             res.send(err);
@@ -64,7 +64,7 @@ exports.viewByGroup = function (req, res) {
 };
 
 // View Users by role
-exports.viewByRole = function (req, res) {
+exports.viewUserByRole = function (req, res) {
     User.find({ role: req.params.role }, function (err, user) {
         if (err)
             res.send(err);
@@ -76,7 +76,7 @@ exports.viewByRole = function (req, res) {
 };
 
 // View User by mongo object id
-exports.viewById = function (req, res) {
+exports.viewUserById = function (req, res) {
     User.findById(req.params._id, function (err, user) {
         if (err)
             res.send(err);
@@ -88,7 +88,7 @@ exports.viewById = function (req, res) {
 };
 
 // View User by email
-exports.viewByEmail = function (req, res) {
+exports.viewUserByEmail = function (req, res) {
     User.find({ email: req.params.email }, function (err, user) {
         if (err)
             res.send(err);
@@ -100,7 +100,7 @@ exports.viewByEmail = function (req, res) {
 };
 
 // View User by email
-exports.viewByStatus = function (req, res) {
+exports.viewUserByStatus = function (req, res) {
     User.find({ status: req.params.status }, function (err, user) {
         if (err)
             res.send(err);
@@ -112,7 +112,7 @@ exports.viewByStatus = function (req, res) {
 };
 
 // View User by Created
-exports.viewByCreated = function (req, res) {
+exports.viewUserByCreated = function (req, res) {
     User.find({ created: req.params.created }, function (err, user) {
         if (err)
             res.send(err);
@@ -124,7 +124,7 @@ exports.viewByCreated = function (req, res) {
 };
 
 // Update User by Mongo Object ID
-exports.updateById = function (req, res) {
+exports.updateUserById = function (req, res) {
     User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
@@ -149,7 +149,7 @@ exports.updateById = function (req, res) {
 };
 
 // Update all users in role TODO: Test
-exports.updateByRole = function (req, res) {
+exports.updateUserByRole = function (req, res) {
     User.find({ role: req.params.role }, function (err, user) {
         if (err)
             res.send(err);
@@ -174,7 +174,7 @@ exports.updateByRole = function (req, res) {
 };
 
 // Update all users in group TODO: Test
-exports.updateByGroup = function (req, res) {
+exports.updateUserByGroup = function (req, res) {
     User.find({ group: req.params.group }, function (err, user) {
         if (err)
             res.send(err);
@@ -199,7 +199,7 @@ exports.updateByGroup = function (req, res) {
 };
 
 // Update all users in status TODO: Test
-exports.updateByStatus = function (req, res) {
+exports.updateUserByStatus = function (req, res) {
     User.find({ status: req.params.status }, function (err, user) {
         if (err)
             res.send(err);
@@ -224,7 +224,7 @@ exports.updateByStatus = function (req, res) {
 };
 
 // Update all users in email TODO: Test
-exports.updateByEmail = function (req, res) {
+exports.updateUserByEmail = function (req, res) {
     User.find({ email: req.params.email }, function (err, user) {
         if (err)
             res.send(err);
@@ -249,7 +249,7 @@ exports.updateByEmail = function (req, res) {
 };
 
 // Update all users by creation date TODO: Test
-exports.updateByCreated = function (req, res) {
+exports.updateUserByCreated = function (req, res) {
     User.find({ created: req.params.created }, function (err, user) {
         if (err)
             res.send(err);
@@ -274,7 +274,7 @@ exports.updateByCreated = function (req, res) {
 };
 
 // Delete User by Mongo Object ID
-exports.deleteById = function (req, res) {
+exports.deleteUserById = function (req, res) {
     User.deleteOne({
         _id: req.params.user_id
     }, function (err, contact) {
@@ -288,7 +288,7 @@ exports.deleteById = function (req, res) {
 };
 
 // Delete User by email
-exports.deleteByEmail = function (req, res) {
+exports.deleteUserByEmail = function (req, res) {
     User.deleteOne({
         email: req.params.email
     }, function (err, contact) {
@@ -302,7 +302,7 @@ exports.deleteByEmail = function (req, res) {
 };
 
 // Delete User by group
-exports.deleteByGroup = function (req, res) {
+exports.deleteUserByGroup = function (req, res) {
     User.deleteOne({
         group: req.params.group
     }, function (err, contact) {
@@ -316,7 +316,7 @@ exports.deleteByGroup = function (req, res) {
 };
 
 // Delete User by role
-exports.deleteByRole = function (req, res) {
+exports.deleteUserByRole = function (req, res) {
     User.deleteOne({
         role: req.params.role
     }, function (err, contact) {
@@ -330,7 +330,7 @@ exports.deleteByRole = function (req, res) {
 };
 
 // Delete User by status
-exports.deleteByStatus = function (req, res) {
+exports.deleteUserByStatus = function (req, res) {
     User.deleteOne({
         status: req.params.status
     }, function (err, contact) {
@@ -344,7 +344,7 @@ exports.deleteByStatus = function (req, res) {
 };
 
 // Delete User by created
-exports.deleteByCreated = function (req, res) {
+exports.deleteUserByCreated = function (req, res) {
     User.delete({
         created: req.params.created
     }, function (err, contact) {

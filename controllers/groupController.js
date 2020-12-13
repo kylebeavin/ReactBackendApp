@@ -11,7 +11,7 @@ exports.server = function(req, res) {
             });
         res.json({
             status: "success",
-            message: "Got Group Successfully!",
+            message: "Got Groups Successfully!",
             data: group
         });
     });
@@ -35,7 +35,6 @@ exports.add = function(req, res) {
     group.legal_company = req.body.legal_company;
     group.dba = req.body.dba;
     group.tax_rate = req.body.tax_rate;
-    group.email = req.body.email;
     group.created = req.body.created;
 
     //Save and check error
@@ -51,8 +50,8 @@ exports.add = function(req, res) {
 };
 
 // View Group by mongo object id
-exports.view = function(req, res) {
-    Group.findById(req.params.group_id, function(err, group) {
+exports.viewGroupById = function(req, res) {
+    Group.findById(req.params._id, function(err, group) {
         if (err)
             console.log('Cannot return group');
         res.send(err);
@@ -63,18 +62,18 @@ exports.view = function(req, res) {
     });
 };
 
-// View Group by mongo object id
-exports.viewByEmail = function(req, res) {
-    Group.findById(req.query.email, function(err, group) {
-        if (err)
-            console.log('Cannot return group');
-        res.send(err);
-        res.json({
-            message: 'Group Details',
-            data: group
-        });
-    });
-};
+// // View Group by mongo franchise email
+// exports.viewGroupByEmail = function(req, res) {
+//     Group.find({ email: req.params.email }, function(err, group) {
+//         if (err)
+//             console.log('Cannot return group');
+//         res.send(err);
+//         res.json({
+//             message: 'Group Details by email',
+//             data: group
+//         });
+//     });
+// };
 
 
 // Update Group
@@ -97,7 +96,6 @@ exports.update = function(req, res) {
         group.legal_company = req.body.legal_company;
         group.dba = req.body.dba;
         group.tax_rate = req.body.tax_rate;
-        group.email = req.body.email;
         group.created = req.body.created;
 
         //save and check errors
