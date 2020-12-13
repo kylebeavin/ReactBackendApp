@@ -43,6 +43,8 @@ var path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
+// Authenticate using token to use API
+
 //Use API routes in the App
 app.use('/api', apiRoutes);
 

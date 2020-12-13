@@ -39,21 +39,21 @@ exports.add = function (req, res) {
         });
     });
 };
-// View Users by query
-exports.viewByQuery = function (req, res) {
-    User.find({ role: req.params.role}, function (err, user) {
-        if (err)
-            res.send(err);
-        res.json({
-            message: 'Got users by role',
-            data: user
-        });
-    });
-};
+// // View Users by query
+// exports.viewByQuery = function (req, res) {
+//     User.find({ role: req.params.role }, function (err, user) {
+//         if (err)
+//             res.send(err);
+//         res.json({
+//             message: 'Got users by role',
+//             data: user
+//         });
+//     });
+// };
 
 // View Users by group
 exports.viewByGroup = function (req, res) {
-    User.find({ group_id: req.params.group_id}, function (err, user) {
+    User.find({ group_id: req.params.group_id }, function (err, user) {
         if (err)
             res.send(err);
         res.json({
@@ -65,7 +65,7 @@ exports.viewByGroup = function (req, res) {
 
 // View Users by role
 exports.viewByRole = function (req, res) {
-    User.find({ role: req.params.role}, function (err, user) {
+    User.find({ role: req.params.role }, function (err, user) {
         if (err)
             res.send(err);
         res.json({
@@ -89,18 +89,42 @@ exports.viewById = function (req, res) {
 
 // View User by email
 exports.viewByEmail = function (req, res) {
-    User.find({ email: req.params.email}, function (err, user) {
+    User.find({ email: req.params.email }, function (err, user) {
         if (err)
             res.send(err);
         res.json({
-            message: 'Got user by email address',
+            message: 'Got user by email',
             data: user
         });
     });
 };
 
-// Update User
-exports.update = function (req, res) {
+// View User by email
+exports.viewByStatus = function (req, res) {
+    User.find({ status: req.params.status }, function (err, user) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: 'Got users by status',
+            data: user
+        });
+    });
+};
+
+// View User by Created
+exports.viewByCreated = function (req, res) {
+    User.find({ created: req.params.created }, function (err, user) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: 'Got users by created',
+            data: user
+        });
+    });
+};
+
+// Update User by Mongo Object ID
+exports.updateById = function (req, res) {
     User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
@@ -124,8 +148,133 @@ exports.update = function (req, res) {
     });
 };
 
-// Delete User
-exports.delete = function (req, res) {
+// Update all users in role TODO: Test
+exports.updateByRole = function (req, res) {
+    User.find({ role: req.params.role }, function (err, user) {
+        if (err)
+            res.send(err);
+        user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
+        user.email = req.body.email;
+        user.first_name = req.body.first_name;
+        user.last_name = req.body.last_name;
+        user.role = req.body.role;
+        user.group_id = req.body.group_id;
+        user.status = req.body.status;
+
+        //save and check errors
+        user.save(function (err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "Updated all users in role Successfully",
+                data: user
+            });
+        });
+    });
+};
+
+// Update all users in group TODO: Test
+exports.updateByGroup = function (req, res) {
+    User.find({ group: req.params.group }, function (err, user) {
+        if (err)
+            res.send(err);
+        user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
+        user.email = req.body.email;
+        user.first_name = req.body.first_name;
+        user.last_name = req.body.last_name;
+        user.group = req.body.group;
+        user.group_id = req.body.group_id;
+        user.status = req.body.status;
+
+        //save and check errors
+        user.save(function (err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "Updated all users in group Successfully",
+                data: user
+            });
+        });
+    });
+};
+
+// Update all users in status TODO: Test
+exports.updateByStatus = function (req, res) {
+    User.find({ status: req.params.status }, function (err, user) {
+        if (err)
+            res.send(err);
+        user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
+        user.email = req.body.email;
+        user.first_name = req.body.first_name;
+        user.last_name = req.body.last_name;
+        user.status = req.body.status;
+        user.status_id = req.body.status_id;
+        user.status = req.body.status;
+
+        //save and check errors
+        user.save(function (err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "Updated all users in status Successfully",
+                data: user
+            });
+        });
+    });
+};
+
+// Update all users in email TODO: Test
+exports.updateByEmail = function (req, res) {
+    User.find({ email: req.params.email }, function (err, user) {
+        if (err)
+            res.send(err);
+        user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
+        user.email = req.body.email;
+        user.first_name = req.body.first_name;
+        user.last_name = req.body.last_name;
+        user.email = req.body.email;
+        user.email_id = req.body.email_id;
+        user.email = req.body.email;
+
+        //save and check errors
+        user.save(function (err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "Updated all users in email Successfully",
+                data: user
+            });
+        });
+    });
+};
+
+// Update all users by creation date TODO: Test
+exports.updateByCreated = function (req, res) {
+    User.find({ created: req.params.created }, function (err, user) {
+        if (err)
+            res.send(err);
+        user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
+        user.email = req.body.email;
+        user.first_name = req.body.first_name;
+        user.last_name = req.body.last_name;
+        user.email = req.body.email;
+        user.email_id = req.body.email_id;
+        user.email = req.body.email;
+
+        //save and check errors
+        user.save(function (err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "Updated all users in email Successfully",
+                data: user
+            });
+        });
+    });
+};
+
+// Delete User by Mongo Object ID
+exports.deleteById = function (req, res) {
     User.deleteOne({
         _id: req.params.user_id
     }, function (err, contact) {
@@ -134,6 +283,76 @@ exports.delete = function (req, res) {
         res.json({
             status: "success",
             message: 'User Deleted'
+        });
+    });
+};
+
+// Delete User by email
+exports.deleteByEmail = function (req, res) {
+    User.deleteOne({
+        email: req.params.email
+    }, function (err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'User Deleted by email'
+        });
+    });
+};
+
+// Delete User by group
+exports.deleteByGroup = function (req, res) {
+    User.deleteOne({
+        group: req.params.group
+    }, function (err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'All users have been deleted for this group'
+        });
+    });
+};
+
+// Delete User by role
+exports.deleteByRole = function (req, res) {
+    User.deleteOne({
+        role: req.params.role
+    }, function (err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'All users have been deleted for this role'
+        });
+    });
+};
+
+// Delete User by status
+exports.deleteByStatus = function (req, res) {
+    User.deleteOne({
+        status: req.params.status
+    }, function (err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'All users have been deleted for this status'
+        });
+    });
+};
+
+// Delete User by created
+exports.deleteByCreated = function (req, res) {
+    User.delete({
+        created: req.params.created
+    }, function (err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            created: "success",
+            message: 'All users have been deleted for this date'
         });
     });
 };

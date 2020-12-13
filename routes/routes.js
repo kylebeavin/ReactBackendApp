@@ -30,40 +30,55 @@ router.route('/users')
 
 router.route('/usersById/:_id')
     .get(userController.viewById)
-    .patch(userController.update)
-    .put(userController.update)
-    .delete(userController.delete);
+    .patch(userController.updateById)
+    .put(userController.updateById)
+    .delete(userController.deleteById);
 
-router.route('/usersByQuery/:role') // Get all users by role
-    .get(userController.viewByQuery)
+// router.route('/usersByQuery/:role') // Get all users by role
+//     .get(userController.viewByQuery)
 // .patch(userController.update)
 // .put(userController.update)
 // .delete(userController.delete);
 
-router.route('/usersByGroup/:group_id') // Get all users by group
+router.route('/usersByGroup/:group_id') // Get all users in group
     .get(userController.viewByGroup)
-// .patch(userController.update)
-// .put(userController.update)
-// .delete(userController.delete);
+    .patch(userController.updateByGroup)
+    .put(userController.updateByGroup)
+    .delete(userController.deleteByGroup);
 
 router.route('/usersByRole/:role') // Get all users by role
     .get(userController.viewByRole)
-// .patch(userController.update)
-// .put(userController.update)
-// .delete(userController.delete);
+    .patch(userController.updateByRole)
+    .put(userController.updateByRole)
+    .delete(userController.deleteByRole);
 
 router.route('/usersByEmail/:email') // Gets user by email
     .get(userController.viewByEmail)
-// .patch(userController.update)
-// .put(userController.update)
-// .delete(userController.delete);
+    .patch(userController.updateByEmail)
+    .put(userController.updateByEmail)
+    .delete(userController.deleteByEmail);
 
+router.route('/usersByStatus/:status') // Gets users by status
+    .get(userController.viewByStatus)
+    .patch(userController.updateByStatus)
+    .put(userController.updateByStatus)
+    .delete(userController.deleteByStatus);
+
+router.route('/usersByCreated/:created') // Gets users by status
+    .get(userController.viewByCreated)
+    .patch(userController.updateByCreated)
+    .put(userController.updateByCreated)
+    .delete(userController.deleteByCreated);
+
+
+
+// Group routes
 
 router.route('/groups')
     .get(groupController.server)
     .post(groupController.add);
 
-// Group routes
+
 router.route('/groupById/:group_id')
     .get(groupController.view)
     .patch(groupController.update)
