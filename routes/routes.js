@@ -13,7 +13,7 @@ var adminController = require('../controllers/adminController.js');
 
 //set default API response
 router
-    .get('/', function (req, res) {
+    .get('/', function(req, res) {
         res.json({
             status: 'API Works',
             message: 'Welcome to SMT API'
@@ -96,8 +96,8 @@ router.route('/accounts')
     .get(accountController.server)
     .post(accountController.add);
 
-router.route('/accounts/:account_id')
-    .get(accountController.view)
+router.route('/accounts/:_id')
+    .get(accountController.viewAccountById)
     .patch(accountController.update)
     .put(accountController.update)
     .delete(accountController.delete);

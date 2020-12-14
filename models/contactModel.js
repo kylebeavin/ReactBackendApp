@@ -11,6 +11,10 @@ var contactSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    owner_id: {
+        type: String,
+        required: true
+    },
     contact_name: {
         type: String,
         required: true
@@ -44,6 +48,6 @@ var contactSchema = mongoose.Schema({
 // Export Contact Model
 var Contact = module.exports = mongoose.model('contact', contactSchema);
 
-module.exports.get = function (callback, limit) {
-   Contact.find(callback).limit(limit); 
+module.exports.get = function(callback, limit) {
+    Contact.find(callback).limit(limit);
 }

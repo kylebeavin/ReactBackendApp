@@ -2,8 +2,8 @@
 Contact = require('../models/contactModel.js')
 
 //For server
-exports.server = function (req, res) {
-    Contact.get(function (err, contact) {
+exports.server = function(req, res) {
+    Contact.get(function(err, contact) {
         if (err)
             res.json({
                 status: "error",
@@ -12,16 +12,17 @@ exports.server = function (req, res) {
         res.json({
             status: "success",
             message: "Got Contacts Successfully!",
-            data: contact       
+            data: contact
         });
     });
 };
 
 //For creating new contact
-exports.add = function (req, res) {
+exports.add = function(req, res) {
     var contact = new Contact();
-    contact.contact_id = req.body.contact_id? req.body.contact_id: contact.contact_id;
+    contact.contact_id = req.body.contact_id ? req.body.contact_id : contact.contact_id;
     contact.account_id = req.body.account_id;
+    contact.owner_id = req.body.owner_id;
     contact.contact_name = req.body.contact_name;
     contact.email = req.body.email;
     contact.phone = req.body.phone;
@@ -30,7 +31,7 @@ exports.add = function (req, res) {
     contact.status = true;
 
     //Save and check error
-    contact.save(function (err) {
+    contact.save(function(err) {
         if (err)
             res.json(err);
 
@@ -42,8 +43,8 @@ exports.add = function (req, res) {
 };
 
 // View Contact by mongo object id
-exports.view = function (req, res) {
-    Contact.findById(req.params.contact_id, function (err, contact) {
+exports.view = function(req, res) {
+    Contact.findById(req.params.contact_id, function(err, contact) {
         if (err)
             res.send(err);
         res.json({
@@ -54,11 +55,12 @@ exports.view = function (req, res) {
 };
 
 // Update Contact
-exports.update = function (req, res) {
-    Contact.findById(req.params.contact_id, function (err, contact) {
+exports.update = function(req, res) {
+    Contact.findById(req.params.contact_id, function(err, contact) {
         if (err)
             res.send(err);
-        contact.contact_id = req.body.contact_id? req.body.contact_id: contact.contact_id;
+        contact.contact_id = req.body.contact_id ? req.body.contact_id : contact.contact_id;
+        contact.account_id = req.body.account_id;
         contact.account_id = req.body.account_id;
         contact.contact_name = req.body.contact_name;
         contact.email = req.body.email;
@@ -68,7 +70,7 @@ exports.update = function (req, res) {
         contact.status = true;
 
         //save and check errors
-        contact.save(function (err) {
+        contact.save(function(err) {
             if (err)
                 res.json(err)
             res.json({
@@ -80,10 +82,10 @@ exports.update = function (req, res) {
 };
 
 // Delete Contact
-exports.delete = function (req, res) {
+exports.delete = function(req, res) {
     Contact.deleteOne({
         _id: req.params.contact_id
-    }, function (err, contact) {
+    }, function(err, contact) {
         if (err)
             res.send(err)
         res.json({
@@ -92,4 +94,3 @@ exports.delete = function (req, res) {
         });
     });
 };
-

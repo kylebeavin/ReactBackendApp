@@ -2,25 +2,25 @@ var mongoose = require('mongoose');
 
 //schema
 var accountSchema = mongoose.Schema({
+    group_id: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
     },
-    contact: {
+    owner_id: {
         type: String,
         required: true
     },
-    status: {
+    is_active: {
         type: Boolean,
-        required: true
-    },
-    status: {
-        type: Boolean,
-        required: true
+        default: true
     },
     stage: {
         type: String,
-        required: true
+        required: false
     },
     addressStreet: {
         type: String,
@@ -38,17 +38,9 @@ var accountSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    group_id: {
-        type: String,
-        required: false
-    },
-    account_id: {
-        type: String,
-        required: true
-    },
     email: {
         type: String,
-        required: true
+        required: false
     },
     created: {
         type: Date,
@@ -62,12 +54,8 @@ var accountSchema = mongoose.Schema({
         type: Date,
         required: false
     },
-    sales_rep: {
-        type: String,
-        required: false
-    },
     hauling_contract: {
-        type: Date,
+        type: Boolean,
         required: false
     },
     hauling_expiration: {
@@ -79,6 +67,6 @@ var accountSchema = mongoose.Schema({
 // Export Account Model
 var Account = module.exports = mongoose.model('account', accountSchema);
 
-module.exports.get = function (callback, limit) {
-   Account.find(callback).limit(limit); 
+module.exports.get = function(callback, limit) {
+    Account.find(callback).limit(limit);
 }
