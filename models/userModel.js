@@ -2,10 +2,6 @@ var mongoose = require('mongoose');
 
 //schema
 var userSchema = mongoose.Schema({
-    user_id: {
-        type: String,
-        required: true
-    },
     first_name: {
         type: String,
         required: true
@@ -30,7 +26,7 @@ var userSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    status: {
+    is_active: {
         type: Boolean,
         default: true
     }

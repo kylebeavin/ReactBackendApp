@@ -98,98 +98,99 @@ router.route('/accounts')
 
 router.route('/accountsById/:_id')
     .get(accountController.viewAccountById)
-    .patch(accountController.update)
-    .put(accountController.update)
+    .patch(accountController.updateAccountById)
+    .put(accountController.updateAccountById)
     .delete(accountController.delete);
 
 
 router.route('/accountsByGroup/:group_id')
     .get(accountController.viewAccountByGroup)
-    // .patch(accountController.update)
-    // .put(accountController.update)
-    // .delete(accountController.delete);
+    .patch(accountController.updateAccountByGroup)
+    .put(accountController.updateAccountByGroup)
+    .delete(accountController.delete);
 
 router.route('/accountsByName/:name')
     .get(accountController.viewAccountByName)
-    // .patch(accountController.update)
-    // .put(accountController.update)
-    // .delete(accountController.delete);
+    .patch(accountController.updateAccountByName)
+    .put(accountController.updateAccountByName)
+    .delete(accountController.delete);
 
 router.route('/accountsByOwnerId/:owner_id')
     .get(accountController.viewAccountByOwnerId)
-    // .patch(accountController.update)
-    // .put(accountController.update)
-    // .delete(accountController.delete);
+    .patch(accountController.updateAccountByOwnerId)
+    .put(accountController.updateAccountByOwnerId)
+    .delete(accountController.delete);
 
 router.route('/accountsByIsActive/:is_active')
     .get(accountController.viewAccountByIsActive)
-    // .patch(accountController.update)
-    // .put(accountController.update)
-    // .delete(accountController.delete);
+    .patch(accountController.updateAccountByIsActive)
+    .put(accountController.updateAccountByIsActive)
+    .delete(accountController.delete);
 
 router.route('/accountsByStage/:stage')
     .get(accountController.viewAccountByStage)
-    // .patch(accountController.update)
-    // .put(accountController.update)
-    // .delete(accountController.delete);
+    .patch(accountController.updateAccountByStage)
+    .put(accountController.updateAccountByStage)
+    .delete(accountController.delete);
 
 router.route('/accountsByStreet/:addressStreet')
     .get(accountController.viewAccountByStreet)
-    // .patch(accountController.update)
-    // .put(accountController.update)
-    // .delete(accountController.delete);
+    .patch(accountController.updateAccountByStreet)
+    .put(accountController.updateAccountByStreet)
+    .delete(accountController.delete);
+
 router.route('/accountsByCity/:addressCity')
     .get(accountController.viewAccountByCity)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByCity)
+    .put(accountController.updateAccountByCity)
     // .delete(accountController.delete);
 
 router.route('/accountsByState/:addressState')
     .get(accountController.viewAccountByState)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByState)
+    .put(accountController.updateAccountByState)
     // .delete(accountController.delete);
 
 router.route('/accountsByZip/:addressZip')
     .get(accountController.viewAccountByZip)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByZip)
+    .put(accountController.updateAccountByZip)
     // .delete(accountController.delete);
 
 router.route('/accountsByEmail/:email')
     .get(accountController.viewAccountByEmail)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByEmail)
+    .put(accountController.updateAccountByEmail)
     // .delete(accountController.delete);
 
 router.route('/accountsByCreation/:created')
     .get(accountController.viewAccountByCreation)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByCreation)
+    .put(accountController.updateAccountByCreation)
     // .delete(accountController.delete);
 
 router.route('/accountsByDemoDate/:demo')
     .get(accountController.viewAccountByDemoDate)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByDemoDate)
+    .put(accountController.updateAccountByDemoDate)
     // .delete(accountController.delete);
 
 router.route('/accountsByConversionDate/:conversion')
     .get(accountController.viewAccountByConversionDate)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByConversionDate)
+    .put(accountController.updateAccountByConversionDate)
     // .delete(accountController.delete);
 
 router.route('/accountsByHaulingContract/:hauling_contract')
     .get(accountController.viewAccountByHaulingContract)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByHaulingContract)
+    .put(accountController.updateAccountByHaulingContract)
     // .delete(accountController.delete);
 
 router.route('/accountsByHaulingExpiration/:hauling_expiration')
     .get(accountController.viewAccountByHaulingExpiration)
-    // .patch(accountController.update)
-    // .put(accountController.update)
+    .patch(accountController.updateAccountByHaulingExpiration)
+    .put(accountController.updateAccountByHaulingExpiration)
     // .delete(accountController.delete);
 
 // Contact routes

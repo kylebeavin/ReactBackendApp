@@ -240,8 +240,8 @@ exports.viewAccountByHaulingExpiration = function(req, res) {
     });
 };
 
-// Update Account
-exports.update = function(req, res) {
+// Update Account by Object Id
+exports.updateAccountById = function(req, res) {
     Account.findById(req.params._id, function(err, account) {
         if (err)
             res.send(err);
@@ -271,7 +271,502 @@ exports.update = function(req, res) {
     });
 };
 
-// Delete Account
+// Update Account
+exports.updateAccountByGroup = function(req, res) {
+    Account.find(req.params.group_id, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts in Group Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+// Update Account by name
+exports.updateAccountByName = function(req, res) {
+    Account.find(req.params.name, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "Accounts Updated Successfully by Name",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Owner Id
+exports.updateAccountByOwnerId = function(req, res) {
+    Account.find(req.params.owner_id, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts for User Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Is Active Status
+exports.updateAccountByIsActive = function(req, res) {
+    Account.find(req.params.is_active, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts for Status Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Stage
+exports.updateAccountByStage = function(req, res) {
+    Account.find(req.params.stage, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts in Stage Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Street
+exports.updateAccountByStreet = function(req, res) {
+    Account.find(req.params.addressStreet, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts on Street Address Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by City
+exports.updateAccountByCity = function(req, res) {
+    Account.find(req.params.addressCity, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts in City Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by City
+exports.updateAccountByCity = function(req, res) {
+    Account.find(req.params.addressCity, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts in City Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by State
+exports.updateAccountByState = function(req, res) {
+    Account.find(req.params.addressState, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts in State Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Zip
+exports.updateAccountByZip = function(req, res) {
+    Account.find(req.params.addressZip, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts in Zip Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Email
+exports.updateAccountByEmail = function(req, res) {
+    Account.find(req.params.addressEmail, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts by Email Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Creation
+exports.updateAccountByCreation = function(req, res) {
+    Account.find(req.params.created, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts by Creation Date Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Demo Date
+exports.updateAccountByDemoDate = function(req, res) {
+    Account.find(req.params.demo, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts by Demo Date Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Conversion Date
+exports.updateAccountByConversionDate = function(req, res) {
+    Account.find(req.params.conversion, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts by Conversion Date Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Hauling Contract Status
+exports.updateAccountByHaulingContract = function(req, res) {
+    Account.find(req.params.hauling_contract, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts with Hauling Contract Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Update all Accounts by Hauling Expiration Status
+exports.updateAccountByHaulingExpiration = function(req, res) {
+    Account.find(req.params.hauling_expiration, function(err, account) {
+        if (err)
+            res.send(err);
+        account.group_id = req.body.group_id;
+        account.name = req.body.name;
+        account.owner_id = req.body.owner_id;
+        account.is_active = req.body.is_active;
+        account.stage = req.body.stage;
+        account.addressStreet = req.body.addressStreet;
+        account.addressCity = req.body.addressCity;
+        account.addressState = req.body.addressState;
+        account.addressZip = req.body.addressZip;
+        account.email = req.body.email;
+        account.demo = req.body.demo;
+        account.conversion = req.body.conversion;
+        account.hauling_contract = req.body.hauling_contract;
+        account.hauling_expiration = req.body.hauling_expiration;
+        //save and check errors
+        account.save(function(err) {
+            if (err)
+                res.json(err)
+            res.json({
+                message: "All Accounts by Hauling Expiration Updated Successfully",
+                data: account
+            });
+        });
+    });
+};
+
+// Delete Account by Object Id
 exports.delete = function(req, res) {
     Account.deleteOne({
         _id: req.params._id
@@ -280,7 +775,217 @@ exports.delete = function(req, res) {
             res.send(err)
         res.json({
             status: "success",
-            message: 'Account Deleted'
+            message: 'Account Deleted by Object Id'
+        });
+    });
+};
+
+// Delete Account by Group Id
+exports.delete = function(req, res) {
+    Account.delete({
+        group_id: req.params.group_id
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Group Id'
+        });
+    });
+};
+
+// Delete Account by Name
+exports.delete = function(req, res) {
+    Account.delete({
+        name: req.params.name
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Account Name'
+        });
+    });
+};
+
+// Delete Account by Owner_Id
+exports.delete = function(req, res) {
+    Account.delete({
+        owner_id: req.params.owner_id
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Owner Id'
+        });
+    });
+};
+
+// Delete Account by Is Active Status
+exports.delete = function(req, res) {
+    Account.delete({
+        is_active: req.params.is_active
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Status'
+        });
+    });
+};
+
+// Delete Account by Stage
+exports.delete = function(req, res) {
+    Account.delete({
+        stage: req.params.stage
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Stage'
+        });
+    });
+};
+
+// Delete Account by Street
+exports.delete = function(req, res) {
+    Account.delete({
+        addressStreet: req.params.addressStreet
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Street Address'
+        });
+    });
+};
+
+// Delete Account by City
+exports.delete = function(req, res) {
+    Account.delete({
+        addressCity: req.params.addressCity
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by City'
+        });
+    });
+};
+
+// Delete Account by State
+exports.delete = function(req, res) {
+    Account.delete({
+        addressState: req.params.addressState
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by State'
+        });
+    });
+};
+
+// Delete Account by Zip
+exports.delete = function(req, res) {
+    Account.delete({
+        addressZip: req.params.addressZip
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Zip'
+        });
+    });
+};
+
+// Delete Account by Email
+exports.delete = function(req, res) {
+    Account.delete({
+        email: req.params.email
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Email'
+        });
+    });
+};
+
+// Delete Account by Creation Date
+exports.delete = function(req, res) {
+    Account.delete({
+        created: req.params.created
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Creation'
+        });
+    });
+};
+
+// Delete Account by Demo Date
+exports.delete = function(req, res) {
+    Account.delete({
+        demo: req.params.demo
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Demo Date'
+        });
+    });
+};
+
+// Delete Account by Conversion Date
+exports.delete = function(req, res) {
+    Account.delete({
+        conversion: req.params.conversion
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Conversion Date'
+        });
+    });
+};
+
+// Delete Account by Hauling Contract Status
+exports.delete = function(req, res) {
+    Account.delete({
+        hauling_contract: req.params.hauling_contract
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Contract Status'
+        });
+    });
+};
+
+// Delete Account by Hauling Expiration Status
+exports.delete = function(req, res) {
+    Account.delete({
+        hauling_expiration: req.params.hauling_expiration
+    }, function(err, contact) {
+        if (err)
+            res.send(err)
+        res.json({
+            status: "success",
+            message: 'Account Deleted by Hauling Expiration Status'
         });
     });
 };
