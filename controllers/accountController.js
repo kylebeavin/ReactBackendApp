@@ -767,7 +767,7 @@ exports.updateAccountByHaulingExpiration = function(req, res) {
 };
 
 // Delete Account by Object Id
-exports.delete = function(req, res) {
+exports.deleteAccountById = function(req, res) {
     Account.deleteOne({
         _id: req.params._id
     }, function(err, contact) {
@@ -781,7 +781,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Group Id
-exports.delete = function(req, res) {
+exports.deleteAccountByGroup = function(req, res) {
     Account.delete({
         group_id: req.params.group_id
     }, function(err, contact) {
@@ -795,7 +795,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Name
-exports.delete = function(req, res) {
+exports.deleteAccountByName = function(req, res) {
     Account.delete({
         name: req.params.name
     }, function(err, contact) {
@@ -809,7 +809,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Owner_Id
-exports.delete = function(req, res) {
+exports.deleteAccountByOwnerId = function(req, res) {
     Account.delete({
         owner_id: req.params.owner_id
     }, function(err, contact) {
@@ -823,7 +823,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Is Active Status
-exports.delete = function(req, res) {
+exports.deleteAccountByIsActive = function(req, res) {
     Account.delete({
         is_active: req.params.is_active
     }, function(err, contact) {
@@ -837,7 +837,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Stage
-exports.delete = function(req, res) {
+exports.deleteAccountByStage = function(req, res) {
     Account.delete({
         stage: req.params.stage
     }, function(err, contact) {
@@ -851,7 +851,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Street
-exports.delete = function(req, res) {
+exports.deleteAccountByStreet = function(req, res) {
     Account.delete({
         addressStreet: req.params.addressStreet
     }, function(err, contact) {
@@ -865,7 +865,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by City
-exports.delete = function(req, res) {
+exports.deleteAccountByCity = function(req, res) {
     Account.delete({
         addressCity: req.params.addressCity
     }, function(err, contact) {
@@ -879,7 +879,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by State
-exports.delete = function(req, res) {
+exports.deleteAccountByState = function(req, res) {
     Account.delete({
         addressState: req.params.addressState
     }, function(err, contact) {
@@ -893,7 +893,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Zip
-exports.delete = function(req, res) {
+exports.deleteAccountByZip = function(req, res) {
     Account.delete({
         addressZip: req.params.addressZip
     }, function(err, contact) {
@@ -907,7 +907,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Email
-exports.delete = function(req, res) {
+exports.deleteAccountByEmail = function(req, res) {
     Account.delete({
         email: req.params.email
     }, function(err, contact) {
@@ -921,7 +921,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Creation Date
-exports.delete = function(req, res) {
+exports.deleteAccountByCreation = function(req, res) {
     Account.delete({
         created: req.params.created
     }, function(err, contact) {
@@ -935,7 +935,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Demo Date
-exports.delete = function(req, res) {
+exports.deleteAccountByDemoDate = function(req, res) {
     Account.delete({
         demo: req.params.demo
     }, function(err, contact) {
@@ -949,7 +949,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Conversion Date
-exports.delete = function(req, res) {
+exports.deleteAccountByConversionDate = function(req, res) {
     Account.delete({
         conversion: req.params.conversion
     }, function(err, contact) {
@@ -963,7 +963,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Hauling Contract Status
-exports.delete = function(req, res) {
+exports.deleteAccountByContractStatus = function(req, res) {
     Account.delete({
         hauling_contract: req.params.hauling_contract
     }, function(err, contact) {
@@ -977,7 +977,7 @@ exports.delete = function(req, res) {
 };
 
 // Delete Account by Hauling Expiration Status
-exports.delete = function(req, res) {
+exports.deleteAccountByHaulingExpiration = function(req, res) {
     Account.delete({
         hauling_expiration: req.params.hauling_expiration
     }, function(err, contact) {

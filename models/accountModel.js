@@ -20,7 +20,7 @@ var accountSchema = mongoose.Schema({
     },
     stage: {
         type: String,
-        required: false
+        required: true
     },
     addressStreet: {
         type: String,
