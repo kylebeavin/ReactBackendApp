@@ -96,12 +96,101 @@ router.route('/accounts')
     .get(accountController.server)
     .post(accountController.add);
 
-router.route('/accounts/:_id')
+router.route('/accountsById/:_id')
     .get(accountController.viewAccountById)
     .patch(accountController.update)
     .put(accountController.update)
     .delete(accountController.delete);
 
+
+router.route('/accountsByGroup/:group_id')
+    .get(accountController.viewAccountByGroup)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByName/:name')
+    .get(accountController.viewAccountByName)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByOwnerId/:owner_id')
+    .get(accountController.viewAccountByOwnerId)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByIsActive/:is_active')
+    .get(accountController.viewAccountByIsActive)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByStage/:stage')
+    .get(accountController.viewAccountByStage)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByStreet/:addressStreet')
+    .get(accountController.viewAccountByStreet)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+router.route('/accountsByCity/:addressCity')
+    .get(accountController.viewAccountByCity)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByState/:addressState')
+    .get(accountController.viewAccountByState)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByZip/:addressZip')
+    .get(accountController.viewAccountByZip)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByEmail/:email')
+    .get(accountController.viewAccountByEmail)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByCreation/:created')
+    .get(accountController.viewAccountByCreation)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByDemoDate/:demo')
+    .get(accountController.viewAccountByDemoDate)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByConversionDate/:conversion')
+    .get(accountController.viewAccountByConversionDate)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByHaulingContract/:hauling_contract')
+    .get(accountController.viewAccountByHaulingContract)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
+
+router.route('/accountsByHaulingExpiration/:hauling_expiration')
+    .get(accountController.viewAccountByHaulingExpiration)
+    // .patch(accountController.update)
+    // .put(accountController.update)
+    // .delete(accountController.delete);
 
 // Contact routes
 router.route('/contacts')
