@@ -7,15 +7,15 @@ var contactSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    contact_id: {
-        type: String,
-        required: true
-    },
     owner_id: {
         type: String,
         required: true
     },
-    contact_name: {
+    first_name: {
+        type: String,
+        required: true
+    },
+    last_name: {
         type: String,
         required: true
     },
