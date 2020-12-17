@@ -42,7 +42,7 @@ exports.add = function(req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New Group Added!",
             data: group
         });
@@ -102,7 +102,7 @@ exports.update = function(req, res) {
         group.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Group Updated Successfully",
                 data: group
             });
@@ -117,7 +117,7 @@ exports.delete = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Group Deleted'
         });
