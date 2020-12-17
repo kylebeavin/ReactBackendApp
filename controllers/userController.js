@@ -222,7 +222,7 @@ exports.updateUserByStatus = function(req, res) {
     });
 };
 
-// Update all users in email TODO: Test
+// Update all users in email
 exports.updateUserByEmail = function(req, res) {
     User.find({ email: req.params.email }, function(err, user) {
         if (err)
