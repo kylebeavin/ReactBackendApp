@@ -35,7 +35,7 @@ exports.add = function(req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New Contact Added!",
             data: contact
         });
@@ -73,7 +73,7 @@ exports.update = function(req, res) {
         contact.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Contact Updated Successfully",
                 data: contact
             });
@@ -88,7 +88,7 @@ exports.delete = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Contact Deleted'
         });

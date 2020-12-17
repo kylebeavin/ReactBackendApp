@@ -34,7 +34,7 @@ exports.add = function (req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New Truck Added!",
             data: truck
         });
@@ -46,7 +46,7 @@ exports.view = function (req, res) {
     Truck.findById(req.params.truck_id, function (err, truck) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Truck Details',
             data: truck
         });
@@ -72,7 +72,7 @@ exports.update = function (req, res) {
         truck.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Truck Updated Successfully",
                 data: truck
             });
@@ -87,7 +87,7 @@ exports.delete = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Truck Deleted'
         });

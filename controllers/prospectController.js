@@ -33,7 +33,7 @@ exports.add = function(req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New Prospect Added!",
             data: prospect
         });
@@ -45,7 +45,7 @@ exports.viewProspectById = function(req, res) {
     Prospect.findById(req.params._id, function(err, prospect) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Prospect Details by Object Id',
             data: prospect
         });
@@ -57,7 +57,7 @@ exports.viewProspectByGroup = function(req, res) {
     Prospect.find({ group_id: req.params.group_id }, function(err, prospect) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got prospects by group',
             data: prospect
         });
@@ -69,7 +69,7 @@ exports.viewProspectByName = function(req, res) {
     Prospect.find({ name: req.params.name }, function(err, prospect) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got prospects by name',
             data: prospect
         });
@@ -81,7 +81,7 @@ exports.viewProspectByOwnerId = function(req, res) {
     Prospect.find({ owner_id: req.params.owner_id }, function(err, prospect) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got prospects associated with owner id',
             data: prospect
         });
@@ -93,7 +93,7 @@ exports.viewProspectByIsActive = function(req, res) {
     Prospect.find({ is_active: req.params.is_active }, function(err, prospect) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got prospects by active status',
             data: prospect
         });
@@ -105,7 +105,7 @@ exports.viewProspectByStage = function(req, res) {
     Prospect.find({ stage: req.params.stage }, function(err, prospect) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got prospects by sales stage',
             data: prospect
         });
@@ -117,7 +117,7 @@ exports.viewProspectByGeoLocation = function(req, res) {
     Prospect.find({ geo_location: req.params.geo_location }, function(err, prospect) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got prospects by GeoLocation',
             data: prospect
         });
@@ -129,7 +129,7 @@ exports.viewProspectByCreation = function(req, res) {
     Prospect.find({ created: req.params.created }, function(err, prospect) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got prospects by Creation Date',
             data: prospect
         });
@@ -155,7 +155,7 @@ exports.updateProspectById = function(req, res) {
         prospect.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Prospect Updated Successfully",
                 data: prospect
             });
@@ -179,7 +179,7 @@ exports.updateProspectByGroup = function(req, res) {
         prospect.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Prospects in Group Updated Successfully",
                 data: prospect
             });
@@ -202,7 +202,7 @@ exports.updateProspectByName = function(req, res) {
         prospect.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Prospects Updated Successfully by Name",
                 data: prospect
             });
@@ -226,7 +226,7 @@ exports.updateProspectByOwnerId = function(req, res) {
         prospect.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Prospects for User Updated Successfully",
                 data: prospect
             });
@@ -251,7 +251,7 @@ exports.updateProspectByIsActive = function(req, res) {
         prospect.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Prospects for Status Updated Successfully",
                 data: prospect
             });
@@ -275,7 +275,7 @@ exports.updateProspectByStage = function(req, res) {
         prospect.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Prospects in Stage Updated Successfully",
                 data: prospect
             });
@@ -299,7 +299,7 @@ exports.updateProspectByGeoLocation = function(req, res) {
         prospect.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Prospects in GeoLocation Updated Successfully",
                 data: prospect
             });
@@ -323,7 +323,7 @@ exports.updateProspectByCreation = function(req, res) {
         prospect.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Prospects by Creation Date Updated Successfully",
                 data: prospect
             });
@@ -338,7 +338,7 @@ exports.deleteProspectById = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Prospect Deleted by Object Id'
         });
@@ -352,7 +352,7 @@ exports.deleteProspectByGroupId = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Prospect Deleted by Group Id'
         });
@@ -366,7 +366,7 @@ exports.deleteProspectByName = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Prospect Deleted by Prospect Name'
         });
@@ -380,7 +380,7 @@ exports.deleteProspectByOwnerId = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Prospect Deleted by Owner Id'
         });
@@ -394,7 +394,7 @@ exports.deleteProspectByIsActiveStatus = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Prospect Deleted by Status'
         });
@@ -408,7 +408,7 @@ exports.deleteProspectByStage = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Prospect Deleted by Stage'
         });
@@ -424,7 +424,7 @@ exports.deleteProspectByGeoLocation = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Prospect Deleted by GeoLocation'
         });
@@ -438,7 +438,7 @@ exports.deleteProspectByCreation = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Prospect Deleted by Creation'
         });

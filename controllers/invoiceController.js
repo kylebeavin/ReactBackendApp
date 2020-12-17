@@ -40,7 +40,7 @@ exports.add = function (req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New Invoice Added!",
             data: invoice
         });
@@ -83,7 +83,7 @@ exports.update = function (req, res) {
         invoice.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Invoice Updated Successfully",
                 data: invoice
             });
@@ -98,7 +98,7 @@ exports.delete = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Invoice Deleted'
         });

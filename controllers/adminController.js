@@ -29,7 +29,7 @@ exports.add = function(req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New Admin Added!",
             data: admin
         });
@@ -62,7 +62,7 @@ exports.update = function(req, res) {
         admin.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Admin Updated Successfully",
                 data: admin
             });
@@ -77,7 +77,7 @@ exports.delete = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Admin Deleted'
         });
