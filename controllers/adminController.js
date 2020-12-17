@@ -9,7 +9,7 @@ exports.server = function(req, res) {
                 status: "error",
                 message: err
             });
-        res.json({
+        else res.json({
             status: "success",
             message: "Got Admin Successfully!",
             data: admin

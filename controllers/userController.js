@@ -55,7 +55,7 @@ exports.viewUserByGroup = function(req, res) {
     User.find({ group_id: req.params.group_id }, function(err, user) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got users by group',
             data: user
         });
