@@ -350,7 +350,7 @@ exports.deleteUserByCreated = function(req, res) {
         if (err)
             res.send(err)
         else res.json({
-            created: "success",
+            status: "success",
             message: 'All users have been deleted for this date'
         });
     });
