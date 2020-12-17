@@ -9,7 +9,7 @@ exports.server = function(req, res) {
                 status: "error",
                 message: err
             });
-        res.json({
+        else res.json({
             status: "success",
             message: "Got Users Successfully!",
             data: user
@@ -32,7 +32,7 @@ exports.add = function(req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New User Added!",
             data: user
         });
@@ -67,7 +67,7 @@ exports.viewUserByRole = function(req, res) {
     User.find({ role: req.params.role }, function(err, user) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got users by role',
             data: user
         });
@@ -79,7 +79,7 @@ exports.viewUserById = function(req, res) {
     User.findById(req.params._id, function(err, user) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got user by Document Object ID',
             data: user
         });
@@ -91,7 +91,7 @@ exports.viewUserByEmail = function(req, res) {
     User.find({ email: req.params.email }, function(err, user) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got user by email',
             data: user
         });
@@ -103,7 +103,7 @@ exports.viewUserByStatus = function(req, res) {
     User.find({ status: req.params.status }, function(err, user) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got users by status',
             data: user
         });
@@ -115,7 +115,7 @@ exports.viewUserByCreated = function(req, res) {
     User.find({ created: req.params.created }, function(err, user) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got users by created',
             data: user
         });
@@ -139,7 +139,7 @@ exports.updateUserById = function(req, res) {
         user.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "User Updated Successfully",
                 data: user
             });
@@ -164,7 +164,7 @@ exports.updateUserByRole = function(req, res) {
         user.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Updated all users in role Successfully",
                 data: user
             });
@@ -189,7 +189,7 @@ exports.updateUserByGroup = function(req, res) {
         user.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Updated all users in group Successfully",
                 data: user
             });
@@ -214,7 +214,7 @@ exports.updateUserByStatus = function(req, res) {
         user.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Updated all users in status Successfully",
                 data: user
             });
@@ -239,7 +239,7 @@ exports.updateUserByEmail = function(req, res) {
         user.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Updated all users in email Successfully",
                 data: user
             });
@@ -264,7 +264,7 @@ exports.updateUserByCreated = function(req, res) {
         user.save(function(err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Updated all users in email Successfully",
                 data: user
             });
@@ -279,7 +279,7 @@ exports.deleteUserById = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'User Deleted'
         });
@@ -293,7 +293,7 @@ exports.deleteUserByEmail = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'User Deleted by email'
         });
@@ -307,7 +307,7 @@ exports.deleteUserByGroup = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'All users have been deleted for this group'
         });
@@ -321,7 +321,7 @@ exports.deleteUserByRole = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'All users have been deleted for this role'
         });
@@ -335,7 +335,7 @@ exports.deleteUserByStatus = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'All users have been deleted for this status'
         });
@@ -349,7 +349,7 @@ exports.deleteUserByCreated = function(req, res) {
     }, function(err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             created: "success",
             message: 'All users have been deleted for this date'
         });
