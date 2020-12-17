@@ -40,7 +40,7 @@ exports.add = function (req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New Account Added!",
             data: account
         });
@@ -52,7 +52,7 @@ exports.viewAccountById = function (req, res) {
     Account.findById(req.params._id, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Account Details by Object Id',
             data: account
         });
@@ -64,7 +64,7 @@ exports.viewAccountByGroup = function (req, res) {
     Account.find({ group_id: req.params.group_id }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by group',
             data: account
         });
@@ -76,7 +76,7 @@ exports.viewAccountByName = function (req, res) {
     Account.find({ name: req.params.name }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by name',
             data: account
         });
@@ -88,7 +88,7 @@ exports.viewAccountByOwnerId = function (req, res) {
     Account.find({ owner_id: req.params.owner_id }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts associated with owner id',
             data: account
         });
@@ -100,7 +100,7 @@ exports.viewAccountByIsActive = function (req, res) {
     Account.find({ is_active: req.params.is_active }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by active status',
             data: account
         });
@@ -112,7 +112,7 @@ exports.viewAccountByStage = function (req, res) {
     Account.find({ stage: req.params.stage }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by sales stage',
             data: account
         });
@@ -124,7 +124,7 @@ exports.viewAccountByStreet = function (req, res) {
     Account.find({ addressStreet: req.params.addressStreet }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by Street',
             data: account
         });
@@ -136,7 +136,7 @@ exports.viewAccountByCity = function (req, res) {
     Account.find({ addressCity: req.params.addressCity }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by City',
             data: account
         });
@@ -148,7 +148,7 @@ exports.viewAccountByState = function (req, res) {
     Account.find({ addressState: req.params.addressState }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by State',
             data: account
         });
@@ -160,7 +160,7 @@ exports.viewAccountByZip = function (req, res) {
     Account.find({ addressZip: req.params.addressZip }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by Zip',
             data: account
         });
@@ -172,7 +172,7 @@ exports.viewAccountByEmail = function (req, res) {
     Account.find({ email: req.params.email }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by Email',
             data: account
         });
@@ -184,7 +184,7 @@ exports.viewAccountByCreation = function (req, res) {
     Account.find({ created: req.params.created }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by Creation Date',
             data: account
         });
@@ -197,7 +197,7 @@ exports.viewAccountByDemoDate = function (req, res) {
     Account.find({ demo: req.params.demo }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by Demo Date',
             data: account
         });
@@ -209,7 +209,7 @@ exports.viewAccountByConversionDate = function (req, res) {
     Account.find({ conversion: req.params.conversion }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by Conversion Date',
             data: account
         });
@@ -221,7 +221,7 @@ exports.viewAccountByHaulingContract = function (req, res) {
     Account.find({ hauling_contract: req.params.hauling_contract }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by Hauling Status',
             data: account
         });
@@ -233,7 +233,7 @@ exports.viewAccountByHaulingExpiration = function (req, res) {
     Account.find({ hauling_expiration: req.params.hauling_expiration }, function (err, account) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Got accounts by Hauling Contract Expiration Date',
             data: account
         });
@@ -263,7 +263,7 @@ exports.updateAccountById = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Account Updated Successfully",
                 data: account
             });
@@ -294,7 +294,7 @@ exports.updateAccountByGroup = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts in Group Updated Successfully",
                 data: account
             });
@@ -324,7 +324,7 @@ exports.updateAccountByName = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Accounts Updated Successfully by Name",
                 data: account
             });
@@ -355,7 +355,7 @@ exports.updateAccountByOwnerId = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts for User Updated Successfully",
                 data: account
             });
@@ -386,7 +386,7 @@ exports.updateAccountByIsActive = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts for Status Updated Successfully",
                 data: account
             });
@@ -417,7 +417,7 @@ exports.updateAccountByStage = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts in Stage Updated Successfully",
                 data: account
             });
@@ -448,7 +448,7 @@ exports.updateAccountByStreet = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts on Street Address Updated Successfully",
                 data: account
             });
@@ -479,7 +479,7 @@ exports.updateAccountByCity = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts in City Updated Successfully",
                 data: account
             });
@@ -510,7 +510,7 @@ exports.updateAccountByCity = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts in City Updated Successfully",
                 data: account
             });
@@ -541,7 +541,7 @@ exports.updateAccountByState = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts in State Updated Successfully",
                 data: account
             });
@@ -572,7 +572,7 @@ exports.updateAccountByZip = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts in Zip Updated Successfully",
                 data: account
             });
@@ -603,7 +603,7 @@ exports.updateAccountByEmail = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts by Email Updated Successfully",
                 data: account
             });
@@ -634,7 +634,7 @@ exports.updateAccountByCreation = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts by Creation Date Updated Successfully",
                 data: account
             });
@@ -665,7 +665,7 @@ exports.updateAccountByDemoDate = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts by Demo Date Updated Successfully",
                 data: account
             });
@@ -696,7 +696,7 @@ exports.updateAccountByConversionDate = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts by Conversion Date Updated Successfully",
                 data: account
             });
@@ -727,7 +727,7 @@ exports.updateAccountByHaulingContract = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts with Hauling Contract Updated Successfully",
                 data: account
             });
@@ -758,7 +758,7 @@ exports.updateAccountByHaulingExpiration = function (req, res) {
         account.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "All Accounts by Hauling Expiration Updated Successfully",
                 data: account
             });
@@ -773,7 +773,7 @@ exports.deleteAccountById = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Object Id'
         });
@@ -787,7 +787,7 @@ exports.deleteAccountByGroup = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Group Id'
         });
@@ -801,7 +801,7 @@ exports.deleteAccountByName = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Account Name'
         });
@@ -815,7 +815,7 @@ exports.deleteAccountByOwnerId = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Owner Id'
         });
@@ -829,7 +829,7 @@ exports.deleteAccountByIsActive = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Status'
         });
@@ -843,7 +843,7 @@ exports.deleteAccountByStage = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Stage'
         });
@@ -857,7 +857,7 @@ exports.deleteAccountByStreet = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Street Address'
         });
@@ -871,7 +871,7 @@ exports.deleteAccountByCity = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by City'
         });
@@ -885,7 +885,7 @@ exports.deleteAccountByState = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by State'
         });
@@ -899,7 +899,7 @@ exports.deleteAccountByZip = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Zip'
         });
@@ -913,7 +913,7 @@ exports.deleteAccountByEmail = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Email'
         });
@@ -927,7 +927,7 @@ exports.deleteAccountByCreation = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Creation'
         });
@@ -941,7 +941,7 @@ exports.deleteAccountByDemoDate = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Demo Date'
         });
@@ -955,7 +955,7 @@ exports.deleteAccountByConversionDate = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Conversion Date'
         });
@@ -969,7 +969,7 @@ exports.deleteAccountByContractStatus = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Contract Status'
         });
@@ -983,7 +983,7 @@ exports.deleteAccountByHaulingExpiration = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Account Deleted by Hauling Expiration Status'
         });
