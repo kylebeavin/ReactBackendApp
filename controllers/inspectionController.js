@@ -32,7 +32,7 @@ exports.add = function (req, res) {
         if (err)
             res.json(err);
 
-        res.json({
+        else res.json({
             message: "New Inspection Added!",
             data: inspection
         });
@@ -67,7 +67,7 @@ exports.update = function (req, res) {
         inspection.save(function (err) {
             if (err)
                 res.json(err)
-            res.json({
+            else res.json({
                 message: "Inspection Updated Successfully",
                 data: inspection
             });
@@ -82,7 +82,7 @@ exports.delete = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err)
-        res.json({
+        else res.json({
             status: "success",
             message: 'Inspection Deleted'
         });
