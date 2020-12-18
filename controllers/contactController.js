@@ -1,39 +1,6 @@
 //Import Contact Model
 Contact = require('../models/contactModel.js')
 
-//For server
-function exportView(property, model, messageType, dataType) {
-    exports.server = function(req, res) {
-        Contact.get(function(err, contact) {
-            if (err)
-                res.json({
-                    status: "error",
-                    message: err
-                });
-            else res.json({
-                status: "success",
-                message: "Got Contacts Successfully!",
-                data: contact
-            });
-        });
-    };
-}
-
-exports.server = function(req, res) {
-    Contact.get(function(err, contact) {
-        if (err)
-            res.json({
-                status: "error",
-                message: err
-            });
-        else res.json({
-            status: "success",
-            message: "Got Contacts Successfully!",
-            data: contact
-        });
-    });
-};
-
 exports.server = function(req, res) {
     Contact.get(function(err, contact) {
         if (err)

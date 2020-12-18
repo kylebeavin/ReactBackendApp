@@ -56,6 +56,18 @@ router.route('/usersByEmail/:email') // Gets user by email
     .put(userController.updateUserByEmail)
     .delete(userController.deleteUserByEmail);
 
+router.route('/usersByFirst/:first_name') // Gets user by email
+    .get(userController.viewUserByFirst)
+    // .patch(userController.updateUserByEmail)
+    // .put(userController.updateUserByEmail)
+    // .delete(userController.deleteUserByEmail);
+
+router.route('/usersByLast/:last_name') // Gets user by email
+    .get(userController.viewUserByLast)
+    // .patch(userController.updateUserByEmail)
+    // .put(userController.updateUserByEmail)
+    // .delete(userController.deleteUserByEmail);
+
 router.route('/usersByStatus/:status') // Gets users by status
     .get(userController.viewUserByStatus)
     .patch(userController.updateUserByStatus)
