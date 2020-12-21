@@ -1,7 +1,6 @@
 //Import Contact Model
 Contact = require('../models/contactModel.js')
 
-//For server
 exports.server = function(req, res) {
     Contact.get(function(err, contact) {
         if (err)
@@ -47,8 +46,20 @@ exports.view = function(req, res) {
     Contact.findById(req.params.contact_id, function(err, contact) {
         if (err)
             res.send(err);
-        res.json({
+        else res.json({
             message: 'Contact Details',
+            data: contact
+        });
+    });
+};
+
+// View Contacts by account id
+exports.viewContactsByAccountId = function(req, res) {
+    Contact.find({ account_id: req.params.account_id }, function(err, contact) {
+        if (err)
+            res.send(err);
+        else res.json({
+            message: 'All contacts by associated account',
             data: contact
         });
     });

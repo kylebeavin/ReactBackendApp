@@ -62,6 +62,10 @@ var accountSchema = mongoose.Schema({
         type: Date,
         required: false
     },
+    notes: {
+        type: String,
+        required: false
+    },
 });
 
 // Export Account Model

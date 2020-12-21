@@ -14,7 +14,7 @@ var prospectController = require('../controllers/prospectController.js');
 
 //set default API response
 router
-    .get('/', function(req, res) {
+    .get('/', function (req, res) {
         res.json({
             status: 'API Works',
             message: 'Welcome to SMT API'
@@ -55,6 +55,18 @@ router.route('/usersByEmail/:email') // Gets user by email
     .patch(userController.updateUserByEmail)
     .put(userController.updateUserByEmail)
     .delete(userController.deleteUserByEmail);
+
+router.route('/usersByFirst/:first_name') // Gets user by email
+    .get(userController.viewUserByFirst)
+// .patch(userController.updateUserByEmail)
+// .put(userController.updateUserByEmail)
+// .delete(userController.deleteUserByEmail);
+
+router.route('/usersByLast/:last_name') // Gets user by email
+    .get(userController.viewUserByLast)
+// .patch(userController.updateUserByEmail)
+// .put(userController.updateUserByEmail)
+// .delete(userController.deleteUserByEmail);
 
 router.route('/usersByStatus/:status') // Gets users by status
     .get(userController.viewUserByStatus)
@@ -250,6 +262,9 @@ router.route('/contacts/:contact_id')
     .patch(contactController.update)
     .put(contactController.update)
     .delete(contactController.delete);
+
+router.route('/viewContactsByAccountId/:account_id')
+    .get(contactController.viewContactsByAccountId)
 
 // Truck routes
 router.route('/trucks')

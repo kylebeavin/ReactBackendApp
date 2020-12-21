@@ -99,6 +99,30 @@ exports.viewUserByEmail = function(req, res) {
 };
 
 // View User by email
+exports.viewUserByFirst = function(req, res) {
+    User.find({ first_name: req.params.first_name }, function(err, user) {
+        if (err)
+            res.send(err);
+        else res.json({
+            message: 'Got user by first name',
+            data: user
+        });
+    });
+};
+
+// View User by email
+exports.viewUserByLast = function(req, res) {
+    User.find({ last_name: req.params.last_name }, function(err, user) {
+        if (err)
+            res.send(err);
+        else res.json({
+            message: 'Got user by last name',
+            data: user
+        });
+    });
+};
+
+// View User by email
 exports.viewUserByStatus = function(req, res) {
     User.find({ status: req.params.status }, function(err, user) {
         if (err)
