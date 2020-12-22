@@ -2,10 +2,12 @@ var mongoose = require('mongoose');
 
 //schema
 var locationSchema = mongoose.Schema({
+    // To be replaced by unique document ID
     location_id: {
         type: String,
         required: true
     },
+    // Customer ID
     account_id: {
         type: String,
         required: true
@@ -34,7 +36,8 @@ var locationSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    status: {
+    // Marks location active / inactive
+    is_valid: {
         type: Boolean,
         default: true
     }

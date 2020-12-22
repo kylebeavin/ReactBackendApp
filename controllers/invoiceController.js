@@ -32,7 +32,7 @@ exports.add = function (req, res) {
     invoice.tax = req.body.tax;
     invoice.total = req.body.total;
     invoice.created_at = req.body.created_at;
-    invoice.status = req.body.status;
+invoice.is_active = req.body.is_active;
     invoice.purchase_order = req.body.purchase_order;
 
     //Save and check error
@@ -76,7 +76,7 @@ exports.update = function (req, res) {
         invoice.subtotal = req.body.subtotal;
         invoice.tax = req.body.tax;
         invoice.total = req.body.total;
-        invoice.status = req.body.status;
+    invoice.is_active = req.body.is_active;
         invoice.purchase_order = req.body.purchase_order;
 
         //save and check errors

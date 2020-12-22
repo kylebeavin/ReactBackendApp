@@ -2,11 +2,12 @@ var mongoose = require('mongoose');
 
 //schema
 var truckSchema = mongoose.Schema({
-  
+    // Franchise ID
     group_id: {
         type: String,
         required: true
     },
+    // Replaced with Document ID
     truck_id: {
         type: String,
         required: true
@@ -15,18 +16,22 @@ var truckSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // Truck display name
     name: {
         type: String,
         required: true
     },
+    // Odometer reading
     odo: {
         type: String,
         required: true
     },
+    // Truck hours operated
     hours: {
         type: Date,
         default: Date.now
     },
+    // TBD
     machine_id: {
         type: String,
         required: true
@@ -35,7 +40,8 @@ var truckSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    status: {
+    // Allows for truck mark active / inactive
+    is_active: {
         type: Boolean,
         default: true
     },

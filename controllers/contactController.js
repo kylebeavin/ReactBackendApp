@@ -28,7 +28,7 @@ exports.add = function(req, res) {
     contact.phone = req.body.phone;
     contact.type = req.body.type;
     contact.method = req.body.method;
-    contact.status = req.body.status;
+    contact.is_active = req.body.is_active;
 
     //Save and check error
     contact.save(function(err) {
@@ -128,7 +128,7 @@ exports.update = function(req, res) {
         contact.phone = req.body.phone;
         contact.type = req.body.type;
         contact.method = req.body.method;
-        contact.status = req.body.status;
+        contact.is_active = req.body.is_active;
 
         //save and check errors
         contact.save(function(err) {

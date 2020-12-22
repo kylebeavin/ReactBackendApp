@@ -14,10 +14,12 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // Partner, Driver, Mechanic, Sales, GM
     role: {
         type: String,
         required: true
     },
+    // Franchise ID
     group_id: {
         type: String,
         required: true
@@ -26,6 +28,7 @@ var userSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    // Mark user active / inactive
     is_active: {
         type: Boolean,
         default: true

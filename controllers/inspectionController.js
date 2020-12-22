@@ -23,9 +23,9 @@ exports.add = function (req, res) {
     inspection.inspection_id = req.body.inspection_id ? req.body.inspection_id : inspection.inspection_id;
     inspection.group_id = req.body.group_id;
     inspection.truck_id = req.body.truck_id;
-    inspection.user = req.body.user;
+    inspection.owner_id = req.body.owner_id;
     inspection.type = req.body.type;
-    inspection.status = req.body.status
+    inspection.is_active = req.body.is_active
 
     //Save and check error
     inspection.save(function (err) {
@@ -59,9 +59,9 @@ exports.update = function (req, res) {
         inspection.inspection_id = req.body.inspection_id ? req.body.inspection_id : inspection.inspection_id;
         inspection.group_id = req.body.group_id;
         inspection.truck_id = req.body.truck_id;
-        inspection.user = req.body.user;
+        inspection.owner_id = req.body.owner_id;
         inspection.type = req.body.type;
-        inspection.status = req.body.status
+        inspection.is_active = req.body.is_active
 
         //save and check errors
         inspection.save(function (err) {

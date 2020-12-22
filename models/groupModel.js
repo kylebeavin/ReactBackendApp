@@ -2,26 +2,43 @@ var mongoose = require('mongoose');
 
 //schema
 var groupSchema = mongoose.Schema({
+    // Franchise ID
     group_id: {
         type: String,
         required: true
     },
+    // Franchise Name
     name: {
         type: String,
         required: true
     },
+    // Franchise group email
     email: {
         type: String,
         required: true
     },
-    status: {
+    // Whether or not franchise is active
+    is_active: {
         type: Boolean,
         required: true
     },
-    address: {
+    addressStreet: {
         type: String,
         required: true
     },
+    addressCity: {
+        type: String,
+        required: true
+    },
+    addressState: {
+        type: String,
+        required: true
+    },
+    addressZip: {
+        type: String,
+        required: true
+    },
+    // Federal Tax ID
     ein: {
         type: String,
         required: false
@@ -50,14 +67,17 @@ var groupSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // Actual LLC
     legal_company: {
         type: String,
         required: true
     },
+    // Doing Business As Name
     dba: {
         type: String,
         required: true
     },
+    // State tax percentage for pricing
     tax_rate: {
         type: String,
         required: false

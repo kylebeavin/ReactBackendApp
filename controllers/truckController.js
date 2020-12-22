@@ -28,6 +28,7 @@ exports.add = function (req, res) {
     truck.hours = req.body.hours;
     truck.machine_id = req.body.machine_id;
     truck.created_at = req.body.created_at;
+    truck.is_active = req.body.is_active;
 
     //Save and check error
     truck.save(function (err) {
@@ -66,7 +67,7 @@ exports.update = function (req, res) {
         truck.hours = req.body.hours;
         truck.machine_id = req.body.machine_id;
         truck.created_at = req.body.created_at;
-        truck.status = true;
+        truck.is_active = req.body.is_active;
 
         //save and check errors
         truck.save(function (err) {

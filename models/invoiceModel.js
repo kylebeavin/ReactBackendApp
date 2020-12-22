@@ -2,23 +2,27 @@ var mongoose = require('mongoose');
 
 //schema
 var invoiceSchema = mongoose.Schema({
-  
+    // Will be replaced by document ID
     invoice_id: {
         type: String,
         required: true
     },
+    // Franchise ID
     group_id: {
         type: String,
         required: true
     },
+    // Customer ID
     account_id: {
         type: String,
         required: true
     },
+    // Contact for the invoice
     contact_id: {
         type: String,
         required: true
     },
+    // Work order ID
     smash_id: {
         type: String,
         required: true
@@ -27,6 +31,7 @@ var invoiceSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    // Recurring / On-Demand
     type: {
         type: String,
         required: true
@@ -51,10 +56,11 @@ var invoiceSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    status: {
+    is_active: {
         type: Boolean,
         default: true
     },
+    // Purchase order number TBD
     purchase_order: {
         type: String,
         required: true

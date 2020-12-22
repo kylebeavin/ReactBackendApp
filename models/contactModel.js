@@ -2,11 +2,12 @@ var mongoose = require('mongoose');
 
 //schema
 var contactSchema = mongoose.Schema({
-
+    // Customer account id
     account_id: {
         type: String,
         required: true
     },
+    // User who created the contact
     owner_id: {
         type: String,
         required: true
@@ -27,10 +28,12 @@ var contactSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // Role of the contact (billing,smashing,hauling,all)
     type: {
         type: String,
         required: true
     },
+    // Communication method (email/sms)
     method: {
         type: String,
         required: true
@@ -39,7 +42,8 @@ var contactSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    status: {
+    // Whether or not the contact is active
+    is_active: {
         type: Boolean,
         default: true
     }
