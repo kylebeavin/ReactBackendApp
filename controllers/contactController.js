@@ -43,7 +43,7 @@ exports.add = function(req, res) {
 
 // View Contact by mongo object id
 exports.view = function(req, res) {
-    Contact.findById(req.params.contact_id, function(err, contact) {
+    Contact.findOne({ _id: req.params.contact_id }, function(err, contact) {
         if (err)
             res.send(err);
         else res.json({
@@ -60,6 +60,54 @@ exports.viewContactsByAccountId = function(req, res) {
             res.send(err);
         else res.json({
             message: 'All contacts by associated account',
+            data: contact
+        });
+    });
+};
+
+// View Contacts by Owner id
+exports.viewContactsByOwnerId = function(req, res) {
+    Contact.find({ owner_id: req.params.owner_id }, function(err, contact) {
+        if (err)
+            res.send(err);
+        else res.json({
+            message: 'All contacts by associated owner',
+            data: contact
+        });
+    });
+};
+
+// View Contacts by First Name
+exports.viewContactsByFirstName = function(req, res) {
+    Contact.find({ first_name: req.params.first_name }, function(err, contact) {
+        if (err)
+            res.send(err);
+        else res.json({
+            message: 'All contacts by first name',
+            data: contact
+        });
+    });
+};
+
+// View Contacts by First Name
+exports.viewContactsByLaseName = function(req, res) {
+    Contact.find({ last_name: req.params.last_name }, function(err, contact) {
+        if (err)
+            res.send(err);
+        else res.json({
+            message: 'All contacts by last name',
+            data: contact
+        });
+    });
+};
+
+// View Contacts by First Name
+exports.viewContactsByEmail = function(req, res) {
+    Contact.find({ email: req.params.email }, function(err, contact) {
+        if (err)
+            res.send(err);
+        else res.json({
+            message: 'All contacts by email',
             data: contact
         });
     });
