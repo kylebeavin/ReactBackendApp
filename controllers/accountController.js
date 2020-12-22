@@ -96,11 +96,7 @@ exports.viewAccountByGroup = function (req, res) {
     });
 };
 
-<<<<<<< HEAD
-// View Account by name
-=======
 // View Account by name TODO: Fix this
->>>>>>> dev
 exports.viewAccountByName = function (req, res) {
     Account.find({ name: req.params.name }, function (err, account) {
         if (err)
