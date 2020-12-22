@@ -5,10 +5,6 @@ Account = require('../models/accountModel.js')
 // Account Fields
 
 
-
-
-
-
 //For server
 exports.server = function (req, res) {
     Account.get(function (err, account) {
@@ -51,7 +47,7 @@ exports.add = function (req, res) {
         if (err)
             res.json({
                 status: "error",
-                status: 204, // 
+                status: 304, // 
                 message: err
             });
 
