@@ -73,7 +73,7 @@ exports.update = function(req, res) {
             res.send(err);
         contact.contact_id = req.body.contact_id ? req.body.contact_id : contact.contact_id;
         contact.account_id = req.body.account_id;
-        contact.account_id = req.body.account_id;
+        contact.owner_id = req.body.owner_id;
         contact.first_name = req.body.first_name;
         contact.last_name = req.body.last_name;
         contact.email = req.body.email;
