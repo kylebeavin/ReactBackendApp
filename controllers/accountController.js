@@ -48,7 +48,7 @@ exports.add = function (req, res) {
             res.json({
                 status: "error",
                 status: 304, // 
-                message: err
+                message: err,
             });
 
         else res.json({

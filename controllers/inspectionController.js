@@ -7,12 +7,14 @@ exports.server = function (req, res) {
         if (err)
             res.json({
                 status: "error",
+                status: 204,
                 message: err
             });
         else res.json({
             status: "success",
+            status: 200,
             message: "Got Inspection Successfully!",
-            data: inspection       
+            data: inspection
         });
     });
 };
@@ -30,9 +32,15 @@ exports.add = function (req, res) {
     //Save and check error
     inspection.save(function (err) {
         if (err)
-            res.json(err);
+            res.json({
+                status: "error",
+                status: 304, // 
+                message: err,
+            });
 
         else res.json({
+            status: "success",
+            status: 201,
             message: "New Inspection Added!",
             data: inspection
         });
@@ -43,8 +51,14 @@ exports.add = function (req, res) {
 exports.view = function (req, res) {
     Inspection.findById(req.params.inspection_id, function (err, inspection) {
         if (err)
-            res.send(err);
-        res.json({
+            res.json({
+                status: "error",
+                status: 204, // 
+                message: err
+            });
+        else res.json({
+            status: "success",
+            status: 200,
             message: 'Inspection Details',
             data: inspection
         });
@@ -55,7 +69,11 @@ exports.view = function (req, res) {
 exports.update = function (req, res) {
     Inspection.findById(req.params.inspection_id, function (err, inspection) {
         if (err)
-            res.send(err);
+            res.json({
+                status: "error",
+                status: 204, // 
+                message: err
+            });
         inspection.inspection_id = req.body.inspection_id ? req.body.inspection_id : inspection.inspection_id;
         inspection.group_id = req.body.group_id;
         inspection.truck_id = req.body.truck_id;
@@ -66,8 +84,14 @@ exports.update = function (req, res) {
         //save and check errors
         inspection.save(function (err) {
             if (err)
-                res.json(err)
+                res.json({
+                    status: "error",
+                    status: 304, // 
+                    message: err
+                });
             else res.json({
+                status: "success",
+                status: 201,
                 message: "Inspection Updated Successfully",
                 data: inspection
             });

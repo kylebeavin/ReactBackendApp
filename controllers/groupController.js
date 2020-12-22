@@ -7,10 +7,12 @@ exports.server = function (req, res) {
         if (err)
             res.json({
                 status: "error",
-                message: err
+                status: 304, // 
+                message: err,
             });
         else res.json({
             status: "success",
+            status: 200,
             message: "Got Groups Successfully!",
             data: group
         });
@@ -43,9 +45,15 @@ exports.add = function (req, res) {
     //Save and check error
     group.save(function (err) {
         if (err)
-            res.json(err);
+            res.json({
+                status: "error",
+                status: 304, // 
+                message: err
+            });
 
         else res.json({
+            status: "success",
+            status: 201,
             message: "New Group Added!",
             data: group
         });
@@ -56,34 +64,30 @@ exports.add = function (req, res) {
 exports.viewGroupById = function (req, res) {
     Group.findById(req.params._id, function (err, group) {
         if (err)
-            console.log('Cannot return group');
-        res.send(err);
-        res.json({
+            res.json({
+                status: "error",
+                status: 304, // 
+                message: err,
+            });
+        else res.json({
+            status: "success",
+            status: 201,
             message: 'Group Details',
             data: group
         });
     });
 };
 
-// // View Group by mongo franchise email
-// exports.viewGroupByEmail = function(req, res) {
-//     Group.find({ email: req.params.email }, function(err, group) {
-//         if (err)
-//             console.log('Cannot return group');
-//         res.send(err);
-//         res.json({
-//             message: 'Group Details by email',
-//             data: group
-//         });
-//     });
-// };
-
-
 // Update Group
 exports.update = function (req, res) {
     Group.findById(req.params.group_id, function (err, group) {
         if (err)
-            res.send(err);
+            res.json({
+                status: "error",
+                status: 304, // 
+                message: err,
+            });
+        res.send(err);
         group.group_id = req.body.group_id ? req.body.group_id : group.group_id;
         group.name = req.body.name;
         group.email = req.body.email;
@@ -107,8 +111,14 @@ exports.update = function (req, res) {
         //save and check errors
         group.save(function (err) {
             if (err)
-                res.json(err)
+                res.json({
+                    status: "error",
+                    status: 304, // 
+                    message: err,
+                });
             else res.json({
+                status: "success",
+                status: 201,
                 message: "Group Updated Successfully",
                 data: group
             });
@@ -122,9 +132,16 @@ exports.delete = function (req, res) {
         _id: req.params.group_id
     }, function (err, contact) {
         if (err)
-            res.send(err)
+            res.json({
+                status: "error",
+                status: 304, // 
+                message: err,
+            });
         else res.json({
             status: "success",
+            status: 201,
+            status: "success",
+            status: 200,
             message: 'Group Deleted'
         });
     });
