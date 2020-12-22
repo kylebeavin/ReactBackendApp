@@ -96,7 +96,7 @@ exports.viewAccountByGroup = function (req, res) {
     });
 };
 
-// View Account by name TODO: Fix this
+// View Account by name
 exports.viewAccountByName = function (req, res) {
     Account.find({ name: req.params.name }, function (err, account) {
         if (err)
