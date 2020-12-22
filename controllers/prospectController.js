@@ -2,8 +2,8 @@
 Prospect = require('../models/prospectModel.js')
 
 //For server
-exports.server = function(req, res) {
-    Prospect.get(function(err, prospect) {
+exports.server = function (req, res) {
+    Prospect.get(function (err, prospect) {
         if (err)
             res.json({
                 status: "error",
@@ -18,10 +18,11 @@ exports.server = function(req, res) {
 };
 
 //For creating new prospect
-exports.add = function(req, res) {
+exports.add = function (req, res) {
     var prospect = new Prospect();
     prospect.group_id = req.body.group_id;
-    prospect.name = req.body.name;
+    prospect.first_name = req.body.first_name;
+    prospect.last_name = req.body.last_name;
     prospect.owner_id = req.body.owner_id;
     prospect.is_active = req.body.is_active;
     prospect.stage = req.body.stage;
@@ -29,7 +30,7 @@ exports.add = function(req, res) {
     prospect.created = req.body.created;
 
     //Save and check error
-    prospect.save(function(err) {
+    prospect.save(function (err) {
         if (err)
             res.json(err);
 
@@ -41,8 +42,8 @@ exports.add = function(req, res) {
 };
 
 // View Prospect by mongo object id
-exports.viewProspectById = function(req, res) {
-    Prospect.findById(req.params._id, function(err, prospect) {
+exports.viewProspectById = function (req, res) {
+    Prospect.findById(req.params._id, function (err, prospect) {
         if (err)
             res.send(err);
         else res.json({
@@ -53,8 +54,8 @@ exports.viewProspectById = function(req, res) {
 };
 
 // View Prospects by group
-exports.viewProspectByGroup = function(req, res) {
-    Prospect.find({ group_id: req.params.group_id }, function(err, prospect) {
+exports.viewProspectByGroup = function (req, res) {
+    Prospect.find({ group_id: req.params.group_id }, function (err, prospect) {
         if (err)
             res.send(err);
         else res.json({
@@ -65,8 +66,8 @@ exports.viewProspectByGroup = function(req, res) {
 };
 
 // View Prospect by name TODO: Fix this
-exports.viewProspectByName = function(req, res) {
-    Prospect.find({ name: req.params.name }, function(err, prospect) {
+exports.viewProspectByName = function (req, res) {
+    Prospect.find({ name: req.params.name }, function (err, prospect) {
         if (err)
             res.send(err);
         else res.json({
@@ -77,8 +78,8 @@ exports.viewProspectByName = function(req, res) {
 };
 
 // View Prospects by owner Id
-exports.viewProspectByOwnerId = function(req, res) {
-    Prospect.find({ owner_id: req.params.owner_id }, function(err, prospect) {
+exports.viewProspectByOwnerId = function (req, res) {
+    Prospect.find({ owner_id: req.params.owner_id }, function (err, prospect) {
         if (err)
             res.send(err);
         else res.json({
@@ -89,8 +90,8 @@ exports.viewProspectByOwnerId = function(req, res) {
 };
 
 // View Prospects by is_activate status
-exports.viewProspectByIsActive = function(req, res) {
-    Prospect.find({ is_active: req.params.is_active }, function(err, prospect) {
+exports.viewProspectByIsActive = function (req, res) {
+    Prospect.find({ is_active: req.params.is_active }, function (err, prospect) {
         if (err)
             res.send(err);
         else res.json({
@@ -101,8 +102,8 @@ exports.viewProspectByIsActive = function(req, res) {
 };
 
 // View Prospects by sales stage
-exports.viewProspectByStage = function(req, res) {
-    Prospect.find({ stage: req.params.stage }, function(err, prospect) {
+exports.viewProspectByStage = function (req, res) {
+    Prospect.find({ stage: req.params.stage }, function (err, prospect) {
         if (err)
             res.send(err);
         else res.json({
@@ -113,8 +114,8 @@ exports.viewProspectByStage = function(req, res) {
 };
 
 // View Prospects by Zip
-exports.viewProspectByGeoLocation = function(req, res) {
-    Prospect.find({ geo_location: req.params.geo_location }, function(err, prospect) {
+exports.viewProspectByGeoLocation = function (req, res) {
+    Prospect.find({ geo_location: req.params.geo_location }, function (err, prospect) {
         if (err)
             res.send(err);
         else res.json({
@@ -125,8 +126,8 @@ exports.viewProspectByGeoLocation = function(req, res) {
 };
 
 // View Prospects by Creation Date
-exports.viewProspectByCreation = function(req, res) {
-    Prospect.find({ created: req.params.created }, function(err, prospect) {
+exports.viewProspectByCreation = function (req, res) {
+    Prospect.find({ created: req.params.created }, function (err, prospect) {
         if (err)
             res.send(err);
         else res.json({
@@ -139,12 +140,13 @@ exports.viewProspectByCreation = function(req, res) {
 
 
 // Update Prospect by Object Id
-exports.updateProspectById = function(req, res) {
-    Prospect.findById(req.params._id, function(err, prospect) {
+exports.updateProspectById = function (req, res) {
+    Prospect.findById(req.params._id, function (err, prospect) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
-        prospect.name = req.body.name;
+        prospect.first_name = req.body.first_name;
+        prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
         prospect.is_active = req.body.is_active;
         prospect.stage = req.body.stage;
@@ -152,7 +154,7 @@ exports.updateProspectById = function(req, res) {
         prospect.created = req.body.created;
 
         //save and check errors
-        prospect.save(function(err) {
+        prospect.save(function (err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -164,19 +166,20 @@ exports.updateProspectById = function(req, res) {
 };
 
 // Update Prospect
-exports.updateProspectByGroup = function(req, res) {
-    Prospect.find(req.params.group_id, function(err, prospect) {
+exports.updateProspectByGroup = function (req, res) {
+    Prospect.find(req.params.group_id, function (err, prospect) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
-        prospect.name = req.body.name;
+        prospect.first_name = req.body.first_name;
+        prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
         prospect.is_active = req.body.is_active;
         prospect.stage = req.body.stage;
         prospect.geo_location = req.body.geo_location;
         prospect.created = req.body.created;
         //save and check errors
-        prospect.save(function(err) {
+        prospect.save(function (err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -187,19 +190,20 @@ exports.updateProspectByGroup = function(req, res) {
     });
 };
 // Update Prospect by name
-exports.updateProspectByName = function(req, res) {
-    Prospect.find(req.params.name, function(err, prospect) {
+exports.updateProspectByName = function (req, res) {
+    Prospect.find(req.params.name, function (err, prospect) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
-        prospect.name = req.body.name;
+        prospect.first_name = req.body.first_name;
+        prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
         prospect.is_active = req.body.is_active;
         prospect.stage = req.body.stage;
         prospect.geo_location = req.body.geo_location;
         prospect.created = req.body.created;
         //save and check errors
-        prospect.save(function(err) {
+        prospect.save(function (err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -211,19 +215,20 @@ exports.updateProspectByName = function(req, res) {
 };
 
 // Update all Prospects by Owner Id
-exports.updateProspectByOwnerId = function(req, res) {
-    Prospect.find(req.params.owner_id, function(err, prospect) {
+exports.updateProspectByOwnerId = function (req, res) {
+    Prospect.find(req.params.owner_id, function (err, prospect) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
-        prospect.name = req.body.name;
+        prospect.first_name = req.body.first_name;
+        prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
         prospect.is_active = req.body.is_active;
         prospect.stage = req.body.stage;
         prospect.geo_location = req.body.geo_location;
         prospect.created = req.body.created;
         //save and check errors
-        prospect.save(function(err) {
+        prospect.save(function (err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -235,12 +240,13 @@ exports.updateProspectByOwnerId = function(req, res) {
 };
 
 // Update all Prospects by Is Active Status
-exports.updateProspectByIsActive = function(req, res) {
-    Prospect.find(req.params.is_active, function(err, prospect) {
+exports.updateProspectByIsActive = function (req, res) {
+    Prospect.find(req.params.is_active, function (err, prospect) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
-        prospect.name = req.body.name;
+        prospect.first_name = req.body.first_name;
+        prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
         prospect.is_active = req.body.is_active;
         prospect.stage = req.body.stage;
@@ -248,7 +254,7 @@ exports.updateProspectByIsActive = function(req, res) {
         prospect.created = req.body.created;
 
         //save and check errors
-        prospect.save(function(err) {
+        prospect.save(function (err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -260,19 +266,20 @@ exports.updateProspectByIsActive = function(req, res) {
 };
 
 // Update all Prospects by Stage
-exports.updateProspectByStage = function(req, res) {
-    Prospect.find(req.params.stage, function(err, prospect) {
+exports.updateProspectByStage = function (req, res) {
+    Prospect.find(req.params.stage, function (err, prospect) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
-        prospect.name = req.body.name;
+        prospect.first_name = req.body.first_name;
+        prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
         prospect.is_active = req.body.is_active;
         prospect.stage = req.body.stage;
         prospect.geo_location = req.body.geo_location;
         prospect.created = req.body.created;
         //save and check errors
-        prospect.save(function(err) {
+        prospect.save(function (err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -284,19 +291,20 @@ exports.updateProspectByStage = function(req, res) {
 };
 
 // Update all Prospects by GeoLocation
-exports.updateProspectByGeoLocation = function(req, res) {
-    Prospect.find(req.params.geo_location, function(err, prospect) {
+exports.updateProspectByGeoLocation = function (req, res) {
+    Prospect.find(req.params.geo_location, function (err, prospect) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
-        prospect.name = req.body.name;
+        prospect.first_name = req.body.first_name;
+        prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
         prospect.is_active = req.body.is_active;
         prospect.stage = req.body.stage;
         prospect.geo_location = req.body.geo_location;
         prospect.created = req.body.created;
         //save and check errors
-        prospect.save(function(err) {
+        prospect.save(function (err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -308,19 +316,20 @@ exports.updateProspectByGeoLocation = function(req, res) {
 };
 
 // Update all Prospects by Creation
-exports.updateProspectByCreation = function(req, res) {
-    Prospect.find(req.params.created, function(err, prospect) {
+exports.updateProspectByCreation = function (req, res) {
+    Prospect.find(req.params.created, function (err, prospect) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
-        prospect.name = req.body.name;
+        prospect.first_name = req.body.first_name;
+        prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
         prospect.is_active = req.body.is_active;
         prospect.stage = req.body.stage;
         prospect.geo_location = req.body.geo_location;
         prospect.created = req.body.created;
         //save and check errors
-        prospect.save(function(err) {
+        prospect.save(function (err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -332,10 +341,10 @@ exports.updateProspectByCreation = function(req, res) {
 };
 
 // Delete Prospect by Object Id
-exports.deleteProspectById = function(req, res) {
+exports.deleteProspectById = function (req, res) {
     Prospect.deleteOne({
         _id: req.params._id
-    }, function(err, contact) {
+    }, function (err, contact) {
         if (err)
             res.send(err)
         else res.json({
@@ -346,10 +355,10 @@ exports.deleteProspectById = function(req, res) {
 };
 
 // Delete Prospect by Group Id
-exports.deleteProspectByGroupId = function(req, res) {
+exports.deleteProspectByGroupId = function (req, res) {
     Prospect.delete({
         group_id: req.params.group_id
-    }, function(err, contact) {
+    }, function (err, contact) {
         if (err)
             res.send(err)
         else res.json({
@@ -360,10 +369,10 @@ exports.deleteProspectByGroupId = function(req, res) {
 };
 
 // Delete Prospect by Name
-exports.deleteProspectByName = function(req, res) {
+exports.deleteProspectByName = function (req, res) {
     Prospect.delete({
         name: req.params.name
-    }, function(err, contact) {
+    }, function (err, contact) {
         if (err)
             res.send(err)
         else res.json({
@@ -374,10 +383,10 @@ exports.deleteProspectByName = function(req, res) {
 };
 
 // Delete Prospect by Owner_Id
-exports.deleteProspectByOwnerId = function(req, res) {
+exports.deleteProspectByOwnerId = function (req, res) {
     Prospect.delete({
         owner_id: req.params.owner_id
-    }, function(err, contact) {
+    }, function (err, contact) {
         if (err)
             res.send(err)
         else res.json({
@@ -388,10 +397,10 @@ exports.deleteProspectByOwnerId = function(req, res) {
 };
 
 // Delete Prospect by Is Active Status
-exports.deleteProspectByIsActiveStatus = function(req, res) {
+exports.deleteProspectByIsActiveStatus = function (req, res) {
     Prospect.delete({
         is_active: req.params.is_active
-    }, function(err, contact) {
+    }, function (err, contact) {
         if (err)
             res.send(err)
         else res.json({
@@ -402,10 +411,10 @@ exports.deleteProspectByIsActiveStatus = function(req, res) {
 };
 
 // Delete Prospect by Stage
-exports.deleteProspectByStage = function(req, res) {
+exports.deleteProspectByStage = function (req, res) {
     Prospect.delete({
         stage: req.params.stage
-    }, function(err, contact) {
+    }, function (err, contact) {
         if (err)
             res.send(err)
         else res.json({
@@ -418,10 +427,10 @@ exports.deleteProspectByStage = function(req, res) {
 
 
 // Delete Prospect by GeoLocation
-exports.deleteProspectByGeoLocation = function(req, res) {
+exports.deleteProspectByGeoLocation = function (req, res) {
     Prospect.delete({
         geo_location: req.params.geo_location
-    }, function(err, contact) {
+    }, function (err, contact) {
         if (err)
             res.send(err)
         else res.json({
@@ -432,10 +441,10 @@ exports.deleteProspectByGeoLocation = function(req, res) {
 };
 
 // Delete Prospect by Creation Date
-exports.deleteProspectByCreation = function(req, res) {
+exports.deleteProspectByCreation = function (req, res) {
     Prospect.delete({
         created: req.params.created
-    }, function(err, contact) {
+    }, function (err, contact) {
         if (err)
             res.send(err)
         else res.json({
