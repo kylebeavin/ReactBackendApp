@@ -14,7 +14,7 @@ var prospectController = require('../controllers/prospectController.js');
 
 //set default API response
 router
-    .get('/', function (req, res) {
+    .post('/', function (req, res) {
         res.json({
             status: 'API Works',
             message: 'Welcome to SMT API'
@@ -23,303 +23,303 @@ router
 
 // User routes
 router.route('/users')
-    .get(userController.server)
+    .post(userController.server)
     .post(userController.add);
 
 router.route('/usersById/:_id')
-    .get(userController.viewUserById)
-    .patch(userController.updateUserById)
-    .put(userController.updateUserById)
-    .delete(userController.deleteUserById);
+    .post(userController.viewUserById)
+    .post(userController.updateUserById)
+    .post(userController.updateUserById)
+    .post(userController.deleteUserById);
 
 // router.route('/usersByQuery/:role') // Get all users by role
-//     .get(userController.viewByQuery)
-// .patch(userController.update)
-// .put(userController.update)
-// .delete(userController.delete);
+//     .post(userController.viewByQuery)
+// .post(userController.update)
+// .post(userController.update)
+// .post(userController.delete);
 
 router.route('/usersByGroup/:group_id') // Get all users in group
-    .get(userController.viewUserByGroup)
-    .patch(userController.updateUserByGroup)
-    .put(userController.updateUserByGroup)
-    .delete(userController.deleteUserByGroup);
+    .post(userController.viewUserByGroup)
+    .post(userController.updateUserByGroup)
+    .post(userController.updateUserByGroup)
+    .post(userController.deleteUserByGroup);
 
 router.route('/usersByRole/:role') // Get all users by role
-    .get(userController.viewUserByRole)
-    .patch(userController.updateUserByRole)
-    .put(userController.updateUserByRole)
-    .delete(userController.deleteUserByRole);
+    .post(userController.viewUserByRole)
+    .post(userController.updateUserByRole)
+    .post(userController.updateUserByRole)
+    .post(userController.deleteUserByRole);
 
 router.route('/usersByEmail/:email') // Gets user by email
-    .get(userController.viewUserByEmail)
-    .patch(userController.updateUserByEmail)
-    .put(userController.updateUserByEmail)
-    .delete(userController.deleteUserByEmail);
+    .post(userController.viewUserByEmail)
+    .post(userController.updateUserByEmail)
+    .post(userController.updateUserByEmail)
+    .post(userController.deleteUserByEmail);
 
 router.route('/usersByFirst/:first_name') // Gets user by email
-    .get(userController.viewUserByFirst)
-// .patch(userController.updateUserByEmail)
-// .put(userController.updateUserByEmail)
-// .delete(userController.deleteUserByEmail);
+    .post(userController.viewUserByFirst)
+// .post(userController.updateUserByEmail)
+// .post(userController.updateUserByEmail)
+// .post(userController.deleteUserByEmail);
 
 router.route('/usersByLast/:last_name') // Gets user by email
-    .get(userController.viewUserByLast)
-// .patch(userController.updateUserByEmail)
-// .put(userController.updateUserByEmail)
-// .delete(userController.deleteUserByEmail);
+    .post(userController.viewUserByLast)
+// .post(userController.updateUserByEmail)
+// .post(userController.updateUserByEmail)
+// .post(userController.deleteUserByEmail);
 
 router.route('/usersByStatus/:status') // Gets users by status
-    .get(userController.viewUserByStatus)
-    .patch(userController.updateUserByStatus)
-    .put(userController.updateUserByStatus)
-    .delete(userController.deleteUserByStatus);
+    .post(userController.viewUserByStatus)
+    .post(userController.updateUserByStatus)
+    .post(userController.updateUserByStatus)
+    .post(userController.deleteUserByStatus);
 
 router.route('/usersByCreated/:created') // Gets users by status
-    .get(userController.viewUserByCreated)
-    .patch(userController.updateUserByCreated)
-    .put(userController.updateUserByCreated)
-    .delete(userController.deleteUserByCreated);
+    .post(userController.viewUserByCreated)
+    .post(userController.updateUserByCreated)
+    .post(userController.updateUserByCreated)
+    .post(userController.deleteUserByCreated);
 
 // Group routes
 
 router.route('/groups')
-    .get(groupController.server)
+    .post(groupController.server)
     .post(groupController.add);
 
 router.route('/groupsByObjectId/:_id')
-    .get(groupController.viewGroupById)
-    .patch(groupController.update)
-    .put(groupController.update)
-    .delete(groupController.delete);
+    .post(groupController.viewGroupById)
+    .post(groupController.update)
+    .post(groupController.update)
+    .post(groupController.delete);
 
 // router.route('/groupsByEmail/:email')
-//     .get(groupController.viewGroupByEmail)
-// //     // .patch(groupController.update)
-// //     // .put(groupController.update)
+//     .post(groupController.viewGroupByEmail)
+// //     // .post(groupController.update)
+// //     // .post(groupController.update)
 // //     // .delete(groupController.delete);
 
 // Account routes
 router.route('/accounts')
-    .get(accountController.server)
+    .post(accountController.server)
     .post(accountController.add);
 
 router.route('/accountsById/:_id')
-    .get(accountController.viewAccountById)
-    .patch(accountController.updateAccountById)
-    .put(accountController.updateAccountById)
-    .delete(accountController.deleteAccountById);
+    .post(accountController.viewAccountById)
+    .post(accountController.updateAccountById)
+    .post(accountController.updateAccountById)
+    .post(accountController.deleteAccountById);
 
 router.route('/accountsByGroup/:group_id')
-    .get(accountController.viewAccountByGroup)
-    .patch(accountController.updateAccountByGroup)
-    .put(accountController.updateAccountByGroup)
-    .delete(accountController.deleteAccountByGroup);
+    .post(accountController.viewAccountByGroup)
+    .post(accountController.updateAccountByGroup)
+    .post(accountController.updateAccountByGroup)
+    .post(accountController.deleteAccountByGroup);
 
 router.route('/accountsByName/:name')
-    .get(accountController.viewAccountByName)
-    .patch(accountController.updateAccountByName)
-    .put(accountController.updateAccountByName)
-    .delete(accountController.deleteAccountByName);
+    .post(accountController.viewAccountByName)
+    .post(accountController.updateAccountByName)
+    .post(accountController.updateAccountByName)
+    .post(accountController.deleteAccountByName);
 
 router.route('/accountsByOwnerId/:owner_id')
-    .get(accountController.viewAccountByOwnerId)
-    .patch(accountController.updateAccountByOwnerId)
-    .put(accountController.updateAccountByOwnerId)
-    .delete(accountController.deleteAccountByOwnerId);
+    .post(accountController.viewAccountByOwnerId)
+    .post(accountController.updateAccountByOwnerId)
+    .post(accountController.updateAccountByOwnerId)
+    .post(accountController.deleteAccountByOwnerId);
 
 router.route('/accountsByIsActive/:is_active')
-    .get(accountController.viewAccountByIsActive)
-    .patch(accountController.updateAccountByIsActive)
-    .put(accountController.updateAccountByIsActive)
-    .delete(accountController.deleteAccountByIsActive);
+    .post(accountController.viewAccountByIsActive)
+    .post(accountController.updateAccountByIsActive)
+    .post(accountController.updateAccountByIsActive)
+    .post(accountController.deleteAccountByIsActive);
 
 router.route('/accountsByStage/:stage')
-    .get(accountController.viewAccountByStage)
-    .patch(accountController.updateAccountByStage)
-    .put(accountController.updateAccountByStage)
-    .delete(accountController.deleteAccountByStage);
+    .post(accountController.viewAccountByStage)
+    .post(accountController.updateAccountByStage)
+    .post(accountController.updateAccountByStage)
+    .post(accountController.deleteAccountByStage);
 
 router.route('/accountsByStreet/:addressStreet')
-    .get(accountController.viewAccountByStreet)
-    .patch(accountController.updateAccountByStreet)
-    .put(accountController.updateAccountByStreet)
-    .delete(accountController.deleteAccountByStreet);
+    .post(accountController.viewAccountByStreet)
+    .post(accountController.updateAccountByStreet)
+    .post(accountController.updateAccountByStreet)
+    .post(accountController.deleteAccountByStreet);
 
 router.route('/accountsByCity/:addressCity')
-    .get(accountController.viewAccountByCity)
-    .patch(accountController.updateAccountByCity)
-    .put(accountController.updateAccountByCity)
-    .delete(accountController.deleteAccountByCity);
+    .post(accountController.viewAccountByCity)
+    .post(accountController.updateAccountByCity)
+    .post(accountController.updateAccountByCity)
+    .post(accountController.deleteAccountByCity);
 
 router.route('/accountsByState/:addressState')
-    .get(accountController.viewAccountByState)
-    .patch(accountController.updateAccountByState)
-    .put(accountController.updateAccountByState)
-    .delete(accountController.deleteAccountByState);
+    .post(accountController.viewAccountByState)
+    .post(accountController.updateAccountByState)
+    .post(accountController.updateAccountByState)
+    .post(accountController.deleteAccountByState);
 
 router.route('/accountsByZip/:addressZip')
-    .get(accountController.viewAccountByZip)
-    .patch(accountController.updateAccountByZip)
-    .put(accountController.updateAccountByZip)
-    .delete(accountController.deleteAccountByZip);
+    .post(accountController.viewAccountByZip)
+    .post(accountController.updateAccountByZip)
+    .post(accountController.updateAccountByZip)
+    .post(accountController.deleteAccountByZip);
 
 router.route('/accountsByEmail/:email')
-    .get(accountController.viewAccountByEmail)
-    .patch(accountController.updateAccountByEmail)
-    .put(accountController.updateAccountByEmail)
-    .delete(accountController.deleteAccountByEmail);
+    .post(accountController.viewAccountByEmail)
+    .post(accountController.updateAccountByEmail)
+    .post(accountController.updateAccountByEmail)
+    .post(accountController.deleteAccountByEmail);
 
 router.route('/accountsByCreation/:created')
-    .get(accountController.viewAccountByCreation)
-    .patch(accountController.updateAccountByCreation)
-    .put(accountController.updateAccountByCreation)
-    .delete(accountController.deleteAccountByCreation);
+    .post(accountController.viewAccountByCreation)
+    .post(accountController.updateAccountByCreation)
+    .post(accountController.updateAccountByCreation)
+    .post(accountController.deleteAccountByCreation);
 
 router.route('/accountsByDemoDate/:demo')
-    .get(accountController.viewAccountByDemoDate)
-    .patch(accountController.updateAccountByDemoDate)
-    .put(accountController.updateAccountByDemoDate)
-    .delete(accountController.deleteAccountByDemoDate);
+    .post(accountController.viewAccountByDemoDate)
+    .post(accountController.updateAccountByDemoDate)
+    .post(accountController.updateAccountByDemoDate)
+    .post(accountController.deleteAccountByDemoDate);
 
 router.route('/accountsByConversionDate/:conversion')
-    .get(accountController.viewAccountByConversionDate)
-    .patch(accountController.updateAccountByConversionDate)
-    .put(accountController.updateAccountByConversionDate)
-    .delete(accountController.deleteAccountByConversionDate);
+    .post(accountController.viewAccountByConversionDate)
+    .post(accountController.updateAccountByConversionDate)
+    .post(accountController.updateAccountByConversionDate)
+    .post(accountController.deleteAccountByConversionDate);
 
 router.route('/accountsByHaulingContract/:hauling_contract')
-    .get(accountController.viewAccountByHaulingContract)
-    .patch(accountController.updateAccountByHaulingContract)
-    .put(accountController.updateAccountByHaulingContract)
-    .delete(accountController.deleteAccountByContractStatus);
+    .post(accountController.viewAccountByHaulingContract)
+    .post(accountController.updateAccountByHaulingContract)
+    .post(accountController.updateAccountByHaulingContract)
+    .post(accountController.deleteAccountByContractStatus);
 
 router.route('/accountsByHaulingExpiration/:hauling_expiration')
-    .get(accountController.viewAccountByHaulingExpiration)
-    .patch(accountController.updateAccountByHaulingExpiration)
-    .put(accountController.updateAccountByHaulingExpiration)
-    .delete(accountController.deleteAccountByHaulingExpiration);
+    .post(accountController.viewAccountByHaulingExpiration)
+    .post(accountController.updateAccountByHaulingExpiration)
+    .post(accountController.updateAccountByHaulingExpiration)
+    .post(accountController.deleteAccountByHaulingExpiration);
 
 // Prospect routes
 router.route('/prospects')
-    .get(prospectController.server)
+    .post(prospectController.server)
     .post(prospectController.add);
 
 router.route('/prospectsById/:_id')
-    .get(prospectController.viewProspectById)
-    .patch(prospectController.updateProspectById)
-    .put(prospectController.updateProspectById)
-    .delete(prospectController.deleteProspectById);
+    .post(prospectController.viewProspectById)
+    .post(prospectController.updateProspectById)
+    .post(prospectController.updateProspectById)
+    .post(prospectController.deleteProspectById);
 
 router.route('/prospectsByGroup/:group_id')
-    .get(prospectController.viewProspectByGroup)
-    .patch(prospectController.updateProspectByGroup)
-    .put(prospectController.updateProspectByGroup)
-    .delete(prospectController.deleteProspectByGroupId);
+    .post(prospectController.viewProspectByGroup)
+    .post(prospectController.updateProspectByGroup)
+    .post(prospectController.updateProspectByGroup)
+    .post(prospectController.deleteProspectByGroupId);
 
 router.route('/prospectsByName/:name')
-    .get(prospectController.viewProspectByName)
-    .patch(prospectController.updateProspectByName)
-    .put(prospectController.updateProspectByName)
-    .delete(prospectController.deleteProspectByName);
+    .post(prospectController.viewProspectByName)
+    .post(prospectController.updateProspectByName)
+    .post(prospectController.updateProspectByName)
+    .post(prospectController.deleteProspectByName);
 
 router.route('/prospectsByOwnerId/:owner_id')
-    .get(prospectController.viewProspectByOwnerId)
-    .patch(prospectController.updateProspectByOwnerId)
-    .put(prospectController.updateProspectByOwnerId)
-    .delete(prospectController.deleteProspectByOwnerId);
+    .post(prospectController.viewProspectByOwnerId)
+    .post(prospectController.updateProspectByOwnerId)
+    .post(prospectController.updateProspectByOwnerId)
+    .post(prospectController.deleteProspectByOwnerId);
 
 router.route('/prospectsByIsActive/:is_active')
-    .get(prospectController.viewProspectByIsActive)
-    .patch(prospectController.updateProspectByIsActive)
-    .put(prospectController.updateProspectByIsActive)
-    .delete(prospectController.deleteProspectByIsActiveStatus);
+    .post(prospectController.viewProspectByIsActive)
+    .post(prospectController.updateProspectByIsActive)
+    .post(prospectController.updateProspectByIsActive)
+    .post(prospectController.deleteProspectByIsActiveStatus);
 
 router.route('/prospectsByStage/:stage')
-    .get(prospectController.viewProspectByStage)
-    .patch(prospectController.updateProspectByStage)
-    .put(prospectController.updateProspectByStage)
-    .delete(prospectController.deleteProspectByStage);
+    .post(prospectController.viewProspectByStage)
+    .post(prospectController.updateProspectByStage)
+    .post(prospectController.updateProspectByStage)
+    .post(prospectController.deleteProspectByStage);
 
 router.route('/prospectsByGeoLocation/:geo')
-    .get(prospectController.viewProspectByGeoLocation)
-    .patch(prospectController.updateProspectByGeoLocation)
-    .put(prospectController.updateProspectByGeoLocation)
-    .delete(prospectController.deleteProspectByGeoLocation);
+    .post(prospectController.viewProspectByGeoLocation)
+    .post(prospectController.updateProspectByGeoLocation)
+    .post(prospectController.updateProspectByGeoLocation)
+    .post(prospectController.deleteProspectByGeoLocation);
 
 router.route('/prospectByCreation/:created')
-    .get(prospectController.viewProspectByCreation)
-    .patch(prospectController.updateProspectByCreation)
-    .put(prospectController.updateProspectByCreation)
-    .delete(prospectController.deleteProspectByCreation);
+    .post(prospectController.viewProspectByCreation)
+    .post(prospectController.updateProspectByCreation)
+    .post(prospectController.updateProspectByCreation)
+    .post(prospectController.deleteProspectByCreation);
 
 // Contact routes
 router.route('/contacts')
-    .get(contactController.server)
+    .post(contactController.server)
     .post(contactController.add);
 
 router.route('/contacts/:contact_id')
-    .get(contactController.view)
-    .patch(contactController.update)
-    .put(contactController.update)
-    .delete(contactController.delete);
+    .post(contactController.view)
+    .post(contactController.update)
+    .post(contactController.update)
+    .post(contactController.delete);
 
 router.route('/viewContactsByAccountId/:account_id')
-    .get(contactController.viewContactsByAccountId)
+    .post(contactController.viewContactsByAccountId)
 
 // Truck routes
 router.route('/trucks')
-    .get(truckController.server)
+    .post(truckController.server)
     .post(truckController.add);
 
 router.route('/trucks/:truck_id')
-    .get(truckController.view)
-    .patch(truckController.update)
-    .put(truckController.update)
-    .delete(truckController.delete);
+    .post(truckController.view)
+    .post(truckController.update)
+    .post(truckController.update)
+    .post(truckController.delete);
 
 // Inspection routes
 router.route('/inspections')
-    .get(inspectionController.server)
+    .post(inspectionController.server)
     .post(inspectionController.add);
 
 router.route('/inspections/:inspection_id')
-    .get(inspectionController.view)
-    .patch(inspectionController.update)
-    .put(inspectionController.update)
-    .delete(inspectionController.delete);
+    .post(inspectionController.view)
+    .post(inspectionController.update)
+    .post(inspectionController.update)
+    .post(inspectionController.delete);
 
 // Invoice routes
 router.route('/invoices')
-    .get(invoiceController.server)
+    .post(invoiceController.server)
     .post(invoiceController.add);
 
 router.route('/invoices/:invoice_id')
-    .get(invoiceController.view)
-    .patch(invoiceController.update)
-    .put(invoiceController.update)
-    .delete(invoiceController.delete);
+    .post(invoiceController.view)
+    .post(invoiceController.update)
+    .post(invoiceController.update)
+    .post(invoiceController.delete);
 
 // Location routes
 router.route('/locations')
-    .get(locationController.server)
+    .post(locationController.server)
     .post(locationController.add);
 
 router.route('/locations/:location_id')
-    .get(locationController.view)
-    .patch(locationController.update)
-    .put(locationController.update)
-    .delete(locationController.delete);
+    .post(locationController.view)
+    .post(locationController.update)
+    .post(locationController.update)
+    .post(locationController.delete);
 
 // Admin routes
 router.route('/admins')
-    .get(adminController.server)
+    .post(adminController.server)
     .post(adminController.add);
 
 router.route('/admins/:admin_id')
-    .get(adminController.view)
-    .patch(adminController.update)
-    .put(adminController.update)
-    .delete(adminController.delete);
+    .post(adminController.view)
+    .post(adminController.update)
+    .post(adminController.update)
+    .post(adminController.delete);
 
 //Export API routes
 module.exports = router;
