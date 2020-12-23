@@ -1,7 +1,7 @@
 //Import User Model
 User = require('../models/userModel.js');
 
-//For server
+//For server // Don't know if actually async though
 exports.viewAll = async function(req, res) {
     User.get(function(err, user) {
         if (err)
@@ -38,17 +38,6 @@ exports.add = async function(req, res) {
         });
     });
 };
-// // View Users by query
-// exports.viewByUserQuery = function (req, res) {
-//     User.find({ role: req.params.role }, function (err, user) {
-//         if (err)
-//             res.send(err);
-//         res.json({
-//             message: 'Got users by role',
-//             data: user
-//         });
-//     });
-// };
 
 // View Users by group
 exports.viewUserByGroup = function(req, res) {
