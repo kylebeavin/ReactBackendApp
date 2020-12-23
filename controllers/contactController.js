@@ -1,7 +1,7 @@
 //Import Contact Model
 Contact = require('../models/contactModel.js')
 
-exports.server = function (req, res) {
+exports.viewAll = function (req, res) {
     Contact.get(function (err, contact) {
         if (err)
             res.json({

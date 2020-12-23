@@ -2,7 +2,7 @@
 Prospect = require('../models/prospectModel.js')
 
 //For server
-exports.server = function (req, res) {
+exports.viewAll = function (req, res) {
     Prospect.get(function (err, prospect) {
         if (err)
             res.json({

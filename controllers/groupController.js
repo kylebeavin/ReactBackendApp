@@ -2,7 +2,7 @@
 Group = require('../models/groupModel.js')
 
 //For server
-exports.server = function (req, res) {
+exports.viewAll = function (req, res) {
     Group.get(function (err, group) {
         if (err)
             res.json({

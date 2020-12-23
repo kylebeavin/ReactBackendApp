@@ -22,8 +22,9 @@ router
     });
 
 // User routes
-router.route('/users')
-    .post(userController.server)
+router.route('/usersAll')
+    .post(userController.viewAll)
+router.route('/usersAdd')
     .post(userController.add);
 
 router.route('/usersById/:_id')
@@ -82,8 +83,9 @@ router.route('/usersByCreated/:created') // Gets users by status
 
 // Group routes
 
-router.route('/groups')
-    .post(groupController.server)
+router.route('/groupsAll')
+    .post(groupController.viewAll)
+router.route('/groupsAdd')
     .post(groupController.add);
 
 router.route('/groupsByObjectId/:_id')
@@ -99,8 +101,9 @@ router.route('/groupsByObjectId/:_id')
 // //     // .delete(groupController.delete);
 
 // Account routes
-router.route('/accounts')
-    .post(accountController.server)
+router.route('/accountsAll')
+    .post(accountController.viewAll)
+router.route('/accountsAdd')
     .post(accountController.add);
 
 router.route('/accountsById/:_id')
@@ -200,8 +203,9 @@ router.route('/accountsByHaulingExpiration/:hauling_expiration')
     .post(accountController.deleteAccountByHaulingExpiration);
 
 // Prospect routes
-router.route('/prospects')
-    .post(prospectController.server)
+router.route('/prospectsAll')
+    .post(prospectController.viewAll)
+router.route('/prospectsAdd')
     .post(prospectController.add);
 
 router.route('/prospectsById/:_id')
@@ -253,8 +257,9 @@ router.route('/prospectByCreation/:created')
     .post(prospectController.deleteProspectByCreation);
 
 // Contact routes
-router.route('/contacts')
-    .post(contactController.server)
+router.route('/contactsAll')
+    .post(contactController.viewAll)
+router.route('/contactsAdd')
     .post(contactController.add);
 
 router.route('/contacts/:contact_id')
@@ -267,8 +272,9 @@ router.route('/viewContactsByAccountId/:account_id')
     .post(contactController.viewContactsByAccountId)
 
 // Truck routes
-router.route('/trucks')
-    .post(truckController.server)
+router.route('/trucksAll')
+    .post(truckController.viewAll)
+router.route('/trucksAdd')
     .post(truckController.add);
 
 router.route('/trucks/:truck_id')
@@ -278,8 +284,9 @@ router.route('/trucks/:truck_id')
     .post(truckController.delete);
 
 // Inspection routes
-router.route('/inspections')
-    .post(inspectionController.server)
+router.route('/inspectionsAll')
+    .post(inspectionController.viewAll)
+router.route('/inspectionsAdd')
     .post(inspectionController.add);
 
 router.route('/inspections/:inspection_id')
@@ -290,7 +297,8 @@ router.route('/inspections/:inspection_id')
 
 // Invoice routes
 router.route('/invoices')
-    .post(invoiceController.server)
+    .post(invoiceController.viewAll)
+    router.route('/invoices')
     .post(invoiceController.add);
 
 router.route('/invoices/:invoice_id')
@@ -301,7 +309,8 @@ router.route('/invoices/:invoice_id')
 
 // Location routes
 router.route('/locations')
-    .post(locationController.server)
+    .post(locationController.viewAll)
+    router.route('/locations')
     .post(locationController.add);
 
 router.route('/locations/:location_id')
@@ -312,7 +321,8 @@ router.route('/locations/:location_id')
 
 // Admin routes
 router.route('/admins')
-    .post(adminController.server)
+    .post(adminController.viewAll)
+    router.route('/admins')
     .post(adminController.add);
 
 router.route('/admins/:admin_id')

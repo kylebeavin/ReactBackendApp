@@ -2,7 +2,7 @@
 Invoice = require('../models/invoiceModel.js')
 
 //For server
-exports.server = function (req, res) {
+exports.viewAll = function (req, res) {
     Invoice.get(function (err, invoice) {
         if (err)
             res.json({

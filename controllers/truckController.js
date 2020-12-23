@@ -2,7 +2,7 @@
 Truck = require('../models/truckModel.js');
 
 //For server
-exports.server = function (req, res) {
+exports.viewAll = function (req, res) {
     Truck.get(function (err, truck) {
         if (err)
             res.json({

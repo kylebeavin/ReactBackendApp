@@ -2,7 +2,7 @@
 Location = require('../models/locationModel.js')
 
 //For server
-exports.server = function (req, res) {
+exports.viewAll = function (req, res) {
     Location.get(function (err, location) {
         if (err)
             res.json({

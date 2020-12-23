@@ -2,7 +2,7 @@
 Inspection = require('../models/inspectionModel.js');
 
 //For server
-exports.server = function (req, res) {
+exports.viewAll = function (req, res) {
     Inspection.get(function (err, inspection) {
         if (err)
             res.json({

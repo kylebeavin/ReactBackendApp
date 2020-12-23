@@ -2,7 +2,7 @@
 User = require('../models/userModel.js');
 
 //For server
-exports.server = function(req, res) {
+exports.viewAll = async function(req, res) {
     User.get(function(err, user) {
         if (err)
             res.json({
@@ -18,7 +18,7 @@ exports.server = function(req, res) {
 };
 
 //For creating new user
-exports.add = function(req, res) {
+exports.add = async function(req, res) {
     var user = new User();
     user.email = req.body.email;
     user.first_name = req.body.first_name;

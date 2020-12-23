@@ -2,7 +2,7 @@
 Admin = require('../models/adminModel.js')
 
 //For server
-exports.server = function(req, res) {
+exports.viewAll = function(req, res) {
     Admin.get(function(err, admin) {
         if (err)
             res.json({

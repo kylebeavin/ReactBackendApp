@@ -6,7 +6,7 @@ Account = require('../models/accountModel.js')
 
 
 //For server
-exports.server = function (req, res) {
+exports.viewAll = function (req, res) {
     Account.get(function (err, account) {
         if (err)
             res.json({
