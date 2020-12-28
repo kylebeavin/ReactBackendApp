@@ -2,6 +2,11 @@ var mongoose = require('mongoose');
 
 //schema
 var meetingSchema = mongoose.Schema({
+    // This might not be used // Franchise that the meeting belongs to
+    group_id: {
+        type: String,
+        required: false
+    },
     // This might not be used
     account_id: {
         type: String,
@@ -40,12 +45,12 @@ var meetingSchema = mongoose.Schema({
         required: false
     },
     // Date the meeting was created
-    created_at: {
+    created: {
         type: Date,
         default: Date.now
     },
     // Meeting date and time
-    meeting_at: {
+    meeting_time: {
         type: Date,
         required: false
     },

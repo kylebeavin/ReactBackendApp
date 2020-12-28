@@ -11,6 +11,7 @@ var invoiceController = require('../controllers/invoiceController.js');
 var locationController = require('../controllers/locationController.js');
 var adminController = require('../controllers/adminController.js');
 var prospectController = require('../controllers/prospectController.js');
+var meetingController = require('../controllers/meetingController.js');
 
 //set default API response
 router
@@ -75,11 +76,11 @@ router.route('/usersByStatus/:status') // Gets users by status
     .post(userController.updateUserByStatus)
     .post(userController.deleteUserByStatus);
 
-router.route('/usersByCreated/:created') // Gets users by status
-    .post(userController.viewUserByCreated)
-    .post(userController.updateUserByCreated)
-    .post(userController.updateUserByCreated)
-    .post(userController.deleteUserByCreated);
+router.route('/usersByCreation/:created') // Gets users by status
+    .post(userController.viewUserByCreation)
+    .post(userController.updateUserByCreation)
+    .post(userController.updateUserByCreation)
+    .post(userController.deleteUserByCreation);
 
 // Group routes
 
@@ -298,7 +299,7 @@ router.route('/inspections/:inspection_id')
 // Invoice routes
 router.route('/invoices')
     .post(invoiceController.viewAll)
-    router.route('/invoices')
+router.route('/invoices')
     .post(invoiceController.add);
 
 router.route('/invoices/:invoice_id')
@@ -310,7 +311,7 @@ router.route('/invoices/:invoice_id')
 // Location routes
 router.route('/locations')
     .post(locationController.viewAll)
-    router.route('/locations')
+router.route('/locations')
     .post(locationController.add);
 
 router.route('/locations/:location_id')
@@ -322,7 +323,7 @@ router.route('/locations/:location_id')
 // Admin routes
 router.route('/admins')
     .post(adminController.viewAll)
-    router.route('/admins')
+router.route('/admins')
     .post(adminController.add);
 
 router.route('/admins/:admin_id')
@@ -330,6 +331,36 @@ router.route('/admins/:admin_id')
     .post(adminController.update)
     .post(adminController.update)
     .post(adminController.delete);
+
+// Meeting routes
+router.route('/meetingsAll')
+    .post(meetingController.viewAll)
+router.route('/meetingsAdd')
+    .post(meetingController.add);
+
+router.route('/meetingsById/:_id')
+    .post(meetingController.viewMeetingById)
+    .post(meetingController.updateMeetingById)
+    .post(meetingController.updateMeetingById)
+    .post(meetingController.deleteMeetingById);
+
+router.route('/meetingsByGroup/:group_id') // Get all meetings in group
+    .post(meetingController.viewMeetingByGroup)
+    .post(meetingController.updateMeetingByGroup)
+    .post(meetingController.updateMeetingByGroup)
+    .post(meetingController.deleteMeetingByGroup);
+
+router.route('/meetingsByStatus/:is_active') // Gets meetings by status
+    .post(meetingController.viewMeetingByIsActive)
+    .post(meetingController.updateMeetingByIsActive)
+    .post(meetingController.updateMeetingByIsActive)
+    .post(meetingController.deleteMeetingByIsActive);
+
+router.route('/meetingsByCreation/:created') // Gets meetings by status
+    .post(meetingController.viewMeetingByCreation)
+    .post(meetingController.updateMeetingByCreation)
+    .post(meetingController.updateMeetingByCreation)
+    .post(meetingController.deleteMeetingByCreation);
 
 //Export API routes
 module.exports = router;

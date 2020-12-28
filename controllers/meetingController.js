@@ -14,7 +14,7 @@ exports.viewAll = function (req, res) {
         else res.json({
             status: "success",
             status: 200,
-            message: "Got Meeting Successfully!",
+            message: "Got Meetings Successfully!",
             data: meeting
         });
     });
@@ -24,20 +24,15 @@ exports.viewAll = function (req, res) {
 exports.add = function (req, res) {
     var meeting = new Meeting();
     meeting.account_id = req.body.account_id // String, required
-    meeting.contact_id = req.body.contact_id; // String, required
-    meeting.owner_id = req.body.owner_id; // String, required
-    meeting.location_name = req.body.location_name; // Bool, default: true
-    meeting.address_street = req.body.address_street; // String, required
-    meeting.address_street = req.body.address_street; // String, required
-    meeting.address_city = req.body.address_city; // String, required
-    meeting.address_state = req.body.address_state; // String, required
-    meeting.address_zip = req.body.address_zip; // String, required
-    meeting.email = req.body.email; // String, required
-    meeting.demo = req.body.demo; // Date, not required 
-    meeting.conversion = req.body.conversion; // Date, not required 
-    meeting.hauling_contract = req.body.hauling_contract; // Bool, not required 
-    meeting.hauling_expiration = req.body.hauling_expiration; // Date, not required 
-    meeting.notes = req.body.notes; // String, not required
+    meeting.group_id = req.body.group_id // String, required
+    meeting.contact_id = req.body.contact_id;
+    meeting.owner_id = req.body.owner_id;
+    meeting.location_name = req.body.location_name;
+    meeting.address_street = req.body.address_street;
+    meeting.address_city = req.body.address_city;
+    meeting.address_state = req.body.address_state;
+    meeting.address_zip = req.body.address_zip;
+    meeting_time = req.body.meeting_time;
 
     //Save and check error
     meeting.save(function (err) {
@@ -310,42 +305,6 @@ exports.viewMeetingByConversionDate = function (req, res) {
     });
 };
 
-// View Meetings by Hauling Contract Status
-exports.viewMeetingByHaulingContract = function (req, res) {
-    Meeting.find({ hauling_contract: req.params.hauling_contract }, function (err, meeting) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 204, // 
-                message: err
-            });
-        else res.json({
-            status: "success",
-            status: 200,
-            message: 'Got meetings by Hauling Status',
-            data: meeting
-        });
-    });
-};
-
-// View Meetings by Hauling Contract Expiration Date
-exports.viewMeetingByHaulingExpiration = function (req, res) {
-    Meeting.find({ hauling_expiration: req.params.hauling_expiration }, function (err, meeting) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 204, // 
-                message: err
-            });
-        else res.json({
-            status: "success",
-            status: 200,
-            message: 'Got meetings by Hauling Contract Expiration Date',
-            data: meeting
-        });
-    });
-};
-
 // Update Meeting by Object Id
 exports.updateMeetingById = function (req, res) {
     Meeting.findById(req.params._id, function (err, meeting) {
@@ -355,7 +314,8 @@ exports.updateMeetingById = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -363,7 +323,7 @@ exports.updateMeetingById = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -391,7 +351,8 @@ exports.updateMeetingByGroup = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -399,7 +360,7 @@ exports.updateMeetingByGroup = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -426,7 +387,8 @@ exports.updateMeetingByName = function (req, res) {
                 status: 204, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -434,7 +396,7 @@ exports.updateMeetingByName = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -462,7 +424,8 @@ exports.updateMeetingByOwnerId = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -470,7 +433,7 @@ exports.updateMeetingByOwnerId = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -498,7 +461,8 @@ exports.updateMeetingByIsActive = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -506,7 +470,7 @@ exports.updateMeetingByIsActive = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -525,42 +489,6 @@ exports.updateMeetingByIsActive = function (req, res) {
     });
 };
 
-// Update all Meetings by Stage
-exports.updateMeetingByStage = function (req, res) {
-    Meeting.find(req.params.stage, function (err, meeting) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 304, // 
-                message: err
-            });
-        meeting.account_id = req.body.account_id
-        meeting.contact_id = req.body.contact_id;
-        meeting.owner_id = req.body.owner_id;
-        meeting.location_name = req.body.location_name;
-        meeting.address_street = req.body.address_street;
-        meeting.address_city = req.body.address_city;
-        meeting.address_state = req.body.address_state;
-        meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
-        //save and check errors
-        meeting.save(function (err) {
-            if (err)
-                res.json({
-                    status: "error",
-                    status: 304, // 
-                    message: err
-                });
-            else res.json({
-                status: "success",
-                status: 200,
-                message: "All Meetings in Stage Updated Successfully",
-                data: meeting
-            });
-        });
-    });
-};
-
 // Update all Meetings by Street
 exports.updateMeetingByStreet = function (req, res) {
     Meeting.find(req.params.address_street, function (err, meeting) {
@@ -570,7 +498,8 @@ exports.updateMeetingByStreet = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -578,7 +507,7 @@ exports.updateMeetingByStreet = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -606,7 +535,8 @@ exports.updateMeetingByCity = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -614,7 +544,7 @@ exports.updateMeetingByCity = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -642,7 +572,8 @@ exports.updateMeetingByCity = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -650,7 +581,7 @@ exports.updateMeetingByCity = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -678,7 +609,8 @@ exports.updateMeetingByState = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -686,7 +618,7 @@ exports.updateMeetingByState = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -714,7 +646,8 @@ exports.updateMeetingByZip = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -722,7 +655,7 @@ exports.updateMeetingByZip = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -741,42 +674,6 @@ exports.updateMeetingByZip = function (req, res) {
     });
 };
 
-// Update all Meetings by Email
-exports.updateMeetingByEmail = function (req, res) {
-    Meeting.find(req.params.addressEmail, function (err, meeting) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 304, // 
-                message: err
-            });
-        meeting.account_id = req.body.account_id
-        meeting.contact_id = req.body.contact_id;
-        meeting.owner_id = req.body.owner_id;
-        meeting.location_name = req.body.location_name;
-        meeting.address_street = req.body.address_street;
-        meeting.address_city = req.body.address_city;
-        meeting.address_state = req.body.address_state;
-        meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
-        //save and check errors
-        meeting.save(function (err) {
-            if (err)
-                res.json({
-                    status: "error",
-                    status: 304, // 
-                    message: err
-                });
-            else res.json({
-                status: "success",
-                status: 200,
-                message: "All Meetings by Email Updated Successfully",
-                data: meeting
-            });
-        });
-    });
-};
-
 // Update all Meetings by Creation
 exports.updateMeetingByCreation = function (req, res) {
     Meeting.find(req.params.created, function (err, meeting) {
@@ -786,7 +683,8 @@ exports.updateMeetingByCreation = function (req, res) {
                 status: 304, // 
                 message: err
             });
-        meeting.account_id = req.body.account_id
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
         meeting.location_name = req.body.location_name;
@@ -794,7 +692,7 @@ exports.updateMeetingByCreation = function (req, res) {
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
+        meeting_time = req.body.meeting_time;
         //save and check errors
         meeting.save(function (err) {
             if (err)
@@ -813,143 +711,6 @@ exports.updateMeetingByCreation = function (req, res) {
     });
 };
 
-// Update all Meetings by Demo Date
-exports.updateMeetingByDemoDate = function (req, res) {
-    Meeting.find(req.params.demo, function (err, meeting) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 304, // 
-                message: err
-            });
-        meeting.account_id = req.body.account_id
-        meeting.contact_id = req.body.contact_id;
-        meeting.owner_id = req.body.owner_id;
-        meeting.location_name = req.body.location_name;
-        meeting.address_street = req.body.address_street;
-        meeting.address_city = req.body.address_city;
-        meeting.address_state = req.body.address_state;
-        meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
-        //save and check errors
-        meeting.save(function (err) {
-            if (err)
-                res.json({
-                    status: "error",
-                    status: 304, // 
-                    message: err
-                });
-            else res.json({
-                status: "success",
-                status: 200,
-                message: "All Meetings by Demo Date Updated Successfully",
-                data: meeting
-            });
-        });
-    });
-};
-
-// Update all Meetings by Conversion Date
-exports.updateMeetingByConversionDate = function (req, res) {
-    Meeting.find(req.params.conversion, function (err, meeting) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 204, // 
-                message: err
-            });
-        meeting.account_id = req.body.account_id
-        meeting.contact_id = req.body.contact_id;
-        meeting.owner_id = req.body.owner_id;
-        meeting.location_name = req.body.location_name;
-        meeting.address_street = req.body.address_street;
-        meeting.address_city = req.body.address_city;
-        meeting.address_state = req.body.address_state;
-        meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
-        //save and check errors
-        meeting.save(function (err) {
-            if (err)
-                res.json({
-                    status: "error",
-                    status: 204, // 
-                    message: err
-                });
-            else res.json({
-                message: "All Meetings by Conversion Date Updated Successfully",
-                data: meeting
-            });
-        });
-    });
-};
-
-// Update all Meetings by Hauling Contract Status
-exports.updateMeetingByHaulingContract = function (req, res) {
-    Meeting.find(req.params.hauling_contract, function (err, meeting) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 204, // 
-                message: err
-            });
-        meeting.account_id = req.body.account_id
-        meeting.contact_id = req.body.contact_id;
-        meeting.owner_id = req.body.owner_id;
-        meeting.location_name = req.body.location_name;
-        meeting.address_street = req.body.address_street;
-        meeting.address_city = req.body.address_city;
-        meeting.address_state = req.body.address_state;
-        meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
-        //save and check errors
-        meeting.save(function (err) {
-            if (err)
-                res.json({
-                    status: "error",
-                    status: 204, // 
-                    message: err
-                });
-            else res.json({
-                message: "All Meetings with Hauling Contract Updated Successfully",
-                data: meeting
-            });
-        });
-    });
-};
-
-// Update all Meetings by Hauling Expiration Status
-exports.updateMeetingByHaulingExpiration = function (req, res) {
-    Meeting.find(req.params.hauling_expiration, function (err, meeting) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 204, // 
-                message: err
-            });
-        meeting.account_id = req.body.account_id
-        meeting.contact_id = req.body.contact_id;
-        meeting.owner_id = req.body.owner_id;
-        meeting.location_name = req.body.location_name;
-        meeting.address_street = req.body.address_street;
-        meeting.address_city = req.body.address_city;
-        meeting.address_state = req.body.address_state;
-        meeting.address_zip = req.body.address_zip;
-        meeting_at = req.body.meeting_at;
-        //save and check errors
-        meeting.save(function (err) {
-            if (err)
-                res.json({
-                    status: "error",
-                    status: 204, // 
-                    message: err
-                });
-            else res.json({
-                message: "All Meetings by Hauling Expiration Updated Successfully",
-                data: meeting
-            });
-        });
-    });
-};
 
 // Delete Meeting by Object Id
 exports.deleteMeetingById = function (req, res) {
@@ -979,20 +740,6 @@ exports.deleteMeetingByGroup = function (req, res) {
     });
 };
 
-// Delete Meeting by Name
-exports.deleteMeetingByName = function (req, res) {
-    Meeting.delete({
-        name: req.params.name
-    }, function (err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Meeting Deleted by Meeting Name'
-        });
-    });
-};
-
 // Delete Meeting by Owner_Id
 exports.deleteMeetingByOwnerId = function (req, res) {
     Meeting.delete({
@@ -1016,24 +763,12 @@ exports.deleteMeetingByIsActive = function (req, res) {
             res.send(err)
         else res.json({
             status: "success",
-            message: 'Meeting Deleted by Status'
+            message: 'Meeting Deleted by Active Status'
         });
     });
 };
 
-// Delete Meeting by Stage
-exports.deleteMeetingByStage = function (req, res) {
-    Meeting.delete({
-        stage: req.params.stage
-    }, function (err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Meeting Deleted by Stage'
-        });
-    });
-};
+
 
 // Delete Meeting by Street
 exports.deleteMeetingByStreet = function (req, res) {
@@ -1091,20 +826,6 @@ exports.deleteMeetingByZip = function (req, res) {
     });
 };
 
-// Delete Meeting by Email
-exports.deleteMeetingByEmail = function (req, res) {
-    Meeting.delete({
-        email: req.params.email
-    }, function (err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Meeting Deleted by Email'
-        });
-    });
-};
-
 // Delete Meeting by Creation Date
 exports.deleteMeetingByCreation = function (req, res) {
     Meeting.delete({
@@ -1115,62 +836,6 @@ exports.deleteMeetingByCreation = function (req, res) {
         else res.json({
             status: "success",
             message: 'Meeting Deleted by Creation'
-        });
-    });
-};
-
-// Delete Meeting by Demo Date
-exports.deleteMeetingByDemoDate = function (req, res) {
-    Meeting.delete({
-        demo: req.params.demo
-    }, function (err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Meeting Deleted by Demo Date'
-        });
-    });
-};
-
-// Delete Meeting by Conversion Date
-exports.deleteMeetingByConversionDate = function (req, res) {
-    Meeting.delete({
-        conversion: req.params.conversion
-    }, function (err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Meeting Deleted by Conversion Date'
-        });
-    });
-};
-
-// Delete Meeting by Hauling Contract Status
-exports.deleteMeetingByContractStatus = function (req, res) {
-    Meeting.delete({
-        hauling_contract: req.params.hauling_contract
-    }, function (err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Meeting Deleted by Contract Status'
-        });
-    });
-};
-
-// Delete Meeting by Hauling Expiration Status
-exports.deleteMeetingByHaulingExpiration = function (req, res) {
-    Meeting.delete({
-        hauling_expiration: req.params.hauling_expiration
-    }, function (err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Meeting Deleted by Hauling Expiration Status'
         });
     });
 };

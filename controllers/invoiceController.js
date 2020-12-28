@@ -31,7 +31,7 @@ exports.add = function (req, res) {
     invoice.subtotal = req.body.subtotal;
     invoice.tax = req.body.tax;
     invoice.total = req.body.total;
-    invoice.created_at = req.body.created_at;
+    invoice.created = req.body.created;
 invoice.is_active = req.body.is_active;
     invoice.purchase_order = req.body.purchase_order;
 

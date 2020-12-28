@@ -113,18 +113,18 @@ exports.viewUserByLast = function(req, res) {
 
 // View User by email
 exports.viewUserByStatus = function(req, res) {
-    User.find({ status: req.params.status }, function(err, user) {
+    User.find({ is_active: req.params.is_active }, function(err, user) {
         if (err)
             res.send(err);
         else res.json({
-            message: 'Got users by status',
+            message: 'Got users by active status',
             data: user
         });
     });
 };
 
-// View User by Created
-exports.viewUserByCreated = function(req, res) {
+// View User by Creation
+exports.viewUserByCreation = function(req, res) {
     User.find({ created: req.params.created }, function(err, user) {
         if (err)
             res.send(err);
@@ -261,7 +261,7 @@ exports.updateUserByEmail = function(req, res) {
 };
 
 // Update all users by creation date TODO: Test
-exports.updateUserByCreated = function(req, res) {
+exports.updateUserByCreation = function(req, res) {
     User.find({ created: req.params.created }, function(err, user) {
         if (err)
             res.send(err);
@@ -356,7 +356,7 @@ exports.deleteUserByStatus = function(req, res) {
 };
 
 // Delete User by created
-exports.deleteUserByCreated = function(req, res) {
+exports.deleteUserByCreation = function(req, res) {
     User.delete({
         created: req.params.created
     }, function(err, contact) {

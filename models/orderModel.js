@@ -21,7 +21,7 @@ var agreementSchema = mongoose.Schema({
         default: Date.now
     },
 
-    created_at: {
+    created: {
         type: Date,
         default: Date.now
     },
