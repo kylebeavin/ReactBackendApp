@@ -12,6 +12,11 @@ var meetingSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    // Document ID of the signed in user
+    owner_id: {
+        type: String,
+        required: false
+    },
     // Name of the meeting place Example: Starbucks
     location_name: {
         type: String,
@@ -55,5 +60,5 @@ var meetingSchema = mongoose.Schema({
 var Meeting = module.exports = mongoose.model('meeting', meetingSchema);
 
 module.exports.get = function (callback, limit) {
-   Meeting.find(callback).limit(limit); 
+    Meeting.find(callback).limit(limit);
 }
