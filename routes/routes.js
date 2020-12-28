@@ -333,9 +333,9 @@ router.route('/admins/:admin_id')
     .post(adminController.delete);
 
 // Meeting routes
-router.route('/meetingsAll')
+router.route('/meetingsAll') // Get all meetings
     .post(meetingController.viewAll)
-router.route('/meetingsAdd')
+router.route('/meetingsAdd') // Add a meeting
     .post(meetingController.add);
 
 router.route('/meetingsById/:_id')
