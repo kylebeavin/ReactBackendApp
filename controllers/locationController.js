@@ -23,10 +23,10 @@ exports.add = function (req, res) {
     location.location_id = req.body.location_id? req.body.location_id: location.location_id;
     location.account_id = req.body.account_id;
     location.location_name = location_name;
-    location.addressStreet = req.body.addressStreet;
-    location.addressCity = req.body.addressCity;
-    location.addressState = req.body.addressState;
-    location.addressZip = req.body.addressZip;
+    location.address_street = req.body.address_street;
+    location.address_city = req.body.address_city;
+    location.address_state = req.body.address_state;
+    location.address_zip = req.body.address_zip;
     location.is_valid = req.body.is_valid;
 
     //Save and check error
@@ -62,10 +62,10 @@ exports.update = function (req, res) {
         location.location_id = req.body.location_id? req.body.location_id: location.location_id;
         location.account_id = req.body.account_id;
         location.location_name = location_name;
-        location.addressStreet = req.body.addressStreet;
-        location.addressCity = req.body.addressCity;
-        location.addressState = req.body.addressState;
-        location.addressZip = req.body.addressZip;
+        location.address_street = req.body.address_street;
+        location.address_city = req.body.address_city;
+        location.address_state = req.body.address_state;
+        location.address_zip = req.body.address_zip;
         location.is_valid = req.body.is_valid;
 
         //save and check errors

@@ -16,19 +16,19 @@ var locationSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    addressStreet: {
+    address_street: {
         type: String,
         required: true
     },
-    addressCity: {
+    address_city: {
         type: String,
         required: true
     },
-    addressState: {
+    address_state: {
         type: String,
         required: true
     },
-    addressZip: {
+    address_zip: {
         type: String,
         required: true
     },

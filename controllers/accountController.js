@@ -2,9 +2,6 @@
 //Import Account Model
 Account = require('../models/accountModel.js')
 
-// Account Fields
-
-
 //For server
 exports.viewAll = function (req, res) {
     Account.get(function (err, account) {
@@ -31,10 +28,10 @@ exports.add = function (req, res) {
     account.owner_id = req.body.owner_id; // String, required
     account.is_active = req.body.is_active; // Bool, default: true
     account.stage = req.body.stage; // String, required
-    account.addressStreet = req.body.addressStreet; // String, required
-    account.addressCity = req.body.addressCity; // String, required
-    account.addressState = req.body.addressState; // String, required
-    account.addressZip = req.body.addressZip; // String, required
+    account.address_street = req.body.address_street; // String, required
+    account.address_city = req.body.address_city; // String, required
+    account.address_state = req.body.address_state; // String, required
+    account.address_zip = req.body.address_zip; // String, required
     account.email = req.body.email; // String, required
     account.demo = req.body.demo; // Date, not required 
     account.conversion = req.body.conversion; // Date, not required 
@@ -170,7 +167,7 @@ exports.viewAccountByStage = function (req, res) {
 
 // View Accounts by street
 exports.viewAccountByStreet = function (req, res) {
-    Account.find({ addressStreet: req.params.addressStreet }, function (err, account) {
+    Account.find({ address_street: req.params.address_street }, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -188,7 +185,7 @@ exports.viewAccountByStreet = function (req, res) {
 
 // View Accounts by City
 exports.viewAccountByCity = function (req, res) {
-    Account.find({ addressCity: req.params.addressCity }, function (err, account) {
+    Account.find({ address_city: req.params.address_city }, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -206,7 +203,7 @@ exports.viewAccountByCity = function (req, res) {
 
 // View Accounts by State
 exports.viewAccountByState = function (req, res) {
-    Account.find({ addressState: req.params.addressState }, function (err, account) {
+    Account.find({ address_state: req.params.address_state }, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -224,7 +221,7 @@ exports.viewAccountByState = function (req, res) {
 
 // View Accounts by Zip
 exports.viewAccountByZip = function (req, res) {
-    Account.find({ addressZip: req.params.addressZip }, function (err, account) {
+    Account.find({ address_zip: req.params.address_zip }, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -363,10 +360,10 @@ exports.updateAccountById = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -405,10 +402,10 @@ exports.updateAccountByGroup = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -446,10 +443,10 @@ exports.updateAccountByName = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -488,10 +485,10 @@ exports.updateAccountByOwnerId = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -530,10 +527,10 @@ exports.updateAccountByIsActive = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -572,10 +569,10 @@ exports.updateAccountByStage = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -602,7 +599,7 @@ exports.updateAccountByStage = function (req, res) {
 
 // Update all Accounts by Street
 exports.updateAccountByStreet = function (req, res) {
-    Account.find(req.params.addressStreet, function (err, account) {
+    Account.find(req.params.address_street, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -614,10 +611,10 @@ exports.updateAccountByStreet = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -644,7 +641,7 @@ exports.updateAccountByStreet = function (req, res) {
 
 // Update all Accounts by City
 exports.updateAccountByCity = function (req, res) {
-    Account.find(req.params.addressCity, function (err, account) {
+    Account.find(req.params.address_city, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -656,10 +653,10 @@ exports.updateAccountByCity = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -686,7 +683,7 @@ exports.updateAccountByCity = function (req, res) {
 
 // Update all Accounts by City
 exports.updateAccountByCity = function (req, res) {
-    Account.find(req.params.addressCity, function (err, account) {
+    Account.find(req.params.address_city, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -698,10 +695,10 @@ exports.updateAccountByCity = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -728,7 +725,7 @@ exports.updateAccountByCity = function (req, res) {
 
 // Update all Accounts by State
 exports.updateAccountByState = function (req, res) {
-    Account.find(req.params.addressState, function (err, account) {
+    Account.find(req.params.address_state, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -740,10 +737,10 @@ exports.updateAccountByState = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -770,7 +767,7 @@ exports.updateAccountByState = function (req, res) {
 
 // Update all Accounts by Zip
 exports.updateAccountByZip = function (req, res) {
-    Account.find(req.params.addressZip, function (err, account) {
+    Account.find(req.params.address_zip, function (err, account) {
         if (err)
             res.json({
                 status: "error",
@@ -782,10 +779,10 @@ exports.updateAccountByZip = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -824,10 +821,10 @@ exports.updateAccountByEmail = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -866,10 +863,10 @@ exports.updateAccountByCreation = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -908,10 +905,10 @@ exports.updateAccountByDemoDate = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -950,10 +947,10 @@ exports.updateAccountByConversionDate = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -990,10 +987,10 @@ exports.updateAccountByHaulingContract = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -1030,10 +1027,10 @@ exports.updateAccountByHaulingExpiration = function (req, res) {
         account.owner_id = req.body.owner_id;
         account.is_active = req.body.is_active;
         account.stage = req.body.stage;
-        account.addressStreet = req.body.addressStreet;
-        account.addressCity = req.body.addressCity;
-        account.addressState = req.body.addressState;
-        account.addressZip = req.body.addressZip;
+        account.address_street = req.body.address_street;
+        account.address_city = req.body.address_city;
+        account.address_state = req.body.address_state;
+        account.address_zip = req.body.address_zip;
         account.email = req.body.email;
         account.demo = req.body.demo;
         account.conversion = req.body.conversion;
@@ -1143,7 +1140,7 @@ exports.deleteAccountByStage = function (req, res) {
 // Delete Account by Street
 exports.deleteAccountByStreet = function (req, res) {
     Account.delete({
-        addressStreet: req.params.addressStreet
+        address_street: req.params.address_street
     }, function (err, contact) {
         if (err)
             res.send(err)
@@ -1157,7 +1154,7 @@ exports.deleteAccountByStreet = function (req, res) {
 // Delete Account by City
 exports.deleteAccountByCity = function (req, res) {
     Account.delete({
-        addressCity: req.params.addressCity
+        address_city: req.params.address_city
     }, function (err, contact) {
         if (err)
             res.send(err)
@@ -1171,7 +1168,7 @@ exports.deleteAccountByCity = function (req, res) {
 // Delete Account by State
 exports.deleteAccountByState = function (req, res) {
     Account.delete({
-        addressState: req.params.addressState
+        address_state: req.params.address_state
     }, function (err, contact) {
         if (err)
             res.send(err)
@@ -1185,7 +1182,7 @@ exports.deleteAccountByState = function (req, res) {
 // Delete Account by Zip
 exports.deleteAccountByZip = function (req, res) {
     Account.delete({
-        addressZip: req.params.addressZip
+        address_zip: req.params.address_zip
     }, function (err, contact) {
         if (err)
             res.send(err)

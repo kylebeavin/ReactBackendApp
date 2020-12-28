@@ -142,25 +142,25 @@ router.route('/accountsByStage/:stage')
     .post(accountController.updateAccountByStage)
     .post(accountController.deleteAccountByStage);
 
-router.route('/accountsByStreet/:addressStreet')
+router.route('/accountsByStreet/:address_street')
     .post(accountController.viewAccountByStreet)
     .post(accountController.updateAccountByStreet)
     .post(accountController.updateAccountByStreet)
     .post(accountController.deleteAccountByStreet);
 
-router.route('/accountsByCity/:addressCity')
+router.route('/accountsByCity/:address_city')
     .post(accountController.viewAccountByCity)
     .post(accountController.updateAccountByCity)
     .post(accountController.updateAccountByCity)
     .post(accountController.deleteAccountByCity);
 
-router.route('/accountsByState/:addressState')
+router.route('/accountsByState/:address_state')
     .post(accountController.viewAccountByState)
     .post(accountController.updateAccountByState)
     .post(accountController.updateAccountByState)
     .post(accountController.deleteAccountByState);
 
-router.route('/accountsByZip/:addressZip')
+router.route('/accountsByZip/:address_zip')
     .post(accountController.viewAccountByZip)
     .post(accountController.updateAccountByZip)
     .post(accountController.updateAccountByZip)
