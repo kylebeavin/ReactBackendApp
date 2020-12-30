@@ -61,7 +61,7 @@ exports.update = function (req, res) {
             res.send(err);
         location.location_id = req.body.location_id? req.body.location_id: location.location_id;
         location.account_id = req.body.account_id;
-        location.location_name = location_name;
+        location.location_name = req.body.location_name;
         location.address_street = req.body.address_street;
         location.address_city = req.body.address_city;
         location.address_state = req.body.address_state;
