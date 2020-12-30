@@ -309,9 +309,9 @@ router.route('/invoices/:invoice_id')
     .post(invoiceController.delete);
 
 // Location routes
-router.route('/locations')
+router.route('/locationsAll')
     .post(locationController.viewAll)
-router.route('/locations')
+router.route('/locationsAdd')
     .post(locationController.add);
 
 router.route('/locations/:location_id')
