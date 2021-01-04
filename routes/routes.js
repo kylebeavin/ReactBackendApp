@@ -1,27 +1,17 @@
 //initialize express router
 let router = require('express').Router();
 //Import Controllers
-var userController = require('../controllers/userController.js');
-var groupController = require('../controllers/groupController.js');
-var accountController = require('../controllers/accountController.js');
-var contactController = require('../controllers/contactController.js');
-var truckController = require('../controllers/truckController.js');
-var inspectionController = require('../controllers/inspectionController.js');
-var invoiceController = require('../controllers/invoiceController.js');
-var locationController = require('../controllers/locationController.js');
-var adminController = require('../controllers/adminController.js');
-var prospectController = require('../controllers/prospectController.js');
-var meetingController = require('../controllers/meetingController.js');
 
 //set default API response
 router
-    .post('/', function (req, res) {
+    .post('/', function(req, res) {
         res.json({
             status: 'API Works',
             message: 'Welcome to SMT API'
         });
     });
 
+<<<<<<< HEAD
 // User routes
 router.route('/usersAll')
     .post(userController.viewAll)
@@ -362,5 +352,7 @@ router.route('/meetingsByCreation/:created') // Gets meetings by status
     .post(meetingController.updateMeetingByCreation)
     .post(meetingController.deleteMeetingByCreation);
 
+=======
+>>>>>>> dev
 //Export API routes
 module.exports = router;
