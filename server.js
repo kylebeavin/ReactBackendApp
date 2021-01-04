@@ -1,7 +1,5 @@
 // server.js
 const express = require('express');
-// import express-handlebars
-const exphbs = require('express-handlebars');
 // import cookieparser
 const cookieParser = require('cookie-parser');
 // import body parser
