@@ -88,7 +88,6 @@ app.use('/api', prospectRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
 
-
 // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
