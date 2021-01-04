@@ -21,6 +21,7 @@ exports.viewAll = async function(req, res) {
 exports.add = async function(req, res) {
     var user = new User();
     user.email = req.body.email;
+    user.password = req.body.password;
     user.first_name = req.body.first_name;
     user.last_name = req.body.last_name;
     user.role = req.body.role;
@@ -142,6 +143,7 @@ exports.updateUserById = function(req, res) {
             res.send(err);
         user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
         user.email = req.body.email;
+        user.password = req.body.password;
         user.first_name = req.body.first_name;
         user.last_name = req.body.last_name;
         user.role = req.body.role;
@@ -167,6 +169,7 @@ exports.updateUserByRole = function(req, res) {
             res.send(err);
         user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
         user.email = req.body.email;
+        user.password = req.body.password;
         user.first_name = req.body.first_name;
         user.last_name = req.body.last_name;
         user.role = req.body.role;
@@ -192,6 +195,7 @@ exports.updateUserByGroup = function(req, res) {
             res.send(err);
         user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
         user.email = req.body.email;
+        user.password = req.body.password;
         user.first_name = req.body.first_name;
         user.last_name = req.body.last_name;
         user.group = req.body.group;
@@ -217,6 +221,7 @@ exports.updateUserByStatus = function(req, res) {
             res.send(err);
         user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
         user.email = req.body.email;
+        user.password = req.body.password;
         user.first_name = req.body.first_name;
         user.last_name = req.body.last_name;
         user.status = req.body.status;
@@ -242,11 +247,14 @@ exports.updateUserByEmail = function(req, res) {
             res.send(err);
         user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
         user.email = req.body.email;
+        user.password = req.body.password;
         user.first_name = req.body.first_name;
         user.last_name = req.body.last_name;
         user.email = req.body.email;
+        user.password = req.body.password;
         user.email_id = req.body.email_id;
         user.email = req.body.email;
+        user.password = req.body.password;
 
         //save and check errors
         user.save(function(err) {
@@ -267,11 +275,14 @@ exports.updateUserByCreation = function(req, res) {
             res.send(err);
         user.user_id = req.body.user_id ? req.body.user_id : user.user_id;
         user.email = req.body.email;
+        user.password = req.body.password;
         user.first_name = req.body.first_name;
         user.last_name = req.body.last_name;
         user.email = req.body.email;
+        user.password = req.body.password;
         user.email_id = req.body.email_id;
         user.email = req.body.email;
+        user.password = req.body.password;
 
         //save and check errors
         user.save(function(err) {

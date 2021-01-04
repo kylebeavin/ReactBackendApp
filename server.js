@@ -1,13 +1,18 @@
 // server.js
 const express = require('express');
-//import body parser
+// import express-handlebars
+const exphbs = require('express-handlebars');
+// import cookieparser
+const cookieParser = require('cookie-parser');
+// import body parser
 const bodyParser = require('body-parser');
-//import mongoose
+// import mongoose
 const mongoose = require('mongoose');
 const app = express();
-//import mongodb connection string
+// import mongodb connection string
 const config = require('config');
-//import routes
+
+// import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
 const adminRoutes = require("./routes/adminRoute");
@@ -26,17 +31,26 @@ const userRoutes = require("./routes/userRoute");
 
 // import jsonwebtoken
 const jwt = require('jsonwebtoken');
-//import .env secret keys
+// import .env secret keys
 require('dotenv').config();
 
 
-//configure bodyparser to hande the post requests
+// configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
 
-//connect to mongoose
+// To parse cookies from the HTTP Request
+app.use(cookieParser());
+
+app.engine('hbs', exphbs({
+    extname: '.hbs'
+}));
+
+app.set('view engine', 'hbs');
+
+// connect to mongoose
 const dbPath = config.get('mongoURI');
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
 const mongo = mongoose.connect(dbPath, options);
@@ -48,7 +62,7 @@ mongo.then(() => {
 });
 var db = mongoose.connection;
 
-//Check DB Connection
+// Check DB Connection
 if (!db)
     console.log("Error connecting db");
 else
@@ -75,7 +89,7 @@ app.post('/api/login', (req, res) => {
 app.use('/api', apiRoutes);
 app.use('/api', accountRoutes);
 app.use('/api', adminRoutes);
-// // app.use('/api', agreementRoutes);
+// app.use('/api', agreementRoutes);
 app.use('/api', contactRoutes);
 app.use('/api', groupRoutes);
 app.use('/api', inspectionRoutes);

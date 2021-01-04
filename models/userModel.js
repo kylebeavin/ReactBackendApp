@@ -14,6 +14,10 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    password: {
+        type: String,
+        required: true
+    },
     // Partner, Driver, Mechanic, Sales, GM
     role: {
         type: String,
