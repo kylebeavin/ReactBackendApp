@@ -5,27 +5,27 @@ var invoiceSchema = mongoose.Schema({
     // Will be replaced by document ID
     invoice_id: {
         type: String,
-        required: true
+        required: false
     },
     // Franchise ID
     group_id: {
         type: String,
-        required: true
+        required: false
     },
     // Customer ID
     account_id: {
         type: String,
-        required: true
+        required: false
     },
     // Contact for the invoice
     contact_id: {
         type: String,
-        required: true
+        required: false
     },
     // Work order ID
     smash_id: {
         type: String,
-        required: true
+        required: false
     },
     invoice_date: {
         type: Date,
@@ -34,23 +34,23 @@ var invoiceSchema = mongoose.Schema({
     // Recurring / On-Demand
     type: {
         type: String,
-        required: true
+        required: false
     },
     charges: {
         type: String,
-        required: true
+        required: false
     },
     subtotal: {
         type: String,
-        required: true
+        required: false
     },
     tax: {
         type: String,
-        required: true
+        required: false
     },
     total: {
         type: String,
-        required: true
+        required: false
     },
     created: {
         type: Date,
@@ -63,13 +63,13 @@ var invoiceSchema = mongoose.Schema({
     // Purchase order number TBD
     purchase_order: {
         type: String,
-        required: true
+        required: false
     },
 });
 
 // Export Invoice Model
 var Invoice = module.exports = mongoose.model('invoice', invoiceSchema);
 
-module.exports.get = function (callback, limit) {
-   Invoice.find(callback).limit(limit); 
+module.exports.get = function(callback, limit) {
+    Invoice.find(callback).limit(limit);
 }

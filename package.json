@@ -23,6 +23,7 @@
         "jsonwebtoken": "^8.5.1",
         "mongodb": "^3.6.3",
         "mongoose": "^5.11.4",
-        "nodemon": "^2.0.6"
+        "nodemon": "^2.0.6",
+        "querymen": "^2.1.4"
     }
 }

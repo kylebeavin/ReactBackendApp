@@ -5,38 +5,38 @@ var contactSchema = mongoose.Schema({
     // Customer account id
     account_id: {
         type: String,
-        required: true
+        required: false
     },
     // User who created the contact
     owner_id: {
         type: String,
-        required: true
+        required: false
     },
     first_name: {
         type: String,
-        required: true
+        required: false
     },
     last_name: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
-        required: true
+        required: false
     },
     phone: {
         type: String,
-        required: true
+        required: false
     },
     // Role of the contact (billing,smashing,hauling,all)
     type: {
         type: String,
-        required: true
+        required: false
     },
     // Communication method (email/sms)
     method: {
         type: String,
-        required: true
+        required: false
     },
     created: {
         type: Date,

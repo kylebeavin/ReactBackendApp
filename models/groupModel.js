@@ -5,38 +5,38 @@ var groupSchema = mongoose.Schema({
     // Franchise ID
     group_id: {
         type: String,
-        required: true
+        required: false
     },
     // Franchise Name
     name: {
         type: String,
-        required: true
+        required: false
     },
     // Franchise group email
     email: {
         type: String,
-        required: true
+        required: false
     },
     // Whether or not franchise is active
     is_active: {
         type: Boolean,
-        required: true
+        default: true
     },
     address_street: {
         type: String,
-        required: true
+        required: false
     },
     address_city: {
         type: String,
-        required: true
+        required: false
     },
     address_state: {
         type: String,
-        required: true
+        required: false
     },
     address_zip: {
         type: String,
-        required: true
+        required: false
     },
     // Federal Tax ID
     ein: {
@@ -45,11 +45,11 @@ var groupSchema = mongoose.Schema({
     },
     region: {
         type: String,
-        required: true
+        required: false
     },
     time_zone: {
         type: String,
-        required: true
+        required: false
     },
     signing_date: {
         type: Date,
@@ -61,21 +61,21 @@ var groupSchema = mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true
+        required: false
     },
     webpage: {
         type: String,
-        required: true
+        required: false
     },
     // Actual LLC
     legal_company: {
         type: String,
-        required: true
+        required: false
     },
     // Doing Business As Name
     dba: {
         type: String,
-        required: true
+        required: false
     },
     // State tax percentage for pricing
     tax_rate: {
@@ -91,6 +91,6 @@ var groupSchema = mongoose.Schema({
 // Export Group Model
 var Group = module.exports = mongoose.model('group', groupSchema);
 
-module.exports.get = function (callback, limit) {
-   Group.find(callback).limit(limit); 
+module.exports.get = function(callback, limit) {
+    Group.find(callback).limit(limit);
 }

@@ -5,17 +5,17 @@ var authSchema = mongoose.Schema({
     // auth username
     user: {
         type: String,
-        required: true
+        required: false
     },
     // auth password TODO: Store as MD5
     pass: {
         type: String,
-        required: true
+        required: false
     },
     // authentication token
     token: {
         type: String,
-        required: true
+        required: false
     }
 });
 

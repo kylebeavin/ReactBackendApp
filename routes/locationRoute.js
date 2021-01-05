@@ -2,17 +2,16 @@
 let router = require('express').Router();
 //Import Controllers
 var locationController = require('../controllers/locationController.js');
-
-// Location routes
+var queryController = require('../functions/query.js');
+// Truck routes
 router.route('/locations')
-    .post(locationController.viewAll)
-router.route('/locations')
-    .post(locationController.add);
+    .get(queryController.query)
+    .post(locationController.add)
+    // Truck routes
+router.route('/locations/:_id')
+    .put(locationController.update)
+    .patch(locationController.update)
+    .delete(locationController.delete)
 
-router.route('/locations/:location_id')
-    .post(locationController.view)
-    .post(locationController.update)
-    .post(locationController.update)
-    .post(locationController.delete);
 //Export API routes
 module.exports = router;

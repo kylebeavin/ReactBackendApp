@@ -1,26 +1,9 @@
 //Import Truck Model
 Truck = require('../models/truckModel.js');
 
-//For server
-exports.viewAll = function (req, res) {
-    Truck.get(function (err, truck) {
-        if (err)
-            res.json({
-                status: "error",
-                message: err
-            });
-        else res.json({
-            status: "success",
-            message: "Got Truck Successfully!",
-            data: truck       
-        });
-    });
-};
-
 //For creating new truck
-exports.add = function (req, res) {
+exports.add = function(req, res) {
     var truck = new Truck();
-    truck.truck_id = req.body.truck_id? req.body.truck_id: truck.truck_id;
     truck.group_id = req.body.group_id;
     truck.vin = req.body.vin;
     truck.name = req.body.name;
@@ -31,7 +14,7 @@ exports.add = function (req, res) {
     truck.is_active = req.body.is_active;
 
     //Save and check error
-    truck.save(function (err) {
+    truck.save(function(err) {
         if (err)
             res.json(err);
 
@@ -42,24 +25,11 @@ exports.add = function (req, res) {
     });
 };
 
-// View Truck by mongo object id
-exports.view = function (req, res) {
-    Truck.findById(req.params.truck_id, function (err, truck) {
-        if (err)
-            res.send(err);
-        else res.json({
-            message: 'Truck Details',
-            data: truck
-        });
-    });
-};
-
 // Update Truck
-exports.update = function (req, res) {
-    Truck.findById(req.params.truck_id, function (err, truck) {
+exports.update = function(req, res) {
+    Truck.findById(req.params._id, function(err, truck) {
         if (err)
             res.send(err);
-        truck.truck_id = req.body.truck_id? req.body.truck_id: truck.truck_id;
         truck.group_id = req.body.group_id;
         truck.vin = req.body.vin;
         truck.name = req.body.name;
@@ -70,7 +40,7 @@ exports.update = function (req, res) {
         truck.is_active = req.body.is_active;
 
         //save and check errors
-        truck.save(function (err) {
+        truck.save(function(err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -82,10 +52,10 @@ exports.update = function (req, res) {
 };
 
 // Delete Truck
-exports.delete = function (req, res) {
+exports.delete = function(req, res) {
     Truck.deleteOne({
-        _id: req.params.truck_id
-    }, function (err, contact) {
+        _id: req.params._id
+    }, function(err, contact) {
         if (err)
             res.send(err)
         else res.json({
@@ -94,4 +64,3 @@ exports.delete = function (req, res) {
         });
     });
 };
-

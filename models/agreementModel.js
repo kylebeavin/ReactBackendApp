@@ -5,17 +5,17 @@ var agreementSchema = mongoose.Schema({
     // Customer account the agreement belongs to
     account_id: {
         type: String,
-        required: true
+        required: false
     },
     // Franchise
     group_id: {
         type: String,
-        required: true
+        required: false
     },
     // Monthly payment
     dollar_amount: {
         type: String,
-        required: true
+        required: false
     },
     // Service start date
     start_date: {
@@ -40,6 +40,6 @@ var agreementSchema = mongoose.Schema({
 // Export Agreement Model
 var Agreement = module.exports = mongoose.model('agreement', agreementSchema);
 
-module.exports.get = function (callback, limit) {
+module.exports.get = function(callback, limit) {
     Agreement.find(callback).limit(limit);
 }

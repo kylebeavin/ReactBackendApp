@@ -2,22 +2,22 @@ var mongoose = require('mongoose');
 
 //schema
 var serviceSchema = mongoose.Schema({
-  
+
     group_id: {
         type: String,
-        required: true
+        required: false
     },
     service_id: {
         type: String,
-        required: true
+        required: false
     },
     inspection_id: {
         type: String,
-        required: true
+        required: false
     },
     service_order: {
         type: String,
-        required: true
+        required: false
     },
     // Additional
     // fields: {
@@ -37,6 +37,6 @@ var serviceSchema = mongoose.Schema({
 // Export Service Model
 var Service = module.exports = mongoose.model('service', serviceSchema);
 
-module.exports.get = function (callback, limit) {
-   Service.find(callback).limit(limit); 
+module.exports.get = function(callback, limit) {
+    Service.find(callback).limit(limit);
 }

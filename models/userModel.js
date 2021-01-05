@@ -4,11 +4,11 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
     first_name: {
         type: String,
-        required: true
+        required: false
     },
     last_name: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
@@ -18,15 +18,23 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    token: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
     // Partner, Driver, Mechanic, Sales, GM
     role: {
         type: String,
-        required: true
+        required: false
     },
     // Franchise ID
     group_id: {
         type: String,
-        required: true
+        required: false
     },
     created: {
         type: Date,

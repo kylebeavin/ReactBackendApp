@@ -4,16 +4,16 @@ var mongoose = require('mongoose');
 var agreementSchema = mongoose.Schema({
     account_id: {
         type: String,
-        required: true
+        required: false
     },
     group_id: {
         type: String,
-        required: true
+        required: false
     },
 
     is_recurring: {
         type: Boolean,
-        required: true
+        required: false
     },
 
     service_date: {
@@ -34,6 +34,6 @@ var agreementSchema = mongoose.Schema({
 // Export Agreement Model
 var Agreement = module.exports = mongoose.model('agreement', agreementSchema);
 
-module.exports.get = function (callback, limit) {
+module.exports.get = function(callback, limit) {
     Agreement.find(callback).limit(limit);
 }

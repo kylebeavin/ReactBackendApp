@@ -5,32 +5,32 @@ var locationSchema = mongoose.Schema({
     // To be replaced by unique document ID
     location_id: {
         type: String,
-        required: true
+        required: false
     },
     // Customer ID
     account_id: {
         type: String,
-        required: true
+        required: false
     },
     location_name: {
         type: String,
-        required: true
+        required: false
     },
     address_street: {
         type: String,
-        required: true
+        required: false
     },
     address_city: {
         type: String,
-        required: true
+        required: false
     },
     address_state: {
         type: String,
-        required: true
+        required: false
     },
     address_zip: {
         type: String,
-        required: true
+        required: false
     },
     created: {
         type: Date,
@@ -46,6 +46,6 @@ var locationSchema = mongoose.Schema({
 // Export Location Model
 var Location = module.exports = mongoose.model('location', locationSchema);
 
-module.exports.get = function (callback, limit) {
-   Location.find(callback).limit(limit); 
+module.exports.get = function(callback, limit) {
+    Location.find(callback).limit(limit);
 }

@@ -23,7 +23,7 @@ var meetingSchema = mongoose.Schema({
         required: false
     },
     // Name of the meeting place Example: Starbucks
-    location_name: {
+    title: {
         type: String,
         required: false
     },
@@ -64,6 +64,6 @@ var meetingSchema = mongoose.Schema({
 // Export Meeting Model
 var Meeting = module.exports = mongoose.model('meeting', meetingSchema);
 
-module.exports.get = function (callback, limit) {
+module.exports.get = function(callback, limit) {
     Meeting.find(callback).limit(limit);
 }

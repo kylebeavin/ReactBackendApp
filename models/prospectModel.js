@@ -5,20 +5,20 @@ var prospectSchema = mongoose.Schema({
     // Franchise ID
     group_id: {
         type: String,
-        required: true
+        required: false
     },
     first_name: {
         type: String,
-        required: true
+        required: false
     },
     last_name: {
         type: String,
-        required: true
+        required: false
     },
     // Signed in user's document ID
     owner_id: {
         type: String,
-        required: true
+        required: false
     },
     // Marks lead active / inactive
     is_active: {
@@ -28,12 +28,12 @@ var prospectSchema = mongoose.Schema({
     // Lead status
     stage: {
         type: String,
-        required: true
+        required: false
     },
     // Dumpster location coordinates
     geo_location: {
         type: String,
-        required: true
+        required: false
     },
     created: {
         type: Date,

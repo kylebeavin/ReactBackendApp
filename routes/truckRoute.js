@@ -2,17 +2,16 @@
 let router = require('express').Router();
 //Import Controllers
 var truckController = require('../controllers/truckController.js');
-
+var queryController = require('../functions/query.js');
 // Truck routes
-router.route('/trucksAll')
-    .post(truckController.viewAll)
-router.route('/trucksAdd')
-    .post(truckController.add);
+router.route('/trucks')
+    .get(queryController.query)
+    .post(truckController.add)
+    // Truck routes
+router.route('/trucks/:_id')
+    .put(truckController.update)
+    .patch(truckController.update)
+    .delete(truckController.delete)
 
-router.route('/trucks/:truck_id')
-    .post(truckController.view)
-    .post(truckController.update)
-    .post(truckController.update)
-    .post(truckController.delete);
 //Export API routes
 module.exports = router;

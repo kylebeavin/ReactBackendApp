@@ -2,17 +2,16 @@
 let router = require('express').Router();
 //Import Controllers
 var invoiceController = require('../controllers/invoiceController.js');
-
-// Invoice routes
+var queryController = require('../functions/query.js');
+// Truck routes
 router.route('/invoices')
-    .post(invoiceController.viewAll)
-router.route('/invoices')
-    .post(invoiceController.add);
+    .get(queryController.query)
+    .post(invoiceController.add)
+    // Truck routes
+router.route('/invoices/:_id')
+    .put(invoiceController.update)
+    .patch(invoiceController.update)
+    .delete(invoiceController.delete)
 
-router.route('/invoices/:invoice_id')
-    .post(invoiceController.view)
-    .post(invoiceController.update)
-    .post(invoiceController.update)
-    .post(invoiceController.delete);
 //Export API routes
 module.exports = router;

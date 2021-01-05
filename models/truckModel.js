@@ -5,26 +5,21 @@ var truckSchema = mongoose.Schema({
     // Franchise ID
     group_id: {
         type: String,
-        required: true
-    },
-    // Replaced with Document ID
-    truck_id: {
-        type: String,
-        required: true
+        required: false
     },
     vin: {
         type: String,
-        required: true
+        required: false
     },
     // Truck display name
     name: {
         type: String,
-        required: true
+        required: false
     },
     // Odometer reading
     odo: {
         type: String,
-        required: true
+        required: false
     },
     // Truck hours operated
     hours: {
@@ -34,7 +29,7 @@ var truckSchema = mongoose.Schema({
     // TBD
     machine_id: {
         type: String,
-        required: true
+        required: false
     },
     created: {
         type: Date,
@@ -50,6 +45,6 @@ var truckSchema = mongoose.Schema({
 // Export Truck Model
 var Truck = module.exports = mongoose.model('truck', truckSchema);
 
-module.exports.get = function (callback, limit) {
-   Truck.find(callback).limit(limit); 
+module.exports.get = function(callback, limit) {
+    Truck.find(callback).limit(limit);
 }
