@@ -42,11 +42,7 @@ app.use(bodyParser.json());
 // To parse cookies from the HTTP Request
 app.use(cookieParser());
 
-app.engine('hbs', exphbs({
-    extname: '.hbs'
-}));
 
-app.set('view engine', 'hbs');
 
 // connect to mongoose
 const dbPath = config.get('mongoURI');
