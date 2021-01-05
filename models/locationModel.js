@@ -2,11 +2,6 @@ var mongoose = require('mongoose');
 
 //schema
 var locationSchema = mongoose.Schema({
-    // To be replaced by unique document ID
-    location_id: {
-        type: String,
-        required: false
-    },
     // Customer ID
     account_id: {
         type: String,
