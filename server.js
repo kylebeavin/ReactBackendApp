@@ -27,12 +27,6 @@ const serviceRoutes = require("./routes/serviceRoute");
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
 
-// import jsonwebtoken
-const jwt = require('jsonwebtoken');
-// import .env secret keys
-require('dotenv').config();
-
-
 // configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
     extended: true
@@ -41,8 +35,6 @@ app.use(bodyParser.json());
 
 // To parse cookies from the HTTP Request
 app.use(cookieParser());
-
-
 
 // connect to mongoose
 const dbPath = config.get('mongoURI');
@@ -70,14 +62,25 @@ var path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
-// Authenticate using token to use API
-app.post('/api/login', (req, res) => {
-    const username = req.body.username;
-    const user = { name: username };
+// Add headers
+app.use(function(req, res, next) {
 
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-    res.json({ accessToken: accessToken })
-})
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'localhost:3001');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 //Use API routes in the App
 app.use('/api', apiRoutes);
