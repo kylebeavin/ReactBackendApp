@@ -1,6 +1,26 @@
 //Import Group Model
 Group = require('../models/groupModel.js')
 
+// For queries
+exports.view = function(req, res) {
+    Group.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
+
 //For creating new group
 exports.add = function(req, res) {
     var group = new Group();

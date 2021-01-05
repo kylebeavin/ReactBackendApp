@@ -1,6 +1,26 @@
 //Import Admin Model
 Admin = require('../models/adminModel.js')
 
+// For queries
+exports.view = function(req, res) {
+    Admin.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
+
 //For creating new admin
 exports.add = function(req, res) {
     var admin = new Admin();

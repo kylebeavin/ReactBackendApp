@@ -1,6 +1,25 @@
 //Import User Model
 User = require('../models/userModel.js');
 
+// For queries
+exports.view = function(req, res) {
+    User.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
 
 // For creating new user
 exports.add = async function(req, res) {

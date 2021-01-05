@@ -2,10 +2,9 @@
 let router = require('express').Router();
 //Import Controllers
 var inspectionController = require('../controllers/inspectionController.js');
-var queryController = require('../functions/query.js');
 // Truck routes
 router.route('/inspections')
-    .get(queryController.query)
+    .get(inspectionController.view)
     .post(inspectionController.add)
     // Truck routes
 router.route('/inspections/:_id')

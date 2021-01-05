@@ -1,6 +1,26 @@
 //Import Inspection Model
 Inspection = require('../models/inspectionModel.js');
 
+// For queries
+exports.view = function(req, res) {
+    Invoice.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
+
 //For creating new inspection
 exports.add = function(req, res) {
     var inspection = new Inspection();

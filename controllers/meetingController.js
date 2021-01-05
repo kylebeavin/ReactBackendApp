@@ -2,6 +2,26 @@
 //Import Meeting Model
 Meeting = require('../models/meetingModel.js')
 
+// For queries
+exports.view = function(req, res) {
+    Meeting.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
+
 //For creating new meeting
 exports.add = function(req, res) {
     var meeting = new Meeting();

@@ -1,6 +1,26 @@
 //Import Invoice Model
 Invoice = require('../models/invoiceModel.js')
 
+// For queries
+exports.view = function(req, res) {
+    Invoice.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
+
 //For creating new invoice
 exports.add = function(req, res) {
     var invoice = new Invoice();

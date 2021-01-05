@@ -2,10 +2,9 @@
 let router = require('express').Router();
 //Import Controllers
 var groupController = require('../controllers/groupController.js');
-var queryController = require('../functions/query.js');
 // Truck routes
 router.route('/groups')
-    .get(queryController.query)
+    .get(groupController.view)
     .post(groupController.add)
     // Truck routes
 router.route('/groups/:_id')

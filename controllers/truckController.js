@@ -1,6 +1,26 @@
 //Import Truck Model
 Truck = require('../models/truckModel.js');
 
+// For queries
+exports.view = function(req, res) {
+    Truck.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
+
 //For creating new truck
 exports.add = function(req, res) {
     var truck = new Truck();

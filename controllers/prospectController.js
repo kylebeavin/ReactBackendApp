@@ -1,6 +1,26 @@
 //Import Prospect Model
 Prospect = require('../models/prospectModel.js')
 
+// For queries
+exports.view = function(req, res) {
+    Prospect.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
+
 //For creating new prospect
 exports.add = function(req, res) {
     var prospect = new Prospect();

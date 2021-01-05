@@ -2,10 +2,9 @@
 let router = require('express').Router();
 //Import Controllers
 var contactController = require('../controllers/contactController.js');
-var queryController = require('../functions/query.js');
 // Truck routes
 router.route('/contacts')
-    .get(queryController.query)
+    .get(contactController.view)
     .post(contactController.add)
     // Truck routes
 router.route('/contacts/:_id')

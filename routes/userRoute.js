@@ -3,10 +3,9 @@ let router = require('express').Router();
 
 //Import Controllers
 var userController = require('../controllers/userController.js');
-var queryController = require('../functions/query.js');
 // User routes
 router.route('/users')
-    .get(queryController.query)
+    .get(userController.view)
     .post(userController.add)
 router.route('/users/:_id')
     .put(userController.update)

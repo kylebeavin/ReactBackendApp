@@ -1,6 +1,26 @@
 //Import Location Model
 Location = require('../models/locationModel.js')
 
+// For queries
+exports.view = function(req, res) {
+    Location.find(req.body,
+        function(err, query) {
+
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+};
+
 //For creating new location
 exports.add = function(req, res) {
     var location = new Location();
