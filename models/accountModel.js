@@ -5,17 +5,17 @@ var accountSchema = mongoose.Schema({
     // Document ID of Franchise
     group_id: {
         type: String,
-        required: true
+        required: false
     },
     // Account Name
     name: {
         type: String,
-        required: true
+        required: false
     },
     // Document ID of User that created the account
     owner_id: {
         type: String,
-        required: true
+        required: false
     },
     // Account status active/inactive
     is_active: {
@@ -25,23 +25,23 @@ var accountSchema = mongoose.Schema({
     // Account Stage: Prospect,Customer
     stage: {
         type: String,
-        required: true
+        required: false
     },
     address_street: {
         type: String,
-        required: true
+        required: false
     },
     address_city: {
         type: String,
-        required: true
+        required: false
     },
     address_state: {
         type: String,
-        required: true
+        required: false
     },
     address_zip: {
         type: String,
-        required: true
+        required: false
     },
     // Generic account domain
     email: {
