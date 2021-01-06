@@ -24,6 +24,7 @@ exports.view = function(req, res) {
 // For creating new user
 exports.add = async function(req, res) {
     var user = new User();
+    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     user.email = req.body.email;
     user.password = req.body.password;
     user.token = req.body.token;
@@ -46,6 +47,10 @@ exports.add = async function(req, res) {
             data: user
         });
     });
+    var token = jwt.sign({ id: user._id }, config.secret, {
+        expiresIn: 86400 // expires in 24 hours
+    });
+    res.status(200).send({ auth: true, token: token });
 };
 
 // Update User by Mongo Object ID

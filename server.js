@@ -6,7 +6,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 // import mongoose
 const mongoose = require('mongoose');
+require('dotenv').config();
 const app = express();
+// import JWT
+const jwt = require('jsonwebtoken');
+// import crypto
+const bcrypt = require('bcrypt');
 // import mongodb connection string
 const config = require('config');
 

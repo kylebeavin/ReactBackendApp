@@ -3,6 +3,7 @@ let router = require('express').Router();
 
 //Import Controllers
 var userController = require('../controllers/userController.js');
+
 // User routes
 router.route('/users')
     .get(userController.view)
