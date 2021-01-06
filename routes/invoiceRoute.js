@@ -2,11 +2,12 @@
 let router = require('express').Router();
 //Import Controllers
 var invoiceController = require('../controllers/invoiceController.js');
-// Truck routes
+// Invoice routes
 router.route('/invoices')
     .get(invoiceController.view)
     .post(invoiceController.add)
-    // Truck routes
+router.route('/invoicesBy')
+    .post(invoiceController.view)
 router.route('/invoices/:_id')
     .put(invoiceController.update)
     .patch(invoiceController.update)

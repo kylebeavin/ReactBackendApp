@@ -2,11 +2,12 @@
 let router = require('express').Router();
 //Import Controllers
 var adminController = require('../controllers/adminController.js');
-// Truck routes
+// Admin routes
 router.route('/admins')
     .get(adminController.view)
     .post(adminController.add)
-    // Truck routes
+router.route('/adminsBy')
+    .post(adminController.view)
 router.route('/admins/:_id')
     .put(adminController.update)
     .patch(adminController.update)

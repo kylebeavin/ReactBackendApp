@@ -2,11 +2,12 @@
 let router = require('express').Router();
 //Import Controllers
 var meetingController = require('../controllers/meetingController.js');
-// Truck routes
+// Meeting routes
 router.route('/meetings')
     .get(meetingController.view)
     .post(meetingController.add)
-    // Truck routes
+router.route('/meetingsBy')
+    .post(meetingController.view)
 router.route('/meetings/:_id')
     .put(meetingController.update)
     .patch(meetingController.update)

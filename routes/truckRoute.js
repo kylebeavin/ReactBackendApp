@@ -6,7 +6,8 @@ var truckController = require('../controllers/truckController.js');
 router.route('/trucks')
     .get(truckController.view)
     .post(truckController.add)
-    // Truck routes
+router.route('/trucksBy')
+    .post(truckController.view)
 router.route('/trucks/:_id')
     .put(truckController.update)
     .patch(truckController.update)

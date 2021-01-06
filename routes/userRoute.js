@@ -8,6 +8,8 @@ var userController = require('../controllers/userController.js');
 router.route('/users')
     .get(userController.view)
     .post(userController.add)
+router.route('/usersBy')
+    .post(userController.view)
 router.route('/users/:_id')
     .put(userController.update)
     .patch(userController.update)

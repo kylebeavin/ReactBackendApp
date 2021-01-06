@@ -2,11 +2,12 @@
 let router = require('express').Router();
 //Import Controllers
 var locationController = require('../controllers/locationController.js');
-// Truck routes
+// Location routes
 router.route('/locations')
     .get(locationController.view)
     .post(locationController.add)
-    // Truck routes
+router.route('/locationsBy')
+    .post(locationController.view)
 router.route('/locations/:_id')
     .put(locationController.update)
     .patch(locationController.update)
