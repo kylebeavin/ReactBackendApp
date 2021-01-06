@@ -1,4 +1,5 @@
 // query.js used as a query controller
+// This is unused for right now
 
 exports.query = function(req, res) {
     User.find(req.body,
