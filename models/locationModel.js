@@ -7,6 +7,10 @@ var locationSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    group_id: {
+        type: String,
+        required: true
+    },
     location_name: {
         type: String,
         required: true

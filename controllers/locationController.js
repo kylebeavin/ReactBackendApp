@@ -25,6 +25,7 @@ exports.view = function(req, res) {
 exports.add = function(req, res) {
     var location = new Location();
     location.account_id = req.body.account_id;
+    location.group_id = req.body.group_id;
     location.location_name = req.body.location_name;
     location.address_street = req.body.address_street;
     location.address_city = req.body.address_city;
@@ -50,6 +51,7 @@ exports.update = function(req, res) {
         if (err)
             res.send(err);
         location.account_id = req.body.account_id;
+        location.group_id = req.body.group_id;
         location.location_name = req.body.location_name;
         location.address_street = req.body.address_street;
         location.address_city = req.body.address_city;
