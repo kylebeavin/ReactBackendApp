@@ -25,9 +25,12 @@ exports.view = function(req, res) {
 exports.add = async function(req, res) {
     var user = new User();
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    var token = jwt.sign({ id: user._id }, config.secret, {
+        expiresIn: 86400 // expires in 24 hours
+    });
     user.email = req.body.email;
-    user.password = req.body.password;
-    user.token = req.body.token;
+    user.password = hashedPassword;
+    user.token = token;
     user.image = req.body.image;
     user.token = req.body.token;
     user.image = req.body.image;
@@ -44,13 +47,10 @@ exports.add = async function(req, res) {
 
         else res.json({
             message: "New User Added!",
+            status: (200).send({ auth: true, token: token }),
             data: user
         });
     });
-    var token = jwt.sign({ id: user._id }, config.secret, {
-        expiresIn: 86400 // expires in 24 hours
-    });
-    res.status(200).send({ auth: true, token: token });
 };
 
 // Update User by Mongo Object ID
