@@ -10,8 +10,7 @@ require('dotenv').config();
 const app = express();
 // import JWT
 const jwt = require('jsonwebtoken');
-// import crypto
-const bcrypt = require('bcrypt');
+
 // import mongodb connection string
 const config = require('config');
 

@@ -1,5 +1,9 @@
 //Import User Model
 User = require('../models/userModel.js');
+// import bcrypt
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+var config = require('../config');
 
 // For queries
 exports.view = function(req, res) {
@@ -22,7 +26,7 @@ exports.view = function(req, res) {
 };
 
 // For creating new user
-exports.add = async function(req, res) {
+exports.add = function(req, res) {
     var user = new User();
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     var token = jwt.sign({ id: user._id }, config.secret, {
@@ -31,8 +35,6 @@ exports.add = async function(req, res) {
     user.email = req.body.email;
     user.password = hashedPassword;
     user.token = token;
-    user.image = req.body.image;
-    user.token = req.body.token;
     user.image = req.body.image;
     user.first_name = req.body.first_name;
     user.last_name = req.body.last_name;
@@ -47,7 +49,7 @@ exports.add = async function(req, res) {
 
         else res.json({
             message: "New User Added!",
-            status: (200).send({ auth: true, token: token }),
+            status: 200,
             data: user
         });
     });
