@@ -5,6 +5,12 @@ let router = require('express').Router();
 var userController = require('../controllers/userController.js');
 
 // User routes
+router.route('/auth')
+    .get(userController.auth)
+router.route('/login')
+    .post(userController.login)
+router.route('/logout')
+    .post(userController.logout)
 router.route('/users')
     .get(userController.view)
     .post(userController.add)

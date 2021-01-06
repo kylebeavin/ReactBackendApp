@@ -28,10 +28,14 @@ exports.view = function(req, res) {
 // For creating new user
 exports.add = function(req, res) {
     var user = new User();
-    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-    var token = jwt.sign({ id: user._id }, config.secret, {
-        expiresIn: 86400 // expires in 24 hours
-    });
+    try {
+        var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+        var token = jwt.sign({ id: user._id }, config.secret, {
+            expiresIn: 86400
+        })
+    } catch (error) {
+        console.log('Error creating new user');
+    }
     user.email = req.body.email;
     user.password = hashedPassword;
     user.token = token;
@@ -43,17 +47,61 @@ exports.add = function(req, res) {
     user.is_active = true;
 
     //Save and check error
-    user.save(function(err) {
-        if (err)
-            res.json(err);
+    user.save(function(err, user) {
+        if (err) return res.status(500).send("There was a problem registering the user.")
 
         else res.json({
             message: "New User Added!",
-            status: 200,
-            data: user
+            data: user,
+            status: (200).send({ auth: true, token: token }),
         });
     });
 };
+
+// For authenticating user by token
+exports.auth = function(req, res) {
+    var token = req.headers['x-access-token'];
+    if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
+
+    jwt.verify(token, config.secret, function(err, decoded) {
+        if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+
+        User.findById(decoded.id, { password: 0 }, // projection
+            function(err, user) {
+                if (err) return res.status(500).send("There was a problem finding the user.");
+                if (!user) return res.status(404).send("No user found.");
+
+                res.status(200).send(user);
+            })
+    })
+};
+
+// For logging in
+exports.login = function(req, res) {
+
+    User.findOne({ email: req.body.email }, function(err, user) {
+        if (err) return res.status(500).send('Error on the server.');
+        if (!user) return res.status(404).send('No user found.');
+
+        var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+
+        var token = jwt.sign({ id: user._id }, config.secret, {
+            expiresIn: 86400 // expires in 24 hours
+        });
+
+        res.status(200).send({ auth: true, token: token });
+    });
+
+};
+
+
+// For logging out
+exports.logout = function(req, res) {
+    res.status(200).send({ auth: false, token: null });
+};
+
+
 
 // Update User by Mongo Object ID
 exports.update = function(req, res) {
