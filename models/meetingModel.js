@@ -5,44 +5,44 @@ var meetingSchema = mongoose.Schema({
     // This might not be used // Franchise that the meeting belongs to
     group_id: {
         type: String,
-        required: false
+        required: true
     },
     // This might not be used
     account_id: {
         type: String,
-        required: false
+        required: true
     },
     // Document ID of the contact being met
     contact_id: {
         type: String,
-        required: false
+        required: true
     },
     // Document ID of the signed in user
     owner_id: {
         type: String,
-        required: false
+        required: true
     },
     // Name of the meeting place Example: Starbucks
     title: {
         type: String,
-        required: false
+        required: true
     },
     // Location fields could be pulled from contact document?
     address_street: {
         type: String,
-        required: false
+        required: true
     },
     address_city: {
         type: String,
-        required: false
+        required: true
     },
     address_state: {
         type: String,
-        required: false
+        required: true
     },
     address_zip: {
         type: String,
-        required: false
+        required: true
     },
     // Date the meeting was created
     created: {
@@ -52,7 +52,7 @@ var meetingSchema = mongoose.Schema({
     // Meeting date and time
     meeting_time: {
         type: Date,
-        required: false
+        required: true
     },
     // Marks meeting active / inactive
     is_valid: {

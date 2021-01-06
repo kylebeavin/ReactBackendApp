@@ -5,17 +5,17 @@ var accountSchema = mongoose.Schema({
     // Document ID of Franchise
     group_id: {
         type: String,
-        required: false
+        required: true
     },
     // Account Name
     name: {
         type: String,
-        required: false
+        required: true
     },
     // Document ID of User that created the account
     owner_id: {
         type: String,
-        required: false
+        required: true
     },
     // Account status active/inactive
     is_active: {
@@ -25,28 +25,28 @@ var accountSchema = mongoose.Schema({
     // Account Stage: Prospect,Customer
     stage: {
         type: String,
-        required: false
+        required: true
     },
     address_street: {
         type: String,
-        required: false
+        required: true
     },
     address_city: {
         type: String,
-        required: false
+        required: true
     },
     address_state: {
         type: String,
-        required: false
+        required: true
     },
     address_zip: {
         type: String,
-        required: false
+        required: true
     },
     // Generic account domain
     email: {
         type: String,
-        required: false
+        required: true
     },
     created: {
         type: Date,
@@ -55,26 +55,26 @@ var accountSchema = mongoose.Schema({
     // Date for the demo smash
     demo: {
         type: Date,
-        required: false
+        required: true
     },
     // When lead becomes account
     conversion: {
         type: Date,
-        required: false
+        required: true
     },
     // Hauling contract status
     hauling_contract: {
         type: Boolean,
-        required: false
+        required: true
     },
     // Hauling contract expiration date
     hauling_expiration: {
         type: Date,
-        required: false
+        required: true
     },
     notes: {
         type: String,
-        required: false
+        required: true
     },
 });
 

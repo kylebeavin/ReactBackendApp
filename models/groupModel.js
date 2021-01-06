@@ -5,17 +5,17 @@ var groupSchema = mongoose.Schema({
     // Franchise ID
     group_id: {
         type: String,
-        required: false
+        required: true
     },
     // Franchise Name
     name: {
         type: String,
-        required: false
+        required: true
     },
     // Franchise group email
     email: {
         type: String,
-        required: false
+        required: true
     },
     // Whether or not franchise is active
     is_active: {
@@ -24,63 +24,63 @@ var groupSchema = mongoose.Schema({
     },
     address_street: {
         type: String,
-        required: false
+        required: true
     },
     address_city: {
         type: String,
-        required: false
+        required: true
     },
     address_state: {
         type: String,
-        required: false
+        required: true
     },
     address_zip: {
         type: String,
-        required: false
+        required: true
     },
     // Federal Tax ID
     ein: {
         type: String,
-        required: false
+        required: true
     },
     region: {
         type: String,
-        required: false
+        required: true
     },
     time_zone: {
         type: String,
-        required: false
+        required: true
     },
     signing_date: {
         type: Date,
-        required: false
+        required: true
     },
     launch_date: {
         type: Date,
-        required: false
+        required: true
     },
     phone: {
         type: String,
-        required: false
+        required: true
     },
     webpage: {
         type: String,
-        required: false
+        required: true
     },
     // Actual LLC
     legal_company: {
         type: String,
-        required: false
+        required: true
     },
     // Doing Business As Name
     dba: {
         type: String,
-        required: false
+        required: true
     },
     // State tax percentage for pricing
     tax_rate: {
         type: String,
-        required: false
+        required: true
     },
     created: {
         type: Date,

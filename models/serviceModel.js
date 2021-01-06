@@ -5,19 +5,19 @@ var serviceSchema = mongoose.Schema({
 
     group_id: {
         type: String,
-        required: false
+        required: true
     },
     service_id: {
         type: String,
-        required: false
+        required: true
     },
     inspection_id: {
         type: String,
-        required: false
+        required: true
     },
     service_order: {
         type: String,
-        required: false
+        required: true
     },
     // Additional
     // fields: {

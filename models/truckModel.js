@@ -5,21 +5,21 @@ var truckSchema = mongoose.Schema({
     // Franchise ID
     group_id: {
         type: String,
-        required: false
+        required: true
     },
     vin: {
         type: String,
-        required: false
+        required: true
     },
     // Truck display name
     name: {
         type: String,
-        required: false
+        required: true
     },
     // Odometer reading
     odo: {
         type: String,
-        required: false
+        required: true
     },
     // Truck hours operated
     hours: {
@@ -29,7 +29,7 @@ var truckSchema = mongoose.Schema({
     // TBD
     machine_id: {
         type: String,
-        required: false
+        required: true
     },
     created: {
         type: Date,

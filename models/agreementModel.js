@@ -5,17 +5,17 @@ var agreementSchema = mongoose.Schema({
     // Customer account the agreement belongs to
     account_id: {
         type: String,
-        required: false
+        required: true
     },
     // Franchise
     group_id: {
         type: String,
-        required: false
+        required: true
     },
     // Monthly payment
     dollar_amount: {
         type: String,
-        required: false
+        required: true
     },
     // Service start date
     start_date: {
@@ -25,7 +25,7 @@ var agreementSchema = mongoose.Schema({
     // Service end date
     end_date: {
         type: Date,
-        required: false
+        required: true
     },
     created: {
         type: Date,

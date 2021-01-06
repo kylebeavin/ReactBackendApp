@@ -5,27 +5,27 @@ var inspectionSchema = mongoose.Schema({
     //Franchise ID
     group_id: {
         type: String,
-        required: false
+        required: true
     },
     // Possibly replaced by document ID
     inspection_id: {
         type: String,
-        required: false
+        required: true
     },
     // Possibly replaced by document ID
     truck_id: {
         type: String,
-        required: false
+        required: true
     },
     // Signed in owner of the inspection
     owner_id: {
         type: String,
-        required: false
+        required: true
     },
     // TBD
     type: {
         type: String,
-        required: false
+        required: true
     },
     // TBD
     // Inspection Fields

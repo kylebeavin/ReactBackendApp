@@ -4,16 +4,16 @@ var mongoose = require('mongoose');
 var agreementSchema = mongoose.Schema({
     account_id: {
         type: String,
-        required: false
+        required: true
     },
     group_id: {
         type: String,
-        required: false
+        required: true
     },
 
     is_recurring: {
         type: Boolean,
-        required: false
+        required: true
     },
 
     service_date: {
