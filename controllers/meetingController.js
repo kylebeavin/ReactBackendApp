@@ -35,7 +35,7 @@ exports.add = function(req, res) {
     meeting.address_state = req.body.address_state;
     meeting.address_zip = req.body.address_zip;
     meeting.meeting_time = req.body.meeting_time;
-    meeting.is_active = req.body.is_active;
+    meeting.is_active = true;
 
     //Save and check error
     meeting.save(function(err) {
