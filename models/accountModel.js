@@ -72,9 +72,21 @@ var accountSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    national: {
+        type: Boolean,
+        required: true
+    },
+    referral: {
+        type: Boolean,
+        required: true
+    },
+    referral_group_id: {
+        type: String,
+        required: false
+    },
     notes: {
         type: String,
-        required: true
+        required: false
     },
 });
 

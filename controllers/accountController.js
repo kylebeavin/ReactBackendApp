@@ -40,6 +40,9 @@ exports.add = function(req, res) {
     account.hauling_contract = req.body.hauling_contract; // Bool, not required 
     account.hauling_expiration = req.body.hauling_expiration; // Date, not required 
     account.notes = req.body.notes; // String, not required
+    account.national = req.body.national; // Bool required
+    account.referral = req.body.referral; // Bool required
+    account.referral_group_id = req.body.referral_group_id; // Accounts group ID from referral 
 
     //Save and check error
     account.save(function(err) {
