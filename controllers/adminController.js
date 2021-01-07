@@ -3,7 +3,11 @@ Admin = require('../models/adminModel.js')
 
 // For queries
 exports.view = function(req, res) {
-    Admin.find(req.body,
+    Admin.find(req.body, null, {
+            sort: {
+                user: 1
+            }
+        },
         function(err, query) {
 
             if (err) {

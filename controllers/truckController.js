@@ -3,7 +3,11 @@ Truck = require('../models/truckModel.js');
 
 // For queries
 exports.view = function(req, res) {
-    Truck.find(req.body,
+    Truck.find(req.body, null, {
+            sort: {
+                name: 1
+            }
+        },
         function(err, query) {
 
             if (err) {

@@ -3,7 +3,11 @@ Group = require('../models/groupModel.js')
 
 // For queries
 exports.view = function(req, res) {
-    Group.find(req.body,
+    Group.find(req.body, null, {
+            sort: {
+                region: 1
+            }
+        },
         function(err, query) {
 
             if (err) {

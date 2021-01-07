@@ -4,7 +4,11 @@ Account = require('../models/accountModel.js')
 
 // For queries
 exports.view = function(req, res) {
-    Account.find(req.body,
+    Account.find(req.body, null, {
+            sort: {
+                name: 1
+            }
+        },
         function(err, query) {
 
             if (err) {

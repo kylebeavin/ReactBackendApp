@@ -3,7 +3,11 @@ Location = require('../models/locationModel.js')
 
 // For queries
 exports.view = function(req, res) {
-    Location.find(req.body,
+    Location.find(req.body, null, {
+            sort: {
+                group_id: 1
+            }
+        },
         function(err, query) {
 
             if (err) {

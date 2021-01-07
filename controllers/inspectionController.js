@@ -3,7 +3,11 @@ Inspection = require('../models/inspectionModel.js');
 
 // For queries
 exports.view = function(req, res) {
-    Invoice.find(req.body,
+    Invoice.find(req.body, null, {
+            sort: {
+                group_id: 1
+            }
+        },
         function(err, query) {
 
             if (err) {

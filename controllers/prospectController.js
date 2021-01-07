@@ -3,7 +3,11 @@ Prospect = require('../models/prospectModel.js')
 
 // For queries
 exports.view = function(req, res) {
-    Prospect.find(req.body,
+    Prospect.find(req.body, null, {
+            sort: {
+                first_name: 1
+            }
+        },
         function(err, query) {
 
             if (err) {

@@ -4,7 +4,11 @@ Meeting = require('../models/meetingModel.js')
 
 // For queries
 exports.view = function(req, res) {
-    Meeting.find(req.body,
+    Meeting.find(req.body, null, {
+            sort: {
+                title: 1
+            }
+        },
         function(err, query) {
 
             if (err) {

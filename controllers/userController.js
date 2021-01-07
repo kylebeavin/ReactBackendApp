@@ -8,7 +8,11 @@ var config = require('../config');
 
 // For queries
 exports.view = function(req, res) {
-    User.find(req.body,
+    User.find(req.body, null, {
+            sort: {
+                first_name: 1
+            }
+        },
         function(err, query) {
 
             if (err) {
@@ -45,7 +49,6 @@ exports.add = function(req, res) {
     user.last_name = req.body.last_name;
     user.role = req.body.role;
     user.group_id = req.body.group_id;
-    user.is_active = true;
 
     //Save and check error
     user.save(function(err, user) {
@@ -54,7 +57,7 @@ exports.add = function(req, res) {
         else res.json({
             message: "New User Added!",
             data: user,
-            status: (200).send({ auth: true, token: token }),
+            status: 200,
         });
     });
 };
