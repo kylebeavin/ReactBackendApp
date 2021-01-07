@@ -3,7 +3,7 @@ User = require('../models/userModel.js');
 // import bcrypt
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-var config = require('../config');
+var secret = process.env.ACCESS_TOKEN_SECRET;
 
 // For queries
 exports.view = function(req, res) {
@@ -34,7 +34,7 @@ exports.add = function(req, res) {
     var user = new User();
     try {
         var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-        var token = jwt.sign({ id: user._id }, config.secret, {
+        var token = jwt.sign({ id: user._id }, secret, {
             expiresIn: 86400
         })
     } catch (error) {
@@ -82,7 +82,7 @@ exports.login = function(req, res) {
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
 
-        var token = jwt.sign({ id: user._id }, config.secret, {
+        var token = jwt.sign({ id: user._id }, secret, {
             expiresIn: 86400 // expires in 24 hours
         });
 
