@@ -55,30 +55,30 @@ var accountSchema = mongoose.Schema({
     // Date for the demo smash
     demo: {
         type: Date,
-        required: true
+        required: false
     },
     // When lead becomes account
     conversion: {
         type: Date,
-        required: true
+        required: false
     },
     // Hauling contract status
     hauling_contract: {
         type: Boolean,
-        required: true
+        required: false
     },
     // Hauling contract expiration date
     hauling_expiration: {
         type: Date,
-        required: true
+        required: false
     },
     national: {
         type: Boolean,
-        required: true
+        required: false
     },
     referral: {
         type: Boolean,
-        required: true
+        false: true
     },
     referral_group_id: {
         type: String,
