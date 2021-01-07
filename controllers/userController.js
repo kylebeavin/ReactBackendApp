@@ -4,7 +4,6 @@ User = require('../models/userModel.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 var config = require('../config');
-// var verifyToken = require('../middleware/verifyToken')
 
 // For queries
 exports.view = function(req, res) {
