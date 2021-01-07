@@ -36,7 +36,7 @@ var locationSchema = mongoose.Schema({
         default: Date.now
     },
     // Marks location active / inactive
-    is_valid: {
+    is_active: {
         type: Boolean,
         default: true
     }

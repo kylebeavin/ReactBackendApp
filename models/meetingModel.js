@@ -55,7 +55,7 @@ var meetingSchema = mongoose.Schema({
         required: true
     },
     // Marks meeting active / inactive
-    is_valid: {
+    is_active: {
         type: Boolean,
         default: true
     }

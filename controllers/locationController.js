@@ -31,7 +31,7 @@ exports.add = function(req, res) {
     location.address_city = req.body.address_city;
     location.address_state = req.body.address_state;
     location.address_zip = req.body.address_zip;
-    location.is_valid = req.body.is_valid;
+    location.is_active = req.body.is_active;
 
     //Save and check error
     location.save(function(err) {
@@ -57,7 +57,7 @@ exports.update = function(req, res) {
         location.address_city = req.body.address_city;
         location.address_state = req.body.address_state;
         location.address_zip = req.body.address_zip;
-        location.is_valid = req.body.is_valid;
+        location.is_active = req.body.is_active;
 
         //save and check errors
         location.save(function(err) {
