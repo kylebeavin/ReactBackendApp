@@ -23,21 +23,21 @@ exports.view = function(req, res) {
 };
 
 //For creating new meeting
-exports.add = function (req, res) {
+exports.add = function(req, res) {
     var meeting = new Meeting();
     meeting.account_id = req.body.account_id // String, required
     meeting.group_id = req.body.group_id // String, required
     meeting.contact_id = req.body.contact_id;
     meeting.owner_id = req.body.owner_id;
-    meeting.location_name = req.body.location_name;
+    meeting.title = req.body.title;
     meeting.address_street = req.body.address_street;
     meeting.address_city = req.body.address_city;
     meeting.address_state = req.body.address_state;
     meeting.address_zip = req.body.address_zip;
-    meeting.time = req.body.meeting_time;
+    meeting.meeting_time = req.body.meeting_time;
 
     //Save and check error
-    meeting.save(function (err) {
+    meeting.save(function(err) {
         if (err)
             res.json({
                 status: "error",
@@ -55,8 +55,8 @@ exports.add = function (req, res) {
 };
 
 // Update Meeting by Object Id
-exports.update = function (req, res) {
-    Meeting.findById(req.params._id, function (err, meeting) {
+exports.update = function(req, res) {
+    Meeting.findById(req.params._id, function(err, meeting) {
         if (err)
             res.json({
                 status: "error",
@@ -67,14 +67,14 @@ exports.update = function (req, res) {
         meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;
         meeting.owner_id = req.body.owner_id;
-        meeting.location_name = req.body.location_name;
+        meeting.title = req.body.title;
         meeting.address_street = req.body.address_street;
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
         meeting.address_zip = req.body.address_zip;
-        meeting.time = req.body.meeting_time;
+        meeting.meeting_time = req.body.meeting_time;
         //save and check errors
-        meeting.save(function (err) {
+        meeting.save(function(err) {
             if (err)
                 res.json({
                     status: "error",
@@ -91,10 +91,10 @@ exports.update = function (req, res) {
     });
 };
 // Delete Meeting by Object Id
-exports.delete = function (req, res) {
+exports.delete = function(req, res) {
     Meeting.deleteOne({
         _id: req.params._id
-    }, function (err, contact) {
+    }, function(err, contact) {
         if (err)
             res.send(err)
         else res.json({
