@@ -78,7 +78,7 @@ var accountSchema = mongoose.Schema({
     },
     referral: {
         type: Boolean,
-        false: true
+        required: false
     },
     referral_group_id: {
         type: String,
