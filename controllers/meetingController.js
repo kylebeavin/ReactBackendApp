@@ -4,7 +4,7 @@ Meeting = require('../models/meetingModel.js')
 
 // For queries
 exports.view = function(req, res) {
-    User.find(req.body,
+    Meeting.find(req.body,
         function(err, query) {
 
             if (err) {
