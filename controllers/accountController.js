@@ -39,14 +39,14 @@ exports.add = function(req, res) {
     account.address_state = req.body.address_state; // String, required
     account.address_zip = req.body.address_zip; // String, required
     account.email = req.body.email; // String, required
-    account.demo = req.body.demo; // Date, not required 
-    account.conversion = req.body.conversion; // Date, not required 
-    account.hauling_contract = req.body.hauling_contract; // Bool, not required 
-    account.hauling_expiration = req.body.hauling_expiration; // Date, not required 
-    account.notes = req.body.notes; // String, not required
-    account.national = req.body.national; // Bool required
-    account.referral = req.body.referral; // Bool required
-    account.referral_group_id = req.body.referral_group_id; // Accounts group ID from referral 
+    account.demo = req.body.demo != null ? req.body.demo : null;
+    account.conversion = req.body.conversion != null ? req.body.conversion : null;
+    account.hauling_contract = req.body.hauling_contract != null ? req.body.hauling_contract : null;
+    account.hauling_expiration = req.body.hauling_expiration != null ? req.body.hauling_expiration : null;
+    account.notes = req.body.notes != null ? req.body.notes : null;
+    account.national = req.body.national != null ? req.body.national : null;
+    account.referral = req.body.referral != null ? req.body.referral : null;
+    account.referral_group_id = req.body.referral_group_id != null ? req.body.referral_group_id : null;
 
     //Save and check error
     account.save(function(err) {
@@ -90,6 +90,9 @@ exports.update = function(req, res) {
         account.hauling_contract = req.body.hauling_contract;
         account.hauling_expiration = req.body.hauling_expiration;
         account.notes = req.body.hauling_expiration;
+        account.national = req.body.national;
+        account.referral = req.body.referral;
+        account.referral_group_id = req.body.referral_group_id;
         //save and check errors
         account.save(function(err) {
             if (err)

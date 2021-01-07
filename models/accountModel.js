@@ -55,7 +55,7 @@ var accountSchema = mongoose.Schema({
     // Date for the demo smash
     demo: {
         type: Date,
-        required: false
+        default: null
     },
     // When lead becomes account
     conversion: {
