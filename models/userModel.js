@@ -20,11 +20,11 @@ var userSchema = mongoose.Schema({
     },
     token: {
         type: String,
-        required: true
+        required: false
     },
     image: {
         type: String,
-        required: true
+        required: false
     },
     // Partner, Driver, Mechanic, Sales, GM
     role: {
