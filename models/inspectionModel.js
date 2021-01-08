@@ -7,12 +7,7 @@ var inspectionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    // Possibly replaced by document ID
-    inspection_id: {
-        type: String,
-        required: true
-    },
-    // Possibly replaced by document ID
+    // Possibly Truck's _id
     truck_id: {
         type: String,
         required: true

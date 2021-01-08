@@ -23,8 +23,8 @@ var truckSchema = mongoose.Schema({
     },
     // Truck hours operated
     hours: {
-        type: Date,
-        default: Date.now
+        type: String,
+        required: true
     },
     // TBD
     machine_id: {
