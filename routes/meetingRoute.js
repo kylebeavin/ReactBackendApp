@@ -2,16 +2,17 @@
 let router = require('express').Router();
 //Import Controllers
 var meetingController = require('../controllers/meetingController.js');
+var verifyToken = require('../middleware/verifyToken.js');
 // Meeting routes
 router.route('/meetings')
-    .get(meetingController.view)
-    .post(meetingController.add)
+    .get(verifyToken.verifyToken, meetingController.view)
+    .post(verifyToken.verifyToken, meetingController.add)
 router.route('/meetingsBy')
-    .post(meetingController.view)
+    .post(verifyToken.verifyToken, meetingController.view)
 router.route('/meetings/:_id')
-    .put(meetingController.update)
-    .patch(meetingController.update)
-    .delete(meetingController.delete)
+    .put(verifyToken.verifyToken, meetingController.update)
+    .patch(verifyToken.verifyToken, meetingController.update)
+    .delete(verifyToken.verifyToken, meetingController.delete)
 
 //Export API routes
 module.exports = router;

@@ -2,16 +2,17 @@
 let router = require('express').Router();
 //Import Controllers
 var accountController = require('../controllers/accountController.js');
+var verifyToken = require('../middleware/verifyToken.js');
 // Account routes
 router.route('/accounts')
-    .get(accountController.view)
-    .post(accountController.add)
+    .get(verifyToken.verifyToken, accountController.view)
+    .post(verifyToken.verifyToken, accountController.add)
 router.route('/accountsBy')
-    .post(accountController.view)
+    .post(verifyToken.verifyToken, accountController.view)
 router.route('/accounts/:_id')
-    .put(accountController.update)
-    .patch(accountController.update)
-    .delete(accountController.delete)
+    .put(verifyToken.verifyToken, accountController.update)
+    .patch(verifyToken.verifyToken, accountController.update)
+    .delete(verifyToken.verifyToken, accountController.delete)
 
 //Export API routes
 module.exports = router;

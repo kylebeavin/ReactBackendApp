@@ -16,11 +16,11 @@ router.route('/users')
     .get(verifyToken.verifyToken, userController.view)
     // .post(userController.add)
 router.route('/usersBy')
-    .post(userController.view)
+    .post(verifyToken.verifyToken, userController.view)
 router.route('/users/:_id')
-    .put(userController.update)
-    .patch(userController.update)
-    .delete(userController.delete)
+    .put(verifyToken.verifyToken, userController.update)
+    .patch(verifyToken.verifyToken, userController.update)
+    .delete(verifyToken.verifyToken, userController.delete)
 
 //Export API routes
 module.exports = router;

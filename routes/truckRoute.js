@@ -2,16 +2,17 @@
 let router = require('express').Router();
 //Import Controllers
 var truckController = require('../controllers/truckController.js');
+var verifyToken = require('../middleware/verifyToken.js');
 // Truck routes
 router.route('/trucks')
-    .get(truckController.view)
-    .post(truckController.add)
+    .get(verifyToken.verifyToken, truckController.view)
+    .post(verifyToken.verifyToken, truckController.add)
 router.route('/trucksBy')
-    .post(truckController.view)
+    .post(verifyToken.verifyToken, truckController.view)
 router.route('/trucks/:_id')
-    .put(truckController.update)
-    .patch(truckController.update)
-    .delete(truckController.delete)
+    .put(verifyToken.verifyToken, truckController.update)
+    .patch(verifyToken.verifyToken, truckController.update)
+    .delete(verifyToken.verifyToken, truckController.delete)
 
 //Export API routes
 module.exports = router;
