@@ -56,11 +56,22 @@ exports.add = function (req, res) {
 
 // For authenticating user by token
 exports.auth = function (req, res) {
-    User.findById(req.userId, { password: 0 }, function (err, user) {
-        if (err) return res.status(500).send("There was a problem finding the user.");
-        if (!user) return res.status(404).send("No user found.");
-
-        res.status(200).send(user);
+    User.findOne({ email: req.body.email }, function (err, user) {
+        if (err) return res.status(500).send('Error on the server.');
+        if (!user) return res.status(404).send('No token found.');
+        var token = req.body.token;
+        if (user.token == token) {
+            res.json({
+                message: 'Tokens match',
+                auth: true
+            })
+            console.log('success');
+        } else {
+            res.json({
+                message: 'BAD',
+                auth: false
+            })
+        }
     });
 
 };
@@ -95,7 +106,7 @@ exports.login = function (req, res) {
                 res.json(err)
             else res.json({
                 status: 200,
-                message: "User Updated Successfully",
+                message: "User logged in successfully",
                 data: user,
                 auth: true,
                 token: token
@@ -108,7 +119,32 @@ exports.login = function (req, res) {
 
 // For logging out
 exports.logout = function (req, res) {
-    res.status(200).send({ auth: false, token: null });
+    User.findOne({ token: req.body.token }, function (err, user) {
+        if (err) return res.status(500).send('Error on the server.');
+        if (!user) return res.status(404).send('No token found.');
+
+        user._id = user._id;
+        user.email = user.email;
+        user.password = user.password;
+        user.token = null;
+        user.image = user.image;
+        user.first_name = user.first_name;
+        user.last_name = user.last_name;
+        user.role = user.role;
+        user.group_id = user.group_id;
+        user.is_active = user.is_active;
+
+        //save and check errors
+        user.save(function (err) {
+            if (err)
+                res.json(err)
+            else res.json({
+                status: 200,
+                message: "User logged out Successfully",
+                auth: false,
+            });
+        });
+    });
 };
 
 // Update User by Mongo Object ID
