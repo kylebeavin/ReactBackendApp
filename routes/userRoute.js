@@ -3,6 +3,7 @@ let router = require('express').Router();
 
 //Import Controllers
 var userController = require('../controllers/userController.js');
+var verifyToken = require('../middleware/verifyToken.js');
 
 // User routes
 router.route('/auth')
@@ -12,7 +13,7 @@ router.route('/login')
 router.route('/logout')
     .post(userController.logout)
 router.route('/users')
-    .get(userController.view)
+    .get(verifyToken.verifyToken, userController.view)
     // .post(userController.add)
 router.route('/usersBy')
     .post(userController.view)

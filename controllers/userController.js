@@ -6,13 +6,13 @@ const jwt = require('jsonwebtoken');
 var secret = process.env.ACCESS_TOKEN_SECRET;
 
 // For queries
-exports.view = function (req, res) {
+exports.view = function(req, res) {
     User.find(req.body, null, {
-        sort: {
-            first_name: 1
-        }
-    },
-        function (err, query) {
+            sort: {
+                first_name: 1
+            }
+        },
+        function(err, query) {
 
             if (err) {
                 res.json({
@@ -30,7 +30,7 @@ exports.view = function (req, res) {
 };
 
 // For creating new user
-exports.add = function (req, res) {
+exports.add = function(req, res) {
     var user = new User();
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     user.email = req.body.email;
@@ -43,7 +43,7 @@ exports.add = function (req, res) {
     user.group_id = req.body.group_id;
 
     //Save and check error
-    user.save(function (err, user) {
+    user.save(function(err, user) {
         if (err) return res.status(500).send("There was a problem registering the user.")
 
         else res.json({
@@ -55,8 +55,8 @@ exports.add = function (req, res) {
 };
 
 // For authenticating user by token
-exports.auth = function (req, res) {
-    User.findOne({ token: req.body.token }, function (err, user) {
+exports.auth = function(req, res) {
+    User.findOne({ token: req.body.token }, function(err, user) {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No token found.');
         var token = req.body.token;
@@ -75,8 +75,8 @@ exports.auth = function (req, res) {
 };
 
 // For logging in
-exports.login = function (req, res) {
-    User.findOne({ email: req.body.email }, function (err, user) {
+exports.login = function(req, res) {
+    User.findOne({ email: req.body.email }, function(err, user) {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No user found.');
 
@@ -98,7 +98,7 @@ exports.login = function (req, res) {
         user.is_active = user.is_active;
 
         //save and check errors
-        user.save(function (err) {
+        user.save(function(err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -114,8 +114,8 @@ exports.login = function (req, res) {
 };
 
 // For logging out
-exports.logout = function (req, res) {
-    User.findOne({ token: req.body.token }, function (err, user) {
+exports.logout = function(req, res) {
+    User.findOne({ token: req.body.token }, function(err, user) {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No token found.');
 
@@ -131,7 +131,7 @@ exports.logout = function (req, res) {
         user.is_active = user.is_active;
 
         //save and check errors
-        user.save(function (err) {
+        user.save(function(err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -144,8 +144,8 @@ exports.logout = function (req, res) {
 };
 
 // Update User by Mongo Object ID
-exports.update = function (req, res) {
-    User.findById(req.params._id, function (err, user) {
+exports.update = function(req, res) {
+    User.findById(req.params._id, function(err, user) {
         if (err)
             res.send(err);
         user._id = req.body._id ? req.body._id : user._id;
@@ -160,7 +160,7 @@ exports.update = function (req, res) {
         user.is_active = req.body.is_active;
 
         //save and check errors
-        user.save(function (err) {
+        user.save(function(err) {
             if (err)
                 res.json(err)
             else res.json({
@@ -172,10 +172,10 @@ exports.update = function (req, res) {
 };
 
 // Delete User by Mongo Object ID
-exports.delete = function (req, res) {
+exports.delete = function(req, res) {
     User.deleteOne({
         _id: req.params._id
-    }, function (err, contact) {
+    }, function(err, contact) {
         if (err)
             res.send(err)
         else res.json({
