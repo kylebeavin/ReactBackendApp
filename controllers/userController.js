@@ -56,16 +56,15 @@ exports.add = function (req, res) {
 
 // For authenticating user by token
 exports.auth = function (req, res) {
-    User.findOne({ email: req.body.email }, function (err, user) {
+    User.findOne({ token: req.body.token }, function (err, user) {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No token found.');
         var token = req.body.token;
         if (user.token == token) {
             res.json({
-                message: 'Tokens match',
+                message: 'Token Valid',
                 auth: true
             })
-            console.log('success');
         } else {
             res.json({
                 message: 'BAD',
@@ -73,7 +72,6 @@ exports.auth = function (req, res) {
             })
         }
     });
-
 };
 
 // For logging in
