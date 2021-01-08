@@ -76,7 +76,6 @@ exports.auth = function (req, res) {
 
 // For logging in
 exports.login = function (req, res) {
-
     User.findOne({ email: req.body.email }, function (err, user) {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No user found.');
@@ -113,7 +112,6 @@ exports.login = function (req, res) {
     });
 
 };
-
 
 // For logging out
 exports.logout = function (req, res) {
