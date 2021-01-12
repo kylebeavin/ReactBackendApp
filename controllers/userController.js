@@ -90,44 +90,40 @@ exports.auth = async function(req, res) {
 // For logging in
 exports.login = async function(req, res) {
     User.findOne({ email: req.body.email }, function(err, user) {
-        try {
-            if (err) return res.status(500).send('Error on the server.');
-            if (!user) return res.status(404).send('No user found.');
+        if (err) return res.status(500).send('Error on the server.');
+        if (!user) return res.status(404).send('No user found.');
 
-            var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-            if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+        var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
 
-            var token = jwt.sign({ id: user._id }, secret, {
-                expiresIn: 50400 // expires in 14 hour(s)
+        var token = jwt.sign({ id: user._id }, secret, {
+            expiresIn: 50400 // expires in 14 hour(s)
+        });
+        user._id = user._id;
+        user.email = user.email;
+        user.password = user.password;
+        user.token = token;
+        user.image = user.image;
+        user.first_name = user.first_name;
+        user.last_name = user.last_name;
+        user.role = user.role;
+        user.group_id = user.group_id;
+        user.is_active = user.is_active;
+
+        //save and check errors
+        user.save(function(err) {
+            if (err)
+                res.json(err)
+            else res.json({
+                status: 200,
+                message: "User logged in successfully",
+                data: user,
+                auth: true,
+                token: token
             });
-            user._id = user._id;
-            user.email = user.email;
-            user.password = user.password;
-            user.token = token;
-            user.image = user.image;
-            user.first_name = user.first_name;
-            user.last_name = user.last_name;
-            user.role = user.role;
-            user.group_id = user.group_id;
-            user.is_active = user.is_active;
+        });
+    });
 
-            //save and check errors
-            user.save(function(err) {
-                if (err)
-                    res.json(err)
-                else res.json({
-                    status: 200,
-                    message: "User logged in successfully",
-                    data: user,
-                    auth: true,
-                    token: token
-                });
-            });
-        } catch (err) {
-            res.status(400).json({ message: 'Something went wrong' })
-        }
-
-    })
 };
 
 // For logging out
