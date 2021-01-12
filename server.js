@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 
 // import mongodb connection string
 const config = require('config');
-
+const router = require('./routes/routes')
 // import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
@@ -65,6 +65,7 @@ const port = process.env.PORT || 3000;
 var path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
+app.get('/api', router)
 
 // Add headers
 app.use(require('./middleware/headers'));

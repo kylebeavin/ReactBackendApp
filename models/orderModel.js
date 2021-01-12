@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 //schema
-var agreementSchema = mongoose.Schema({
+var orderSchema = mongoose.Schema({
     account_id: {
         type: String,
         required: true
@@ -32,8 +32,8 @@ var agreementSchema = mongoose.Schema({
 });
 
 // Export Agreement Model
-var Agreement = module.exports = mongoose.model('agreement', agreementSchema);
+const  Order = module.exports = mongoose.model('order', orderSchema);
 
 module.exports.get = function(callback, limit) {
-    Agreement.find(callback).limit(limit);
+    Order.find(callback).limit(limit);
 }
