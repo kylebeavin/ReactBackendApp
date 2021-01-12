@@ -65,61 +65,43 @@ exports.update = async function(req, res) {
             orderToUpdate.account_id = req.body.account_id
             orderToUpdate.group_id = req.body.group_id
             orderToUpdate.is_recurring = req.body.is_recurring
+           let updatedOrder = await orderToUpdate.save()
+           if(updatedOrder){
+               res.status(204).json({
+                status: "success",
+                status: 204,
+                message: "Order Updated Successfully",
+                data: updatedOrder
+            })
+           }
+           else{
+               res.status(400).json({message:'Failed to update', status:400})
+           }
+        }
+        else{
+            res.status(400).json({message:'Order not found'})
         }
     }
-    Order.findById(req.params._id, function(err, account) {
-        if (err)
-            res.json({
-                status: "error",
-                status: 304, // 
-                message: err
-            });
-        account.group_id = req.body.group_id;
-        account.name = req.body.name;
-        account.owner_id = req.body.owner_id;
-        account.is_active = req.body.is_active;
-        account.stage = req.body.stage;
-        account.address_street = req.body.address_street;
-        account.address_city = req.body.address_city;
-        account.address_state = req.body.address_state;
-        account.address_zip = req.body.address_zip;
-        account.email = req.body.email;
-        account.demo = req.body.demo;
-        account.conversion = req.body.conversion;
-        account.hauling_contract = req.body.hauling_contract;
-        account.hauling_expiration = req.body.hauling_expiration;
-        account.notes = req.body.hauling_expiration;
-        account.national = req.body.national;
-        account.referral = req.body.referral;
-        account.referral_group_id = req.body.referral_group_id;
-        //save and check errors
-        account.save(function(err) {
-            if (err)
-                res.json({
-                    status: "error",
-                    status: 304, // 
-                    message: err
-                });
-            else res.json({
-                status: "success",
-                status: 200,
-                message: "Account Updated Successfully",
-                data: account
-            });
-        });
-    });
+    catch(err){
+        res.status(400).json({message:'Something went wrong'})
+    }
+    
+               
 };
 
 // Delete Account by Object Id
-exports.delete = function(req, res) {
-    Account.deleteOne({
-        _id: req.params._id
-    }, function(err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Account Deleted by Object Id'
-        });
-    });
+exports.delete = async function(req, res) {
+    try{
+        let deleteOrder = Order.deleteOne({_id:req.params._id}).exec()
+        if(deleteOrder){
+            res.status(204).json({message:'Order successfully deleted'})
+        }
+        else{
+            res.status(400).json({message:'Failed to delete'})
+        }
+    }
+    catch(err){
+        res.status(400).json({message:'Something went wrong'})
+    }
+    
 };
