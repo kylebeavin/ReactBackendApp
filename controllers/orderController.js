@@ -1,6 +1,6 @@
-//accountController.js
-//Import Account Model
-Account = require('../models/accountModel.js')
+//orderController.js
+//Import Order Model
+Order = require('../models/orderModel.js')
 
 // For queries
 exports.view = function(req, res) {
