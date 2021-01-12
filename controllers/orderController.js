@@ -85,7 +85,7 @@ exports.update = async function(req, res) {
 
 };
 
-// Delete Account by Object Id
+// Delete Order by Object Id
 exports.delete = async function(req, res) {
     try {
         let deleteOrder = Order.deleteOne({ _id: req.params._id }).exec()
