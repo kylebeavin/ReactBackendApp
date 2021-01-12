@@ -7,6 +7,10 @@ var prospectSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    account_name: {
+        type: String,
+        required: true
+    },
     first_name: {
         type: String,
         required: true

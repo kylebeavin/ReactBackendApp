@@ -29,6 +29,7 @@ exports.view = function(req, res) {
 exports.add = function(req, res) {
     var prospect = new Prospect();
     prospect.group_id = req.body.group_id;
+    prospect.account_name = req.body.account_name;
     prospect.first_name = req.body.first_name;
     prospect.last_name = req.body.last_name;
     prospect.owner_id = req.body.owner_id;
@@ -55,6 +56,7 @@ exports.update = function(req, res) {
         if (err)
             res.send(err);
         prospect.group_id = req.body.group_id;
+        prospect.account_name = req.body.account_name;
         prospect.first_name = req.body.first_name;
         prospect.last_name = req.body.last_name;
         prospect.owner_id = req.body.owner_id;
