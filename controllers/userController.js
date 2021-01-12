@@ -1,3 +1,4 @@
+//userController.js
 //Import User Model
 User = require('../models/userModel.js');
 // import bcrypt
@@ -29,92 +30,108 @@ exports.view = function(req, res) {
         })
 };
 
-// For creating new user
-exports.add = function(req, res) {
-    var user = new User();
-    var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-    user.email = req.body.email;
-    user.password = hashedPassword;
-    user.token = req.body.token != null ? req.body.token : null;
-    user.image = req.body.image != null ? req.body.image : null;
-    user.first_name = req.body.first_name;
-    user.last_name = req.body.last_name;
-    user.role = req.body.role;
-    user.group_id = req.body.group_id;
+//For creating new user
+exports.add = async function(req, res) {
+    try {
+        const user = new User();
+        var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+        user.email = req.body.email;
+        user.password = hashedPassword;
+        user.token = req.body.token != null ? req.body.token : null;
+        user.image = req.body.image != null ? req.body.image : null;
+        user.first_name = req.body.first_name;
+        user.last_name = req.body.last_name;
+        user.role = req.body.role;
+        user.group_id = req.body.group_id;
 
-    //Save and check error
-    user.save(function(err, user) {
-        if (err) return res.status(500).send("There was a problem registering the user.")
 
-        else res.json({
-            message: "New User Added!",
-            data: user,
-            status: 200,
-        });
-    });
+        //Save and check error
+        let newUser = await user.save()
+        if (newUser) {
+            res.json({
+                status: "success",
+                status: 201,
+                message: "New user created!",
+            })
+        } else {
+            res.status(304).json({ status: 'something went wrong' })
+        }
+
+    } catch (err) {
+        res.json({ message: err.message })
+    }
+
 };
 
 // For authenticating user by token
-exports.auth = function(req, res) {
-    User.findOne({ token: req.body.token }, function(err, user) {
-        if (err) return res.status(500).send('Error on the server.');
-        if (!user) return res.status(404).send('No token found.');
-        var token = req.body.token;
-        if (user.token == token) {
-            res.json({
-                message: 'Token Valid',
-                auth: true
-            })
-        } else {
-            res.json({
-                message: 'BAD',
-                auth: false
-            })
-        }
-    });
+exports.auth = async function(req, res) {
+    try {
+        User.findOne({ token: req.body.token }, function(err, user) {
+            if (err) return res.status(500).send('Error on the server.');
+            if (!user) return res.status(404).send('No token found.');
+            var token = req.body.token;
+            if (user.token == token) {
+                res.json({
+                    message: 'Token Valid',
+                    auth: true
+                })
+            } else {
+                res.json({
+                    message: 'Bad Token, Token Invalid',
+                    auth: false
+                })
+            }
+        });
+    } catch (err) {
+        res.json({ message: err.message })
+    }
 };
 
 // For logging in
-exports.login = function(req, res) {
+exports.login = async function(req, res) {
     User.findOne({ email: req.body.email }, function(err, user) {
-        if (err) return res.status(500).send('Error on the server.');
-        if (!user) return res.status(404).send('No user found.');
+        try {
+            if (err) return res.status(500).send('Error on the server.');
+            if (!user) return res.status(404).send('No user found.');
 
-        var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+            var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+            if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
 
-        var token = jwt.sign({ id: user._id }, secret, {
-            expiresIn: 3600 // expires in 1 hour(s)
-        });
-        user._id = user._id;
-        user.email = user.email;
-        user.password = user.password;
-        user.token = token;
-        user.image = user.image;
-        user.first_name = user.first_name;
-        user.last_name = user.last_name;
-        user.role = user.role;
-        user.group_id = user.group_id;
-        user.is_active = user.is_active;
-
-        //save and check errors
-        user.save(function(err) {
-            if (err)
-                res.json(err)
-            else res.json({
-                status: 200,
-                message: "User logged in successfully",
-                data: user,
-                auth: true,
-                token: token
+            var token = jwt.sign({ id: user._id }, secret, {
+                expiresIn: 50400 // expires in 14 hour(s)
             });
-        });
-    });
+            user._id = user._id;
+            user.email = user.email;
+            user.password = user.password;
+            user.token = token;
+            user.image = user.image;
+            user.first_name = user.first_name;
+            user.last_name = user.last_name;
+            user.role = user.role;
+            user.group_id = user.group_id;
+            user.is_active = user.is_active;
 
+            //save and check errors
+            user.save(function(err) {
+                if (err)
+                    res.json(err)
+                else res.json({
+                    status: 200,
+                    message: "User logged in successfully",
+                    data: user,
+                    auth: true,
+                    token: token
+                });
+            });
+        } catch (err) {
+            res.status(400).json({ message: 'Something went wrong' })
+        }
+
+    })
 };
 
 // For logging out
-exports.logout = function(req, res) {
+exports.logout = async function(req, res) {
     User.findOne({ token: req.body.token }, function(err, user) {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No token found.');
@@ -144,7 +161,7 @@ exports.logout = function(req, res) {
 };
 
 // Update User by Mongo Object ID
-exports.update = function(req, res) {
+exports.update = async function(req, res) {
     User.findById(req.params._id, function(err, user) {
         if (err)
             res.send(err);
@@ -172,7 +189,7 @@ exports.update = function(req, res) {
 };
 
 // Delete User by Mongo Object ID
-exports.delete = function(req, res) {
+exports.delete = async function(req, res) {
     User.deleteOne({
         _id: req.params._id
     }, function(err, contact) {
