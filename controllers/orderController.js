@@ -88,9 +88,12 @@ exports.update = async function(req, res) {
 // Delete Order by Object Id
 exports.delete = async function(req, res) {
     try {
-        let deleteOrder = Order.deleteOne({ _id: req.params._id }).exec()
+        let deleteOrder = await Order.deleteOne({ _id: req.params._id }).exec()
         if (deleteOrder) {
-            res.status(204).json({ message: 'Order successfully deleted' })
+            res.status(204).json({
+                status: "success",
+                message: 'Order successfully deleted'
+            })
         } else {
             res.status(400).json({ message: 'Failed to delete' })
         }

@@ -128,72 +128,82 @@ exports.login = async function(req, res) {
 
 // For logging out
 exports.logout = async function(req, res) {
-    User.findOne({ token: req.body.token }, function(err, user) {
-        if (err) return res.status(500).send('Error on the server.');
-        if (!user) return res.status(404).send('No token found.');
-
-        user._id = user._id;
-        user.email = user.email;
-        user.password = user.password;
-        user.token = null;
-        user.image = user.image;
-        user.first_name = user.first_name;
-        user.last_name = user.last_name;
-        user.role = user.role;
-        user.group_id = user.group_id;
-        user.is_active = user.is_active;
-
-        //save and check errors
-        user.save(function(err) {
-            if (err)
-                res.json(err)
-            else res.json({
-                status: 200,
-                message: "User logged out Successfully",
-                auth: false,
-            });
-        });
-    });
+    try {
+        let user = await User.findOne({ token: req.body.token }).exec()
+        if (user) {
+            user._id = user._id;
+            user.email = user.email;
+            user.password = user.password;
+            user.token = null;
+            user.image = user.image;
+            user.first_name = user.first_name;
+            user.last_name = user.last_name;
+            user.role = user.role;
+            user.group_id = user.group_id;
+            user.is_active = user.is_active;
+            if (user) {
+                res.status(204).json({
+                    status: "success",
+                    status: 204,
+                    message: "User logged out Successfully",
+                    data: user
+                })
+            } else {
+                res.status(400).json({ message: 'Failed to logout', status: 400 })
+            }
+        } else {
+            res.status(400).json({ message: 'User not found' })
+        }
+    } catch (err) {
+        res.status(400).json({ message: 'Something went wrong' })
+    }
 };
 
-// Update User by Mongo Object ID
+// Update order by Object id
 exports.update = async function(req, res) {
-    User.findById(req.params._id, function(err, user) {
-        if (err)
-            res.send(err);
-        user._id = req.body._id ? req.body._id : user._id;
-        user.email = req.body.email;
-        user.password = req.body.password;
-        user.token = req.body.token;
-        user.image = req.body.image;
-        user.first_name = req.body.first_name;
-        user.last_name = req.body.last_name;
-        user.role = req.body.role;
-        user.group_id = req.body.group_id;
-        user.is_active = req.body.is_active;
+    try {
+        let userToUpdate = await User.findById(req.params._id).exec()
+        if (userToUpdate) {
+            userToUpdate._id = req.body._id ? req.body._id : userToUpdate._id;
+            userToUpdate.email = req.body.email;
+            userToUpdate.password = req.body.password;
+            userToUpdate.token = req.body.token;
+            userToUpdate.image = req.body.image;
+            userToUpdate.first_name = req.body.first_name;
+            userToUpdate.last_name = req.body.last_name;
+            userToUpdate.role = req.body.role;
+            userToUpdate.group_id = req.body.group_id;
+            userToUpdate.is_active = req.body.is_active;
+            let updatedUser = await userToUpdate.save()
+            if (updatedUser) {
+                res.status(204).json({
+                    status: "success",
+                    status: 204,
+                    message: "User Updated Successfully",
+                    data: updatedUser
+                })
+            } else {
+                res.status(400).json({ message: 'Failed to update', status: 400 })
+            }
+        } else {
+            res.status(400).json({ message: 'User not found' })
+        }
+    } catch (err) {
+        res.status(400).json({ message: 'Something went wrong' })
+    }
 
-        //save and check errors
-        user.save(function(err) {
-            if (err)
-                res.json(err)
-            else res.json({
-                message: "User Updated Successfully",
-                data: user
-            });
-        });
-    });
 };
 
-// Delete User by Mongo Object ID
+// Delete User by Object Id
 exports.delete = async function(req, res) {
-    User.deleteOne({
-        _id: req.params._id
-    }, function(err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'User Deleted'
-        });
-    });
+    try {
+        let deleteUser = await User.deleteOne({ _id: req.params._id }).exec()
+        if (deleteUser) {
+            res.status(204).json({ message: 'User successfully deleted' })
+        } else {
+            res.status(400).json({ message: 'Failed to delete' })
+        }
+    } catch (err) {
+        res.status(400).json({ message: 'Something went wrong' })
+    }
 };
