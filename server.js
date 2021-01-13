@@ -30,6 +30,7 @@ const prospectRoutes = require("./routes/prospectRoute");
 const serviceRoutes = require("./routes/serviceRoute");
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
+const geoJsonRoutes = require('./routes/prospectsGeoJsonRoute')
 
 // configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
@@ -86,7 +87,7 @@ app.use('/api', prospectRoutes);
 // app.use('/api', serviceRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
-
+app.use('/api', geoJsonRoutes)
 // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
