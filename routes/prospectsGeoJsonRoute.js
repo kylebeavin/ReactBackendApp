@@ -1,7 +1,7 @@
 //initialize express router
 let router = require('express').Router();
 //Import Controllers
-var prospectController = require('../controllers/prospectsGeojsonController.js');
+var prospectController = require('../controllers/prospectsGeoJsonController.js');
 var verifyToken = require('../middleware/verifyToken.js');
 // Prospect routes
 router.route('/geojson')
