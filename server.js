@@ -10,6 +10,7 @@ require('dotenv').config();
 const app = express();
 // import JWT
 const jwt = require('jsonwebtoken');
+const helmet = require('helmet')
 
 // import mongodb connection string
 const config = require('config');
@@ -40,7 +41,8 @@ app.use(bodyParser.json());
 
 // To parse cookies from the HTTP Request
 app.use(cookieParser());
-
+//use helmet as middleware
+app.use(helmet())
 // connect to mongoose
 const dbPath = config.get('mongoURI');
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
