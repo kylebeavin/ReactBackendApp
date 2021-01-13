@@ -26,7 +26,7 @@ var userSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    // Partner, Driver, Mechanic, Sales, GM
+    // Corporate, Admin, Partner, Driver, Mechanic, Sales, GM
     role: {
         type: String,
         enum: ['Corporate', 'Admin', 'Partner', 'GM', 'Sales', 'Driver', 'Mechanic'],
