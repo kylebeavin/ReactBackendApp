@@ -71,9 +71,9 @@ exports.add = async function(req, res) {
 // Update Account by Object Id
 exports.update = async function(req, res) {
     try {
-        let accountToUpdate = await Account.findById(req.params._id).exec()
+        let account = await Account.findById(req.params._id).exec()
 
-        if (orderToUpdate) {
+        if (account) {
             account.group_id = req.body.group_id;
             account.name = req.body.name;
             account.owner_id = req.body.owner_id;
@@ -92,7 +92,7 @@ exports.update = async function(req, res) {
             account.national = req.body.national;
             account.referral = req.body.referral;
             account.referral_group_id = req.body.referral_group_id;
-            let updatedAccount = await accountToUpdate.save()
+            let updatedAccount = await account.save()
             if (updatedAccount) {
                 res.status(204).json({
                     status: "success",

@@ -15,7 +15,7 @@ const helmet = require('helmet')
 // import mongodb connection string
 const config = require('config');
 const router = require('./routes/routes')
-// import routes
+    // import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
 const adminRoutes = require("./routes/adminRoute");
@@ -43,7 +43,11 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 //use helmet as middleware
 app.use(helmet())
+<<<<<<< HEAD
 // connect to mongoose
+=======
+    // connect to mongoose
+>>>>>>> dev
 const dbPath = config.get('mongoURI');
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
 const mongo = mongoose.connect(dbPath, options);
@@ -90,7 +94,11 @@ app.use('/api', prospectRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
 app.use('/api', geoJsonRoutes)
+<<<<<<< HEAD
 // Launch app to the specified port
+=======
+    // Launch app to the specified port
+>>>>>>> dev
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
 });

@@ -59,12 +59,12 @@ exports.add = async function(req, res) {
 // Update order by Object id
 exports.update = async function(req, res) {
     try {
-        let orderToUpdate = await Order.findById(req.params._id).exec()
-        if (orderToUpdate) {
-            orderToUpdate.account_id = req.body.account_id
-            orderToUpdate.group_id = req.body.group_id
-            orderToUpdate.is_recurring = req.body.is_recurring
-            let updatedOrder = await orderToUpdate.save()
+        let order = await Order.findById(req.params._id).exec()
+        if (order) {
+            order.account_id = req.body.account_id
+            order.group_id = req.body.group_id
+            order.is_recurring = req.body.is_recurring
+            let updatedOrder = await order.save()
             if (updatedOrder) {
                 res.status(204).json({
                     status: "success",
@@ -81,8 +81,6 @@ exports.update = async function(req, res) {
     } catch (err) {
         res.status(400).json({ message: 'Something went wrong' })
     }
-
-
 };
 
 // Delete Order by Object Id

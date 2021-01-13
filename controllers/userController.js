@@ -162,19 +162,19 @@ exports.logout = async function(req, res) {
 // Update order by Object id
 exports.update = async function(req, res) {
     try {
-        let userToUpdate = await User.findById(req.params._id).exec()
-        if (userToUpdate) {
-            userToUpdate._id = req.body._id ? req.body._id : userToUpdate._id;
-            userToUpdate.email = req.body.email;
-            userToUpdate.password = req.body.password;
-            userToUpdate.token = req.body.token;
-            userToUpdate.image = req.body.image;
-            userToUpdate.first_name = req.body.first_name;
-            userToUpdate.last_name = req.body.last_name;
-            userToUpdate.role = req.body.role;
-            userToUpdate.group_id = req.body.group_id;
-            userToUpdate.is_active = req.body.is_active;
-            let updatedUser = await userToUpdate.save()
+        let user = await User.findById(req.params._id).exec()
+        if (user) {
+            user._id = req.body._id ? req.body._id : user._id;
+            user.email = req.body.email;
+            user.password = req.body.password;
+            user.token = req.body.token;
+            user.image = req.body.image;
+            user.first_name = req.body.first_name;
+            user.last_name = req.body.last_name;
+            user.role = req.body.role;
+            user.group_id = req.body.group_id;
+            user.is_active = req.body.is_active;
+            let updatedUser = await user.save()
             if (updatedUser) {
                 res.status(204).json({
                     status: "success",
