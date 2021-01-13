@@ -72,6 +72,11 @@ var groupSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // Actual LLC
+    territory_zips: {
+        type: Array,
+        required: true
+    },
     // Doing Business As Name
     dba: {
         type: String,
