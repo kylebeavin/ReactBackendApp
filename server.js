@@ -14,10 +14,9 @@ const jwt = require('jsonwebtoken');
 // import mongodb connection string
 const config = require('config');
 const router = require('./routes/routes')
-// import routes
+    // import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
-const adminRoutes = require("./routes/adminRoute");
 // const agreementRoutes = require("./routes/agreementRoute");
 const contactRoutes = require("./routes/contactRoute");
 const groupRoutes = require("./routes/groupRoute");
@@ -73,7 +72,6 @@ app.use(require('./middleware/headers'));
 //Use API routes in the App
 app.use('/api', apiRoutes);
 app.use('/api', accountRoutes);
-app.use('/api', adminRoutes);
 // app.use('/api', agreementRoutes);
 app.use('/api', contactRoutes);
 app.use('/api', groupRoutes);
