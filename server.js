@@ -10,6 +10,7 @@ require('dotenv').config();
 const app = express();
 // import JWT
 const jwt = require('jsonwebtoken');
+const helmet = require('helmet')
 
 // import mongodb connection string
 const config = require('config');
@@ -17,6 +18,7 @@ const router = require('./routes/routes')
     // import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
+const adminRoutes = require("./routes/adminRoute");
 // const agreementRoutes = require("./routes/agreementRoute");
 const contactRoutes = require("./routes/contactRoute");
 const groupRoutes = require("./routes/groupRoute");
@@ -29,6 +31,7 @@ const prospectRoutes = require("./routes/prospectRoute");
 const serviceRoutes = require("./routes/serviceRoute");
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
+const geoJsonRoutes = require('./routes/prospectsGeoJsonRoute')
 
 // configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
@@ -38,8 +41,9 @@ app.use(bodyParser.json());
 
 // To parse cookies from the HTTP Request
 app.use(cookieParser());
-
-// connect to mongoose
+//use helmet as middleware
+app.use(helmet())
+    // connect to mongoose
 const dbPath = config.get('mongoURI');
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
 const mongo = mongoose.connect(dbPath, options);
@@ -72,6 +76,7 @@ app.use(require('./middleware/headers'));
 //Use API routes in the App
 app.use('/api', apiRoutes);
 app.use('/api', accountRoutes);
+app.use('/api', adminRoutes);
 // app.use('/api', agreementRoutes);
 app.use('/api', contactRoutes);
 app.use('/api', groupRoutes);
@@ -84,8 +89,8 @@ app.use('/api', prospectRoutes);
 // app.use('/api', serviceRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
-
-// Launch app to the specified port
+app.use('/api', geoJsonRoutes)
+    // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
 });

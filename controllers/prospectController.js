@@ -1,5 +1,5 @@
 //Import Prospect Model
-Prospect = require('../models/prospectModel.js')
+const Prospect = require('../models/prospectModel.js')
 
 // For queries
 exports.view = function(req, res) {
