@@ -81,8 +81,6 @@ exports.update = async function(req, res) {
     } catch (err) {
         res.status(400).json({ message: 'Something went wrong' })
     }
-
-
 };
 
 // Delete Order by Object Id

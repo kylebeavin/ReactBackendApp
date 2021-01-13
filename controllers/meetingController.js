@@ -27,37 +27,40 @@ exports.view = function(req, res) {
 };
 
 //For creating new meeting
-exports.add = function(req, res) {
-    var meeting = new Meeting();
-    meeting.account_id = req.body.account_id // String, required
-    meeting.group_id = req.body.group_id // String, required
-    meeting.contact_id = req.body.contact_id;
-    meeting.owner_id = req.body.owner_id;
-    meeting.title = req.body.title;
-    meeting.address_street = req.body.address_street;
-    meeting.address_city = req.body.address_city;
-    meeting.address_state = req.body.address_state;
-    meeting.address_zip = req.body.address_zip;
-    meeting.meeting_time = req.body.meeting_time;
-    meeting.is_active = true;
+exports.add = async function(req, res) {
+    try {
+        var meeting = new Meeting();
+        meeting.account_id = req.body.account_id // String, required
+        meeting.group_id = req.body.group_id // String, required
+        meeting.contact_id = req.body.contact_id;
+        meeting.owner_id = req.body.owner_id;
+        meeting.title = req.body.title;
+        meeting.address_street = req.body.address_street;
+        meeting.address_city = req.body.address_city;
+        meeting.address_state = req.body.address_state;
+        meeting.address_zip = req.body.address_zip;
+        meeting.meeting_time = req.body.meeting_time;
+        meeting.is_active = true;
 
-    //Save and check error
-    meeting.save(function(err) {
-        if (err)
+
+        //Save and check error
+        let newMeeting = await meeting.save()
+        if (newMeeting) {
             res.json({
-                status: "error",
-                status: 304, // 
-                message: err,
-            });
+                status: "success",
+                status: 201,
+                message: "New meeting created!",
+            })
+        } else {
+            res.status(304).json({ status: 'something went wrong' })
+        }
 
-        else res.json({
-            status: "success",
-            status: 201,
-            message: "New Meeting Added!",
-            data: meeting
-        });
-    });
+    } catch (err) {
+        res.json({ message: err.message })
+    }
+
 };
+
 
 // Update Meeting by Object Id
 exports.update = function(req, res) {
@@ -96,6 +99,44 @@ exports.update = function(req, res) {
         });
     });
 };
+
+// Update order by Object id
+exports.update = async function(req, res) {
+    try {
+        let meeting = await Order.findById(req.params._id).exec()
+        if (meeting) {
+            meeting.account_id = req.body.account_id // String, required
+            meeting.group_id = req.body.group_id // String, required
+            meeting.contact_id = req.body.contact_id;
+            meeting.owner_id = req.body.owner_id;
+            meeting.title = req.body.title;
+            meeting.address_street = req.body.address_street;
+            meeting.address_city = req.body.address_city;
+            meeting.address_state = req.body.address_state;
+            meeting.address_zip = req.body.address_zip;
+            meeting.meeting_time = req.body.meeting_time;
+            meeting.is_active = req.body.is_active;
+            let updatedOrder = await orderToUpdate.save()
+            if (updatedOrder) {
+                res.status(204).json({
+                    status: "success",
+                    status: 204,
+                    message: "Order Updated Successfully",
+                    data: updatedOrder
+                })
+            } else {
+                res.status(400).json({ message: 'Failed to update', status: 400 })
+            }
+        } else {
+            res.status(400).json({ message: 'Order not found' })
+        }
+    } catch (err) {
+        res.status(400).json({ message: 'Something went wrong' })
+    }
+
+
+};
+
 // Delete Meeting by Object Id
 exports.delete = function(req, res) {
     Meeting.deleteOne({

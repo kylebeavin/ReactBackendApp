@@ -61,8 +61,8 @@ exports.add = async function(req, res) {
 // Update prospect by Object id
 exports.update = async function(req, res) {
     try {
-        let prospectToUpdate = await Prospect.findById(req.params._id).exec()
-        if (prospectToUpdate) {
+        let prospect = await Prospect.findById(req.params._id).exec()
+        if (prospect) {
             prospect.group_id = req.body.group_id;
             prospect.account_name = req.body.account_name;
             prospect.first_name = req.body.first_name;

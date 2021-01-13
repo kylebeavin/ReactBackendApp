@@ -26,34 +26,9 @@ exports.view = function(req, res) {
 };
 
 //For creating new location
-exports.add = function(req, res) {
-    var location = new Location();
-    location.account_id = req.body.account_id;
-    location.group_id = req.body.group_id;
-    location.location_name = req.body.location_name;
-    location.address_street = req.body.address_street;
-    location.address_city = req.body.address_city;
-    location.address_state = req.body.address_state;
-    location.address_zip = req.body.address_zip;
-    location.is_active = req.body.is_active;
-
-    //Save and check error
-    location.save(function(err) {
-        if (err)
-            res.json(err);
-
-        else res.json({
-            message: "New Location Added!",
-            data: location
-        });
-    });
-};
-
-// Update Location
-exports.update = function(req, res) {
-    Location.findById(req.params._id, function(err, location) {
-        if (err)
-            res.send(err);
+exports.add = async function(req, res) {
+    try {
+        var location = new Location();
         location.account_id = req.body.account_id;
         location.group_id = req.body.group_id;
         location.location_name = req.body.location_name;
@@ -63,28 +38,68 @@ exports.update = function(req, res) {
         location.address_zip = req.body.address_zip;
         location.is_active = req.body.is_active;
 
-        //save and check errors
-        location.save(function(err) {
-            if (err)
-                res.json(err)
-            else res.json({
-                message: "Location Updated Successfully",
-                data: location
-            });
-        });
-    });
+        //Save and check error
+        let newLocation = await location.save()
+        if (newLocation) {
+            res.json({
+                status: "success",
+                status: 201,
+                message: "New location created!",
+            })
+        } else {
+            res.status(304).json({ status: 'something went wrong' })
+        }
+
+    } catch (err) {
+        res.json({ message: err.message })
+    }
 };
 
-// Delete Location
-exports.delete = function(req, res) {
-    Location.deleteOne({
-        _id: req.params._id
-    }, function(err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Location Deleted'
-        });
-    });
+// Update location by Object id
+exports.update = async function(req, res) {
+    try {
+        let location = await Location.findById(req.params._id).exec()
+        if (location) {
+            location.account_id = req.body.account_id;
+            location.group_id = req.body.group_id;
+            location.location_name = req.body.location_name;
+            location.address_street = req.body.address_street;
+            location.address_city = req.body.address_city;
+            location.address_state = req.body.address_state;
+            location.address_zip = req.body.address_zip;
+            location.is_active = req.body.is_active;
+            let updatedLocation = await location.save()
+            if (updatedLocation) {
+                res.status(204).json({
+                    status: "success",
+                    status: 204,
+                    message: "Location Updated Successfully",
+                    data: updatedLocation
+                })
+            } else {
+                res.status(400).json({ message: 'Failed to update location', status: 400 })
+            }
+        } else {
+            res.status(400).json({ message: 'Location not found' })
+        }
+    } catch (err) {
+        res.status(400).json({ message: 'Something went wrong' })
+    }
+};
+
+// Delete Location by Object Id
+exports.delete = async function(req, res) {
+    try {
+        let deleteLocation = await Location.deleteOne({ _id: req.params._id }).exec()
+        if (deleteLocation) {
+            res.status(204).json({
+                status: "success",
+                message: 'Location successfully deleted'
+            })
+        } else {
+            res.status(400).json({ message: 'Failed to delete' })
+        }
+    } catch (err) {
+        res.status(400).json({ message: 'Something went wrong' })
+    }
 };
