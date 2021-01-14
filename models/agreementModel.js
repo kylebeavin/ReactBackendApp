@@ -19,7 +19,7 @@ var agreementSchema = mongoose.Schema({
     },
     // Service constraints
     services: {
-        type: Array,
+        type: [String],
         enum: ['smash', 'hourly_smashing', 'monthly_recurring_charge',
             'haul_charge', 'lease_fee', 'delivery_charge', 'drop_fee',
             'environmental_recovery_fee', 'blocked_fee', 'card_processing_fee',
@@ -34,13 +34,13 @@ var agreementSchema = mongoose.Schema({
     },
     // Service per
     service_per: {
-        type: String,
+        type: [String],
         enum: ['day', 'week', 'month'],
         required: true
     },
     // Service days
     service_days: {
-        type: String,
+        type: [String],
         enum: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
         required: true
     },

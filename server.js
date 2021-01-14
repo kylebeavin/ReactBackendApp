@@ -82,7 +82,7 @@ app.use('/api', inspectionRoutes);
 app.use('/api', invoiceRoutes);
 app.use('/api', locationRoutes);
 app.use('/api', meetingRoutes);
-// app.use('/api', orderRoutes);
+app.use('/api', orderRoutes);
 app.use('/api', prospectRoutes);
 // app.use('/api', serviceRoutes);
 app.use('/api', truckRoutes);
