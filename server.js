@@ -18,7 +18,7 @@ const router = require('./routes/routes')
     // import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
-// const agreementRoutes = require("./routes/agreementRoute");
+const agreementRoutes = require("./routes/agreementRoute");
 const contactRoutes = require("./routes/contactRoute");
 const groupRoutes = require("./routes/groupRoute");
 const inspectionRoutes = require("./routes/inspectionRoute");
@@ -75,7 +75,7 @@ app.use(require('./middleware/headers'));
 //Use API routes in the App
 app.use('/api', apiRoutes);
 app.use('/api', accountRoutes);
-// app.use('/api', agreementRoutes);
+app.use('/api', agreementRoutes);
 app.use('/api', contactRoutes);
 app.use('/api', groupRoutes);
 app.use('/api', inspectionRoutes);

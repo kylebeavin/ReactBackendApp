@@ -3,6 +3,7 @@ let router = require('express').Router();
 //Import Controllers
 var agreementController = require('../controllers/agreementController.js');
 var verifyToken = require('../middleware/verifyToken.js');
+
 // Agreement routes
 router.route('/agreements')
     .get(verifyToken.verifyToken, agreementController.view)
