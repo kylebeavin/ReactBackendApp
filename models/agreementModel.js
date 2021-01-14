@@ -12,6 +12,11 @@ var agreementSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // owner id
+    owner_id: {
+       type: String,
+       required:true
+    },
     // Monthly payment
     dollar_amount: {
         type: String,

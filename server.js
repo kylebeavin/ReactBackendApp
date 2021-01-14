@@ -34,6 +34,7 @@ const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
 const geoJsonRoutes = require('./routes/prospectsGeoJsonRoute')
 const notFound = require('./middleware/notFound')
+const errorHandler = require('./middleware/errorHandler')
 
 
 // configure bodyparser to hande the post requests
@@ -70,6 +71,7 @@ const port = process.env.PORT || 3000;
 
 // Welcome/Login Site
 var path = require('path');
+const errorHandler = require('./middleware/errorHandler');
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 app.get('/api', router)
@@ -96,6 +98,8 @@ app.use('/api', userRoutes);
 app.use('/api', geoJsonRoutes)
 //not found middleware
 app.use(notFound)
+//error handling middleware
+app.use(errorHandler)
     // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
