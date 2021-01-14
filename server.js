@@ -11,6 +11,7 @@ const app = express();
 // import JWT
 const jwt = require('jsonwebtoken');
 const helmet = require('helmet')
+const cors = require('cors')
 
 // import mongodb connection string
 const config = require('config');
@@ -18,7 +19,7 @@ const router = require('./routes/routes')
     // import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
-const adminRoutes = require("./routes/adminRoute");
+//const adminRoutes = require("./routes/adminRoute");
 // const agreementRoutes = require("./routes/agreementRoute");
 const contactRoutes = require("./routes/contactRoute");
 const groupRoutes = require("./routes/groupRoute");
@@ -43,11 +44,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 //use helmet as middleware
 app.use(helmet())
-<<<<<<< HEAD
-// connect to mongoose
-=======
+app.use(cors())
     // connect to mongoose
->>>>>>> dev
 const dbPath = config.get('mongoURI');
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
 const mongo = mongoose.connect(dbPath, options);
@@ -80,7 +78,7 @@ app.use(require('./middleware/headers'));
 //Use API routes in the App
 app.use('/api', apiRoutes);
 app.use('/api', accountRoutes);
-app.use('/api', adminRoutes);
+//app.use('/api', adminRoutes);
 // app.use('/api', agreementRoutes);
 app.use('/api', contactRoutes);
 app.use('/api', groupRoutes);
@@ -94,11 +92,7 @@ app.use('/api', prospectRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
 app.use('/api', geoJsonRoutes)
-<<<<<<< HEAD
-// Launch app to the specified port
-=======
     // Launch app to the specified port
->>>>>>> dev
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
 });

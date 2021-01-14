@@ -28,6 +28,11 @@ exports.view = function(req, res) {
 //For creating new prospect
 exports.add = async function(req, res) {
     try {
+        const {geo_location} = req.body
+        console.log(geo_location)
+        let prospectExists = await Prospect.exists({geo_location})
+        console.log(prospectExists)
+        if(!prospectExists){
         var prospect = new Prospect();
         prospect.group_id = req.body.group_id;
         prospect.account_name = req.body.account_name;
@@ -52,7 +57,13 @@ exports.add = async function(req, res) {
             res.status(304).json({ status: 'something went wrong' })
         }
 
-    } catch (err) {
+    }
+    else{
+        res.status(400).json({message:'Prospect already exists'})
+    }
+
+}
+catch (err) {
         res.json({ message: err.message })
     }
 
