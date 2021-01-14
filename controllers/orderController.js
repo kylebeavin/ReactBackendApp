@@ -1,7 +1,8 @@
 //orderController.js
 //Import Order Model
-Order = require('../models/orderModel.js')
-
+const Order = require('../models/orderModel.js')
+//import order validator
+const validateOrderInput = require('../validation/orderValidator')
 // For queries
 exports.view = function(req, res) {
     Order.find(req.body, null, {
@@ -29,6 +30,12 @@ exports.view = function(req, res) {
 //For creating new order
 exports.add = async function(req, res) {
     try {
+        //validate the order input
+        const {errors, isValid} = validateOrderInput(req.body)
+        //check validation
+        if(!isValid){
+            res.status(400).json(errors)
+        }
         const order = new Order();
         order.account_id = req.body.account_id; // String, required
         order.group_id = req.body.group_id; // String, required
