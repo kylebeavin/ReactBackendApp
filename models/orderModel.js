@@ -28,6 +28,10 @@ var orderSchema = mongoose.Schema({
     is_active: {
         type: Boolean,
         default: true
+    },
+    is_demo:{
+        type: Boolean,
+        default:false
     }
 });
 
