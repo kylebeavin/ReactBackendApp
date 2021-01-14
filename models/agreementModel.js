@@ -12,29 +12,84 @@ var agreementSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // Recurring services
+    is_recurring: {
+        type: Boolean,
+        required: true
+    },
+    // Service constraints
+    services: {
+        type: Array,
+        enum: ['smash', 'hourly_smashing', 'monthly_recurring_charge',
+            'haul_charge', 'lease_fee', 'delivery_charge', 'drop_fee',
+            'environmental_recovery_fee', 'blocked_fee', 'card_processing_fee',
+            'fuel_surcharge', 'statement_fee', 'past_due', 'discount', 'misc'
+        ],
+        required: true
+    },
+    // Service frequency
+    service_frequency: {
+        type: String,
+        required: true
+    },
+    // Service per
+    service_per: {
+        type: String,
+        enum: ['day', 'week', 'month'],
+        required: true
+    },
+    // Service days
+    service_days: {
+        type: String,
+        enum: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
+        required: true
+    },
+
     // Monthly payment
-    dollar_amount: {
+    monthly_rate: {
+        type: String,
+        required: true
+    },
+    // Demand Rate
+    demand_rate: {
+        type: String,
+        required: true
+    },
+    // Payment Date Example: Net 0 Days
+    term_date: {
         type: String,
         required: true
     },
     // Service start date
     start_date: {
         type: Date,
-        default: Date.now
+        required: true
     },
     // Service end date
     end_date: {
         type: Date,
         required: true
     },
+    // Date created
     created: {
         type: Date,
         default: Date.now
     },
+    // Whether or not agreement is active
     is_active: {
         type: Boolean,
         default: true
-    }
+    },
+    // Notes / Additional terms
+    notes: {
+        type: String,
+        required: true
+    },
+    // Terms and conditions file upload url
+    url: {
+        type: String,
+        required: true
+    },
 });
 
 // Export Agreement Model
