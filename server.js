@@ -70,8 +70,8 @@ else
 const port = process.env.PORT || 3000;
 
 // Welcome/Login Site
-var path = require('path');
-const errorHandler = require('./middleware/errorHandler');
+const path = require('path');
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 app.get('/api', router)
@@ -90,7 +90,7 @@ app.use('/api', inspectionRoutes);
 app.use('/api', invoiceRoutes);
 app.use('/api', locationRoutes);
 app.use('/api', meetingRoutes);
-// app.use('/api', orderRoutes);
+app.use('/api', orderRoutes);
 app.use('/api', prospectRoutes);
 // app.use('/api', serviceRoutes);
 app.use('/api', truckRoutes);
