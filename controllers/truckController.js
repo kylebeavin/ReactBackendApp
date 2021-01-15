@@ -32,9 +32,8 @@ exports.add = async function(req, res) {
         truck.group_id = req.body.group_id;
         truck.vin = req.body.vin;
         truck.name = req.body.name;
-        truck.odo = req.body.odo;
-        truck.hours = req.body.hours;
-        truck.machine_id = req.body.machine_id;
+        truck.odo = req.body.odo != null ? req.body.odo : null;
+        truck.hours = req.body.hours != null ? req.body.hours : null;
         truck.created = req.body.created;
         truck.is_active = req.body.is_active;
 
@@ -67,7 +66,6 @@ exports.update = async function(req, res) {
             truck.name = req.body.name;
             truck.odo = req.body.odo;
             truck.hours = req.body.hours;
-            truck.machine_id = req.body.machine_id;
             truck.created = req.body.created;
             truck.is_active = req.body.is_active;
             let updatedTruck = await truckToUpdate.save()

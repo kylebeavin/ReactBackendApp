@@ -159,7 +159,7 @@ exports.logout = async function(req, res) {
     }
 };
 
-// Update order by Object id
+// Update error by Object id
 exports.update = async function(req, res) {
     try {
         let user = await User.findById(req.params._id).exec()

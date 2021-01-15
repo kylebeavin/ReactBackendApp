@@ -1,12 +1,8 @@
 var mongoose = require('mongoose');
 
 //schema
-var userSchema = mongoose.Schema({
-    first_name: {
-        type: String,
-        required: true
-    },
-    last_name: {
+var errorSchema = mongoose.Schema({
+    error_message: {
         type: String,
         required: true
     },
@@ -14,11 +10,7 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
-    token: {
+    user: {
         type: String,
         required: false
     },
@@ -41,16 +33,16 @@ var userSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    // Mark user active / inactive
+    // Mark error active / inactive
     is_active: {
         type: Boolean,
         default: true
     }
 });
 
-// Export User Model
-var User = module.exports = mongoose.model('user', userSchema);
+// Export Error Model
+var Error = module.exports = mongoose.model('errors', errorSchema);
 
 module.exports.get = function(callback, limit) {
-    User.find(callback).limit(limit);
+    Error.find(callback).limit(limit);
 }

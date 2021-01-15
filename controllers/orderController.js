@@ -40,11 +40,18 @@ exports.add = async function(req, res) {
         order.account_id = req.body.account_id; // String, required
         order.group_id = req.body.group_id; // String, required
         order.is_recurring = req.body.is_recurring; // String, required
-        order.service_date = req.body.service_date; // Bool, default: true
-        order.created = req.body.created; // String, required
+        order.services = req.body.services; // Bool, default: true
+        order.service_frequency = req.body.service_frequency; // Bool, default: true
+        order.service_per = req.body.service_per; // Bool, default: true
+        order.service_days = req.body.service_days; // Bool, default: true
+        order.monthly_rate = req.body.monthly_rate; // Bool, default: true
+        order.demand_rate = req.body.demand_rate; // Bool, default: true
+        order.term_date = req.body.term_date; // Bool, default: true
+        order.start_date = req.body.start_date; // Bool, default: true
+        order.end_date = req.body.end_date; // Bool, default: true
         order.is_active = req.body.is_active; // String, required
-
-
+        order.notes = req.body.notes; // String, required
+        order.url = req.body.url; // String, required
         //Save and check error
         let newOrder = await order.save()
         if (newOrder) {
@@ -68,9 +75,21 @@ exports.update = async function(req, res) {
     try {
         let order = await Order.findById(req.params._id).exec()
         if (order) {
-            order.account_id = req.body.account_id
-            order.group_id = req.body.group_id
-            order.is_recurring = req.body.is_recurring
+            order.account_id = req.body.account_id; // String, required
+            order.group_id = req.body.group_id; // String, required
+            order.is_recurring = req.body.is_recurring; // String, required
+            order.services = req.body.services; // Bool, default: true
+            order.service_frequency = req.body.service_frequency; // Bool, default: true
+            order.service_per = req.body.service_per; // Bool, default: true
+            order.service_days = req.body.service_days; // Bool, default: true
+            order.monthly_rate = req.body.monthly_rate; // Bool, default: true
+            order.demand_rate = req.body.demand_rate; // Bool, default: true
+            order.term_date = req.body.term_date; // Bool, default: true
+            order.start_date = req.body.start_date; // Bool, default: true
+            order.end_date = req.body.end_date; // Bool, default: true
+            order.is_active = req.body.is_active; // String, required
+            order.notes = req.body.notes; // String, required
+            order.url = req.body.url; // String, required
             let updatedOrder = await order.save()
             if (updatedOrder) {
                 res.status(204).json({
