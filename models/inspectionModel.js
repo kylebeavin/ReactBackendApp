@@ -1,3 +1,6 @@
+// inspectionModel.js
+// This is unfinished
+
 var mongoose = require('mongoose');
 
 //schema

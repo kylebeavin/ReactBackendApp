@@ -12,11 +12,11 @@ var errorSchema = mongoose.Schema({
     },
     user: {
         type: String,
-        required: false
+        required: true
     },
     image: {
         type: String,
-        required: false
+        default: null
     },
     // Corporate, Admin, Partner, Driver, Mechanic, Sales, GM
     role: {

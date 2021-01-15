@@ -60,6 +60,7 @@ exports.update = async function(req, res) {
     try {
         let location = await Location.findById(req.params._id).exec()
         if (location) {
+            location._id = req.body._id ? req.body._id : location._id;
             location.account_id = req.body.account_id;
             location.group_id = req.body.group_id;
             location.location_name = req.body.location_name;

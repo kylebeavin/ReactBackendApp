@@ -34,7 +34,7 @@ var userSchema = mongoose.Schema({
     },
     // Franchise ID
     group_id: {
-        type: String,
+        type: [String],
         required: true
     },
     created: {

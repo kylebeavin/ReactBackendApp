@@ -29,7 +29,6 @@ exports.view = function(req, res) {
 exports.add = async function(req, res) {
     try {
         var group = new Group();
-        group.group_id = req.body.group_id ? req.body.group_id : group.group_id;
         group.name = req.body.name;
         group.email = req.body.email;
         group.is_active = req.body.is_active;
@@ -73,7 +72,7 @@ exports.update = async function(req, res) {
     try {
         let group = await Group.findById(req.params._id).exec()
         if (group) {
-            group.group_id = req.body.group_id ? req.body.group_id : group.group_id;
+            group._id = req.body._id ? req.body._id : group._id;
             group.name = req.body.name;
             group.email = req.body.email;
             group.is_active = req.body.is_active;

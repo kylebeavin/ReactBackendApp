@@ -26,8 +26,6 @@ const invoiceRoutes = require("./routes/invoiceRoute");
 const locationRoutes = require("./routes/locationRoute");
 const meetingRoutes = require("./routes/meetingRoute");
 const orderRoutes = require("./routes/orderRoute");
-const prospectRoutes = require("./routes/prospectRoute");
-const serviceRoutes = require("./routes/serviceRoute");
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
 const geoJsonRoutes = require("./routes/prospectsGeoJsonRoute")
@@ -77,17 +75,15 @@ app.use('/api', apiRoutes);
 app.use('/api', accountRoutes);
 app.use('/api', agreementRoutes);
 app.use('/api', contactRoutes);
+app.use('/api', geoJsonRoutes);
 app.use('/api', groupRoutes);
 app.use('/api', inspectionRoutes);
 app.use('/api', invoiceRoutes);
 app.use('/api', locationRoutes);
 app.use('/api', meetingRoutes);
 app.use('/api', orderRoutes);
-app.use('/api', prospectRoutes);
-// app.use('/api', serviceRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
-app.use('/api', geoJsonRoutes);
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
 });

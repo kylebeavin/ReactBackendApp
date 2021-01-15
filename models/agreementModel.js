@@ -1,3 +1,5 @@
+//agreementModel.js
+const { Decimal128 } = require('mongodb');
 var mongoose = require('mongoose');
 
 //schema
@@ -83,12 +85,12 @@ var agreementSchema = mongoose.Schema({
     // Notes / Additional terms
     notes: {
         type: String,
-        required: true
+        default: null
     },
     // Terms and conditions file upload url
     url: {
         type: String,
-        required: true
+        default: null
     },
 });
 

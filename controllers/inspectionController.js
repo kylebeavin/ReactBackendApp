@@ -1,4 +1,6 @@
-//Import Inspection Model
+// inspectionController.js
+// This is unfinished
+// Import Inspection Model
 Inspection = require('../models/inspectionModel.js');
 
 // For queries

@@ -2,11 +2,6 @@ var mongoose = require('mongoose');
 
 //schema
 var groupSchema = mongoose.Schema({
-    // Franchise ID
-    group_id: {
-        type: String,
-        required: true
-    },
     // Franchise Name
     name: {
         type: String,

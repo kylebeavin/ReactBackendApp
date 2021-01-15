@@ -8,7 +8,7 @@ var accountSchema = mongoose.Schema({
         required: true
     },
     // Account Name
-    name: {
+    account_name: {
         type: String,
         required: true
     },
@@ -17,37 +17,49 @@ var accountSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // Document ID's of contacts associated with the account
+    contacts: {
+        type: [String],
+        default: null
+    },
     // Account status active/inactive
     is_active: {
         type: Boolean,
         default: true
     },
-    // Account Stage: Prospect,Customer
+    // Account stage
     stage: {
         type: String,
+        enum: ['prospect', 'lead', 'account'],
         required: true
+    },
+    // Dumpster location coordinates
+    geo_location: {
+        type: String,
+        default: null
     },
     address_street: {
         type: String,
-        required: true
+        default: null
     },
     address_city: {
         type: String,
-        required: true
+        default: null
     },
     address_state: {
         type: String,
-        required: true
+        default: null
     },
     address_zip: {
         type: String,
-        required: true
+        default: null
     },
     // Generic account domain
     email: {
         type: String,
-        required: true
+        default: null
     },
+    // When the document was created
     created: {
         type: Date,
         default: Date.now
@@ -60,33 +72,33 @@ var accountSchema = mongoose.Schema({
     // When lead becomes account
     conversion: {
         type: Date,
-        required: false
+        default: null
     },
     // Hauling contract status
     hauling_contract: {
         type: Boolean,
-        required: false
+        default: false
     },
     // Hauling contract expiration date
     hauling_expiration: {
         type: Date,
-        required: false
+        default: null
     },
     national: {
         type: Boolean,
-        required: false
+        default: false
     },
     referral: {
         type: Boolean,
-        required: false
+        default: false
     },
     referral_group_id: {
         type: String,
-        required: false
+        default: null
     },
     notes: {
         type: String,
-        required: false
+        default: null
     },
 });
 

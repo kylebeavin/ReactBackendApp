@@ -25,7 +25,6 @@ exports.view = function(req, res) {
 exports.add = async function(req, res) {
     try {
         var contact = new Contact();
-        contact._id = req.body._id ? req.body._id : contact._id;
         contact.account_id = req.body.account_id;
         contact.owner_id = req.body.owner_id;
         contact.first_name = req.body.first_name;

@@ -71,6 +71,7 @@ exports.update = function(req, res) {
                 status: 304, // 
                 message: err
             });
+        meeting._id = req.body._id ? req.body._id : meeting._id;
         meeting.account_id = req.body.account_id // String, required
         meeting.group_id = req.body.group_id // String, required
         meeting.contact_id = req.body.contact_id;

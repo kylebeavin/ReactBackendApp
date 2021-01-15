@@ -43,8 +43,8 @@ exports.add = async function(req, res) {
         agreement.start_date = req.body.start_date; // Bool, default: true
         agreement.end_date = req.body.end_date; // Bool, default: true
         agreement.is_active = req.body.is_active; // String, required
-        agreement.notes = req.body.notes != null ? req.body.token : null; // String, required
-        agreement.url = req.body.url != null ? req.body.token : null; // String, required
+        agreement.notes = req.body.notes // String, required
+        agreement.url = req.body.url // String, required
 
         //Save and check error
         let newAgreement = await agreement.save()
@@ -69,6 +69,7 @@ exports.update = async function(req, res) {
     try {
         let agreement = await Agreement.findById(req.params._id).exec()
         if (agreement) {
+            agreement._id = req.body._id ? req.body._id : agreement._id;
             agreement.account_id = req.body.account_id; // String, required
             agreement.group_id = req.body.group_id; // String, required
             agreement.is_recurring = req.body.is_recurring; // String, required

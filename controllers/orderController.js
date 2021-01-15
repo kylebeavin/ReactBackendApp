@@ -69,6 +69,7 @@ exports.update = async function(req, res) {
     try {
         let order = await Order.findById(req.params._id).exec()
         if (order) {
+            order._id = req.body._id ? req.body._id : order._id;
             order.account_id = req.body.account_id; // String, required
             order.group_id = req.body.group_id; // String, required
             order.is_recurring = req.body.is_recurring; // String, required

@@ -2,11 +2,6 @@ var mongoose = require('mongoose');
 
 //schema
 var invoiceSchema = mongoose.Schema({
-    // Will be replaced by document ID
-    invoice_id: {
-        type: String,
-        required: true
-    },
     // Franchise ID
     group_id: {
         type: String,
@@ -29,7 +24,7 @@ var invoiceSchema = mongoose.Schema({
     },
     invoice_date: {
         type: Date,
-        default: Date.now
+        required: true
     },
     // Recurring / On-Demand
     type: {
