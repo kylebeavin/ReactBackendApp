@@ -42,6 +42,7 @@ exports.add = async function(req, res) {
         order.term_date = req.body.term_date; // Bool, default: true
         order.start_date = req.body.start_date; // Bool, default: true
         order.end_date = req.body.end_date; // Bool, default: true
+        order.is_demo = req.body.is_demo; // String, required
         order.is_active = req.body.is_active; // String, required
         order.notes = req.body.notes; // String, required
         order.url = req.body.url; // String, required
@@ -80,9 +81,10 @@ exports.update = async function(req, res) {
             order.term_date = req.body.term_date; // Bool, default: true
             order.start_date = req.body.start_date; // Bool, default: true
             order.end_date = req.body.end_date; // Bool, default: true
+            order.is_demo = req.body.is_demo; // String, required
             order.is_active = req.body.is_active; // String, required
-            order.notes = req.body.notes; // String, required
-            order.url = req.body.url; // String, required
+            order.notes = req.body.notes != null ? req.body.token : null; // String, required
+            order.url = req.body.url != null ? req.body.token : null; // String, required
             let updatedOrder = await order.save()
             if (updatedOrder) {
                 res.status(204).json({

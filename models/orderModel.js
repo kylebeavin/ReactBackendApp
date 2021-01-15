@@ -76,6 +76,11 @@ var orderSchema = mongoose.Schema({
         default: Date.now
     },
     // Whether or not order is active
+    is_demo: {
+        type: Boolean,
+        default: false
+    },
+    // Whether or not order is active
     is_active: {
         type: Boolean,
         default: true

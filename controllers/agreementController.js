@@ -43,8 +43,8 @@ exports.add = async function(req, res) {
         agreement.start_date = req.body.start_date; // Bool, default: true
         agreement.end_date = req.body.end_date; // Bool, default: true
         agreement.is_active = req.body.is_active; // String, required
-        agreement.notes = req.body.notes; // String, required
-        agreement.url = req.body.url; // String, required
+        agreement.notes = req.body.notes != null ? req.body.token : null; // String, required
+        agreement.url = req.body.url != null ? req.body.token : null; // String, required
 
         //Save and check error
         let newAgreement = await agreement.save()
