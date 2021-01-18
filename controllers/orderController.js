@@ -1,15 +1,12 @@
 //orderController.js
 //Import Order Model	//Import Order Model
-const Order = require('../models/orderModel.js')
+Order = require('../models/orderModel.js')
 
 //import order validator
-const validateOrderInput = require('../validation/orderValidator')
+validateOrderInput = require('../validation/orderValidator')
 console.log(validateOrderInput);
 //Import Order Model
-const Order = require('../models/orderModel.js')
-    //import order validator
-const validateOrderInput = require('../validation/orderValidator')
-console.log(validateOrderInput)
+Order = require('../models/orderModel.js')
     // For queries
 exports.view = function(req, res) {
     exports.view = function(req, res) {

@@ -27,7 +27,6 @@ const invoiceRoutes = require("./routes/invoiceRoute");
 const locationRoutes = require("./routes/locationRoute");
 const meetingRoutes = require("./routes/meetingRoute");
 const orderRoutes = require("./routes/orderRoute");
-const serviceRoutes = require("./routes/serviceRoute");
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
 const geoJsonRoutes = require('./routes/prospectsGeoJsonRoute')

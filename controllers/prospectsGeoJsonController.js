@@ -1,5 +1,4 @@
-const ProspectGeoJson = require('../models/prospectsGeoJson.js')
-
+ProspectGeoJson = require('../models/prospectsGeoJson.js')
 
 exports.view = async function(req, res) {
     try {

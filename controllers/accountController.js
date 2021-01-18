@@ -1,7 +1,7 @@
 //accountController.js
 
 //Import Account Model
-Account = require('../models/accountModel.js')
+const Account = require('../models/accountModel.js')
 
 // For queries
 exports.view = function(req, res) {

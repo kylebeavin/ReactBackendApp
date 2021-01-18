@@ -1,6 +1,6 @@
 //userController.js
 //Import User Model
-User = require('../models/userModel.js');
+const User = require('../models/userModel.js');
 // import bcrypt
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');

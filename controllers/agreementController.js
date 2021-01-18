@@ -1,6 +1,6 @@
 //agreementController.js
 //Import Agreement Model
-Agreement = require('../models/agreementModel.js')
+const Agreement = require('../models/agreementModel.js')
 
 // For queries
 exports.view = function(req, res) {
