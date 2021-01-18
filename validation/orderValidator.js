@@ -2,18 +2,23 @@ const Validator = require("validator");
 const isEmpty = require("is-empty");
 exports.validateOrderInput = function(data) {
   let errors = {};
-  let {account_id, group_id, is_recurring,services,service_frequency,service_per,service_days,monthly_rate,demand_rate,term_date,start_date,end_date,notes,url} = data
+  let {account_id, group_id, is_recurring,services,services_frequency,service_per,service_days,monthly_rate,demand_rate,term_rate,start_date,end_date,notes,url} = data
   
   // Convert empty fields to an empty string so we can use validator functions
   data.account_id = !isEmpty(account_id) ? account_id : "";
   data.group_id = !isEmpty(group_id)? group_id:''
   data.is_recurring = !isEmpty(is_recurring) ? is_recurring : "";
   data.services = !isEmpty(services) ? services : "";
-  data.service_frequency = !isEmpty(service_frequency) ? service_frequency : "";
+  data.services_frequency = !isEmpty(services_frequency) ? services_frequency : "";
   data.service_per = !isEmpty(service_per) ? service_per : "";
   data.service_days = !isEmpty(service_days) ? service_days : "";
   data.monthly_rate = !isEmpty(monthly_rate) ? monthly_rate : "";
   data.demand_rate = !isEmpty(demand_rate) ? demand_rate : "";
+  data.term_rate = !isEmpty(term_rate) ? term_rate : "";
+  data.start_date = !isEmpty(start_date) ? start_date : "";
+  data.end_date = !isEmpty(end_date) ? end_date : "";
+  data.notes = !isEmpty(notes) ? notes : "";
+  data.url = !isEmpty(url) ? url:''
   
   // Name checks
   if (Validator.isEmpty(data.account_id)) {
@@ -38,11 +43,11 @@ exports.validateOrderInput = function(data) {
   'environmental_recovery_fee', 'blocked_fee', 'card_processing_fee',
   'fuel_surcharge', 'statement_fee', 'past_due', 'discount', 'misc'
 ]
-if(!options.includes(services_frequency))
+if(!options.includes(services))
   errors.services = "Please enter a valid field";
 }
 //service_frequency check
-if (Validator.isEmpty(data.service_frequency)) {
+if (Validator.isEmpty(data.services_frequency)) {
   errors.service_frequency = 'This field is required'
 }
 //service_per check
