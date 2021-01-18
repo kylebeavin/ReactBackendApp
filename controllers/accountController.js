@@ -50,6 +50,7 @@ exports.add = async function(req, res) {
         account.national = req.body.national; // Bool, required
         account.referral = req.body.referral; // Bool, required
         account.referral_group_id = req.body.referral_group_id != null ? req.body.referral_group_id : null; // String, required
+        account.geo_location = req.body.geo_location // Add geo_location
 
         //Save and check error
         let newAccount = await account.save()
@@ -96,6 +97,7 @@ exports.update = async function(req, res) {
             account.national = req.body.national; // Bool, required
             account.referral = req.body.referral; // Bool, required
             account.referral_group_id = req.body.referral_group_id; // String, required
+            account.geo_location = req.body.geo_location // Add geo_location
             let updatedAccount = await account.save()
             if (updatedAccount) {
                 res.status(204).json({
