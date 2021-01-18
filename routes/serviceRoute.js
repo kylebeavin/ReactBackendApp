@@ -1,1 +1,0 @@
-var verifyToken = require('../middleware/verifyToken.js');

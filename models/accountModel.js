@@ -5,22 +5,26 @@ var accountSchema = mongoose.Schema({
     // Document ID of Franchise
     group_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Account Name
     account_name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Document ID of User that created the account
     owner_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Document ID's of contacts associated with the account
     contacts: {
         type: [String],
-        default: null
+        default: null,
+        trim: true
     },
     // Account status active/inactive
     is_active: {
@@ -40,24 +44,29 @@ var accountSchema = mongoose.Schema({
     },
     address_street: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
     address_city: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
     address_state: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
     address_zip: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
     // Generic account domain
     email: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
     // When the document was created
     created: {
@@ -94,11 +103,13 @@ var accountSchema = mongoose.Schema({
     },
     referral_group_id: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
     notes: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
 });
 

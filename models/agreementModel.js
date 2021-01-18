@@ -1,5 +1,5 @@
 //agreementModel.js
-const { Decimal128 } = require('mongodb');
+
 var mongoose = require('mongoose');
 
 //schema
@@ -7,17 +7,20 @@ var agreementSchema = mongoose.Schema({
     // Customer account the agreement belongs to
     account_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Franchise
     group_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // owner id
     owner_id: {
-       type: String,
-       required:true
+        type: String,
+        required: true,
+        trim: true
     },
     // Recurring services
     is_recurring: {
@@ -37,7 +40,8 @@ var agreementSchema = mongoose.Schema({
     // Service frequency
     service_frequency: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Service per
     service_per: {
@@ -49,23 +53,27 @@ var agreementSchema = mongoose.Schema({
     service_days: {
         type: [String],
         enum: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
-        required: true
+        required: true,
+        trim: true
     },
 
     // Monthly payment
     monthly_rate: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Demand Rate
     demand_rate: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Payment Date Example: Net 0 Days
     term_date: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Service start date
     start_date: {
@@ -90,12 +98,14 @@ var agreementSchema = mongoose.Schema({
     // Notes / Additional terms
     notes: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
     // Terms and conditions file upload url
     url: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
 });
 

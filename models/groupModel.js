@@ -5,12 +5,14 @@ var groupSchema = mongoose.Schema({
     // Franchise Name
     name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Franchise group email
     email: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Whether or not franchise is active
     is_active: {
@@ -19,32 +21,39 @@ var groupSchema = mongoose.Schema({
     },
     address_street: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     address_city: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     address_state: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     address_zip: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Federal Tax ID
     ein: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     region: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     time_zone: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     signing_date: {
         type: Date,
@@ -56,35 +65,42 @@ var groupSchema = mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     webpage: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Actual LLC
     legal_company: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Actual LLC
     territory_zips: {
         type: Array,
-        required: true
+        required: true,
+        trim: true
     },
     // Doing Business As Name
     dba: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // State tax percentage for pricing
     tax_rate: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     created: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        trim: true
     }
 });
 

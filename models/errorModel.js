@@ -4,23 +4,27 @@ var mongoose = require('mongoose');
 var errorSchema = mongoose.Schema({
     error_message: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     user: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     image: {
         type: String,
-        default: null
+        default: null,
+        trim: true
     },
     // Corporate, Admin, Partner, Driver, Mechanic, Sales, GM
     role: {
-        type: String,
+        type: [String],
         enum: ['corporate', 'admin', 'partner', 'gm', 'sales', 'driver', 'mechanic'],
         required: true
     },
