@@ -6,7 +6,7 @@ exports.validateOrderInput = function(data) {
 
     // Convert empty fields to an empty string so we can use validator functions
     data.account_id = !isEmpty(account_id) ? account_id : "";
-    data.group_id = !isEmpty(group_id) ? group_id : ''
+    data.group_id = !isEmpty(group_id) ? group_id : "";
     data.is_recurring = !isEmpty(is_recurring) ? is_recurring : "";
     data.services = !isEmpty(services) ? services : "";
     data.services_frequency = !isEmpty(services_frequency) ? services_frequency : "";
@@ -18,7 +18,7 @@ exports.validateOrderInput = function(data) {
     data.start_date = !isEmpty(start_date) ? start_date : "";
     data.end_date = !isEmpty(end_date) ? end_date : "";
     data.notes = !isEmpty(notes) ? notes : "";
-    data.url = !isEmpty(url) ? url : ''
+    data.url = !isEmpty(url) ? url : "";
 
     // Name checks
     if (Validator.isEmpty(data.account_id)) {
