@@ -29,15 +29,15 @@ exports.view = function(req, res) {
 };
 
 //For creating new order
-exports.add = async function(req, res) {
+exports.add = async function(req, res, next) {
     try {
         //validate the order input
         console.log('order validate', req.body)
         const {errors, isValid} = validateOrderInput.validateOrderInput(req.body)
-        console.log(validateOrderInput.validateOrderInput(req.body))
+        
         //check validation
         if(!isValid){
-            console.log(isValid)
+            
             res.status(400).json(errors)
         }
         const order = new Order();
@@ -53,7 +53,9 @@ exports.add = async function(req, res) {
         order.term_date = req.body.term_date; // Bool, default: true
         order.start_date = req.body.start_date; // Bool, default: true
         order.end_date = req.body.end_date; // Bool, default: true
-        order.is_active = req.body.is_active; // String, required
+        if(req.body.is_active){
+        order.is_active = req.body.is_active; 
+        }// String, required
         order.notes = req.body.notes; // String, required
         order.url = req.body.url; // String, required
         //Save and check error
@@ -69,7 +71,8 @@ exports.add = async function(req, res) {
         }
 
     } catch (err) {
-        res.json({ message: err.message })
+        console.log(err.message)
+       
     }
 
 };

@@ -96,7 +96,7 @@ app.use('/api', geoJsonRoutes)
 //not found middleware
 app.use(notFound)
 //error handling middleware
-app.use(errorHandler)
+//app.use(errorHandler)
     // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
