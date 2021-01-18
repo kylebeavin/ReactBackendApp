@@ -11,6 +11,7 @@ const app = express();
 // import JWT
 const jwt = require('jsonwebtoken');
 const helmet = require('helmet')
+const cors = require('cors')
 
 // import mongodb connection string
 const config = require('config');
@@ -26,9 +27,16 @@ const invoiceRoutes = require("./routes/invoiceRoute");
 const locationRoutes = require("./routes/locationRoute");
 const meetingRoutes = require("./routes/meetingRoute");
 const orderRoutes = require("./routes/orderRoute");
+<<<<<<< HEAD
+=======
+const serviceRoutes = require("./routes/serviceRoute");
+>>>>>>> newFeature
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
-const geoJsonRoutes = require("./routes/prospectsGeoJsonRoute")
+const geoJsonRoutes = require('./routes/prospectsGeoJsonRoute')
+const notFound = require('./middleware/notFound')
+const errorHandler = require('./middleware/errorHandler')
+
 
 // configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
@@ -40,6 +48,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 //use helmet as middleware
 app.use(helmet())
+app.use(cors())
     // connect to mongoose
 const dbPath = config.get('mongoURI');
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
@@ -62,7 +71,8 @@ else
 const port = process.env.PORT || 3000;
 
 // Welcome/Login Site
-var path = require('path');
+const path = require('path');
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 app.get('/api', router)
@@ -82,8 +92,21 @@ app.use('/api', invoiceRoutes);
 app.use('/api', locationRoutes);
 app.use('/api', meetingRoutes);
 app.use('/api', orderRoutes);
+<<<<<<< HEAD
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
+=======
+
+// app.use('/api', serviceRoutes);
+app.use('/api', truckRoutes);
+app.use('/api', userRoutes);
+app.use('/api', geoJsonRoutes)
+//not found middleware
+app.use(notFound)
+//error handling middleware
+//app.use(errorHandler)
+    // Launch app to the specified port
+>>>>>>> newFeature
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
 });

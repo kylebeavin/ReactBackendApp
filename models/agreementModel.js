@@ -14,6 +14,11 @@ var agreementSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // owner id
+    owner_id: {
+       type: String,
+       required:true
+    },
     // Recurring services
     is_recurring: {
         type: Boolean,
