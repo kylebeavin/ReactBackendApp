@@ -1,5 +1,5 @@
 //Import Location Model
-Location = require('../models/locationModel.js')
+const Location = require('../models/locationModel.js')
 
 // For queries
 exports.view = function(req, res) {

@@ -1,5 +1,5 @@
 //Import Truck Model
-Truck = require('../models/truckModel.js');
+const Truck = require('../models/truckModel.js');
 
 // For queries
 exports.view = function(req, res) {

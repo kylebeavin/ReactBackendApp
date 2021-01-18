@@ -1,5 +1,5 @@
 //Import Contact Model
-Contact = require('../models/contactModel.js')
+const Contact = require('../models/contactModel.js')
 
 // For queries
 exports.view = function(req, res) {

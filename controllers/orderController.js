@@ -1,6 +1,6 @@
 //orderController.js
 //Import Order Model	//Import Order Model
-Order = require('../models/orderModel.js')
+const Order = require('../models/orderModel.js')
 
 //import order validator
 validateOrderInput = require('../validation/orderValidator')

@@ -1,6 +1,6 @@
 //meetingController.js
 //Import Meeting Model
-Meeting = require('../models/meetingModel.js')
+const Meeting = require('../models/meetingModel.js')
 
 // For queries
 exports.view = function(req, res) {

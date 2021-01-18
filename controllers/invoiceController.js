@@ -1,5 +1,5 @@
 //Import Invoice Model
-Invoice = require('../models/invoiceModel.js')
+const Invoice = require('../models/invoiceModel.js')
 
 // For queries
 exports.view = function(req, res) {

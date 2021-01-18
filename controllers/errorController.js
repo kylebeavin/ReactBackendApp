@@ -1,6 +1,6 @@
 //errorController.js
 //Import Error Model
-Error = require('../models/errorModel.js');
+const Error = require('../models/errorModel.js');
 
 // For queries
 exports.view = function(req, res) {

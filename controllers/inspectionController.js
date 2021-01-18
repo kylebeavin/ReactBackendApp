@@ -1,7 +1,7 @@
 // inspectionController.js
 // This is unfinished
 // Import Inspection Model
-Inspection = require('../models/inspectionModel.js');
+const Inspection = require('../models/inspectionModel.js');
 
 // For queries
 exports.view = function(req, res) {
