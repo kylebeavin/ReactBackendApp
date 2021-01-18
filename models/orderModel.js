@@ -54,12 +54,14 @@ var orderSchema = mongoose.Schema({
     monthly_rate: {
         type: String,
         required: true,
+        trim:true
 
     },
     // Demand Rate
     demand_rate: {
         type: String,
-        required: true
+        required: true,
+        trim:true
     },
     // Payment Date Example: Net 0 Days
     term_date: {

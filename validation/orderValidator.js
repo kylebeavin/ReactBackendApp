@@ -1,6 +1,6 @@
 const Validator = require("validator");
 const isEmpty = require("is-empty");
-module.exports = function validateOrderInput(data) {
+exports.validateOrderInput = function(data) {
   let errors = {};
   let {account_id, group_id, is_recurring,services,service_frequency,service_per,service_days,monthly_rate,demand_rate,term_date,start_date,end_date,notes,url} = data
   
@@ -38,8 +38,8 @@ module.exports = function validateOrderInput(data) {
   'environmental_recovery_fee', 'blocked_fee', 'card_processing_fee',
   'fuel_surcharge', 'statement_fee', 'past_due', 'discount', 'misc'
 ]
-if(!options.includes(services))
-  errors.is_recurring = "Please enter a valid field";
+if(!options.includes(services_frequecy))
+  errors.services = "Please enter a valid field";
 }
 //service_frequency check
 if (Validator.isEmpty(data.service_frequency)) {
@@ -55,28 +55,28 @@ if (Validator.isEmpty(data.service_days)) {
 }
 //monthly_rate check
 if (Validator.isEmpty(data.monthly_rate)) {
-  errors.service_days = 'This field is required'
+  errors.monthly_rate = 'This field is required'
 }
 
 //demand_rate check
 if (Validator.isEmpty(data.demand_rate)) {
-  errors.service_days = 'This field is required'
+  errors.demand_rate = 'This field is required'
 }
 //term-date
 if (Validator.isEmpty(data.term_rate)) {
-  errors.service_days = 'This field is required'
+  errors.term_date = 'This field is required'
 }
 //start_date
 if (Validator.isEmpty(data.start_date)) {
-  errors.service_days = 'This field is required'
+  errors.start_date = 'This field is required'
 }
 //end_date
 if (Validator.isEmpty(data.end_date)) {
-  errors.service_days = 'This field is required'
+  errors.end_date = 'This field is required'
 }
 //notes
 if (Validator.isEmpty(data.notes)) {
-  errors.service_days = 'This field is required'
+  errors.notes = 'This field is required'
 }
 //url
 if (Validator.isEmpty(data.url)) {
