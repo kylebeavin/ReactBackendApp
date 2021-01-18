@@ -1,13 +1,10 @@
 //orderController.js
 //Import Order Model	//Import Order Model
-const Order = require('../models/orderModel.js')
-
+const Order = require('../models/orderModel.js');
 //import order validator
 validateOrderInput = require('../validation/orderValidator')
 console.log(validateOrderInput);
-//Import Order Model
-Order = require('../models/orderModel.js')
-    // For queries
+// For queries
 exports.view = function(req, res) {
     exports.view = function(req, res) {
         Order.find(req.body, null, {
