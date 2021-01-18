@@ -3,6 +3,7 @@
 const Order = require('../models/orderModel.js')
 //import order validator
 const validateOrderInput = require('../validation/orderValidator')
+console.log(validateOrderInput)
 // For queries
 exports.view = function(req, res) {
     Order.find(req.body, null, {
@@ -31,9 +32,12 @@ exports.view = function(req, res) {
 exports.add = async function(req, res) {
     try {
         //validate the order input
-        const {errors, isValid} = validateOrderInput(req.body)
+        console.log('order validate', req.body)
+        const {errors, isValid} = validateOrderInput.validateOrderInput(req.body)
+        console.log(validateOrderInput.validateOrderInput(req.body))
         //check validation
         if(!isValid){
+            console.log(isValid)
             res.status(400).json(errors)
         }
         const order = new Order();
@@ -106,6 +110,7 @@ exports.update = async function(req, res) {
         }
     } catch (err) {
         res.status(400).json({ message: 'Something went wrong' })
+
     }
 };
 
