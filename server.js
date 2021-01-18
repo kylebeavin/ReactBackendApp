@@ -14,8 +14,8 @@ const helmet = require('helmet')
 
 // import mongodb connection string
 const config = require('config');
-const router = require('./routes/routes')
-    // import routes
+const router = require('./routes/routes');
+// import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
 const agreementRoutes = require("./routes/agreementRoute");
