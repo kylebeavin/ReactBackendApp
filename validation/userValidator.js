@@ -11,6 +11,7 @@ exports.validateUserInput = function(data) {
     data.image = !isEmpty(image) ? image : "";
     data.first_name = !isEmpty(first_name) ? first_name : "";
     data.last_name = !isEmpty(last_name) ? last_name : "";
+    data.display_name = !isEmpty(last_name) ? last_name : "";
     data.role = !isEmpty(role) ? role : "";
     data.group_id = !isEmpty(group_id) ? group_id : "";
 
@@ -29,6 +30,18 @@ exports.validateUserInput = function(data) {
     // image check
     if (Validator.isEmpty(data.is_recurring)) {
         errors.image = 'Image field is required';
+    }
+    // first_name check
+    if (Validator.isEmpty(data.is_recurring)) {
+        errors.first_name = 'First Name field is required';
+    }
+    // last_name check
+    if (Validator.isEmpty(data.is_recurring)) {
+        errors.last_name = 'Last Name field is required';
+    }
+    // display_name check
+    if (Validator.isEmpty(data.is_recurring)) {
+        errors.display_name = 'Display Name field is required';
     }
     // role check
     if (Validator.isEmpty(data.is_recurring)) {

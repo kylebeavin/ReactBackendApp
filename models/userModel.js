@@ -12,6 +12,11 @@ var userSchema = mongoose.Schema({
         required: true,
         trim: true
     },
+    display_name: {
+        type: String,
+        required: false,
+        trim: true
+    },
     email: {
         type: String,
         required: true,
