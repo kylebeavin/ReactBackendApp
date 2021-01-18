@@ -27,7 +27,6 @@ const invoiceRoutes = require("./routes/invoiceRoute");
 const locationRoutes = require("./routes/locationRoute");
 const meetingRoutes = require("./routes/meetingRoute");
 const orderRoutes = require("./routes/orderRoute");
-const prospectRoutes = require("./routes/prospectRoute");
 const serviceRoutes = require("./routes/serviceRoute");
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
@@ -89,7 +88,7 @@ app.use('/api', invoiceRoutes);
 app.use('/api', locationRoutes);
 app.use('/api', meetingRoutes);
 app.use('/api', orderRoutes);
-app.use('/api', prospectRoutes);
+
 // app.use('/api', serviceRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);

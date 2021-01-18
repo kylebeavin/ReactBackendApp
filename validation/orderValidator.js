@@ -38,7 +38,7 @@ exports.validateOrderInput = function(data) {
   'environmental_recovery_fee', 'blocked_fee', 'card_processing_fee',
   'fuel_surcharge', 'statement_fee', 'past_due', 'discount', 'misc'
 ]
-if(!options.includes(services_frequecy))
+if(!options.includes(services_frequency))
   errors.services = "Please enter a valid field";
 }
 //service_frequency check
