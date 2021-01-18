@@ -1,6 +1,9 @@
 //userController.js
 //Import User Model
 const User = require('../models/userModel.js');
+// Import user validator
+const validateUserInput = require('../validation/userValidator')
+console.log(validateUserInput);
 // import bcrypt
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
