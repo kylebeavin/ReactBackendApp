@@ -2,9 +2,10 @@ const Validator = require("validator");
 const isEmpty = require("is-empty");
 exports.validateOrderInput = function(data) {
     let errors = {};
-    let { account_id, group_id, is_recurring, services, services_frequency, service_per, service_days, monthly_rate, demand_rate, term_rate, start_date, end_date, notes, url } = data
+    let { agreement_id, account_id, group_id, is_recurring, services, services_frequency, service_per, service_days, monthly_rate, demand_rate, term_rate, start_date, end_date, notes, url } = data
 
     // Convert empty fields to an empty string so we can use validator functions
+    data.agreement_id = !isEmpty(account_id) ? agreement_id : "";
     data.account_id = !isEmpty(account_id) ? account_id : "";
     data.group_id = !isEmpty(group_id) ? group_id : "";
     data.is_recurring = !isEmpty(is_recurring) ? is_recurring : "";
@@ -20,11 +21,15 @@ exports.validateOrderInput = function(data) {
     data.notes = !isEmpty(notes) ? notes : "";
     data.url = !isEmpty(url) ? url : "";
 
-    // Name checks
+    // agreement checks
+    if (Validator.isEmpty(data.account_id)) {
+        errors.agreement_id = "Agreement Id is required";
+    }
+    // account checks
     if (Validator.isEmpty(data.account_id)) {
         errors.account_id = "Account Id is required";
     }
-    //group_id check
+    // group_id check
     if (Validator.isEmpty(data.group_id)) {
         errors.group_id = 'Group Id is required'
     }

@@ -3,16 +3,19 @@ var mongoose = require('mongoose');
 //schema
 var orderSchema = mongoose.Schema({
     // Customer account the order belongs to
+    agreement_id: {
+        type: String,
+        required: true
+    },
     account_id: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
     // Franchise
     group_id: {
         type: String,
         required: true,
-        trim:true
+        trim: true
     },
     // Recurring services
     is_recurring: {
@@ -33,35 +36,35 @@ var orderSchema = mongoose.Schema({
     service_frequency: {
         type: String,
         required: true,
-        trim:true
+        trim: true
     },
     // Service per
     service_per: {
         type: [String],
         enum: ['day', 'week', 'month'],
         required: true,
-        trim:true
+        trim: true
     },
     // Service days
     service_days: {
         type: [String],
         enum: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
         required: true,
-        trim:true
+        trim: true
     },
 
     // Monthly payment
     monthly_rate: {
         type: String,
         required: true,
-        trim:true
+        trim: true
 
     },
     // Demand Rate
     demand_rate: {
         type: String,
         required: true,
-        trim:true
+        trim: true
     },
     // Payment Date Example: Net 0 Days
     term_date: {
@@ -93,21 +96,21 @@ var orderSchema = mongoose.Schema({
         type: Boolean,
         default: true
     },
-    is_demo:{
+    is_demo: {
         type: Boolean,
-        default:false
+        default: false
     },
     // Notes / Additional terms
     notes: {
         type: String,
         required: true,
-        trim:true
+        trim: true
     },
     // Terms and conditions file upload url
     url: {
         type: String,
         required: true,
-        trim:true
+        trim: true
     },
 });
 

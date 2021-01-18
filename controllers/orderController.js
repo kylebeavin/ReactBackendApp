@@ -55,6 +55,7 @@ exports.add = async function(req, res, next) {
             res.status(400).json(errors)
         }
         const order = new Order();
+        order.agreement_id = req.body.agreement_id; // String, required
         order.account_id = req.body.account_id; // String, required
         order.group_id = req.body.group_id; // String, required
         order.is_recurring = req.body.is_recurring; // String, required
@@ -90,52 +91,13 @@ exports.add = async function(req, res, next) {
     }
 };
 
-
-//For creating new order
-exports.add = async function(req, res) {
-    try {
-        const order = new Order();
-        order.account_id = req.body.account_id; // String, required
-        order.group_id = req.body.group_id; // String, required
-        order.is_recurring = req.body.is_recurring; // String, required
-        order.services = req.body.services; // Bool, default: true
-        order.service_frequency = req.body.service_frequency; // Bool, default: true
-        order.service_per = req.body.service_per; // Bool, default: true
-        order.service_days = req.body.service_days; // Bool, default: true
-        order.monthly_rate = req.body.monthly_rate; // Bool, default: true
-        order.demand_rate = req.body.demand_rate; // Bool, default: true
-        order.term_date = req.body.term_date; // Bool, default: true
-        order.start_date = req.body.start_date; // Bool, default: true
-        order.end_date = req.body.end_date; // Bool, default: true
-        order.is_demo = req.body.is_demo; // String, required
-        order.is_active = req.body.is_active; // String, required
-        order.notes = req.body.notes; // String, required
-        order.url = req.body.url; // String, required
-        //Save and check error
-        let newOrder = await order.save()
-        if (newOrder) {
-            res.json({
-                status: "success",
-                status: 201,
-                message: "New order created!",
-            })
-        } else {
-            res.status(304).json({ status: 'something went wrong' })
-        }
-
-    } catch (err) {
-        res.json({ message: err.message })
-    };
-};
-
-
-
 // Update order by Object id
 exports.update = async function(req, res) {
     try {
         let order = await Order.findById(req.params._id).exec()
         if (order) {
             order._id = req.body._id ? req.body._id : order._id;
+            order.agreement_id = req.body.agreement_id; // String, required
             order.account_id = req.body.account_id; // String, required
             order.group_id = req.body.group_id; // String, required
             order.is_recurring = req.body.is_recurring; // String, required

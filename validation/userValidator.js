@@ -56,7 +56,7 @@ exports.validateUserInput = function(data) {
 
     //group_id check
     if (Validator.isEmpty(data.group_id)) {
-        errors.group_id = 'Group ID field is required'
+        errors.group_id = 'Group Id field is required'
     }
 
     console.log(errors)
