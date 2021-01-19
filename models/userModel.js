@@ -26,9 +26,10 @@ var userSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    // Partner, Driver, Mechanic, Sales, GM
+    // Corporate, Admin, Partner, Driver, Mechanic, Sales, GM
     role: {
         type: String,
+        enum: ['corporate', 'admin', 'partner', 'gm', 'sales', 'driver', 'mechanic'],
         required: true
     },
     // Franchise ID
