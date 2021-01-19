@@ -6,7 +6,7 @@ Order = require('../models/orderModel.js')
 exports.view = function(req, res) {
     Order.find(req.body, null, {
             sort: {
-                name: 1
+                group_id: 1
             }
         },
         function(err, query) {
