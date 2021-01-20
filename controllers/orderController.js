@@ -6,6 +6,7 @@ const validateOrderInput = require('../validation/orderValidator')
 console.log(validateOrderInput);
 // For queries
 exports.view = function(req, res) {
+<<<<<<< HEAD
     exports.view = function(req, res) {
         Order.find(req.body, null, {
                 sort: {
@@ -13,6 +14,14 @@ exports.view = function(req, res) {
                 }
             },
             function(err, query) {
+=======
+    Order.find(req.body, null, {
+            sort: {
+                group_id: 1
+            }
+        },
+        function(err, query) {
+>>>>>>> main
 
                 if (err) {
                     res.json({
