@@ -5,38 +5,28 @@ const Order = require('../models/orderModel.js');
 const validateOrderInput = require('../validation/orderValidator')
 console.log(validateOrderInput);
 // For queries
-exports.view = function(req, res) {
-<<<<<<< HEAD
-    exports.view = function(req, res) {
-        Order.find(req.body, null, {
-                sort: {
-                    name: 1
-                }
-            },
-            function(err, query) {
-=======
+exports.view = function (req, res) {
     Order.find(req.body, null, {
-            sort: {
-                group_id: 1
-            }
-        },
-        function(err, query) {
->>>>>>> main
+        sort: {
+            group_id: 1
+        }
+    },
+        function (err, query) {
 
-                if (err) {
-                    res.json({
-                        status: "error",
-                        message: err,
-                    })
-                } else {
-                    res.json({
-                        status: "success",
-                        message: "Working",
-                        data: query
-                    })
-                }
-            })
-    };
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err,
+                })
+            } else {
+                res.json({
+                    status: "success",
+                    message: "Working",
+                    data: query
+                })
+            }
+        })
+
     if (err) {
         res.json({
             status: "error",
@@ -52,7 +42,7 @@ exports.view = function(req, res) {
 }
 
 //For creating new order
-exports.add = async function(req, res, next) {
+exports.add = async function (req, res, next) {
     try {
         //validate the order input
         console.log('order validate', req.body)
@@ -101,7 +91,7 @@ exports.add = async function(req, res, next) {
 };
 
 // Update order by Object id
-exports.update = async function(req, res) {
+exports.update = async function (req, res) {
     try {
         let order = await Order.findById(req.params._id).exec()
         if (order) {
@@ -143,7 +133,7 @@ exports.update = async function(req, res) {
 };
 
 // Delete Order by Object Id
-exports.delete = async function(req, res) {
+exports.delete = async function (req, res) {
     try {
         let deleteOrder = await Order.deleteOne({ _id: req.params._id }).exec()
         if (deleteOrder) {
