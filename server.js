@@ -15,11 +15,7 @@ const cors = require('cors')
 
 // import mongodb connection string
 const config = require('config');
-<<<<<<< HEAD
-const router = require('./routes/routes');
-=======
 const router = require('./routes/routes')
->>>>>>> main
 // import routes
 const apiRoutes = require("./routes/routes");
 const accountRoutes = require("./routes/accountRoute");
@@ -47,14 +43,8 @@ app.use(bodyParser.json());
 // To parse cookies from the HTTP Request
 app.use(cookieParser());
 //use helmet as middleware
-<<<<<<< HEAD
-app.use(helmet())
-app.use(cors())
-    // connect to mongoose
-=======
 app.use(helmet());
 // connect to mongoose
->>>>>>> main
 const dbPath = config.get('mongoURI');
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
 const mongo = mongoose.connect(dbPath, options);
@@ -103,18 +93,8 @@ app.use('/api', userRoutes);
 // app.use('/api', serviceRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
-<<<<<<< HEAD
-app.use('/api', geoJsonRoutes)
-    //not found middleware
-app.use(notFound)
-    //error handling middleware
-    //app.use(errorHandler)
-    // Launch app to the specified port
-app.listen(port, function() {
-=======
 app.use('/api', geoJsonRoutes);
 // Launch app to the specified port
 app.listen(port, function () {
->>>>>>> main
     console.log("Running Smash API on Port " + port);
 });
