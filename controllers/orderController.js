@@ -6,7 +6,7 @@ const validateOrderInput = require('../validation/orderValidator')
 console.log(validateOrderInput);
 // For queries
 exports.view = function(req, res) {
-    Meeting.find(req.body, null, {
+    Order.find(req.body, null, {
             sort: {
                 title: 1
             }
@@ -29,7 +29,7 @@ exports.view = function(req, res) {
 };
 
 //For creating new order
-exports.add = async function (req, res, next) {
+exports.add = async function(req, res, next) {
     try {
         //validate the order input
         console.log('order validate', req.body)
@@ -56,7 +56,9 @@ exports.add = async function (req, res, next) {
         order.end_date = req.body.end_date; // Bool, default: true
         if (req.body.is_active) {
             order.is_active = req.body.is_active;
-        } // String, required
+        };
+
+        // String, required
         order.notes = req.body.notes; // String, required
         order.url = req.body.url; // String, required
         //Save and check error
@@ -78,7 +80,7 @@ exports.add = async function (req, res, next) {
 };
 
 // Update order by Object id
-exports.update = async function (req, res) {
+exports.update = async function(req, res) {
     try {
         let order = await Order.findById(req.params._id).exec()
         if (order) {
@@ -120,7 +122,7 @@ exports.update = async function (req, res) {
 };
 
 // Delete Order by Object Id
-exports.delete = async function (req, res) {
+exports.delete = async function(req, res) {
     try {
         let deleteOrder = await Order.deleteOne({ _id: req.params._id }).exec()
         if (deleteOrder) {
