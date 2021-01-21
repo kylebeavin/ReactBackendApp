@@ -12,6 +12,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### Use postman to test API<br />
 Use following endpoints on postman:<br /><br />
 GET api/users → Retrieves all the user data<br />
+POST api/login → Login to the server <br />
 POST api/users → Add new user data <br />
 GET api/user/{id} → Retrieve the single user data<br />
 PUT api/user/{id} → Update the user data<br />
