@@ -5,13 +5,13 @@ const Order = require('../models/orderModel.js');
 const validateOrderInput = require('../validation/orderValidator')
 console.log(validateOrderInput);
 // For queries
-exports.view = function (req, res) {
-    Order.find(req.body, null, {
-        sort: {
-            group_id: 1
-        }
-    },
-        function (err, query) {
+exports.view = function(req, res) {
+    Meeting.find(req.body, null, {
+            sort: {
+                title: 1
+            }
+        },
+        function(err, query) {
 
             if (err) {
                 res.json({
@@ -26,20 +26,7 @@ exports.view = function (req, res) {
                 })
             }
         })
-
-    if (err) {
-        res.json({
-            status: "error",
-            message: err,
-        })
-    } else {
-        res.json({
-            status: "success",
-            message: "Working",
-            data: query
-        })
-    }
-}
+};
 
 //For creating new order
 exports.add = async function (req, res, next) {
