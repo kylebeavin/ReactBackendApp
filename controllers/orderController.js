@@ -142,8 +142,8 @@ exports.getCalendarDates = async function(req, res){
     try{
         let order= Order.find({
             start_date: {
-                $gte: new Date(new Date(startDate).setHours(00, 00, 00)),
-                $lt: new Date(new Date(endDate).setHours(23, 59, 59))
+                $gte: new Date(new Date(req.query.start_date).setHours(00, 00, 00)),
+                $lt: new Date(new Date(req.query.start_date).setHours(23, 59, 59))
             }
         }).sort({start_date:'asc'})
         if(!order){
