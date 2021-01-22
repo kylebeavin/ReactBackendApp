@@ -5,7 +5,7 @@ var orderSchema = mongoose.Schema({
     // Customer account the order belongs to
     agreement_id: {
         type: String,
-        
+        required: false
     },
     account_id: {
         type: String,
@@ -30,7 +30,7 @@ var orderSchema = mongoose.Schema({
             'environmental_recovery_fee', 'blocked_fee', 'card_processing_fee',
             'fuel_surcharge', 'statement_fee', 'past_due', 'discount', 'misc'
         ],
-        required: true
+        required: false
     },
     // Service frequency
     service_frequency: {
@@ -91,7 +91,11 @@ var orderSchema = mongoose.Schema({
         type: Boolean,
         default: true
     },
-    
+    // Whether or not the order is a demo
+    is_demo: {
+        type: Boolean,
+        default: false
+    },
     // Notes / Additional terms
     notes: {
         type: String,
