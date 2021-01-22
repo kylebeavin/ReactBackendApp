@@ -31,21 +31,21 @@ exports.view = function(req, res) {
 //For creating new order
 exports.add = async function(req, res, next) {
     try {
-        //validate the order input
-        console.log('order validate', req.body)
-        const { errors, isValid } = validateOrderInput.validateOrderInput(req.body)
+        // //validate the order input
+        // console.log('order validate', req.body)
+        // const { errors, isValid } = validateOrderInput.validateOrderInput(req.body)
 
-        //check validation
-        if (!isValid) {
+        // //check validation
+        // if (!isValid) {
 
-            res.status(400).json(errors)
-        }
+        //     res.status(400).json(errors)
+        // }
         const order = new Order();
         order.agreement_id = req.body.agreement_id; // String, required
         order.account_id = req.body.account_id; // String, required
         order.group_id = req.body.group_id; // String, required
         order.is_recurring = req.body.is_recurring; // String, required
-        order.services = req.body.services; // Bool, default: true
+        order.services = req.body.services; // String, default: true
         order.service_frequency = req.body.service_frequency; // Bool, default: true
         order.service_per = req.body.service_per; // Bool, default: true
         order.service_days = req.body.service_days; // Bool, default: true
