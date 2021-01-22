@@ -1,6 +1,9 @@
 //userController.js
 //Import User Model
-User = require('../models/userModel.js');
+const User = require('../models/userModel.js');
+// Import user validator
+const validateUserInput = require('../validation/userValidator')
+console.log(validateUserInput);
 // import bcrypt
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -35,12 +38,14 @@ exports.add = async function(req, res) {
     try {
         const user = new User();
         var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+        var displayName = req.body.first_name + ' ' + req.body.last_name;
         user.email = req.body.email;
         user.password = hashedPassword;
         user.token = req.body.token != null ? req.body.token : null;
         user.image = req.body.image != null ? req.body.image : null;
         user.first_name = req.body.first_name;
         user.last_name = req.body.last_name;
+        user.display_name = displayName;
         user.role = req.body.role;
         user.group_id = req.body.group_id;
 

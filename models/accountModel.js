@@ -5,49 +5,72 @@ var accountSchema = mongoose.Schema({
     // Document ID of Franchise
     group_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Account Name
-    name: {
+    account_name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Document ID of User that created the account
     owner_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
+    },
+    // Document ID's of contacts associated with the account
+    contacts: {
+        type: [String],
+        default: null,
+        trim: true
     },
     // Account status active/inactive
     is_active: {
         type: Boolean,
         default: true
     },
-    // Account Stage: Prospect,Customer
+    // Account stage
     stage: {
         type: String,
-        required: true
+        enum: ['prospect', 'lead', 'account'],
+        required: true,
+        lowercase: true
+    },
+    // Dumpster location coordinates
+    geo_location: {
+        type: String,
+        default: null,
+        trim: true
     },
     address_street: {
         type: String,
-        required: true
+        default: null,
+        trim: true
     },
     address_city: {
         type: String,
-        required: true
+        default: null,
+        trim: true
     },
     address_state: {
         type: String,
-        required: true
+        default: null,
+        trim: true
     },
     address_zip: {
         type: String,
-        required: true
+        default: null,
+        trim: true
     },
     // Generic account domain
     email: {
         type: String,
-        required: true
+        default: null,
+        trim: true
     },
+    // When the document was created
     created: {
         type: Date,
         default: Date.now
@@ -60,33 +83,35 @@ var accountSchema = mongoose.Schema({
     // When lead becomes account
     conversion: {
         type: Date,
-        required: false
+        default: null
     },
     // Hauling contract status
     hauling_contract: {
         type: Boolean,
-        required: false
+        default: false
     },
     // Hauling contract expiration date
     hauling_expiration: {
         type: Date,
-        required: false
+        default: null
     },
     national: {
         type: Boolean,
-        required: false
+        default: false
     },
     referral: {
         type: Boolean,
-        required: false
+        default: false
     },
     referral_group_id: {
         type: String,
-        required: false
+        default: null,
+        trim: true
     },
     notes: {
         type: String,
-        required: false
+        default: null,
+        trim: true
     },
 });
 

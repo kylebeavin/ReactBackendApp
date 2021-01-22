@@ -1,12 +1,14 @@
-//orderController.js
-//Import Order Model
-Order = require('../models/orderModel.js')
-
+// orderController.js
+// Import Order Model
+const Order = require('../models/orderModel.js');
+// Import order validator
+const validateOrderInput = require('../validation/orderValidator')
+console.log(validateOrderInput);
 // For queries
 exports.view = function(req, res) {
     Order.find(req.body, null, {
             sort: {
-                name: 1
+                title: 1
             }
         },
         function(err, query) {
@@ -27,9 +29,19 @@ exports.view = function(req, res) {
 };
 
 //For creating new order
-exports.add = async function(req, res) {
+exports.add = async function(req, res, next) {
     try {
+        //validate the order input
+        console.log('order validate', req.body)
+        const { errors, isValid } = validateOrderInput.validateOrderInput(req.body)
+
+        //check validation
+        if (!isValid) {
+
+            res.status(400).json(errors)
+        }
         const order = new Order();
+        order.agreement_id = req.body.agreement_id; // String, required
         order.account_id = req.body.account_id; // String, required
         order.group_id = req.body.group_id; // String, required
         order.is_recurring = req.body.is_recurring; // String, required
@@ -42,7 +54,11 @@ exports.add = async function(req, res) {
         order.term_date = req.body.term_date; // Bool, default: true
         order.start_date = req.body.start_date; // Bool, default: true
         order.end_date = req.body.end_date; // Bool, default: true
-        order.is_active = req.body.is_active; // String, required
+        if (req.body.is_active) {
+            order.is_active = req.body.is_active;
+        };
+
+        // String, required
         order.notes = req.body.notes; // String, required
         order.url = req.body.url; // String, required
         //Save and check error
@@ -58,9 +74,9 @@ exports.add = async function(req, res) {
         }
 
     } catch (err) {
-        res.json({ message: err.message })
-    }
+        console.log(err.message)
 
+    }
 };
 
 // Update order by Object id
@@ -68,6 +84,8 @@ exports.update = async function(req, res) {
     try {
         let order = await Order.findById(req.params._id).exec()
         if (order) {
+            order._id = req.body._id ? req.body._id : order._id;
+            order.agreement_id = req.body.agreement_id; // String, required
             order.account_id = req.body.account_id; // String, required
             order.group_id = req.body.group_id; // String, required
             order.is_recurring = req.body.is_recurring; // String, required
@@ -80,9 +98,10 @@ exports.update = async function(req, res) {
             order.term_date = req.body.term_date; // Bool, default: true
             order.start_date = req.body.start_date; // Bool, default: true
             order.end_date = req.body.end_date; // Bool, default: true
+            order.is_demo = req.body.is_demo; // String, required
             order.is_active = req.body.is_active; // String, required
-            order.notes = req.body.notes; // String, required
-            order.url = req.body.url; // String, required
+            order.notes = req.body.notes != null ? req.body.token : null; // String, required
+            order.url = req.body.url != null ? req.body.token : null; // String, required
             let updatedOrder = await order.save()
             if (updatedOrder) {
                 res.status(204).json({
@@ -118,4 +137,4 @@ exports.delete = async function(req, res) {
         res.status(400).json({ message: 'Something went wrong' })
     }
 
-};
+}

@@ -1,6 +1,6 @@
 //errorController.js
 //Import Error Model
-Error = require('../models/errorModel.js');
+const Error = require('../models/errorModel.js');
 
 // For queries
 exports.view = function(req, res) {
@@ -33,8 +33,7 @@ exports.add = async function(req, res) {
         var hashedPassword = bcrypt.hashSync(req.body.password, 8);
         error.email = req.body.email;
         error.password = hashedPassword;
-        error.token = req.body.token != null ? req.body.token : null;
-        error.image = req.body.image != null ? req.body.image : null;
+        error.image = req.body.image;
         error.first_name = req.body.first_name;
         error.last_name = req.body.last_name;
         error.role = req.body.role;
@@ -69,7 +68,6 @@ exports.update = async function(req, res) {
             error._id = req.body._id ? req.body._id : error._id;
             error.email = req.body.email;
             error.password = req.body.password;
-            error.token = req.body.token;
             error.image = req.body.image;
             error.first_name = req.body.first_name;
             error.last_name = req.body.last_name;

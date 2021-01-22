@@ -1,5 +1,5 @@
 //Import Group Model
-Group = require('../models/groupModel.js')
+const Group = require('../models/groupModel.js')
 
 // For queries
 exports.view = function(req, res) {
@@ -29,7 +29,6 @@ exports.view = function(req, res) {
 exports.add = async function(req, res) {
     try {
         var group = new Group();
-        group.group_id = req.body.group_id ? req.body.group_id : group.group_id;
         group.name = req.body.name;
         group.email = req.body.email;
         group.is_active = req.body.is_active;
@@ -43,7 +42,7 @@ exports.add = async function(req, res) {
         group.signing_date = req.body.signing_date;
         group.launch_date = req.body.launch_date;
         group.phone = req.body.phone;
-        group.webpage = req.body.webpage;
+        group.webpage = req.body.webpage != null ? req.body.image : null;
         group.legal_company = req.body.legal_company;
         group.territory_zips = req.body.territory_zips;
         group.dba = req.body.dba;
@@ -73,7 +72,7 @@ exports.update = async function(req, res) {
     try {
         let group = await Group.findById(req.params._id).exec()
         if (group) {
-            group.group_id = req.body.group_id ? req.body.group_id : group.group_id;
+            group._id = req.body._id ? req.body._id : group._id;
             group.name = req.body.name;
             group.email = req.body.email;
             group.is_active = req.body.is_active;

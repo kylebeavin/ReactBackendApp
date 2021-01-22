@@ -1,3 +1,6 @@
+// inspectionModel.js
+// This is unfinished
+
 var mongoose = require('mongoose');
 
 //schema
@@ -5,21 +8,25 @@ var inspectionSchema = mongoose.Schema({
     //Franchise ID
     group_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Possibly Truck's _id
     truck_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Signed in owner of the inspection
     owner_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // TBD
     type: {
-        type: String,
+        type: [String],
+        enum: ['inspection_type'], // Inspection types will go here.
         required: true
     },
     // TBD
@@ -30,7 +37,8 @@ var inspectionSchema = mongoose.Schema({
     // },
     created: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        trim: true
     },
     // Allows inspection to be void
     is_active: {

@@ -1,6 +1,5 @@
 const ProspectGeoJson = require('../models/prospectsGeoJson.js')
 
-
 exports.view = async function(req, res) {
     try {
         let results = ProspectGeoJson.find({})

@@ -2,55 +2,60 @@ var mongoose = require('mongoose');
 
 //schema
 var invoiceSchema = mongoose.Schema({
-    // Will be replaced by document ID
-    invoice_id: {
-        type: String,
-        required: true
-    },
     // Franchise ID
     group_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Customer ID
     account_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Contact for the invoice
     contact_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Work order ID
     smash_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     invoice_date: {
         type: Date,
-        default: Date.now
+        required: true,
+        trim: true
     },
     // Recurring / On-Demand
     type: {
-        type: String,
+        type: [String],
+        enum: ['recurring', 'on-demand'],
         required: true
     },
     charges: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     subtotal: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     tax: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     total: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     created: {
         type: Date,
@@ -63,7 +68,8 @@ var invoiceSchema = mongoose.Schema({
     // Purchase order number TBD
     purchase_order: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
 });
 

@@ -3,6 +3,10 @@ var mongoose = require('mongoose');
 //schema
 var orderSchema = mongoose.Schema({
     // Customer account the order belongs to
+    agreement_id: {
+        type: String,
+        required: true
+    },
     account_id: {
         type: String,
         required: true
@@ -10,7 +14,8 @@ var orderSchema = mongoose.Schema({
     // Franchise
     group_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Recurring services
     is_recurring: {
@@ -30,30 +35,36 @@ var orderSchema = mongoose.Schema({
     // Service frequency
     service_frequency: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Service per
     service_per: {
         type: [String],
         enum: ['day', 'week', 'month'],
-        required: true
+        required: true,
+        trim: true
     },
     // Service days
     service_days: {
         type: [String],
         enum: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
-        required: true
+        required: true,
+        trim: true
     },
 
     // Monthly payment
     monthly_rate: {
         type: String,
-        required: true
+        required: true,
+        trim: true
+
     },
     // Demand Rate
     demand_rate: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Payment Date Example: Net 0 Days
     term_date: {
@@ -76,19 +87,30 @@ var orderSchema = mongoose.Schema({
         default: Date.now
     },
     // Whether or not order is active
+    is_demo: {
+        type: Boolean,
+        default: false
+    },
+    // Whether or not order is active
     is_active: {
         type: Boolean,
         default: true
     },
+    is_demo: {
+        type: Boolean,
+        default: false
+    },
     // Notes / Additional terms
     notes: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     // Terms and conditions file upload url
     url: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
 });
 

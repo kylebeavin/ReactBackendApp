@@ -5,31 +5,38 @@ var locationSchema = mongoose.Schema({
     // Customer ID
     account_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     group_id: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     location_name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     address_street: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     address_city: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     address_state: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     address_zip: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     created: {
         type: Date,

@@ -1,5 +1,5 @@
 //Import Truck Model
-Truck = require('../models/truckModel.js');
+const Truck = require('../models/truckModel.js');
 
 // For queries
 exports.view = function(req, res) {
@@ -61,6 +61,7 @@ exports.update = async function(req, res) {
     try {
         let truckToUpdate = await Truck.findById(req.params._id).exec()
         if (truckToUpdate) {
+            truck._id = req.body._id ? req.body._id : truck._id;
             truck.group_id = req.body.group_id;
             truck.vin = req.body.vin;
             truck.name = req.body.name;

@@ -4,37 +4,48 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
     first_name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     last_name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
+    },
+    display_name: {
+        type: String,
+        required: false,
+        trim: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     token: {
         type: String,
-        required: false
+        required: false,
+        trim: true
     },
     image: {
         type: String,
-        required: false
+        required: false,
+        trim: true
     },
     // Corporate, Admin, Partner, Driver, Mechanic, Sales, GM
     role: {
-        type: String,
+        type: [String],
         enum: ['corporate', 'admin', 'partner', 'gm', 'sales', 'driver', 'mechanic'],
         required: true
     },
     // Franchise ID
     group_id: {
-        type: String,
+        type: [String],
         required: true
     },
     created: {
