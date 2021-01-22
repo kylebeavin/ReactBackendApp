@@ -31,8 +31,8 @@ exports.view = function(req, res) {
 //For creating new order
 exports.add = async function(req, res, next) {
     try {
-        // //validate the order input
-        // console.log('order validate', req.body)
+        //validate the order input
+        console.log('order validate', req.body)
         // const { errors, isValid } = validateOrderInput.validateOrderInput(req.body)
 
         // //check validation
@@ -135,5 +135,28 @@ exports.delete = async function(req, res) {
     } catch (err) {
         res.status(400).json({ message: 'Something went wrong' })
     }
+
+}
+
+exports.getCalendarDates = async function(req, res){
+    try{
+        let order= Order.find({
+            start_date: {
+                $gte: new Date(new Date(startDate).setHours(00, 00, 00)),
+                $lt: new Date(new Date(endDate).setHours(23, 59, 59))
+            }
+        }).sort({start_date:'asc'})
+        if(!order){
+            return res.status(404).json({
+                status:'failure',
+                message:'Could not retrieve transactions'
+               })
+        }
+        res.status(200).json(order)
+    }
+    catch(err){
+       res.status(500).json({message:'Could not complete request'})
+    }
+       
 
 }

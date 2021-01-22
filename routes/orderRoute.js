@@ -13,6 +13,7 @@ router.route('/orders/:_id')
     .put(verifyToken.verifyToken, orderController.update)
     .patch(verifyToken.verifyToken, orderController.update)
     .delete(verifyToken.verifyToken, orderController.delete)
-
+router.route('/orderbydate')
+    .get(verifyToken.verifyToken, orderController.getCalendarDates)
 //Export API routes
 module.exports = router;
