@@ -2,6 +2,7 @@
 
 //Import Account Model
 const Account = require('../models/accountModel.js')
+const User = require('../models/accountModel.js')
 
 // For queries
 exports.view = function(req, res) {
@@ -37,7 +38,7 @@ exports.add = async function(req, res) {
         account.contacts = req.body.contacts != null ? req.body.contacts : null; // Array, required // Will be null upon generation
         account.is_active = req.body.is_active; // Bool, required
         account.stage = req.body.stage; // String, required
-        account.address_street = req.body.address_street != null ? req.body.address_state : null; // String, required
+        account.address_street = req.body.address_street != null ? req.body.address_street : null; // String, required
         account.address_city = req.body.address_city != null ? req.body.address_city : null; // String, required
         account.address_state = req.body.address_state != null ? req.body.address_state : null; // String, required
         account.address_zip = req.body.address_zip != null ? req.body.address_zip : null; // String, required
