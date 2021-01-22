@@ -2,10 +2,9 @@
 
 //Import Account Model
 const Account = require('../models/accountModel.js')
-const User = require('../models/accountModel.js')
 
 // For queries
-exports.view = function(req, res) {
+exports.view = async function(req, res) {
     Account.find(req.body, null, {
             sort: {
                 account_name: 1
@@ -35,6 +34,7 @@ exports.add = async function(req, res) {
         account.group_id = req.body.group_id; // String, required
         account.account_name = req.body.account_name; // String, required
         account.owner_id = req.body.owner_id; // String, required
+        account.owner_name = req.body.owner_name; // String, required
         account.contacts = req.body.contacts != null ? req.body.contacts : null; // Array, required // Will be null upon generation
         account.is_active = req.body.is_active; // Bool, required
         account.stage = req.body.stage; // String, required
@@ -82,6 +82,7 @@ exports.update = async function(req, res) {
             account.group_id = req.body.group_id; // String, required
             account.account_name = req.body.account_name; // String, required
             account.owner_id = req.body.owner_id; // String, required
+            account.owner_name = req.body.owner_name; // String, required
             account.contacts = req.body.contacts; // Array, required
             account.is_active = req.body.is_active; // Bool, required
             account.stage = req.body.stage; // String, required
