@@ -74,8 +74,7 @@ exports.add = async function(req, res, next) {
         }
 
     } catch (err) {
-        console.log(err.message)
-
+        res.json({ message: err.message })
     }
 };
 

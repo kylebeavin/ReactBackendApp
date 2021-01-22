@@ -49,7 +49,7 @@ exports.add = async function(req, res) {
                 message: "New error created!",
             })
         } else {
-            res.status(304).json({ status: 'something went wrong' })
+            res.status(304).json({ status: 'Error message not saved as record' })
         }
 
     } catch (err) {
@@ -79,17 +79,17 @@ exports.update = async function(req, res) {
                 res.status(204).json({
                     status: "success",
                     status: 204,
-                    message: "Error Updated Successfully",
+                    message: "Error record Updated Successfully",
                     data: updatedError
                 })
             } else {
-                res.status(400).json({ message: 'Failed to update', status: 400 })
+                res.status(400).json({ message: 'Failed to update error record', status: 400 })
             }
         } else {
-            res.status(400).json({ message: 'Error not found' })
+            res.status(400).json({ message: 'Error record not found' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 
 };
@@ -99,11 +99,11 @@ exports.delete = async function(req, res) {
     try {
         let deleteError = await Error.deleteOne({ _id: req.params._id }).exec()
         if (deleteError) {
-            res.status(204).json({ message: 'Error successfully deleted' })
+            res.status(204).json({ message: 'Error record successfully deleted' })
         } else {
-            res.status(400).json({ message: 'Failed to delete' })
+            res.status(400).json({ message: 'Failed to delete error record' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 };

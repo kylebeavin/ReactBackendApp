@@ -7,7 +7,7 @@ const Account = require('../models/accountModel.js')
 exports.view = function(req, res) {
     Account.find(req.body, null, {
             sort: {
-                name: 1
+                account_name: 1
             }
         },
         function(err, query) {
@@ -62,7 +62,7 @@ exports.add = async function(req, res) {
 
             })
         } else {
-            res.status(304).json({ status: 'something went wrong' })
+            res.status(304).json({ status: 'Failed to create account' })
         }
 
     } catch (err) {
@@ -113,7 +113,7 @@ exports.update = async function(req, res) {
             res.status(400).json({ message: 'Account not found' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.status(400).json({ message: err.message })
     }
 };
 
@@ -124,10 +124,10 @@ exports.delete = async function(req, res) {
         if (deleteAccount) {
             res.status(204).json({ message: 'Account successfully deleted' })
         } else {
-            res.status(400).json({ message: 'Failed to delete' })
+            res.status(400).json({ message: 'Failed to delete account' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 
 };

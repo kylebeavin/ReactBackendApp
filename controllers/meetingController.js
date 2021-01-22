@@ -61,7 +61,6 @@ exports.add = async function(req, res) {
 
 };
 
-
 // Update Meeting by Object Id
 exports.update = function(req, res) {
     Meeting.findById(req.params._id, function(err, meeting) {
@@ -99,43 +98,6 @@ exports.update = function(req, res) {
             });
         });
     });
-};
-
-// Update order by Object id
-exports.update = async function(req, res) {
-    try {
-        let meeting = await Order.findById(req.params._id).exec()
-        if (meeting) {
-            meeting.account_id = req.body.account_id // String, required
-            meeting.group_id = req.body.group_id // String, required
-            meeting.contact_id = req.body.contact_id;
-            meeting.owner_id = req.body.owner_id;
-            meeting.title = req.body.title;
-            meeting.address_street = req.body.address_street;
-            meeting.address_city = req.body.address_city;
-            meeting.address_state = req.body.address_state;
-            meeting.address_zip = req.body.address_zip;
-            meeting.meeting_time = req.body.meeting_time;
-            meeting.is_active = req.body.is_active;
-            let updatedOrder = await orderToUpdate.save()
-            if (updatedOrder) {
-                res.status(204).json({
-                    status: "success",
-                    status: 204,
-                    message: "Order Updated Successfully",
-                    data: updatedOrder
-                })
-            } else {
-                res.status(400).json({ message: 'Failed to update', status: 400 })
-            }
-        } else {
-            res.status(400).json({ message: 'Order not found' })
-        }
-    } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
-    }
-
-
 };
 
 // Delete Meeting by Object Id

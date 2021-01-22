@@ -20,7 +20,7 @@ var orderSchema = mongoose.Schema({
     // Recurring services
     is_recurring: {
         type: Boolean,
-        required: true
+        default: false
     },
     // Service constraints
     services: {
@@ -85,11 +85,6 @@ var orderSchema = mongoose.Schema({
     created: {
         type: Date,
         default: Date.now
-    },
-    // Whether or not order is active
-    is_demo: {
-        type: Boolean,
-        default: false
     },
     // Whether or not order is active
     is_active: {
