@@ -59,7 +59,7 @@ exports.add = async function(req, res) {
                 message: "New group created!",
             })
         } else {
-            res.status(304).json({ status: 'something went wrong' })
+            res.status(304).json({ status: 'Failed to create group ' })
         }
 
     } catch (err) {
@@ -101,13 +101,13 @@ exports.update = async function(req, res) {
                     data: updatedGroup
                 })
             } else {
-                res.status(400).json({ message: 'Failed to update', status: 400 })
+                res.status(400).json({ message: 'Failed to update group', status: 400 })
             }
         } else {
             res.status(400).json({ message: 'Group not found' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 };
 
@@ -121,9 +121,9 @@ exports.delete = async function(req, res) {
                 message: 'Group successfully deleted'
             })
         } else {
-            res.status(400).json({ message: 'Failed to delete' })
+            res.status(400).json({ message: 'Failed to delete group' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 };

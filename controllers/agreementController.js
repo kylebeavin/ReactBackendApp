@@ -55,7 +55,7 @@ exports.add = async function(req, res) {
                 message: "New agreement created!",
             })
         } else {
-            res.status(304).json({ status: 'something went wrong' })
+            res.status(304).json({ status: 'Failed to create agreement' })
         }
 
     } catch (err) {
@@ -94,13 +94,13 @@ exports.update = async function(req, res) {
                     data: updatedAgreement
                 })
             } else {
-                res.status(400).json({ message: 'Failed to update', status: 400 })
+                res.status(400).json({ message: 'Failed to update agreement', status: 400 })
             }
         } else {
             res.status(400).json({ message: 'Agreement not found' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 };
 
@@ -114,10 +114,10 @@ exports.delete = async function(req, res) {
                 message: 'Agreement successfully deleted'
             })
         } else {
-            res.status(400).json({ message: 'Failed to delete' })
+            res.status(400).json({ message: 'Failed to delete agreement' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 
 };

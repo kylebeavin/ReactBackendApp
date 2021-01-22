@@ -35,7 +35,7 @@ var accountSchema = mongoose.Schema({
     stage: {
         type: String,
         enum: ['prospect', 'lead', 'account'],
-        required: true,
+        default: 'prospect',
         lowercase: true
     },
     // Dumpster location coordinates

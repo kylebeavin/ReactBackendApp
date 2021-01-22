@@ -45,7 +45,7 @@ exports.add = async function(req, res) {
                 message: "New contact created!",
             })
         } else {
-            res.status(304).json({ status: 'something went wrong' })
+            res.status(304).json({ status: 'Failed to create contact' })
         }
 
     } catch (err) {
@@ -77,13 +77,13 @@ exports.update = async function(req, res) {
                     data: updatedContact
                 })
             } else {
-                res.status(400).json({ message: 'Failed to update', status: 400 })
+                res.status(400).json({ message: 'Failed to update contact', status: 400 })
             }
         } else {
             res.status(400).json({ message: 'Contact not found' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 };
 
@@ -97,9 +97,9 @@ exports.delete = async function(req, res) {
                 message: 'Contact successfully deleted'
             })
         } else {
-            res.status(400).json({ message: 'Failed to delete' })
+            res.status(400).json({ message: 'Failed to delete contact' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 };

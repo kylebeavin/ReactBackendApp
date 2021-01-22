@@ -29,9 +29,9 @@ const meetingRoutes = require("./routes/meetingRoute");
 const orderRoutes = require("./routes/orderRoute");
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
-const geoJsonRoutes = require('./routes/prospectsGeoJsonRoute')
-const notFound = require('./middleware/notFound')
-const errorHandler = require('./middleware/errorHandler')
+const geoJsonRoutes = require('./routes/prospectsGeoJsonRoute');
+const notFound = require('./middleware/notFound');
+const errorHandler = require('./middleware/errorHandler');
 
 
 // configure bodyparser to hande the post requests

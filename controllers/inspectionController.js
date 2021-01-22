@@ -47,7 +47,7 @@ exports.add = async function(req, res) {
                 message: "New inspection created!",
             })
         } else {
-            res.status(304).json({ status: 'something went wrong' })
+            res.status(304).json({ status: 'Failed to create inspection' })
         }
 
     } catch (err) {
