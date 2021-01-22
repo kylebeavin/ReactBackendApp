@@ -5,7 +5,7 @@ var orderSchema = mongoose.Schema({
     // Customer account the order belongs to
     agreement_id: {
         type: String,
-        required: true
+        
     },
     account_id: {
         type: String,
@@ -96,10 +96,7 @@ var orderSchema = mongoose.Schema({
         type: Boolean,
         default: true
     },
-    is_demo: {
-        type: Boolean,
-        default: false
-    },
+    
     // Notes / Additional terms
     notes: {
         type: String,
