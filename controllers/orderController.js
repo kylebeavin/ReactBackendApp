@@ -140,12 +140,14 @@ exports.delete = async function(req, res) {
 
 exports.getCalendarDates = async function(req, res){
     try{
-        let order= Order.find({
+        
+        let order= await Order.find({
             start_date: {
-                $gte:new Date(req.body.query.start_date), 
-                $lte: new Date(req.body.query.start_date + "23:59:59+01:00")
+                $gte:new Date(new Date(req.query.start_date).setHours(0,0,0)), 
+                $lte: new Date(new Date(req.query.start_date).setHours(23,59,59))
             }
-        }).sort({start_date:1})
+        }).sort({start_date:1}).exec()
+        console.log(order)
         if(!order){
             return res.status(404).json({
                 status:'failure',
@@ -155,7 +157,7 @@ exports.getCalendarDates = async function(req, res){
         res.status(200).json(order)
     }
     catch(err){
-       res.status(500).json({message:'Could not complete request'})
+       res.status(500).json({message:err.message})
     }
        
 
