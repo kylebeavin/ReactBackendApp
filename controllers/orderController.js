@@ -140,11 +140,11 @@ exports.delete = async function(req, res) {
 
 exports.getCalendarDates = async function(req, res){
     try{
-        
+        console.log(new Date(req.query.start_date))
         let order= await Order.find({
             start_date: {
-                $gte:new Date(new Date(req.query.start_date).setHours(0,0,0)), 
-                $lte: new Date(new Date(req.query.start_date).setHours(23,59,59))
+                $gte: (req.query.start_date), 
+                $lte: (req.query.start_date)+"T23:59:59"
             }
         }).sort({start_date:1}).exec()
         console.log(order)
