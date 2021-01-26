@@ -120,3 +120,39 @@ exports.delete = async function(req, res) {
         res.json({ message: err.message })
     }
 };
+
+// Delete Agreement by _id
+exports.delete = async function (req, res) {
+	try {
+		let agreement = await Agreement.findOne({ _id: req.body._id }).exec()
+		if (agreement) {
+            agreement.account_id = agreement.account_id; 
+            agreement.group_id = agreement.group_id; 
+            agreement.is_recurring = agreement.is_recurring; 
+            agreement.services = agreement.services; 
+            agreement.service_frequency = agreement.service_frequency; 
+            agreement.service_per = agreement.service_per; 
+            agreement.service_days = agreement.service_days; 
+            agreement.monthly_rate = agreement.monthly_rate; 
+            agreement.demand_rate = agreement.demand_rate; 
+            agreement.term_date = agreement.term_date; 
+            agreement.start_date = agreement.start_date; 
+            agreement.end_date = agreement.end_date; 
+            agreement.is_active = false
+            agreement.notes = agreement.notes
+            agreement.url = agreement.url
+			if (user) {
+				res.json({
+					status: "success",
+					status: 204,
+					message: "Agreement deactivated Successfully",
+					data: user
+				})
+			}
+		} else {
+			res.json({ message: 'Agreement not found' })
+		}
+	} catch (err) {
+		res.json({ message: err.message })
+	}
+};

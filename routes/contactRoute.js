@@ -6,13 +6,13 @@ var verifyToken = require('../middleware/verifyToken.js');
 // Contacts routes
 router.route('/contacts')
     .get(verifyToken.verifyToken, contactController.view)
-    .post(verifyToken.verifyToken, contactController.add);
-router.route('/contactsBy')
-    .post(verifyToken.verifyToken, contactController.view);
-router.route('/contacts/:_id')
+    .post(verifyToken.verifyToken, contactController.add)
     .put(verifyToken.verifyToken, contactController.update)
     .patch(verifyToken.verifyToken, contactController.update)
     .delete(verifyToken.verifyToken, contactController.delete);
+
+router.route('/contactsBy')
+    .post(verifyToken.verifyToken, contactController.view);
 
 //Export API routes
 module.exports = router;

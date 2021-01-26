@@ -35,20 +35,20 @@ exports.add = async function (req, res) {
         account.owner_id = req.body.owner_id; 
         account.owner_name = req.body.owner_name; 
         account.contacts = req.body.contacts != null ? req.body.contacts : null; // Array, required // Will be null upon generation
-        account.is_active = req.body.is_active; // Bool, required
+        account.is_active = req.body.is_active; 
         account.stage = req.body.stage; 
         account.address_street = req.body.address_street != null ? req.body.address_street : null; 
         account.address_city = req.body.address_city != null ? req.body.address_city : null; 
         account.address_state = req.body.address_state != null ? req.body.address_state : null; 
         account.address_zip = req.body.address_zip != null ? req.body.address_zip : null; 
         account.email = req.body.email != null ? req.body.email : null; 
-        account.demo = req.body.demo != null ? req.body.demo : null; // Date, required
-        account.conversion = req.body.conversion != null ? req.body.conversion : null; // Date, required
-        account.hauling_contract = req.body.hauling_contract; // Bool, required
-        account.hauling_expiration = req.body.hauling_expiration; // Date, required
+        account.demo = req.body.demo != null ? req.body.demo : null; 
+        account.conversion = req.body.conversion != null ? req.body.conversion : null; 
+        account.hauling_contract = req.body.hauling_contract; 
+        account.hauling_expiration = req.body.hauling_expiration; 
         account.notes = req.body.notes != null ? req.body.notes : null; 
-        account.national = req.body.national; // Bool, required
-        account.referral = req.body.referral; // Bool, required
+        account.national = req.body.national; 
+        account.referral = req.body.referral; 
         account.referral_group_id = req.body.referral_group_id != null ? req.body.referral_group_id : null; 
         account.geo_location = req.body.geo_location // Add geo_location
 
@@ -78,26 +78,26 @@ exports.update = async function (req, res) {
         if (account) {
             account._id = req.body._id ? req.body._id : account._id;
             account.group_id = req.body.group_id ? req.body.group_id : account.group_id;
-            account.account_name = req.body.account_name ? req.body.account_name : account.account_name; 
-            account.owner_id = req.body.owner_id ? req.body.owner_id : account.owner_id; 
-            account.owner_name = req.body.owner_name ? req.body.owner_name : account.owner_name; 
-            account.contacts = req.body.contacts ? req.body.contacts : account.contacts; 
-            account.is_active = req.body.is_active ? req.body.is_active : account.is_active; 
-            account.stage = req.body.stage ? req.body.stage : account.stage; 
-            account.address_street = req.body.address_street ? req.body.address_street : account.address_street; 
-            account.address_city = req.body.address_city ? req.body.address_city : account.address_city; 
-            account.address_state = req.body.address_state ? req.body.address_state : account.address_state; 
+            account.account_name = req.body.account_name ? req.body.account_name : account.account_name;
+            account.owner_id = req.body.owner_id ? req.body.owner_id : account.owner_id;
+            account.owner_name = req.body.owner_name ? req.body.owner_name : account.owner_name;
+            account.contacts = req.body.contacts ? req.body.contacts : account.contacts;
+            account.is_active = req.body.is_active ? req.body.is_active : account.is_active;
+            account.stage = req.body.stage ? req.body.stage : account.stage;
+            account.address_street = req.body.address_street ? req.body.address_street : account.address_street;
+            account.address_city = req.body.address_city ? req.body.address_city : account.address_city;
+            account.address_state = req.body.address_state ? req.body.address_state : account.address_state;
             account.address_zip = req.body.address_zip ? req.body.address_zip : account.address_zip; 
-            account.email = req.body.email ? req.body.email : account.email; 
-            account.demo = req.body.demo ? req.body.demo : account.demo; 
-            account.conversion = req.body.conversion ? req.body.conversion : account.conversion; 
-            account.hauling_contract = req.body.hauling_contract ? req.body.hauling_contract : account.hauling_contract; 
-            account.hauling_expiration = req.body.hauling_expiration ? req.body.hauling_expiration : account.hauling_expiration; 
-            account.notes = req.body.notes ? req.body.notes : account.notes; 
-            account.national = req.body.national ? req.body.national : account.national; 
-            account.referral = req.body.referral ? req.body.referral : account.referral; 
-            account.referral_group_id = req.body.referral_group_id ? req.body.referral_group_id : referral_group_id; 
-            account.geo_location = req.body.geo_location ? req.body.geo_location : account.geo_location; 
+            account.email = req.body.email ? req.body.email : account.email;
+            account.demo = req.body.demo ? req.body.demo : account.demo;
+            account.conversion = req.body.conversion ? req.body.conversion : account.conversion;
+            account.hauling_contract = req.body.hauling_contract ? req.body.hauling_contract : account.hauling_contract;
+            account.hauling_expiration = req.body.hauling_expiration ? req.body.hauling_expiration : account.hauling_expiration;
+            account.notes = req.body.notes ? req.body.notes : account.notes;
+            account.national = req.body.national ? req.body.national : account.national;
+            account.referral = req.body.referral ? req.body.referral : account.referral;
+            account.referral_group_id = req.body.referral_group_id ? req.body.referral_group_id : account.referral_group_id;
+            account.geo_location = req.body.geo_location ? req.body.geo_location : account.geo_location;
             let updatedAccount = await account.save()
             if (updatedAccount) {
                 res.json({
@@ -117,25 +117,10 @@ exports.update = async function (req, res) {
     }
 };
 
-// Delete Account by Object Id
-exports.delete = async function (req, res) {
-    try {
-        let deleteAccount = Account.deleteOne({ _id: req.params._id }).exec()
-        if (deleteAccount) {
-            res.json({ message: 'Account successfully deleted' })
-        } else {
-            res.json({ message: 'Failed to delete account' })
-        }
-    } catch (err) {
-        res.json({ message: err.message })
-    }
-
-};
-
-// Delete Account by email
+// Delete Account by _id
 exports.delete = async function (req, res) {
 	try {
-		let account = await account.findOne({ _id: req.body._id }).exec()
+		let account = await Account.findOne({ _id: req.body._id }).exec()
 		if (account) {
             account.group_id = account.group_id; 
             account.account_name = account.account_name; 
@@ -151,13 +136,13 @@ exports.delete = async function (req, res) {
             account.email = account.email;
             account.demo = account.demo;
             account.conversion = account.conversion;
-            account.hauling_contract = account.hauling_contract; // Bool, required
-            account.hauling_expiration = account.hauling_expiration; // Date, required
-            account.notes = account.note;
-            account.national = account.national; // Bool, required
-            account.referral = account.referral; // Bool, required
+            account.hauling_contract = account.hauling_contract; 
+            account.hauling_expiration = account.hauling_expiration; 
+            account.notes = account.notes;
+            account.national = account.national; 
+            account.referral = account.referral; 
             account.referral_group_id = account.referral_group_id;
-            account.geo_location = account.geo_location // Add geo_location
+            account.geo_location = account.geo_location;
 			if (account) {
 				res.json({
 					status: "success",
@@ -167,7 +152,7 @@ exports.delete = async function (req, res) {
 				})
 			}
 		} else {
-			res.json({ message: 'User not found' })
+			res.json({ message: 'Account not found' })
 		}
 	} catch (err) {
 		res.json({ message: err.message })
