@@ -30,21 +30,21 @@ exports.view = function(req, res) {
 exports.add = async function(req, res) {
     try {
         const agreement = new Agreement();
-        agreement.account_id = req.body.account_id; // String, required
-        agreement.group_id = req.body.group_id; // String, required
-        agreement.is_recurring = req.body.is_recurring; // String, required
-        agreement.services = req.body.services; // Bool, default: true
-        agreement.service_frequency = req.body.service_frequency; // Bool, default: true
-        agreement.service_per = req.body.service_per; // Bool, default: true
-        agreement.service_days = req.body.service_days; // Bool, default: true
-        agreement.monthly_rate = req.body.monthly_rate; // Bool, default: true
-        agreement.demand_rate = req.body.demand_rate; // Bool, default: true
-        agreement.term_date = req.body.term_date; // Bool, default: true
-        agreement.start_date = req.body.start_date; // Bool, default: true
-        agreement.end_date = req.body.end_date; // Bool, default: true
-        agreement.is_active = req.body.is_active; // String, required
-        agreement.notes = req.body.notes != null ? req.body.notes : null // String, required
-        agreement.url = req.body.url != null ? req.body.url : null // String, required
+        agreement.account_id = req.body.account_id; 
+        agreement.group_id = req.body.group_id; 
+        agreement.is_recurring = req.body.is_recurring; 
+        agreement.services = req.body.services; 
+        agreement.service_frequency = req.body.service_frequency; 
+        agreement.service_per = req.body.service_per; 
+        agreement.service_days = req.body.service_days; 
+        agreement.monthly_rate = req.body.monthly_rate; 
+        agreement.demand_rate = req.body.demand_rate; 
+        agreement.term_date = req.body.term_date; 
+        agreement.start_date = req.body.start_date; 
+        agreement.end_date = req.body.end_date; 
+        agreement.is_active = req.body.is_active; 
+        agreement.notes = req.body.notes != null ? req.body.notes : null 
+        agreement.url = req.body.url != null ? req.body.url : null 
 
         //Save and check error
         let newAgreement = await agreement.save()
@@ -55,7 +55,7 @@ exports.add = async function(req, res) {
                 message: "New agreement created!",
             })
         } else {
-            res.status(304).json({ status: 'Failed to create agreement' })
+            res.json({ status: 'Failed to create agreement' })
         }
 
     } catch (err) {
@@ -70,34 +70,34 @@ exports.update = async function(req, res) {
         let agreement = await Agreement.findById(req.params._id).exec()
         if (agreement) {
             agreement._id = req.body._id ? req.body._id : agreement._id;
-            agreement.account_id = req.body.account_id; // String, required
-            agreement.group_id = req.body.group_id; // String, required
-            agreement.is_recurring = req.body.is_recurring; // String, required
-            agreement.services = req.body.services; // Bool, default: true
-            agreement.service_frequency = req.body.service_frequency; // Bool, default: true
-            agreement.service_per = req.body.service_per; // Bool, default: true
-            agreement.service_days = req.body.service_days; // Bool, default: true
-            agreement.monthly_rate = req.body.monthly_rate; // Bool, default: true
-            agreement.demand_rate = req.body.demand_rate; // Bool, default: true
-            agreement.term_date = req.body.term_date; // Bool, default: true
-            agreement.start_date = req.body.start_date; // Bool, default: true
-            agreement.end_date = req.body.end_date; // Bool, default: true
-            agreement.is_active = req.body.is_active; // String, required
-            agreement.notes = req.body.notes; // String, required
-            agreement.url = req.body.url; // String, required
+            agreement.account_id = req.body.account_id ? req.body.account_id : agreement.account_id; 
+            agreement.group_id = req.body.group_id ? req.body.group_id : agreement.group_id; 
+            agreement.is_recurring = req.body.is_recurring ? req.body.is_recurring : agreement.is_recurring; 
+            agreement.services = req.body.services ? req.body.services : agreement.services; 
+            agreement.service_frequency = req.body.service_frequency ? req.body.service_frequency : agreement.service_frequency; 
+            agreement.service_per = req.body.service_per ? req.body.service_per : agreement.service_per; 
+            agreement.service_days = req.body.service_days ? req.body.service_days : agreement.service_days; 
+            agreement.monthly_rate = req.body.monthly_rate ? req.body.monthly_rate : agreement.monthly_rate; 
+            agreement.demand_rate = req.body.demand_rate ? req.body.demand_rate : agreement.demand_rate; 
+            agreement.term_date = req.body.term_date ? req.body.term_date : agreement.term_date; 
+            agreement.start_date = req.body.start_date ? req.body.start_date : agreement.start_date; 
+            agreement.end_date = req.body.end_date ? req.body.end_date : agreement.end_date; 
+            agreement.is_active = req.body.is_active ? req.body.is_active : agreement.is_active; 
+            agreement.notes = req.body.notes ? req.body.notes : agreement.notes; 
+            agreement.url = req.body.url ? req.body.url : agreement.url; 
             let updatedAgreement = await agreement.save()
             if (updatedAgreement) {
-                res.status(204).json({
+                res.json({
                     status: "success",
                     status: 204,
                     message: "Agreement Updated Successfully",
                     data: updatedAgreement
                 })
             } else {
-                res.status(400).json({ message: 'Failed to update agreement', status: 400 })
+                res.json({ message: 'Failed to update agreement', status: 400 })
             }
         } else {
-            res.status(400).json({ message: 'Agreement not found' })
+            res.json({ message: 'Agreement not found' })
         }
     } catch (err) {
         res.json({ message: err.message })
@@ -109,15 +109,14 @@ exports.delete = async function(req, res) {
     try {
         let deleteAgreement = await Agreement.deleteOne({ _id: req.params._id }).exec()
         if (deleteAgreement) {
-            res.status(204).json({
+            res.json({
                 status: "success",
                 message: 'Agreement successfully deleted'
             })
         } else {
-            res.status(400).json({ message: 'Failed to delete agreement' })
+            res.json({ message: 'Failed to delete agreement' })
         }
     } catch (err) {
         res.json({ message: err.message })
     }
-
 };
