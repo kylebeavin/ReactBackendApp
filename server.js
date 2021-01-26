@@ -29,7 +29,6 @@ const meetingRoutes = require("./routes/meetingRoute");
 const orderRoutes = require("./routes/orderRoute");
 const truckRoutes = require("./routes/truckRoute");
 const userRoutes = require("./routes/userRoute");
-const geoJsonRoutes = require('./routes/prospectsGeoJsonRoute');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -82,7 +81,6 @@ app.use('/api', apiRoutes);
 app.use('/api', accountRoutes);
 app.use('/api', agreementRoutes);
 app.use('/api', contactRoutes);
-app.use('/api', geoJsonRoutes);
 app.use('/api', groupRoutes);
 app.use('/api', inspectionRoutes);
 app.use('/api', invoiceRoutes);
@@ -91,11 +89,9 @@ app.use('/api', meetingRoutes);
 app.use('/api', orderRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
-
 // app.use('/api', serviceRoutes);
 app.use('/api', truckRoutes);
 app.use('/api', userRoutes);
-app.use('/api', geoJsonRoutes);
 // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);

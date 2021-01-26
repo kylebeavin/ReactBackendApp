@@ -7,12 +7,11 @@ var verifyToken = require('../middleware/verifyToken.js');
 router.route('/groups')
     .get(verifyToken.verifyToken, groupController.view)
     .post(verifyToken.verifyToken, groupController.add)
-router.route('/groupsBy')
-    .post(verifyToken.verifyToken, groupController.view)
-router.route('/groups/:_id')
     .put(verifyToken.verifyToken, groupController.update)
     .patch(verifyToken.verifyToken, groupController.update)
     .delete(verifyToken.verifyToken, groupController.delete)
+router.route('/groupsBy')
+    .post(verifyToken.verifyToken, groupController.view)
 
 //Export API routes
 module.exports = router;

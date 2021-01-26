@@ -9,10 +9,10 @@ router.route('/contacts')
     .post(verifyToken.verifyToken, contactController.add)
     .put(verifyToken.verifyToken, contactController.update)
     .patch(verifyToken.verifyToken, contactController.update)
-    .delete(verifyToken.verifyToken, contactController.delete);
+    .delete(verifyToken.verifyToken, contactController.delete)
 
 router.route('/contactsBy')
-    .post(verifyToken.verifyToken, contactController.view);
+    .post(verifyToken.verifyToken, contactController.view)
 
 //Export API routes
 module.exports = router;

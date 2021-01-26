@@ -81,7 +81,7 @@ exports.update = async function(req, res) {
             res.status(400).json({ message: 'Inspection not found' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.status(400).json({ message: err.message })
     }
 };
 
@@ -98,6 +98,6 @@ exports.delete = async function(req, res) {
             res.status(400).json({ message: 'Failed to delete' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.status(400).json({ message: err.message })
     }
 };
