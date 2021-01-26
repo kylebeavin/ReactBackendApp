@@ -114,6 +114,11 @@ var accountSchema = mongoose.Schema({
         default: null,
         trim: true
     },
+    industry: {
+        type: String,
+        default: null,
+        trim: true
+    },
     notes: {
         type: String,
         default: null,

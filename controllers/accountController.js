@@ -50,7 +50,8 @@ exports.add = async function (req, res) {
         account.national = req.body.national; 
         account.referral = req.body.referral; 
         account.referral_group_id = req.body.referral_group_id != null ? req.body.referral_group_id : null; 
-        account.geo_location = req.body.geo_location // Add geo_location
+        account.geo_location = req.body.geo_location; // Add geo_location
+        account.industry = req.body.industry;
 
         //Save and check error
         let newAccount = await account.save()
@@ -98,6 +99,7 @@ exports.update = async function (req, res) {
             account.referral = req.body.referral ? req.body.referral : account.referral;
             account.referral_group_id = req.body.referral_group_id ? req.body.referral_group_id : account.referral_group_id;
             account.geo_location = req.body.geo_location ? req.body.geo_location : account.geo_location;
+            account.industry = req.body.industry ? req.body.industry : account.industry;
             let updatedAccount = await account.save()
             if (updatedAccount) {
                 res.json({
@@ -142,7 +144,8 @@ exports.delete = async function (req, res) {
             account.referral = account.referral; 
             account.referral_group_id = account.referral_group_id;
             account.geo_location = account.geo_location;
-            account.is_active = false
+            account.is_active = false;
+            account.industry = account.industry;
 			if (account) {
 				res.json({
 					status: "success",
