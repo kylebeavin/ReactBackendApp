@@ -15,12 +15,12 @@ router.route('/logout')
 router.route('/users')
     .get(verifyToken.verifyToken, userController.view)
     .post(verifyToken.verifyToken, userController.add)
-router.route('/usersBy')
-    .post(verifyToken.verifyToken, userController.view)
-router.route('/users/:_id')
     .put(verifyToken.verifyToken, userController.update)
     .patch(verifyToken.verifyToken, userController.update)
     .delete(verifyToken.verifyToken, userController.delete)
+router.route('/usersBy')
+    .post(verifyToken.verifyToken, userController.view)
+
 
 //Export API routes
 module.exports = router;
