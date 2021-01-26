@@ -104,23 +104,6 @@ exports.update = async function(req, res) {
     }
 };
 
-// Delete Agreement by Object Id
-exports.delete = async function(req, res) {
-    try {
-        let deleteAgreement = await Agreement.deleteOne({ _id: req.params._id }).exec()
-        if (deleteAgreement) {
-            res.json({
-                status: "success",
-                message: 'Agreement successfully deleted'
-            })
-        } else {
-            res.json({ message: 'Failed to delete agreement' })
-        }
-    } catch (err) {
-        res.json({ message: err.message })
-    }
-};
-
 // Delete Agreement by _id
 exports.delete = async function (req, res) {
 	try {
@@ -138,9 +121,9 @@ exports.delete = async function (req, res) {
             agreement.term_date = agreement.term_date; 
             agreement.start_date = agreement.start_date; 
             agreement.end_date = agreement.end_date; 
-            agreement.is_active = false
             agreement.notes = agreement.notes
             agreement.url = agreement.url
+            agreement.is_active = false
 			if (user) {
 				res.json({
 					status: "success",

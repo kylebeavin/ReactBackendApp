@@ -127,7 +127,6 @@ exports.delete = async function (req, res) {
             account.owner_id = account.owner_id; 
             account.owner_name = account.owner_name; 
             account.contacts = account.contacts;
-            account.is_active = false
             account.stage = account.stage; 
             account.address_street = account.address_street;
             account.address_city = account.address_city;
@@ -143,6 +142,7 @@ exports.delete = async function (req, res) {
             account.referral = account.referral; 
             account.referral_group_id = account.referral_group_id;
             account.geo_location = account.geo_location;
+            account.is_active = false
 			if (account) {
 				res.json({
 					status: "success",

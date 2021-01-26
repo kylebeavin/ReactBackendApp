@@ -111,23 +111,6 @@ exports.update = async function (req, res) {
     }
 };
 
-// Delete Group by Object Id
-exports.delete = async function (req, res) {
-    try {
-        let deleteGroup = await Group.deleteOne({ _id: req.params._id }).exec()
-        if (deleteGroup) {
-            res.json({
-                status: "success",
-                message: 'Group successfully deleted'
-            })
-        } else {
-            res.json({ message: 'Failed to delete group' })
-        }
-    } catch (err) {
-        res.json({ message: err.message })
-    }
-};
-
 // Delete Group by _id
 exports.delete = async function (req, res) {
     try {
