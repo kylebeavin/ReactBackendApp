@@ -38,6 +38,11 @@ var agreementSchema = mongoose.Schema({
         type: Boolean,
         default: true
     },
+    // Recurring services
+    is_recurring: {
+        type: Boolean,
+        required: true
+    },
     // Monthly payment
     monthly_rate: {
         type: String,
@@ -56,11 +61,7 @@ var agreementSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    // Recurring services
-    is_recurring: {
-        type: Boolean,
-        required: true
-    },
+
     // Service constraints
     services: {
         type: [String],

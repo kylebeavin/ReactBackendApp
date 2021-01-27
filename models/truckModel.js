@@ -54,18 +54,6 @@ var truckSchema = mongoose.Schema({
         default: null,
         trim: true
     },
-    // Vehicle Make
-    make: {
-        type: String,
-        default: null,
-        trim: true
-    },
-    // Vehicle Model
-    model: {
-        type: String,
-        default: null,
-        trim: true
-    },
     // Vehicle MSRP
     msrp: {
         type: String,
@@ -123,6 +111,18 @@ var truckSchema = mongoose.Schema({
     },
     // Vehicle Registration
     registration: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Vehicle Make
+    vehicle_make: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Vehicle Model
+    vehicle_model: {
         type: String,
         default: null,
         trim: true

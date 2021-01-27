@@ -3,13 +3,14 @@ var mongoose = require('mongoose');
 //schema
 var orderSchema = mongoose.Schema({
     // Customer account the order belongs to
-    agreement_id: {
-        type: String,
-        required: false
-    },
     account_id: {
         type: String,
         required: true
+    },
+    // Document ID of the corrosponding agreement.
+    agreement_id: {
+        type: String,
+        required: false
     },
     // Date created
     created: {
@@ -57,7 +58,7 @@ var orderSchema = mongoose.Schema({
     },
     // Notes / Additional terms
     notes: {
-        type: String,
+        type: [String],
         required: true,
         trim: true
     },

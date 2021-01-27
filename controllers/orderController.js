@@ -5,13 +5,13 @@ const Order = require('../models/orderModel.js');
 const validateOrderInput = require('../validation/orderValidator')
 console.log(validateOrderInput);
 // For queries
-exports.view = function(req, res) {
+exports.view = function (req, res) {
     Order.find(req.body, null, {
-            sort: {
-                title: 1
-            }
-        },
-        function(err, query) {
+        sort: {
+            title: 1
+        }
+    },
+        function (err, query) {
 
             if (err) {
                 res.json({
@@ -29,29 +29,25 @@ exports.view = function(req, res) {
 };
 
 //For creating new order
-exports.add = async function(req, res, next) {
+exports.add = async function (req, res, next) {
     try {
         const order = new Order();
-        order.agreement_id = req.body.agreement_id; // String, required
-        order.account_id = req.body.account_id; // String, required
-        order.group_id = req.body.group_id; // String, required
-        order.is_recurring = req.body.is_recurring; // String, required
-        order.services = req.body.services; // String, default: true
-        order.service_frequency = req.body.service_frequency; // Bool, default: true
-        order.service_per = req.body.service_per; // Bool, default: true
-        order.service_days = req.body.service_days; // Bool, default: true
-        order.monthly_rate = req.body.monthly_rate; // Bool, default: true
-        order.demand_rate = req.body.demand_rate; // Bool, default: true
-        order.term_date = req.body.term_date; // Bool, default: true
-        order.start_date = req.body.start_date; // Bool, default: true
-        order.end_date = req.body.end_date; // Bool, default: true
-        if (req.body.is_active) {
-            order.is_active = req.body.is_active;
-        };
-
-        // String, required
-        order.notes = req.body.notes; // String, required
-        order.url = req.body.url; // String, required
+        order.account_id = req.body.account_id;
+        order.agreement_id = req.body.agreement_id;
+        order.demand_rate = req.body.demand_rate;
+        order.end_date = req.body.end_date;
+        order.group_id = req.body.group_id;
+        order.is_demo = req.body.is_demo;
+        order.is_recurring = req.body.is_recurring;
+        order.monthly_rate = req.body.monthly_rate;
+        order.notes = req.body.notes;
+        order.services = req.body.services;
+        order.service_days = req.body.service_days;
+        order.service_frequency = req.body.service_frequency;
+        order.service_per = req.body.service_per;
+        order.start_date = req.body.start_date;
+        order.term_date = req.body.term_date;
+        order.url = req.body.url;
         //Save and check error
         let newOrder = await order.save()
         if (newOrder) {
@@ -70,27 +66,27 @@ exports.add = async function(req, res, next) {
 };
 
 // Update order by Object id
-exports.update = async function(req, res) {
+exports.update = async function (req, res) {
     try {
         let order = await Order.findById(req.params._id).exec()
         if (order) {
             order._id = req.body._id ? req.body._id : order._id;
-            order.agreement_id = req.body.agreement_id ? req.body.agreement_id : order.agreement_id;
             order.account_id = req.body.account_id ? req.body.account_id : order.account_id;
+            order.agreement_id = req.body.agreement_id ? req.body.agreement_id : order.agreement_id;
+            order.demand_rate = req.body.demand_rate ? req.body.demand_rate : order.demand_rate;
+            order.end_date = req.body.end_date ? req.body.end_date : order.end_date;
             order.group_id = req.body.group_id ? req.body.group_id : order.group_id;
+            order.is_active = req.body.is_active ? req.body.is_active : order.is_active;
+            order.is_demo = req.body.is_demo ? req.body.is_demo : order.is_demo;
             order.is_recurring = req.body.is_recurring ? req.body.is_recurring : order.is_recurring;
+            order.monthly_rate = req.body.monthly_rate ? req.body.monthly_rate : order.monthly_rate;
+            order.notes = req.body.notes ? req.body.notes : order.notes;
             order.services = req.body.services ? req.body.services : order.services;
+            order.service_days = req.body.service_days ? req.body.service_days : order.service_days;
             order.service_frequency = req.body.service_frequency ? req.body.service_frequency : order.service_frequency;
             order.service_per = req.body.service_per ? req.body.service_per : order.service_per;
-            order.service_days = req.body.service_days ? req.body.service_days : order.service_days;
-            order.monthly_rate = req.body.monthly_rate ? req.body.monthly_rate : order.monthly_rate;
-            order.demand_rate = req.body.demand_rate ? req.body.demand_rate : order.demand_rate;
-            order.term_date = req.body.term_date ? req.body.term_date : order.term_date;
             order.start_date = req.body.start_date ? req.body.start_date : order.start_date;
-            order.end_date = req.body.end_date ? req.body.end_date : order.end_date;
-            order.is_demo = req.body.is_demo ? req.body.is_demo : order.is_demo;
-            order.is_active = req.body.is_active ? req.body.is_active : order.is_active;
-            order.notes = req.body.notes ? req.body.notes : order.notes;
+            order.term_date = req.body.term_date ? req.body.term_date : order.term_date;
             order.url = req.body.url ? req.body.url : order.url;
             let updatedOrder = await order.save()
             if (updatedOrder) {
@@ -117,22 +113,22 @@ exports.delete = async function (req, res) {
         let order = await Order.findOne({ _id: req.body._id }).exec()
         if (order) {
             order._id = order._id;
-            order.agreement_id = order.agreement_id;
             order.account_id = order.account_id;
+            order.agreement_id = order.agreement_id;
+            order.demand_rate = order.demand_rate;
+            order.end_date = order.end_date;
             order.group_id = order.group_id;
+            order.is_active = false
+            order.is_demo = order.is_demo;
             order.is_recurring = order.is_recurring;
+            order.monthly_rate = order.monthly_rate;
+            order.notes = order.notes;
             order.services = order.services;
+            order.service_days = order.service_days;
             order.service_frequency = order.service_frequency;
             order.service_per = order.service_per;
-            order.service_days = order.service_days;
-            order.monthly_rate = order.monthly_rate;
-            order.demand_rate = order.demand_rate;
-            order.term_date = order.term_date;
             order.start_date = order.start_date;
-            order.end_date = order.end_date;
-            order.is_demo = order.is_demo;
-            order.is_active = false
-            order.notes = order.notes;
+            order.term_date = order.term_date;
             order.url = req.body.url ? req.body.url : order.url;
             if (order) {
                 res.json({
