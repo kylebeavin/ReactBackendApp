@@ -20,6 +20,12 @@ var accountSchema = mongoose.Schema({
         required: true,
         trim: true
     },
+    // Display name that is cached during initial sign in from user
+    owner_name: {
+        type: String,
+        required: true,
+        trim: true
+    },
     // Document ID's of contacts associated with the account
     contacts: {
         type: [String],
