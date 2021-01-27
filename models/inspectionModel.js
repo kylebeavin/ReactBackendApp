@@ -6,12 +6,6 @@ var mongoose = require('mongoose');
 //schema
 var inspectionSchema = mongoose.Schema({
 
-    // Document entered into database
-    created: {
-        type: Date,
-        default: Date.now,
-        trim: true
-    },
     //Franchise ID
     group_id: {
         type: [String],
@@ -35,7 +29,8 @@ var inspectionSchema = mongoose.Schema({
         enum: ['inspection_type'], // Inspection types will go here.
         required: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Inspection Model
 var Inspection = module.exports = mongoose.model('inspection', inspectionSchema);

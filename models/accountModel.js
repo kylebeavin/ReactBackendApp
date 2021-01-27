@@ -44,11 +44,6 @@ var accountSchema = mongoose.Schema({
         type: Date,
         default: null
     },
-    // When the document was created
-    created: {
-        type: Date,
-        default: Date.now
-    },
     // Date for the demo smash
     demo: {
         type: Date,
@@ -134,7 +129,8 @@ var accountSchema = mongoose.Schema({
         default: 'prospect',
         lowercase: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Account Model
 var Account = module.exports = mongoose.model('account', accountSchema);

@@ -13,10 +13,7 @@ var orderSchema = mongoose.Schema({
         required: false
     },
     // Date created
-    created: {
-        type: Date,
-        default: Date.now
-    },
+
     // Demand Rate
     demand_rate: {
         type: String,
@@ -108,7 +105,8 @@ var orderSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Order Model
 var Order = module.exports = mongoose.model('order', orderSchema);

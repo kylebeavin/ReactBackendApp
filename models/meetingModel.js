@@ -40,10 +40,7 @@ var meetingSchema = mongoose.Schema({
         trim: true
     },
     // Date the meeting was created
-    created: {
-        type: Date,
-        default: Date.now
-    },
+
     // Franchise this belongs to
     group_id: {
         type: [String],
@@ -72,7 +69,8 @@ var meetingSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Meeting Model
 var Meeting = module.exports = mongoose.model('meeting', meetingSchema);

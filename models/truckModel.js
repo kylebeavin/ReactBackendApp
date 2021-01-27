@@ -21,10 +21,7 @@ var truckSchema = mongoose.Schema({
         default: null,
         trim: true
     },
-    created: {
-        type: Date,
-        default: Date.now
-    },
+
     // Truck related documents
     documents: {
         type: [String],
@@ -146,7 +143,8 @@ var truckSchema = mongoose.Schema({
         default: null,
         trim: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Truck Model
 var Truck = module.exports = mongoose.model('truck', truckSchema);

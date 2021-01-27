@@ -33,10 +33,7 @@ var locationSchema = mongoose.Schema({
         trim: true
     },
     // Date the document was created in the database
-    created: {
-        type: Date,
-        default: Date.now
-    },
+
     // Document ID of the franchise
     group_id: {
         type: [String],
@@ -54,7 +51,8 @@ var locationSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Location Model
 var Location = module.exports = mongoose.model('location', locationSchema);

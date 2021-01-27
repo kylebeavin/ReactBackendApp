@@ -21,10 +21,7 @@ var invoiceSchema = mongoose.Schema({
         trim: true
     },
     // When document was created in database
-    created: {
-        type: Date,
-        default: Date.now
-    },
+
     // Franchise ID
     group_id: {
         type: [String],
@@ -78,8 +75,8 @@ var invoiceSchema = mongoose.Schema({
         enum: ['recurring', 'on-demand'],
         required: true
     },
-});
-
+},
+{ timestamps: true })
 // Export Invoice Model
 var Invoice = module.exports = mongoose.model('invoice', invoiceSchema);
 

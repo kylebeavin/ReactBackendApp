@@ -4,10 +4,7 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
 
     // Timestamp from when the document was created
-    created: {
-        type: Date,
-        default: Date.now
-    },
+
     // Display name created from given first and last name
     display_name: {
         type: String,
@@ -68,8 +65,8 @@ var userSchema = mongoose.Schema({
         required: false,
         trim: true
     },
-});
-
+},
+{ timestamps: true })
 // Export User Model
 var User = module.exports = mongoose.model('user', userSchema);
 

@@ -115,7 +115,8 @@ var groupSchema = mongoose.Schema({
         trim: true
     },
 
-});
+},
+{ timestamps: true })
 
 // Export Group Model
 var Group = module.exports = mongoose.model('group', groupSchema);

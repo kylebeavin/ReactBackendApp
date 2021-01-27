@@ -8,10 +8,7 @@ var contactSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    created: {
-        type: Date,
-        default: Date.now
-    },
+
     email: {
         type: String,
         required: true,
@@ -55,7 +52,8 @@ var contactSchema = mongoose.Schema({
         enum: ['bill', 'smash', 'haul'],
         required: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Contact Model
 var Contact = module.exports = mongoose.model('contact', contactSchema);

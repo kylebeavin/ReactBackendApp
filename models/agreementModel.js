@@ -12,10 +12,7 @@ var agreementSchema = mongoose.Schema({
         trim: true
     },
     // Date created
-    created: {
-        type: Date,
-        default: Date.now
-    },
+
     // Demand Rate
     demand_rate: {
         type: String,
@@ -108,7 +105,8 @@ var agreementSchema = mongoose.Schema({
         default: null,
         trim: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Agreement Model
 var Agreement = module.exports = mongoose.model('agreement', agreementSchema);
