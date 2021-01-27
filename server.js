@@ -47,7 +47,7 @@ app.use(helmet())
 app.use(cors())
     // connect to mongoose
 const dbPath = config.get('mongoURI');
-const options = { useNewUrlParser: true, useUnifiedTopology: true }
+const options = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
 const mongo = mongoose.connect(dbPath, options);
 
 mongo.then(() => {

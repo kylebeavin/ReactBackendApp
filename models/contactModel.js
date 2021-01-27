@@ -8,8 +8,11 @@ var contactSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    // User who created the contact
-    owner_id: {
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    email: {
         type: String,
         required: true,
         trim: true
@@ -19,12 +22,24 @@ var contactSchema = mongoose.Schema({
         required: true,
         trim: true
     },
+    // Whether or not the contact is active
+    is_active: {
+        type: Boolean,
+        default: true
+    },
     last_name: {
         type: String,
         required: true,
         trim: true
     },
-    email: {
+    // Communication method (email/sms)
+    method: {
+        type: [String],
+        enum: ['email', 'sms'],
+        required: true
+    },
+    // User who created the contact
+    owner_id: {
         type: String,
         required: true,
         trim: true
@@ -40,26 +55,11 @@ var contactSchema = mongoose.Schema({
         enum: ['bill', 'smash', 'haul'],
         required: true
     },
-    // Communication method (email/sms)
-    method: {
-        type: [String],
-        enum: ['email', 'sms'],
-        required: true
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    // Whether or not the contact is active
-    is_active: {
-        type: Boolean,
-        default: true
-    }
 });
 
 // Export Contact Model
 var Contact = module.exports = mongoose.model('contact', contactSchema);
 
-module.exports.get = function(callback, limit) {
+module.exports.get = function (callback, limit) {
     Contact.find(callback).limit(limit);
 }

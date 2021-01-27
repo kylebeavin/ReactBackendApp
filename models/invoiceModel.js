@@ -2,14 +2,14 @@ var mongoose = require('mongoose');
 
 //schema
 var invoiceSchema = mongoose.Schema({
-    // Franchise ID
-    group_id: {
+    // Customer Document ID
+    account_id: {
         type: String,
         required: true,
         trim: true
     },
-    // Customer ID
-    account_id: {
+    // List of charges
+    charges: {
         type: String,
         required: true,
         trim: true
@@ -20,47 +20,24 @@ var invoiceSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    // Work order ID
-    smash_id: {
-        type: String,
+    // When document was created in database
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    // Franchise ID
+    group_id: {
+        type: [String],
         required: true,
         trim: true
     },
+    // Date the invoice is due
     invoice_date: {
         type: Date,
         required: true,
         trim: true
     },
-    // Recurring / On-Demand
-    type: {
-        type: [String],
-        enum: ['recurring', 'on-demand'],
-        required: true
-    },
-    charges: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    subtotal: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    tax: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    total: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    },
+    // Whether or not the invoice is active
     is_active: {
         type: Boolean,
         default: true
@@ -71,11 +48,41 @@ var invoiceSchema = mongoose.Schema({
         required: true,
         trim: true
     },
+    // Work order ID
+    smash_id: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Total before tax
+    subtotal: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Tax rate for invoice
+    tax: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Total cost of invoice
+    total: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Recurring / On-Demand
+    type: {
+        type: [String],
+        enum: ['recurring', 'on-demand'],
+        required: true
+    },
 });
 
 // Export Invoice Model
 var Invoice = module.exports = mongoose.model('invoice', invoiceSchema);
 
-module.exports.get = function(callback, limit) {
+module.exports.get = function (callback, limit) {
     Invoice.find(callback).limit(limit);
 }
