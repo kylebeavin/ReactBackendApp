@@ -9,12 +9,6 @@ var accountSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    // Account Street address
-    address_street: {
-        type: String,
-        default: null,
-        trim: true
-    },
     // Account City
     address_city: {
         type: String,
@@ -23,6 +17,12 @@ var accountSchema = mongoose.Schema({
     },
     // Account State
     address_state: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Account Street address
+    address_street: {
         type: String,
         default: null,
         trim: true
@@ -98,7 +98,6 @@ var accountSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-
     // Any notes you would like to add to the account
     notes: {
         type: [String],
