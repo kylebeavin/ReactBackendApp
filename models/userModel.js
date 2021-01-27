@@ -2,39 +2,55 @@ var mongoose = require('mongoose');
 
 //schema
 var userSchema = mongoose.Schema({
-    first_name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    last_name: {
-        type: String,
-        required: true,
-        trim: true
-    },
+
+    // Timestamp from when the document was created
+
+    // Display name created from given first and last name
     display_name: {
         type: String,
         required: false,
         trim: true
     },
+    // Email address of the user
     email: {
         type: String,
         required: true,
+        unique: true,
         trim: true
     },
-    password: {
+    // First name of the user
+    first_name: {
         type: String,
         required: true,
         trim: true
     },
-    token: {
+    // Franchise ID
+    group_id: {
+        type: [String],
+        required: true,
+        trim: true
+    },
+    // Profile image URL
+    image: {
         type: String,
         required: false,
         trim: true
     },
-    image: {
+    // Mark user active / inactive
+    is_active: {
+        type: Boolean,
+        default: true
+    },
+    // Last name given by the user
+    last_name: {
         type: String,
-        required: false,
+        required: true,
+        trim: true
+    },
+    // User's password
+    password: {
+        type: String,
+        required: true,
         trim: true
     },
     // Corporate, Admin, Partner, Driver, Mechanic, Sales, GM
@@ -43,25 +59,18 @@ var userSchema = mongoose.Schema({
         enum: ['corporate', 'admin', 'partner', 'gm', 'sales', 'driver', 'mechanic'],
         required: true
     },
-    // Franchise ID
-    group_id: {
-        type: [String],
-        required: true
+    // Authentication token assigned to the user
+    token: {
+        type: String,
+        required: false,
+        trim: true
     },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    // Mark user active / inactive
-    is_active: {
-        type: Boolean,
-        default: true
-    }
-});
+},
+{ timestamps: true })
 
 // Export User Model
 var User = module.exports = mongoose.model('user', userSchema);
 
-module.exports.get = function(callback, limit) {
+module.exports.get = function (callback, limit) {
     User.find(callback).limit(limit);
 }

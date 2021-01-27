@@ -3,13 +3,13 @@
 const Meeting = require('../models/meetingModel.js')
 
 // For queries
-exports.view = function(req, res) {
+exports.view = function (req, res) {
     Meeting.find(req.body, null, {
-            sort: {
-                title: 1
-            }
-        },
-        function(err, query) {
+        sort: {
+            title: 1
+        }
+    },
+        function (err, query) {
 
             if (err) {
                 res.json({
@@ -27,20 +27,20 @@ exports.view = function(req, res) {
 };
 
 //For creating new meeting
-exports.add = async function(req, res) {
+exports.add = async function (req, res) {
     try {
         var meeting = new Meeting();
         meeting.account_id = req.body.account_id // String, required
-        meeting.group_id = req.body.group_id // String, required
-        meeting.contact_id = req.body.contact_id;
-        meeting.owner_id = req.body.owner_id;
-        meeting.title = req.body.title;
-        meeting.address_street = req.body.address_street;
         meeting.address_city = req.body.address_city;
         meeting.address_state = req.body.address_state;
+        meeting.address_street = req.body.address_street;
         meeting.address_zip = req.body.address_zip;
-        meeting.meeting_time = req.body.meeting_time;
+        meeting.contact_id = req.body.contact_id;
+        meeting.group_id = req.body.group_id // String, required
         meeting.is_active = true;
+        meeting.meeting_time = req.body.meeting_time;
+        meeting.owner_id = req.body.owner_id;
+        meeting.title = req.body.title;
 
 
         //Save and check error
@@ -52,7 +52,7 @@ exports.add = async function(req, res) {
                 message: "New meeting created!",
             })
         } else {
-            res.status(304).json({ status: 'something went wrong' })
+            res.json({ status: err.message })
         }
 
     } catch (err) {
@@ -62,8 +62,8 @@ exports.add = async function(req, res) {
 };
 
 // Update Meeting by Object Id
-exports.update = function(req, res) {
-    Meeting.findById(req.params._id, function(err, meeting) {
+exports.update = function (req, res) {
+    Meeting.findById(req.params._id, function (err, meeting) {
         if (err)
             res.json({
                 status: "error",
@@ -71,19 +71,19 @@ exports.update = function(req, res) {
                 message: err
             });
         meeting._id = req.body._id ? req.body._id : meeting._id;
-        meeting.account_id = req.body.account_id // String, required
-        meeting.group_id = req.body.group_id // String, required
-        meeting.contact_id = req.body.contact_id;
-        meeting.owner_id = req.body.owner_id;
-        meeting.title = req.body.title;
-        meeting.address_street = req.body.address_street;
-        meeting.address_city = req.body.address_city;
-        meeting.address_state = req.body.address_state;
-        meeting.address_zip = req.body.address_zip;
-        meeting.meeting_time = req.body.meeting_time;
-        meeting.is_active = req.body.is_active;
+        meeting.account_id = req.body.account_id ? req.body.account_id : meeting.account_id;
+        meeting.address_city = req.body.address_city ? req.body.address_city : meeting.address_city;
+        meeting.address_state = req.body.address_state ? req.body.address_state : meeting.address_state;
+        meeting.address_street = req.body.address_street ? req.body.address_street : meeting.address_street;
+        meeting.address_zip = req.body.address_zip ? req.body.address_zip : meeting.address_zip;
+        meeting.contact_id = req.body.contact_id ? req.body.contact_id : meeting.contact_id;
+        meeting.group_id = req.body.group_id ? req.body.group_id : meeting.group_id;
+        meeting.is_active = req.body.is_active ? req.body.is_active : meeting.is_active;
+        meeting.meeting_time = req.body.meeting_time ? req.body.meeting_time : meeting.meeting_time;
+        meeting.owner_id = req.body.owner_id ? req.body.owner_id : meeting.owner_id;
+        meeting.title = req.body.title ? req.body.title : meeting.title;
         //save and check errors
-        meeting.save(function(err) {
+        meeting.save(function (err) {
             if (err)
                 res.json({
                     status: "error",
@@ -100,16 +100,35 @@ exports.update = function(req, res) {
     });
 };
 
-// Delete Meeting by Object Id
-exports.delete = function(req, res) {
-    Meeting.deleteOne({
-        _id: req.params._id
-    }, function(err, contact) {
-        if (err)
-            res.send(err)
-        else res.json({
-            status: "success",
-            message: 'Meeting Deleted by Object Id'
-        });
-    });
+// Delete Meeting by _id
+exports.delete = async function (req, res) {
+    try {
+        let meeting = await Meeting.findOne({ _id: req.body._id }).exec()
+        if (meeting) {
+            meeting._id = meeting._id;
+            meeting.account_id = meeting.account_id;
+            meeting.address_city = meeting.address_city;
+            meeting.address_state = meeting.address_state;
+            meeting.address_street = meeting.address_street;
+            meeting.address_zip = meeting.address_zip;
+            meeting.contact_id = meeting.contact_id;
+            meeting.group_id = meeting.group_id;
+            meeting.is_active = false
+            meeting.meeting_time = meeting.meeting_time;
+            meeting.owner_id = meeting.owner_id;
+            meeting.title = meeting.title;
+            if (meeting) {
+                res.json({
+                    status: "success",
+                    status: 204,
+                    message: "Meeting deactivated Successfully",
+                    data: meeting
+                })
+            }
+        } else {
+            res.json({ message: 'Meeting not found' })
+        }
+    } catch (err) {
+        res.json({ message: err.message })
+    }
 };

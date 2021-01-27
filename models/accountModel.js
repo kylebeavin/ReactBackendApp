@@ -2,16 +2,101 @@ var mongoose = require('mongoose');
 
 //schema
 var accountSchema = mongoose.Schema({
-    // Document ID of Franchise
-    group_id: {
-        type: String,
-        required: true,
-        trim: true
-    },
+
     // Account Name
     account_name: {
         type: String,
         required: true,
+        trim: true
+    },
+    // Account City
+    address_city: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Account State
+    address_state: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Account Street address
+    address_street: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Address Zip
+    address_zip: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Document ID's of contacts associated with the account
+    contacts: {
+        type: [String],
+        default: null,
+        trim: true
+    },
+    // When lead becomes account
+    conversion: {
+        type: Date,
+        default: null
+    },
+    // Date for the demo smash
+    demo: {
+        type: Date,
+        default: null
+    },
+    // Generic account domain
+    email: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Dumpster location coordinates
+    geo_location: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Document ID of Franchise
+    group_id: {
+        type: [String],
+        required: true,
+        trim: true
+    },
+    // Hauling contract status
+    hauling_contract: {
+        type: Boolean,
+        default: false
+    },
+    // Hauling contract expiration date
+    hauling_expiration: {
+        type: Date,
+        default: null
+    },
+    // Industry that the customer is in
+    industry: {
+        type: String,
+        default: null,
+        trim: true
+    },
+    // Account status active/inactive
+    is_active: {
+        type: Boolean,
+        default: true
+    },
+    // Whether or not this is a national account
+    national: {
+        type: Boolean,
+        default: false
+    },
+    // Any notes you would like to add to the account
+    notes: {
+        type: [String],
+        default: null,
         trim: true
     },
     // Document ID of User that created the account
@@ -26,16 +111,16 @@ var accountSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    // Document ID's of contacts associated with the account
-    contacts: {
-        type: [String],
+    // Whether or not this account is a referral
+    referral: {
+        type: Boolean,
+        default: false
+    },
+    // Group ID of the franchise that referred this account
+    referral_group_id: {
+        type: String,
         default: null,
         trim: true
-    },
-    // Account status active/inactive
-    is_active: {
-        type: Boolean,
-        default: true
     },
     // Account stage
     stage: {
@@ -44,86 +129,12 @@ var accountSchema = mongoose.Schema({
         default: 'prospect',
         lowercase: true
     },
-    // Dumpster location coordinates
-    geo_location: {
-        type: String,
-        default: null,
-        trim: true
-    },
-    address_street: {
-        type: String,
-        default: null,
-        trim: true
-    },
-    address_city: {
-        type: String,
-        default: null,
-        trim: true
-    },
-    address_state: {
-        type: String,
-        default: null,
-        trim: true
-    },
-    address_zip: {
-        type: String,
-        default: null,
-        trim: true
-    },
-    // Generic account domain
-    email: {
-        type: String,
-        default: null,
-        trim: true
-    },
-    // When the document was created
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    // Date for the demo smash
-    demo: {
-        type: Date,
-        default: null
-    },
-    // When lead becomes account
-    conversion: {
-        type: Date,
-        default: null
-    },
-    // Hauling contract status
-    hauling_contract: {
-        type: Boolean,
-        default: false
-    },
-    // Hauling contract expiration date
-    hauling_expiration: {
-        type: Date,
-        default: null
-    },
-    national: {
-        type: Boolean,
-        default: false
-    },
-    referral: {
-        type: Boolean,
-        default: false
-    },
-    referral_group_id: {
-        type: String,
-        default: null,
-        trim: true
-    },
-    notes: {
-        type: String,
-        default: null,
-        trim: true
-    },
-});
+},
+{ timestamps: true })
 
 // Export Account Model
 var Account = module.exports = mongoose.model('account', accountSchema);
 
-module.exports.get = function(callback, limit) {
+module.exports.get = function (callback, limit) {
     Account.find(callback).limit(limit);
 }

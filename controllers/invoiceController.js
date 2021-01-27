@@ -29,19 +29,18 @@ exports.view = function(req, res) {
 exports.add = async function(req, res) {
     try {
         var invoice = new Invoice();
-        invoice.group_id = req.body.group_id;
         invoice.account_id = req.body.account_id;
-        invoice.contact_id = contact_id;
-        invoice.smash_id = req.body.smash_id;
-        invoice.invoice_date = req.body.invoice_date;
-        invoice.type = req.body.type;
         invoice.charges = req.body.charges;
+        invoice.contact_id = contact_id;
+        invoice.group_id = req.body.group_id;
+        invoice.invoice_date = req.body.invoice_date;
+        invoice.is_active = req.body.is_active;
+        invoice.purchase_order = req.body.purchase_order;
+        invoice.smash_id = req.body.smash_id;
         invoice.subtotal = req.body.subtotal;
         invoice.tax = req.body.tax;
         invoice.total = req.body.total;
-        invoice.created = req.body.created;
-        invoice.is_active = req.body.is_active;
-        invoice.purchase_order = req.body.purchase_order;
+        invoice.type = req.body.type;
 
 
         //Save and check error
@@ -53,7 +52,7 @@ exports.add = async function(req, res) {
                 message: "New invoice created!",
             })
         } else {
-            res.status(304).json({ status: 'something went wrong' })
+            res.json({ status: err.message })
         }
 
     } catch (err) {
@@ -67,50 +66,66 @@ exports.update = async function(req, res) {
         let invoice = await Invoice.findById(req.params._id).exec()
         if (invoice) {
             invoice._id = req.body._id ? req.body._id : invoice._id;
-            invoice.group_id = req.body.group_id;
             invoice.account_id = req.body.account_id;
-            invoice.contact_id = contact_id;
-            invoice.smash_id = req.body.smash_id;
-            invoice.invoice_date = req.body.invoice_date;
-            invoice.type = req.body.type;
             invoice.charges = req.body.charges;
+            invoice.contact_id = contact_id;
+            invoice.group_id = req.body.group_id;
+            invoice.invoice_date = req.body.invoice_date;
+            invoice.is_active = req.body.is_active;
+            invoice.purchase_order = req.body.purchase_order;
+            invoice.smash_id = req.body.smash_id;
             invoice.subtotal = req.body.subtotal;
             invoice.tax = req.body.tax;
             invoice.total = req.body.total;
-            invoice.is_active = req.body.is_active;
-            invoice.purchase_order = req.body.purchase_order;
+            invoice.type = req.body.type;
             let updatedInvoice = await invoice.save()
             if (updatedInvoice) {
-                res.status(204).json({
+                res.json({
                     status: "success",
                     status: 204,
                     message: "Invoice Updated Successfully",
                     data: updatedInvoice
                 })
             } else {
-                res.status(400).json({ message: 'Failed to update', status: 400 })
+                res.json({ message: 'Failed to update', status: 400 })
             }
         } else {
-            res.status(400).json({ message: 'Invoice not found' })
+            res.json({ message: 'Invoice not found' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 };
 
-// Delete Invoice by Object Id
-exports.delete = async function(req, res) {
+// Delete Invoice by _id
+exports.delete = async function (req, res) {
     try {
-        let deleteInvoice = await Invoice.deleteOne({ _id: req.params._id }).exec()
-        if (deleteInvoice) {
-            res.status(204).json({
-                status: "success",
-                message: 'Invoice successfully deleted'
-            })
+        let invoice = await Invoice.findOne({ _id: req.body._id }).exec()
+        if (invoice) {
+            invoice.account_id = invoice.account_id;
+            invoice.charges = invoice.charges;
+            invoice.contact_id = invoice.contact_id;
+            invoice.group_id = invoice.group_id;
+            invoice.invoice_date = invoice.invoice_date;
+            invoice.is_active = false;
+            invoice.purchase_order = invoice.purchase_order;
+            invoice.smash_id = invoice.smash_id;
+            invoice.subtotal = invoice.subtotal;
+            invoice.tax = invoice.tax;
+            invoice.total = invoice.total;
+            invoice.type = invoice.type;
+            if (invoice) {
+                res.json({
+                    status: "success",
+                    status: 204,
+                    message: "Invoice deactivated Successfully",
+                    data: invoice
+                })
+            }
         } else {
-            res.status(400).json({ message: 'Failed to delete' })
+            res.json({ message: 'Invoice not found' })
         }
     } catch (err) {
-        res.status(400).json({ message: 'Something went wrong' })
+        res.json({ message: err.message })
     }
 };

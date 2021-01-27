@@ -2,8 +2,45 @@ var mongoose = require('mongoose');
 
 //schema
 var groupSchema = mongoose.Schema({
-    // Franchise Name
-    name: {
+
+    // Address City
+    address_city: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Address State
+    address_state: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Address Street
+    address_street: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Address Zip
+    address_zip: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Document Creation Date
+    created: {
+        type: Date,
+        default: Date.now,
+        trim: true
+    },
+    // Doing Business As Name
+    dba: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Federal Tax ID
+    ein: {
         type: String,
         required: true,
         trim: true
@@ -19,59 +56,10 @@ var groupSchema = mongoose.Schema({
         type: Boolean,
         default: true
     },
-    address_street: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    address_city: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    address_state: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    address_zip: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    // Federal Tax ID
-    ein: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    region: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    time_zone: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    signing_date: {
-        type: Date,
-        required: true
-    },
+    // Franchise Launch Date
     launch_date: {
         type: Date,
         required: true
-    },
-    phone: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    webpage: {
-        type: String,
-        required: true,
-        trim: true
     },
     // Actual LLC
     legal_company: {
@@ -79,17 +67,28 @@ var groupSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    // Actual LLC
-    territory_zips: {
-        type: Array,
-        required: true,
-        trim: true
-    },
-    // Doing Business As Name
-    dba: {
+    // Franchise Name
+    name: {
         type: String,
         required: true,
         trim: true
+    },
+    // Franchise Phone Number
+    phone: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Franchise Region
+    region: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Franchise Signing Date
+    signing_date: {
+        type: Date,
+        required: true
     },
     // State tax percentage for pricing
     tax_rate: {
@@ -97,16 +96,31 @@ var groupSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    created: {
-        type: Date,
-        default: Date.now,
+    // Franchise Zip Codes
+    territory_zips: {
+        type: [String],
+        required: true,
         trim: true
-    }
-});
+    },
+    // Franchise Time Zone
+    time_zone: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Franchise Website
+    webpage: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
+},
+{ timestamps: true })
 
 // Export Group Model
 var Group = module.exports = mongoose.model('group', groupSchema);
 
-module.exports.get = function(callback, limit) {
+module.exports.get = function (callback, limit) {
     Group.find(callback).limit(limit);
 }

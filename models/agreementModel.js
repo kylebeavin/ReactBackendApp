@@ -4,16 +4,52 @@ var mongoose = require('mongoose');
 
 //schema
 var agreementSchema = mongoose.Schema({
+
     // Customer account the agreement belongs to
     account_id: {
         type: String,
         required: true,
         trim: true
     },
-    // Franchise
-    group_id: {
+    // Date created
+
+    // Demand Rate
+    demand_rate: {
         type: String,
         required: true,
+        trim: true
+    },
+    // Service end date
+    end_date: {
+        type: Date,
+        required: true
+    },
+    // Franchise
+    group_id: {
+        type: [String],
+        required: true,
+        trim: true
+    },
+    // Whether or not agreement is active
+    is_active: {
+        type: Boolean,
+        default: true
+    },
+    // Recurring services
+    is_recurring: {
+        type: Boolean,
+        required: true
+    },
+    // Monthly payment
+    monthly_rate: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    // Notes / Additional terms
+    notes: {
+        type: [String],
+        default: null,
         trim: true
     },
     // owner id
@@ -22,11 +58,7 @@ var agreementSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    // Recurring services
-    is_recurring: {
-        type: Boolean,
-        required: true
-    },
+
     // Service constraints
     services: {
         type: [String],
@@ -36,6 +68,13 @@ var agreementSchema = mongoose.Schema({
             'fuel_surcharge', 'statement_fee', 'past_due', 'discount', 'misc'
         ],
         required: true
+    },
+    // Service days
+    service_days: {
+        type: [String],
+        enum: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
+        required: true,
+        trim: true
     },
     // Service frequency
     service_frequency: {
@@ -49,56 +88,15 @@ var agreementSchema = mongoose.Schema({
         enum: ['day', 'week', 'month'],
         required: true
     },
-    // Service days
-    service_days: {
-        type: [String],
-        enum: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
-        required: true,
-        trim: true
-    },
-
-    // Monthly payment
-    monthly_rate: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    // Demand Rate
-    demand_rate: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    // Payment Date Example: Net 0 Days
-    term_date: {
-        type: String,
-        required: true,
-        trim: true
-    },
     // Service start date
     start_date: {
         type: Date,
         required: true
     },
-    // Service end date
-    end_date: {
-        type: Date,
-        required: true
-    },
-    // Date created
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    // Whether or not agreement is active
-    is_active: {
-        type: Boolean,
-        default: true
-    },
-    // Notes / Additional terms
-    notes: {
+    // Payment Date Example: Net 0 Days
+    term_date: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Terms and conditions file upload url
@@ -107,11 +105,12 @@ var agreementSchema = mongoose.Schema({
         default: null,
         trim: true
     },
-});
+},
+{ timestamps: true })
 
 // Export Agreement Model
 var Agreement = module.exports = mongoose.model('agreement', agreementSchema);
 
-module.exports.get = function(callback, limit) {
+module.exports.get = function (callback, limit) {
     Agreement.find(callback).limit(limit);
 }

@@ -40,14 +40,14 @@ exports.add = async function (req, res) {
 		var hashedPassword = bcrypt.hashSync(req.body.password, 8);			// Hashed - String - Required
 		var displayName = req.body.first_name + ' ' + req.body.last_name; 	// Concationation of first and last name
 		user.email = req.body.email;                                      	// String Required
-		user.password = hashedPassword;                                   	// String Required - input from hashedPassword
-		user.token = req.body.token != null ? req.body.token : null;	  	// Assigned Null
-		user.image = req.body.image != null ? req.body.image : null;	  	// Assigned Null
-		user.first_name = req.body.first_name;								// String Required
-		user.last_name = req.body.last_name;								// String required
 		user.display_name = displayName;									// String Required - input from displayName
-		user.role = req.body.role;											// String Required
+		user.first_name = req.body.first_name;								// String Required
 		user.group_id = req.body.group_id;									// String Group Document ID
+		user.image = req.body.image != null ? req.body.image : null;	  	// Assigned Null
+		user.last_name = req.body.last_name;								// String required
+		user.password = hashedPassword;                                   	// String Required - input from hashedPassword
+		user.role = req.body.role;											// String Required
+		user.token = req.body.token != null ? req.body.token : null;	  	// Assigned Null
 
 
 		//Save and check error
@@ -105,16 +105,16 @@ exports.login = async function (req, res) {
 			expiresIn: 50400 // expires in 14 hour(s)
 		});
 		user._id = user._id;
-		user.email = user.email;
-		user.password = user.password;
-		user.token = token;
-		user.image = user.image;
-		user.first_name = user.first_name;
-		user.last_name = user.last_name;
 		user.display_name = user.display_name;
-		user.role = user.role;
+		user.email = user.email;
+		user.first_name = user.first_name;
 		user.group_id = user.group_id;
+		user.image = user.image;
 		user.is_active = user.is_active;
+		user.last_name = user.last_name;
+		user.password = user.password;
+		user.role = user.role;
+		user.token = token;
 
 		//save and check errors
 		user.save(function (err) {
@@ -137,16 +137,16 @@ exports.logout = async function (req, res) {
 		let user = await User.findOne({ token: req.body.token }).exec()
 		if (user) {
 			user._id = user._id;
-			user.email = user.email;
-			user.password = user.password;
-			user.token = null;
-			user.image = user.image;
-			user.first_name = user.first_name;
-			user.last_name = user.last_name;
 			user.display_name = user.display_name;
-			user.role = user.role;
+			user.email = user.email;
+			user.first_name = user.first_name;
 			user.group_id = user.group_id;
+			user.image = user.image;
 			user.is_active = user.is_active;
+			user.last_name = user.last_name;
+			user.password = user.password;
+			user.role = user.role;
+			user.token = null;
 			if (user) {
 				res.json({
 					status: "success",
@@ -172,16 +172,16 @@ exports.update = async function (req, res) {
 		var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 		if (user) {
 			user._id = req.body._id ? req.body._id : user._id;
-			user.email = req.body.email ? req.body.email : user.email;
-			user.password = hashedPassword ? hashedPassword : user._id;
-			user.token = req.body.token ? req.body.token : user.token;
-			user.image = req.body.image ? req.body.image : user.image;
-			user.first_name = req.body.first_name ? req.body.first_name : user.first_name;
-			user.last_name = req.body.last_name ? req.body.last_name : user.last_name;
 			user.display_name = req.body.display_name ? req.body.display_name : user.display_name;
-			user.role = req.body.role ? req.body.role : user.role;
+			user.email = req.body.email ? req.body.email : user.email;
+			user.first_name = req.body.first_name ? req.body.first_name : user.first_name;
 			user.group_id = req.body.group_id ? req.body.group_id : user.group_id;
+			user.image = req.body.image ? req.body.image : user.image;
 			user.is_active = req.body.is_active ? req.body.is_active : user.is_active;
+			user.last_name = req.body.last_name ? req.body.last_name : user.last_name;
+			user.password = hashedPassword ? hashedPassword : user._id;
+			user.role = req.body.role ? req.body.role : user.role;
+			user.token = req.body.token ? req.body.token : user.token;
 			let updatedUser = await user.save()
 			if (updatedUser) {
 				res.json({
@@ -207,16 +207,16 @@ exports.delete = async function (req, res) {
 		let user = await User.findOne({ email: req.body.email }).exec()
 		if (user) {
 			user._id = user._id;
-			user.email = user.email;
-			user.password = user.password;
-			user.token = null;
-			user.image = user.image;
-			user.first_name = user.first_name;
-			user.last_name = user.last_name;
 			user.display_name = user.display_name;
-			user.role = user.role;
+			user.email = user.email;
+			user.first_name = user.first_name;
 			user.group_id = user.group_id;
+			user.image = user.image;
 			user.is_active = false
+			user.last_name = user.last_name;
+			user.password = user.password;
+			user.role = user.role;
+			user.token = null;
 			if (user) {
 				res.json({
 					status: "success",
