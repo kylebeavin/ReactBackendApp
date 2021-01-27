@@ -98,7 +98,7 @@ var groupSchema = mongoose.Schema({
     },
     // Franchise Zip Codes
     territory_zips: {
-        type: Array,
+        type: [String],
         required: true,
         trim: true
     },
