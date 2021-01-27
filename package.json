@@ -4,6 +4,7 @@
   "description": "Create Rest Api using Node.js, Express, Mongoose, and Mongodb",
   "main": "server.js",
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
     "bcrypt": "^5.0.0",
     "config": "^3.3.3",
     "cookie-parser": "^1.4.5",
@@ -19,6 +20,8 @@
     "validator": "^13.5.2"
   },
   "devDependencies": {
+    "@types/config": "0.0.38",
+    "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
     "@types/mongoose": "^5.10.3",
     "@types/node": "^14.14.22",

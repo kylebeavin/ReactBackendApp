@@ -71,7 +71,7 @@ export const add = async (req:Request, res:Response)=>{
     }
 
     // Update Account by Object Id
-exports.update = async function(req:Request, res:Response) {
+export const update = async function(req:Request, res:Response) {
     try {
         const data = {...req.body}
         let updatedAccount = await Account.findByIdAndUpdate(req.params._id, data)
@@ -93,7 +93,7 @@ exports.update = async function(req:Request, res:Response) {
 };
 
 // Delete Account by Object Id
-exports.delete = async (req:Request, res:Response) =>{
+export const remove = async (req:Request, res:Response) =>{
     try {
         let account = await Account.findOne({ _id: req.body._id }).exec()
         if (account) {
