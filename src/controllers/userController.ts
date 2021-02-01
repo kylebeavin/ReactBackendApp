@@ -1,6 +1,6 @@
 //userController.js
 //Import User Model
-const User = require('../models/userModel.ts');
+import User from '../models/userModel'
 import {Request, Response } from 'express'
 
 
@@ -84,10 +84,10 @@ export const auth = async (req:Request , res:Response)=>{
 export const  login = async(req:Request, res:Response)=>{
     try{
         const filter = {email:req.body.email}
-        let foundUser = User.findOne({email:req.body.email})
-
+        let foundUser = await User.findOne({email:req.body.email}).exec()
+        console.log(foundUser)
         if(foundUser){
-            let passwordIsValid = bcrypt.compareSync(req.body.password, User.password);
+            let passwordIsValid = bcrypt.compareSync(req.body.password, foundUser.password);
             if(!passwordIsValid){
                 return res.status(400).json({auth:false, token:null})
             }
@@ -98,6 +98,7 @@ export const  login = async(req:Request, res:Response)=>{
         });
         await  User.updateOne(filter, {token:userToken})
         await foundUser.save()
+      
         return res.status(200).json({
             message:'User logged in successfully',
             data: foundUser,
@@ -151,19 +152,27 @@ export const logout = async (req:Request, res:Response)=>{
 export const update = async(req:Request, res:Response)=>{
     try{
         const data = {...req.body}
-        let updatedUser = await User.findByIdAndUpdate(req.body._id, data)
+        console.log(data)
+        let updatedUser = await User.findByIdAndUpdate(req.body._id, data, {new:true})
+        console.log(updatedUser)
         if(updatedUser){
-            res.status(204).json({
+           console.log('here')
+           return  res.status(200).json({
                 status:'success',
                 message:"User updated successfully",
                 data:updatedUser
 
             })
         }
+        else{
+            return res.status(400).json({
+                message:'user not found'
+            })
+        }
 
     }
     catch(err){
-        res.status(400).json({message:err.message})
+       return  res.status(400).json({message:err.message})
     }
 
 }

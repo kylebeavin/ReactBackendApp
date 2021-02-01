@@ -20,7 +20,7 @@ router.route('/users')
     .patch(verifyToken, update)
     
 router.route('/usersBy')
-    .post(verifyToken.verifyToken,view)
+    .post(verifyToken,view)
 
 //Export API routes
  export default router

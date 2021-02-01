@@ -11,7 +11,8 @@ import helmet from 'helmet'
 import cors from 'cors'
 const dotenv = require('dotenv').config({ path: __dirname+'/.env' });
 
-import  accountRoutes from './routes/accountRoute'
+import  accountRoute from './routes/accountRoute'
+import userRoute from './routes/userRoute'
 
 //create app instant
 const app: Application = express();
@@ -45,7 +46,8 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
-app.use('/api', accountRoutes);
+app.use('/api', accountRoute);
+app.use('/api', userRoute)
 
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);

@@ -1,4 +1,4 @@
-import IUser from '../interfaces/userinterface'
+import IUser from '../interfaces/userInterface'
 import mongoose, { Schema} from 'mongoose'
 
 const UserSchema: Schema = new Schema({
@@ -69,5 +69,5 @@ const UserSchema: Schema = new Schema({
 { timestamps: true })
 
 // Export User Model
-export default mongoose.model<IUser>('user', UserSchema);
+export default mongoose.model<IUser>('User', UserSchema);
 
