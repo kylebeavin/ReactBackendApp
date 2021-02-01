@@ -12,6 +12,7 @@ var secret = process.env.ACCESS_TOKEN_SECRET;
 // For queries - Sorts by first name
 export const view = async (req:Request, res:Response)=> {
     try{
+        
         let allUsers = await User.find({}).sort({first_name:1}).exec()
         if(allUsers){
             return res.status(200).json({
@@ -153,10 +154,10 @@ export const update = async(req:Request, res:Response)=>{
     try{
         const data = {...req.body}
         console.log(data)
-        let updatedUser = await User.findByIdAndUpdate(req.body._id, data, {new:true})
+        let updatedUser = await User.findByIdAndUpdate(req.body._id, data, {new:true, useFindAndModify:false})
         console.log(updatedUser)
         if(updatedUser){
-           console.log('here')
+         
            return  res.status(200).json({
                 status:'success',
                 message:"User updated successfully",
