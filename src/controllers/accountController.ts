@@ -74,7 +74,7 @@ export const add = async (req:Request, res:Response)=>{
 export const update = async function(req:Request, res:Response) {
     try {
         const data = {...req.body}
-        let updatedAccount = await Account.findByIdAndUpdate(req.params._id, data)
+        let updatedAccount = await Account.findByIdAndUpdate(req.body._id, data)
 
         
             if (updatedAccount) {

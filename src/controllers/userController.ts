@@ -45,7 +45,7 @@ export const add = async(req:Request, res:Response)=>{
 		user.last_name = req.body.last_name;								// String required
 		user.password = hashedPassword;                                   	// String Required - input from hashedPassword
 		user.role = req.body.role;											// String Required
-		user.token = req.body.token != null ? req.body.token : null;	  	// Assigned Null
+		user.token = req.body.token !== null ? req.body.token : null;	  	// Assigned Null
 
 
 		//Save and check error
@@ -83,9 +83,90 @@ export const auth = async (req:Request , res:Response)=>{
 //for logging in
 export const  login = async(req:Request, res:Response)=>{
     try{
-        
+        const filter = {email:req.body.email}
+        let foundUser = User.findOne({email:req.body.email})
+
+        if(foundUser){
+            let passwordIsValid = bcrypt.compareSync(req.body.password, User.password);
+            if(!passwordIsValid){
+                return res.status(400).json({auth:false, token:null})
+            }
+
+        }
+        const  userToken = jwt.sign({ id: foundUser._id }, secret, {
+			expiresIn: 50400 // expires in 14 hour(s)
+        });
+        await  User.updateOne(filter, {token:userToken})
+        await foundUser.save()
+        return res.status(200).json({
+            message:'User logged in successfully',
+            data: foundUser,
+				auth: true,
+				token: userToken
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            error:err.stack
+        })
+
     }
 
+}
 
+//for logging out 
+export const logout = async (req:Request, res:Response)=>{
+    try {
+		let user = await User.findOne({ token: req.body.token }).exec()
+		if (user) {
+			user._id = user._id;
+			user.display_name = user.display_name;
+			user.email = user.email;
+			user.first_name = user.first_name;
+			user.group_id = user.group_id;
+			user.image = user.image;
+			user.is_active = user.is_active;
+			user.last_name = user.last_name;
+			user.password = user.password;
+			user.role = user.role;
+			user.token = null;
+			if (user) {
+				res.status(204).json({
+					status: "success",
+					message: "User logged out Successfully",
+					data: user
+				})
+			} else {
+				res.json({ message: 'Failed to logout', status: 400 })
+			}
+		} else {
+			res.json({ message: 'User not found' })
+		}
+	} catch (err) {
+		res.json({ message: err })
+	}
 
 }
+//update the user
+export const update = async(req:Request, res:Response)=>{
+    try{
+        const data = {...req.body}
+        let updatedUser = await User.findByIdAndUpdate(req.body._id, data)
+        if(updatedUser){
+            res.status(204).json({
+                status:'success',
+                message:"User updated successfully",
+                data:updatedUser
+
+            })
+        }
+
+    }
+    catch(err){
+        res.status(400).json({message:err.message})
+    }
+
+}
+
+//delete the user
+
