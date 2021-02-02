@@ -12,8 +12,8 @@ var secret = process.env.ACCESS_TOKEN_SECRET;
 // For queries - Sorts by first name
 export const view = async (req:Request, res:Response)=> {
     try{
-        
-        let allUsers = await User.find({}).sort({first_name:1}).exec()
+
+        let allUsers = await User.find(req.body).sort({first_name:1}).exec()
         if(allUsers){
             return res.status(200).json({
                 status: "success",

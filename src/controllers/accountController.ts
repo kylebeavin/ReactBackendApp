@@ -5,7 +5,7 @@ import Account from '../models/accountModel'
 //for queries
 export const view = async(req:Request, res:Response)=>{
     try{
-    let allAccounts = await Account.find({}).sort({account_name:1}).exec()
+    let allAccounts = await Account.find(req.body).sort({account_name:1}).exec()
     if(allAccounts){
         return res.status(200).json({
             status: "success",
@@ -135,3 +135,4 @@ export const remove = async (req:Request, res:Response) =>{
         res.json({ message: err.message })
     }
 };
+
