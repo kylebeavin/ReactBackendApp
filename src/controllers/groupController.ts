@@ -1,4 +1,3 @@
-import { group } from 'console'
 import {NextFunction, Request, Response} from 'express'
 import Group from '../models/groupModel'
 
@@ -56,7 +55,7 @@ export const add = async function (req:Request, res:Response) {
                 message: "New group created!",
             })
         } else {
-            res.json({ status: 'Failed to create group ' })
+            res.json({ message: 'Failed to create group ' })
         }
 
     } catch (err) {
@@ -64,7 +63,7 @@ export const add = async function (req:Request, res:Response) {
     }
 };
 
-//update contact by object id
+//update group by object id
 export const update = async function(req:Request, res:Response) {
     try {
         const data = {...req.body}
@@ -74,7 +73,7 @@ export const update = async function(req:Request, res:Response) {
             if (updatedGroup) {
                 res.status(200).json({
                     status: "success",
-                    message: "Account Updated Successfully",
+                    message: "Group Updated Successfully",
                     data: updatedGroup
                 })
             } else {
