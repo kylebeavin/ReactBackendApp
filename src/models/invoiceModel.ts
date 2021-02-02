@@ -2,7 +2,7 @@ import IInvoice from '../interfaces/invoiceInterface'
 import mongoose, {Schema} from 'mongoose'
 
 //schema
-var invoiceSchema = new Schema({
+const  invoiceSchema = new Schema({
     // Customer Document ID
     account_id: {
         type: String,
