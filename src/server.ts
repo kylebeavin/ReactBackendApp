@@ -14,6 +14,8 @@ const dotenv = require('dotenv').config({ path: __dirname+'/.env' });
 import  accountRoute from './routes/accountRoute'
 import userRoute from './routes/userRoute'
 import agreementRoute from './routes/agreementRoute'
+import contactRoute from './routes/contactRoute'
+import groupRoute from './routes/groupRoute'
 
 //create app instant
 const app: Application = express();
@@ -50,6 +52,8 @@ app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 app.use('/api', accountRoute);
 app.use('/api', userRoute)
 app.use('/api', agreementRoute )
+app.use('/api', contactRoute)
+app.use('/api', groupRoute)
 
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);

@@ -11,8 +11,4 @@ export default interface IContact extends Document {
     phone:string
     type:Array<string>
 
-    
-    
-
-
   }

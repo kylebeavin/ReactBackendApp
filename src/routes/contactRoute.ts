@@ -1,17 +1,18 @@
 //initialize express router
 import express from 'express'
 //Import Controllers
-import {view, add , update} from '../controllers/agreementController'
+import {view, add , update , remove} from '../controllers/contactController'
 import {verifyToken} from '../middleware/verifyToken'
 const router = express.Router()
-// Agreement routes
-router.route('/agreements')
+// Contacts routes
+router.route('/contacts')
     .get(verifyToken, view)
-    .post(verifyToken , add)
+    .post(verifyToken, add)
     .put(verifyToken, update)
     .patch(verifyToken, update)
-    .delete(verifyToken )
-router.route('/agreementsBy')
+    .delete(verifyToken, remove)
+
+router.route('/contactsBy')
     .post(verifyToken, view)
 
 //Export API routes
