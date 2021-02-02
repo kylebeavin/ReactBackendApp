@@ -110,7 +110,6 @@ export const remove = async (req:Request, res:Response) =>{
             account.group_id = account.group_id;
             account.hauling_contract = account.hauling_contract;
             account.hauling_expiration = account.hauling_expiration;
-            account.industry = account.industry;
             account.is_active = false;
             account.owner_id = account.owner_id;
             account.owner_name = account.owner_name;

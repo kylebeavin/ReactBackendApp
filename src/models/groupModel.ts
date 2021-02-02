@@ -2,7 +2,7 @@ import IGroup from '../interfaces/groupInterface'
 import mongoose, {Schema} from 'mongoose'
 
 //schema
-var groupSchema = new Schema({
+const  groupSchema = new Schema({
 
     // Address City
     address_city: {

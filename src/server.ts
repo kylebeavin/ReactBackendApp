@@ -16,6 +16,7 @@ import userRoute from './routes/userRoute'
 import agreementRoute from './routes/agreementRoute'
 import contactRoute from './routes/contactRoute'
 import groupRoute from './routes/groupRoute'
+import inspectionRoute from './routes/inspectionRoute'
 
 //create app instant
 const app: Application = express();
@@ -54,6 +55,7 @@ app.use('/api', userRoute)
 app.use('/api', agreementRoute )
 app.use('/api', contactRoute)
 app.use('/api', groupRoute)
+app.use('/api', inspectionRoute)
 
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
