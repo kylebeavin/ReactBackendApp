@@ -44,6 +44,10 @@ const createMonthlyServiceDays = (startDate:string, endDate:string, day:string)=
     
 }
 
-const createWeekly
+const createWeeklyServiceDays = (startDate:string, endDate:string, day:string)=>{
+    let daysOfWeek:WeekDays = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:7}
+    let start_date = new Date(startDate)
+    let end_date = new Date(endDate)
+}
 
 //console.log(createMonthlyServiceDays('2021-03-11','2022-02-11', 'wed'))
