@@ -1,33 +1,49 @@
+import {addDays, eachMonthOfInterval, getISODay} from 'date-fns'
+
 interface WeekDays {
     [key:string]:number
     
 }
 
-export const createCalendarDates = (startDate:string, endDate:string, servicPer:Array<string>, service_days:Array<string>)=>{
-    let start_date = new Date(startDate)
+export const createCalendarDates = (startDate:string, endDate:string, servicePer:Array<string>, service_days:Array<string>)=>{
+    if(servicePer.includes('month')){
+        for(let day in service_days){
+            createMonthlyServiceDays(startDate, endDate, day)
+        }
+    }
+
+
 
 
 
 }
 
-const createMonthlyServiceDays = (startDate:string, endDate:string,month:string, day:string)=>{
-    let daysOfWeek:WeekDays = {sun:0, mon:1, tue:2, wed:3, thu:4, fri:5, sat:6}
+const createMonthlyServiceDays = (startDate:string, endDate:string, day:string)=>{
+    let daysOfWeek:WeekDays = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:7}
+    //start date of agreement
     let start_date = new Date(startDate)
+    //end date of agreement
     let end_date = new Date(endDate)
-    let startFullYear = start_date.getFullYear()
-    let startMonth = start_date.getMonth()
-    let startDay = start_date.getDay()
-    let startNumber = start_date.getDate()
-    let scheduledStart = start_date
-    if(startDay < daysOfWeek[day]){
-         let difference = daysOfWeek[day]-startDay
-         scheduledStart = start_date - difference + 7
-    }
-    let scheduledDates = []
-    while(start_date <= end_date){
-
-        
-    }
+    //getting dates of each month in the interval
+    const datesForFirstOfEachMonth = eachMonthOfInterval({start:start_date, end:end_date})
+    //console.log(datesForFirstOfEachMonth)
+    //first date of each month of day of service
+    let calendarDates = datesForFirstOfEachMonth.map(curdate=>{
+        let currentDay = getISODay(curdate)
+        let scheduledDay = daysOfWeek[day]
+        let diff = 0
+        if(currentDay < scheduledDay){
+            diff = scheduledDay - currentDay
+        }
+        else{
+            diff = 7-currentDay + scheduledDay
+        }
+        return addDays(curdate, diff)
+    })
+    return calendarDates
     
-
 }
+
+const createWeekly
+
+//console.log(createMonthlyServiceDays('2021-03-11','2022-02-11', 'wed'))
