@@ -93,19 +93,19 @@ export const  login = async(req:Request, res:Response)=>{
                 return res.status(400).json({auth:false, token:null})
             }
 
-        }
-        const  userToken = jwt.sign({ id: foundUser._id }, secret, {
-			expiresIn: 50400 // expires in 14 hour(s)
-        });
-        await  User.updateOne(filter, {token:userToken})
-        await foundUser.save()
-      
-        return res.status(200).json({
-            message:'User logged in successfully',
-            data: foundUser,
-				auth: true,
-				token: userToken
+            const  userToken = jwt.sign({ id: foundUser._id }, secret, {
+                expiresIn: 50400 // expires in 14 hour(s)
+            });
+            await  User.updateOne(filter, {token:userToken})
+            await foundUser.save()
+            return res.status(200).json({
+                message:'User logged in successfully',
+                data: foundUser,
+                    auth: true,
+                    token: userToken
         })
+      
+        }
     }
     catch(err){
         return res.status(500).json({

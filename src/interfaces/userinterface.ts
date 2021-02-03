@@ -10,7 +10,7 @@ export default interface IUser extends Document {
     image:string
     is_active:boolean
     role:string
-    token:string
+    token:string|null
 
 
   }
