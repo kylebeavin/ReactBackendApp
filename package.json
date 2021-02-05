@@ -2,7 +2,7 @@
   "name": "smash-app-backend",
   "version": "1.0.0",
   "description": "Create Rest Api using Node.js, Express, Mongoose, and Mongodb",
-  "main": "dist/server.js",
+  "main": "server.js",
   "dependencies": {
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
@@ -40,15 +40,13 @@
   },
   "engines": { "node": "14.15.4" },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.ts",
-    "build-tsc":"tsc",
-    "postinstall": "npm run build-tsc && mv -i -v public dist/ && rm -v -rf src",
-    "start": "npm run serve",
-    "serve": "node dist/server.js",
-    "watch-node": "nodemon dist/server.js",
+     "start":"node dist/server.js",
+     "dev": "nodemon src/server.ts",
+     "build": "tsc -p .",
+     "postinstall": "tsc",
     "watch-ts": "tsc -w",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
+    
   },
   "repository": {
     "type": "git",
@@ -59,6 +57,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TCMC-LLC/smash-app-backend/issues"
-  },
-  "homepage": "https://github.com/TCMC-LLC/smash-app-backend#readme"
+  }
+ 
 }
