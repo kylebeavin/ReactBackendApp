@@ -33,10 +33,10 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.ts",
-    "tsc": "tsc",
-    "postinstall": "npm run tsc",
+    "start": "node dist/index.js",
+    "postinstall": "tsc",
+    "watch-node": "nodemon dist/index.js",
+    "watch-ts": "tsc -w",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "repository": {
@@ -48,6 +48,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TCMC-LLC/smash-app-backend/issues"
+  },
+  "engines": {
+    "node": "12.18.2",
+    "npm": "6.14.8"
   },
   "homepage": "https://github.com/TCMC-LLC/smash-app-backend#readme"
 }
