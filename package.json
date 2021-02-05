@@ -36,8 +36,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.ts",
-    "tsc": "tsc",
-    "postinstall": "npm run tsc",
+    "build-tsc": "tsc",
+    "postinstall": "npm run build-tsc",
+    "start": "npm run serve",
+    "serve": "node dist/server.js",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "repository": {
