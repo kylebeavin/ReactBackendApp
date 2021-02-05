@@ -51,6 +51,5 @@
   },
   "engines": {
     "node": "12.18.2"
-  },
-  "homepage": "https://smt-app-typescript.herokuapp.com/api"
+  }
 }
