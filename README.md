@@ -17,3 +17,4 @@ POST api/users → Add new user data <br />
 GET api/user/{id} → Retrieve the single user data<br />
 PUT api/user/{id} → Update the user data<br />
 DELETE api/user → Delete the user data<br />
+...
