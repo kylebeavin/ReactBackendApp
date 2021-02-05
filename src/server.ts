@@ -3,8 +3,6 @@ import express, {Application , Request,Response , NextFunction} from 'express'
 import path from 'path'
 import mongoose from 'mongoose'
 require('dotenv').config();
-// import JWT
-import jwt from 'jsonwebtoken'
 //import helmet
 import helmet from 'helmet'
 //import cors
