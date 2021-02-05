@@ -35,7 +35,6 @@
     "build-ts": "tsc",
     "postinstall": "npm run build-ts",
     "start": "node run serve",
-    "watch-node": "nodemon dist/index.js",
     "watch-ts": "tsc -w",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
