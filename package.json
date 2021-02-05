@@ -50,8 +50,7 @@
     "url": "https://github.com/TCMC-LLC/smash-app-backend/issues"
   },
   "engines": {
-    "node": "12.18.2",
-    "npm": "6.14.8"
+    "node": "12.18.2"
   },
-  "homepage": "https://github.com/TCMC-LLC/smash-app-backend#readme"
+  "homepage": "https://smt-app-typescript.herokuapp.com/api"
 }
