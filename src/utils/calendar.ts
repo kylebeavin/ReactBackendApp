@@ -18,34 +18,6 @@
 //     }
 
 
-<<<<<<< HEAD
-}
-//generate monthly service order dates
-
-const createMonthlyServiceDays = (startDate:string, endDate:string, day:string):Array<Date>=>{
-    let daysOfWeek:WeekDays = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:7}
-    //start date of agreement
-    let start_date = new Date(startDate)
-    //end date of agreement
-    let end_date = new Date(endDate)
-    //getting dates of each month in the interval
-    const datesForFirstOfEachMonth = eachMonthOfInterval({start:start_date, end:end_date})
-    //console.log(datesForFirstOfEachMonth)
-    //first date of each month of day of service
-    let calendarDates = datesForFirstOfEachMonth.map(curdate=>{
-        let currentDay = getISODay(curdate)
-        let scheduledDay = daysOfWeek[day]
-        let diff = 0
-        if(currentDay < scheduledDay){
-            diff = scheduledDay - currentDay
-        }
-        else{
-            diff = 7-currentDay + scheduledDay
-        }
-        return addDays(curdate, diff)
-    })
-    return calendarDates
-=======
 
 
 
@@ -74,23 +46,13 @@ const createMonthlyServiceDays = (startDate:string, endDate:string, day:string):
 //         return addDays(curdate, diff)
 //     })
 //     return calendarDates
->>>>>>> 4607594168cd4e120786bb7eabbf7edffa56535e
     
 // }
 
-<<<<<<< HEAD
-//generate weeklyservice order dates
-
-const createWeeklyServiceDays = (startDate:string, endDate:string, day:string):Array<Date>=>{
-    let daysOfWeek:WeekDays = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:0}
-    let start_date = new Date(startDate)
-    let end_date = new Date(endDate)
-=======
 // const createWeeklyServiceDays = (startDate:string, endDate:string, day:string)=>{
 //     let daysOfWeek:WeekDays = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:0}
 //     let start_date = new Date(startDate)
 //     let end_date = new Date(endDate)
->>>>>>> 4607594168cd4e120786bb7eabbf7edffa56535e
     
 //     //date of sunday of each week
 //     const datesForEveryWeek = eachWeekOfInterval({start:start_date, end:end_date})
