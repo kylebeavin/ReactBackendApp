@@ -2,7 +2,7 @@
   "name": "smash-app-backend",
   "version": "1.0.0",
   "description": "Create Rest Api using Node.js, Express, Mongoose, and Mongodb",
-  "main": "server.js",
+  "main": "dist/server.js",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "config": "^3.3.3",
