@@ -42,7 +42,7 @@ const AccountSchema : Schema = new Schema({
         type: String,
         enum: ['prospect', 'lead', 'account'],
         default: 'prospect',
-        lowercase: true
+        lower: true
     },
     // Dumpster location coordinates
     geo_location: {

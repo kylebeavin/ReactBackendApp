@@ -74,11 +74,11 @@ export const add = async (req:Request, res:Response)=>{
 export const update = async function(req:Request, res:Response) {
     try {
         const data = {...req.body}
-        let updatedAccount = await Account.findByIdAndUpdate(req.body._id, data)
+        let updatedAccount = await Account.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
 
         
             if (updatedAccount) {
-                res.status(204).json({
+                res.status(200).json({
                     status: "success",
                     message: "Account Updated Successfully",
                     data: updatedAccount

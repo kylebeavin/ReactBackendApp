@@ -18,12 +18,10 @@ export const createCalendarDates = (startDate:string, endDate:string, servicePer
     }
 
 
-
-
-
 }
+//generate monthly service order dates
 
-const createMonthlyServiceDays = (startDate:string, endDate:string, day:string)=>{
+const createMonthlyServiceDays = (startDate:string, endDate:string, day:string):Array<Date>=>{
     let daysOfWeek:WeekDays = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:7}
     //start date of agreement
     let start_date = new Date(startDate)
@@ -49,7 +47,9 @@ const createMonthlyServiceDays = (startDate:string, endDate:string, day:string)=
     
 }
 
-const createWeeklyServiceDays = (startDate:string, endDate:string, day:string)=>{
+//generate weeklyservice order dates
+
+const createWeeklyServiceDays = (startDate:string, endDate:string, day:string):Array<Date>=>{
     let daysOfWeek:WeekDays = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:0}
     let start_date = new Date(startDate)
     let end_date = new Date(endDate)

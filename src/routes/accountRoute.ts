@@ -2,17 +2,18 @@
 import express from 'express'
 //Import Controllers
 import {view, add , update, remove} from '../controllers/accountController'
+import {verifyToken} from '../middleware/verifyToken'
 const router = express.Router()
 
 // Account routes
 router.route('/accounts')
-    .get(view)
-    .post(add)
-    .put( update)
-    .patch(update)
-    .delete( remove )
+    .get(verifyToken, view)
+    .post(verifyToken, add)
+    .put(verifyToken, update)
+    .patch(verifyToken, update)
+    .delete( verifyToken,remove )
 router.route('/accountsBy')
-    .post(view)
+    .post(verifyToken, view)
 
 //Export API routes
  export default router
