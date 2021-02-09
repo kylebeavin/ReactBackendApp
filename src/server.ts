@@ -17,6 +17,7 @@ import groupRoute from './routes/groupRoute'
 import inspectionRoute from './routes/inspectionRoute'
 import invoiceRoute from './routes/inspectionRoute'
 import orderRoute from './routes/orderRoute'
+import truckRoute from './routes/truckRoute'
 //create app instant
 const app: Application = express();
 // configure bodyparser to hande the post requests
@@ -29,7 +30,7 @@ app.use(express.json());
 app.use(helmet())
 app.use(cors())
 
-const options = { useNewUrlParser: true, useUnifiedTopology: true }
+const options = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true }
 
 const mongo = mongoose.connect(process.env.DB_PATH||"", options).catch(err=>console.log("Error",err))
 
@@ -57,6 +58,7 @@ app.use('/api', groupRoute)
 app.use('/api', inspectionRoute)
 app.use('/api', invoiceRoute)
 app.use('/api', orderRoute)
+app.use('/api',truckRoute)
 
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
