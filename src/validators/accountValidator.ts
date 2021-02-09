@@ -1,5 +1,5 @@
 import expressValidator from 'express-validator'
-import {body } from 'express-validator/check'
+import {body } from 'express-validator'
 
 export const accountValidator = ()=>{
     return [

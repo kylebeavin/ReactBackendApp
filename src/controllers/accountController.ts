@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from 'express'
 import Account from '../models/accountModel'
-import {validationResult } from 'express-validator/check'
+import {validationResult } from 'express-validator'
 
 
 //for queries
