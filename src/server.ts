@@ -2,6 +2,7 @@
 import express, {Application , Request,Response , NextFunction} from 'express'
 import path from 'path'
 import mongoose from 'mongoose'
+import expressValidator from 'express-validator'
 require('dotenv').config();
 //import helmet
 import helmet from 'helmet'
@@ -29,6 +30,7 @@ app.use(express.json());
 //use helmet as middleware
 app.use(helmet())
 app.use(cors())
+
 
 const options = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true }
 

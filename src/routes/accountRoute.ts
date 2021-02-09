@@ -5,11 +5,11 @@ import {view, add , update, remove} from '../controllers/accountController'
 import {verifyToken} from '../middleware/verifyToken'
 import {accountValidator} from '../validators/accountValidator'
 const router = express.Router()
-
+import {check} from 'express-validator'
 // Account routes
 router.route('/accounts')
     .get(verifyToken, view)
-    .post(verifyToken,accountValidator, add)
+    .post(verifyToken, accountValidator(),add)
     .put(verifyToken, update)
     .patch(verifyToken, update)
     .delete( verifyToken,remove )
