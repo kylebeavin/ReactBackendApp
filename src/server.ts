@@ -17,6 +17,7 @@ import groupRoute from './routes/groupRoute'
 import inspectionRoute from './routes/inspectionRoute'
 import invoiceRoute from './routes/inspectionRoute'
 import orderRoute from './routes/orderRoute'
+import truckRoute from './routes/truckRoute'
 //create app instant
 const app: Application = express();
 // configure bodyparser to hande the post requests
@@ -48,7 +49,9 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
-
+app.get('/api',(req:Request,res:Response)=>{
+    res.status(200).send('Welcome to the Api')
+})
 app.use('/api', accountRoute);
 app.use('/api', userRoute)
 app.use('/api', agreementRoute )
@@ -57,6 +60,7 @@ app.use('/api', groupRoute)
 app.use('/api', inspectionRoute)
 app.use('/api', invoiceRoute)
 app.use('/api', orderRoute)
+app.use('/api',truckRoute)
 
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);

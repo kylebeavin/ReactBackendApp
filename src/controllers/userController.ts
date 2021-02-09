@@ -106,6 +106,9 @@ export const  login = async(req:Request, res:Response)=>{
         })
       
         }
+        else{
+            res.status(400).json({message:'user not found'})
+        }
     }
     catch(err){
         return res.status(500).json({
