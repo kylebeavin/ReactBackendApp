@@ -1,10 +1,12 @@
 import {NextFunction, Request, Response} from 'express'
 import Account from '../models/accountModel'
+import {validationResult } from 'express-validator/check'
 
 
 //for queries
 export const view = async(req:Request, res:Response)=>{
     try{
+       
     let allAccounts = await Account.find(req.body).sort({account_name:1}).exec()
     if(allAccounts){
         return res.status(200).json({
@@ -28,6 +30,10 @@ catch(err){
 
 export const add = async (req:Request, res:Response)=>{
     try{
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         const {group_id,account_name,owner_id,owner_name, contacts, is_active, stage,geo_location, address_street, address_city,address_state,address_zip,email, demo, conversion, hauling_contract,hauling_expiration, national,referral,referral_group_id,notes} = req.body
         var account = new Account();
         account.group_id = group_id; // String, required

@@ -4,9 +4,11 @@ import mongoose, { Schema} from 'mongoose'
 const AccountSchema : Schema = new Schema({
     // Document ID of Franchise
     group_id: {
-        type: String,
-        required: true,
-        trim: true
+        // type: String,
+        // required: true,
+        // trim: true
+        type:Schema.Types.ObjectId,
+        ref:'groups'
     },
     // Account Name
     account_name: {
