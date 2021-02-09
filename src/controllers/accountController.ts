@@ -79,8 +79,12 @@ export const add = async (req:Request, res:Response)=>{
     // Update Account by Object Id
 export const update = async function(req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         const data = {...req.body}
-        let updatedAccount = await Account.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
+        let updatedAccount = await Account.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false,runValidators:true})
 
         
             if (updatedAccount) {
