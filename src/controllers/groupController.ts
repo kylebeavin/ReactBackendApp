@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from 'express'
 import Group from '../models/groupModel'
-
+import {validationResult} from 'express-validator'
 //for queries
 export const view = async(req:Request, res:Response)=>{
     try{
@@ -26,6 +26,10 @@ catch(err){
 //For creating new group
 export const add = async function (req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         var group = new Group();
         group.address_city = req.body.address_city;
         group.address_state = req.body.address_state;
@@ -44,7 +48,7 @@ export const add = async function (req:Request, res:Response) {
         group.tax_rate = req.body.tax_rate;
         group.territory_zips = req.body.territory_zips;
         group.time_zone = req.body.time_zone;
-        group.webpage = req.body.webpage != null ? req.body.image : null;
+        group.webpage = req.body.webpage != null ? req.body.webpage : null;
         
         //Save and check error
         let newGroup = await group.save()
@@ -66,6 +70,10 @@ export const add = async function (req:Request, res:Response) {
 //update group by object id
 export const update = async function(req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         const data = {...req.body}
         let updatedGroup = await Group.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
 

@@ -10,7 +10,7 @@ export const contactValidatorPost = ()=>{
        body('last_name').exists().notEmpty().withMessage('Last name is required'),
        body('method').exists().isIn(['email','sms']).withMessage('Valid method is required'),
        body('owner_id').exists().notEmpty().withMessage('Owner id is required'),
-       body('phone').exists().isMobilePhone('any').withMessage('Phone number is required'),
+       body('phone').exists().withMessage('Phone number is required'),
        body('type').exists().isIn(['bill','smash','haul']).withMessage('Valid type is required'),
        body('phone').optional().custom(value =>{
         if(!value.match(/^[2-9]\d{2}-?\d{3}-?\d{4}$/)){
