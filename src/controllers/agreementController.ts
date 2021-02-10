@@ -70,8 +70,12 @@ export const add = async function (req:Request, res:Response) {
 
 export const update = async function(req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         const data = {...req.body}
-        let updatedAgreement = await Agreement.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
+        let updatedAgreement = await Agreement.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false,runValidators:true})
 
         console.log(updatedAgreement)
             if (updatedAgreement) {
