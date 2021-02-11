@@ -8,7 +8,8 @@ const AccountSchema : Schema = new Schema({
         required: true,
         trim: true
         // type:Schema.Types.ObjectId,
-        // ref:'groups'
+        // ref:'groups',
+        // required:true
     },
     // Account Name
     account_name: {

@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction } from 'express'
 import Agreement from '../models/agreementModel'
-
+import {validationResult} from 'express-validator'
 //for queries
 
 export const view = async(req:Request, res:Response)=>{
@@ -27,6 +27,10 @@ catch(err){
 //for creating new account
 export const add = async function (req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         const agreement = new Agreement();
         agreement.account_id = req.body.account_id;
         agreement.demand_rate = req.body.demand_rate;
@@ -66,8 +70,12 @@ export const add = async function (req:Request, res:Response) {
 
 export const update = async function(req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         const data = {...req.body}
-        let updatedAgreement = await Agreement.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
+        let updatedAgreement = await Agreement.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false,runValidators:true})
 
         console.log(updatedAgreement)
             if (updatedAgreement) {

@@ -24,7 +24,7 @@ catch(err){
 }
 
 //For creating new inspection
-exports.add = async function(req:Request, res:Response) {
+export const add = async function(req:Request, res:Response) {
     try {
         var inspection = new Inspection();
         inspection.group_id = req.body.group_id;

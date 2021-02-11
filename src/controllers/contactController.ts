@@ -1,5 +1,6 @@
 import {NextFunction, Request, Response} from 'express'
 import Contact from '../models/contactModel'
+import {validationResult} from 'express-validator'
 
 //for queries
 export const view = async(req:Request, res:Response)=>{
@@ -26,6 +27,10 @@ catch(err){
 //For creating new contact
 export const add = async function (req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         var contact = new Contact();
         contact.account_id = req.body.account_id;
         contact.email = req.body.email;
@@ -57,8 +62,12 @@ export const add = async function (req:Request, res:Response) {
 //update contact by object id
 export const update = async function(req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         const data = {...req.body}
-        let updatedContact = await Contact.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
+        let updatedContact = await Contact.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false,runValidators:true})
 
         
             if (updatedContact) {

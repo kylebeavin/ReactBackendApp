@@ -1,7 +1,7 @@
 //initialize express router
 import express from 'express'
 //Import Controllers
-import {view, add , update , remove} from '../controllers/contactController'
+import {view, add , update } from '../controllers/inspectionController'
 import {verifyToken} from '../middleware/verifyToken'
 const router = express.Router()
 // Contacts routes
@@ -10,7 +10,7 @@ router.route('/inspections')
     .post(verifyToken, add)
     .put(verifyToken, update)
     .patch(verifyToken, update)
-    .delete(verifyToken, remove)
+    .delete(verifyToken)
 
 router.route('/inspectionsBy')
     .post(verifyToken, view)
