@@ -1,5 +1,6 @@
 import {Request, Response, NextFunction } from 'express'
 import Order from '../models/orderModel'
+import {validationResult} from 'express-validator'
 
 //for queries
 
@@ -27,6 +28,10 @@ catch(err){
 //For creating new order
 export const add = async function (req:Request, res:Response) {
     try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
         const order = new Order();
         order.account_id = req.body.account_id;
         order.agreement_id = req.body.agreement_id;
