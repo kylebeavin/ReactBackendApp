@@ -19,6 +19,7 @@ import inspectionRoute from './routes/inspectionRoute'
 import invoiceRoute from './routes/inspectionRoute'
 import orderRoute from './routes/orderRoute'
 import truckRoute from './routes/truckRoute'
+import meetingRoute from './routes/meetingRoute'
 //create app instant
 const app: Application = express();
 // configure bodyparser to hande the post requests
@@ -63,6 +64,7 @@ app.use('/api', inspectionRoute)
 app.use('/api', invoiceRoute)
 app.use('/api', orderRoute)
 app.use('/api',truckRoute)
+app.use('/api',meetingRoute)
 
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);
