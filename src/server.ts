@@ -33,7 +33,7 @@ app.use(helmet())
 app.use(cors())
 
 
-const options = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true }
+const options = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true,useFindAndModify:false }
 
 const mongo = mongoose.connect(process.env.DB_PATH||"", options).catch(err=>console.log("Error",err))
 
