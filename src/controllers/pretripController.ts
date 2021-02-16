@@ -32,6 +32,7 @@ export const add = async function (req:Request, res:Response) {
         pretrip.group_id = req.body.group_id;
         pretrip.owner_id = req.body.owner_id;
         pretrip.type = req.body.type;
+        pretrip.truck_id = req.body.truck_id;
         pretrip.odometer_reading = req.body.odometer_reading;
         pretrip.fuel_level = req.body.fuel_level;
         pretrip.seat_belts = req.body.seat_belts;
@@ -89,7 +90,7 @@ export const update = async function(req:Request, res:Response) {
             if (updatedPreTrip) {
                 return res.status(200).json({
                     status: "success",
-                    message: "Account Updated Successfully",
+                    message: "Route Updated Successfully",
                     data: updatedPreTrip
                 })
             } else {

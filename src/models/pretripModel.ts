@@ -6,7 +6,7 @@ const PreTripSchema: Schema = new Schema(
 		// Document ID of Franchise
 		group_id: {
 			type: String,
-			required: false,
+			required: true,
 			trim: true,
 			// type:Schema.Types.ObjectId,
 			// ref:'groups',
@@ -15,7 +15,7 @@ const PreTripSchema: Schema = new Schema(
 		// Document ID of User that created the account
 		owner_id: {
 			type: String,
-			required: false,
+			required: true,
 			trim: true,
 		},
 		// PreTrip status active/inactive
@@ -25,123 +25,123 @@ const PreTripSchema: Schema = new Schema(
 		},
 		type: {
 			type: String,
-			required: false,
+			required: true,
 			trim: true,
 		},
 		truck_id: {
 			type: String,
-			required: false,
+			required: true,
 			trim: true,
 		},
 		odometer_reading: {
 			type: String,
-			required: false,
+			required: true,
 			trim: true,
 		},
 		fuel_level: {
 			type: String,
-			required: false,
+			required: true,
 			trim: true,
 		},
 		seat_belts: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		pto_switch: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		engine_fluids: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		transmission: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		steering_mechanism: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		horn: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		windshield_wipers: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		mirrors: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		truck_lights: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		parking_brake: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		service_brake: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		tires: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		rims: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		emergency_equipment: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		tools_gear: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		chocks_chains: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		drum_cap: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		grease_distribution: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		chain_tension: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		machine_lights: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		machine_hours: {
-			type: Boolean,
-			required: false,
+			type: String,
+			required: true,
 		},
 		vehicle_condition: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		required_documents: {
-			type: String,
-			required: false,
+			type: [String],
+			required: true,
 		},
 		engine_warning: {
 			type: Boolean,
-			required: false,
+			required: true,
 		},
 		drivers_signature: {
 			type: String,
-			required: false,
+			required: true,
 		},
 	},
 	{ timestamps: true }

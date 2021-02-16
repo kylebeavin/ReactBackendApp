@@ -37,7 +37,7 @@ export default interface IPreTrip extends Document {
 
     // Sign-Off Checklist
     vehicle_condition: boolean
-    required_documents: string
+    required_documents: Array<string>
     engine_warning: boolean
     drivers_signature: string // will point to url of driver signature image.
 }
