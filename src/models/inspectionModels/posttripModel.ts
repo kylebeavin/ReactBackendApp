@@ -1,4 +1,4 @@
-import IPostTrip from "../interfaces/posttripInterface";
+import IPostTrip from "../../interfaces/inspectionInterfaces/driver/posttripInterface";
 import mongoose, { Schema } from "mongoose";
 
 const PostTripSchema: Schema = new Schema(

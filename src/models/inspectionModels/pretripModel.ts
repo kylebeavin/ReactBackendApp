@@ -1,4 +1,4 @@
-import IPreTrip from "../interfaces/pretripInterface";
+import IPreTrip from "../../interfaces/inspectionInterfaces/driver/pretripInterface"
 import mongoose, { Schema } from "mongoose";
 
 const PreTripSchema: Schema = new Schema(

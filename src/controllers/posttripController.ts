@@ -1,5 +1,5 @@
 
-import PostTrip from '../models/posttripModel'
+import PostTrip from '../models/inspectionModels/posttripModel'
 import {Request, Response } from 'express'
 
 //for queries
