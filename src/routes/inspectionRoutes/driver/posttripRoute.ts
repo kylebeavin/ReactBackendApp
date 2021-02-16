@@ -1,9 +1,9 @@
 //initialize express router
 import express from 'express'
 //Import Controllers
-import {view, add , update } from '../../controllers/posttripController'
-import {verifyToken} from '../../middleware/verifyToken'
-import PostTrip from '../../models/inspectionModels/posttripModel'
+import {view, add , update } from '../../../controllers/inspectionControllers/posttripController'
+import {verifyToken} from '../../../middleware/verifyToken'
+import PostTrip from '../../../models/inspectionModels/posttripModel'
 const router = express.Router()
 // Inspection routes
 router.route('/post-trip')
