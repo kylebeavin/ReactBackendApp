@@ -15,7 +15,7 @@ import userRoute from './routes/userRoute'
 import agreementRoute from './routes/agreementRoute'
 import contactRoute from './routes/contactRoute'
 import groupRoute from './routes/groupRoute'
-import inspectionRoute from './routes/pretripRoute'
+import pretripRoute from './routes/pretripRoute'
 import invoiceRoute from './routes/pretripRoute'
 import orderRoute from './routes/orderRoute'
 import truckRoute from './routes/truckRoute'
@@ -50,8 +50,8 @@ const port = process.env.PORT || 3000;
 
 // Welcome/Login Site
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 app.get('/api',(req:Request,res:Response)=>{
     res.status(200).send('Welcome to the Api')
 })
@@ -60,7 +60,7 @@ app.use('/api', userRoute)
 app.use('/api', agreementRoute )
 app.use('/api', contactRoute)
 app.use('/api', groupRoute)
-app.use('/api', inspectionRoute)
+app.use('/api', pretripRoute)
 app.use('/api', invoiceRoute)
 app.use('/api', orderRoute)
 app.use('/api', truckRoute)
