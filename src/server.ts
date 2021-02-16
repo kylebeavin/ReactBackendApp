@@ -15,8 +15,9 @@ import userRoute from './routes/userRoute'
 import agreementRoute from './routes/agreementRoute'
 import contactRoute from './routes/contactRoute'
 import groupRoute from './routes/groupRoute'
-import pretripRoute from './routes/pretripRoute'
-import invoiceRoute from './routes/pretripRoute'
+import pretripRoute from './routes/inspectionRoutes/pretripRoute'
+import posttripRoute from './routes/inspectionRoutes/posttripRoute'
+import invoiceRoute from './routes/inspectionRoutes/pretripRoute'
 import orderRoute from './routes/orderRoute'
 import truckRoute from './routes/truckRoute'
 import meetingRoute from './routes/meetingRoute'
@@ -62,6 +63,7 @@ app.use('/api', agreementRoute )
 app.use('/api', contactRoute)
 app.use('/api', groupRoute)
 app.use('/api', pretripRoute)
+app.use('/api', posttripRoute)
 app.use('/api', invoiceRoute)
 app.use('/api', orderRoute)
 app.use('/api', truckRoute)

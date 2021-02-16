@@ -90,7 +90,7 @@ export const update = async function(req:Request, res:Response) {
             if (updatedPreTrip) {
                 return res.status(200).json({
                     status: "success",
-                    message: "Route Updated Successfully",
+                    message: "Pre-Trip Inspection Updated Successfully",
                     data: updatedPreTrip
                 })
             } else {

@@ -1,12 +1,12 @@
 //initialize express router
 import express from 'express'
 //Import Controllers
-import {view, add , update } from '../controllers/pretripController'
-import {verifyToken} from '../middleware/verifyToken'
-import PreTrip from '../models/pretripModel'
+import {view, add , update } from '../../controllers/posttripController'
+import {verifyToken} from '../../middleware/verifyToken'
+import PostTrip from '../../models/posttripModel'
 const router = express.Router()
 // Inspection routes
-router.route('/pre-trip')
+router.route('/post-trip')
     .get(verifyToken, view)
     .post(verifyToken, add)
     // .put(verifyToken, update)
