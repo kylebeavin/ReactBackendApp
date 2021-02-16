@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-export default interface IPretrip extends Document {
+export default interface IPreTrip extends Document {
 
     // Identify truck
 	group_id: string;
@@ -18,10 +18,10 @@ export default interface IPretrip extends Document {
 	steering_mechanism: boolean;
 	horn: boolean;
 	windshield_wipers: boolean;
-	rear_view_mirrors: boolean;
+	mirrors: boolean;
 	truck_lights: boolean;
 	parking_brake: boolean;
-	service_brakes: boolean;
+	service_brake: boolean;
 	tires: boolean;
 	rims: boolean;
 	emergency_equipment: boolean;
@@ -37,7 +37,7 @@ export default interface IPretrip extends Document {
 
     // Sign-Off Checklist
     vehicle_condition: boolean
-    required_documents: boolean
+    required_documents: string
     engine_warning: boolean
     drivers_signature: string // will point to url of driver signature image.
 }

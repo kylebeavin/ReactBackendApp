@@ -63,8 +63,8 @@ app.use('/api', groupRoute)
 app.use('/api', inspectionRoute)
 app.use('/api', invoiceRoute)
 app.use('/api', orderRoute)
-app.use('/api',truckRoute)
-app.use('/api',meetingRoute)
+app.use('/api', truckRoute)
+app.use('/api', meetingRoute)
 
 app.listen(port, function() {
     console.log("Running Smash API on Port " + port);

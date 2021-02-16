@@ -33,7 +33,7 @@ export const view = async (req:Request, res:Response)=> {
 };
 
 //for  creating a new user
-export const add = async(req:Request, res:Response)=>{
+export const add = async function(req:Request, res:Response) {
     try {
 		const user = new User();
 		var hashedPassword = bcrypt.hashSync(req.body.password, 8);			// Hashed - String - Required
