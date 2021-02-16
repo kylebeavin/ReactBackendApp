@@ -1,5 +1,5 @@
 
-import PostTrip from '../../models/inspectionModels/posttripModel'
+import PostTrip from '../../../models/inspectionModels/driver/posttripModel'
 import {Request, Response } from 'express'
 
 //for queries

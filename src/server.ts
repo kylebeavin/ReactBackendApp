@@ -18,6 +18,7 @@ import groupRoute from './routes/groupRoute'
 import pretripRoute from './routes/inspectionRoutes/driver/pretripRoute'
 import posttripRoute from './routes/inspectionRoutes/driver/posttripRoute'
 import weeklyRoute from './routes/inspectionRoutes/driver/weeklyRoute'
+import biweeklyRoute from './routes/inspectionRoutes/driver/biWeeklyRoute'
 import invoiceRoute from './routes/invoiceRoute'
 import orderRoute from './routes/orderRoute'
 import truckRoute from './routes/truckRoute'
@@ -66,6 +67,7 @@ app.use('/api', groupRoute)
 app.use('/api', pretripRoute)
 app.use('/api', posttripRoute)
 app.use('api/', weeklyRoute)
+app.use('api/', biweeklyRoute)
 app.use('/api', invoiceRoute)
 app.use('/api', orderRoute)
 app.use('/api', truckRoute)

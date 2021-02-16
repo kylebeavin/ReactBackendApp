@@ -1,9 +1,9 @@
 //initialize express router
 import express from 'express'
 //Import Controllers
-import {view, add , update } from '../../../controllers/inspectionControllers/weeklyDriverController'
+import {view, add , update } from '../../../controllers/inspectionControllers/driver/weeklyController'
 import {verifyToken} from '../../../middleware/verifyToken'
-import Weekly from '../../../models/inspectionModels/weeklyDriverModel'
+import Weekly from '../../../models/inspectionModels/driver/weeklyDriverModel'
 const router = express.Router()
 // Inspection routes
 router.route('/weekly')

@@ -1,9 +1,9 @@
 //initialize express router
 import express from 'express'
 //Import Controllers
-import {view, add , update } from '../../../controllers/inspectionControllers/pretripController'
+import {view, add , update } from '../../../controllers/inspectionControllers/driver/pretripController'
 import {verifyToken} from '../../../middleware/verifyToken'
-import PreTrip from '../../../models/inspectionModels/pretripModel'
+import PreTrip from '../../../models/inspectionModels/driver/pretripModel'
 const router = express.Router()
 // Inspection routes
 router.route('/pre-trip')

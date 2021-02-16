@@ -1,5 +1,5 @@
 
-import PreTrip from '../../models/inspectionModels/pretripModel'
+import PreTrip from '../../../models/inspectionModels/driver/pretripModel'
 import {Request, Response } from 'express'
 
 //for queries

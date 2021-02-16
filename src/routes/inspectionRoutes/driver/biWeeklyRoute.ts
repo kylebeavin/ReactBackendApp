@@ -1,12 +1,12 @@
 //initialize express router
 import express from 'express'
 //Import Controllers
-import {view, add , update } from '../../../controllers/inspectionControllers/driver/posttripController'
+import {view, add , update } from '../../../controllers/inspectionControllers/driver/biWeeklyController'
 import {verifyToken} from '../../../middleware/verifyToken'
-import PostTrip from '../../../models/inspectionModels/driver/posttripModel'
+import BiWeekly from '../../../models/inspectionModels/driver/biWeeklyModel'
 const router = express.Router()
 // Inspection routes
-router.route('/post-trip')
+router.route('/biweekly')
     .get(verifyToken, view)
     .post(verifyToken, add)
     // .put(verifyToken, update)

@@ -1,7 +1,7 @@
-import IPreTrip from "../../interfaces/inspectionInterfaces/driver/pretripInterface"
+import IPostTrip from "../../../interfaces/inspectionInterfaces/driver/posttripInterface"
 import mongoose, { Schema } from "mongoose";
 
-const PreTripSchema: Schema = new Schema(
+const PostTripSchema: Schema = new Schema(
 	{
 		// Document ID of Franchise
 		group_id: {
@@ -18,7 +18,7 @@ const PreTripSchema: Schema = new Schema(
 			required: true,
 			trim: true,
 		},
-		// PreTrip status active/inactive
+		// PostTrip status active/inactive
 		is_active: {
 			type: Boolean,
 			default: true,
@@ -147,4 +147,4 @@ const PreTripSchema: Schema = new Schema(
 	{ timestamps: true }
 );
 
-export default mongoose.model<IPreTrip>("PreTrip", PreTripSchema);
+export default mongoose.model<IPostTrip>("PostTrip", PostTripSchema);
