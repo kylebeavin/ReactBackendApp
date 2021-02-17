@@ -8,6 +8,7 @@ require('dotenv').config();
 import helmet from 'helmet'
 //import cors
 import cors from 'cors'
+var nodemailer = require('nodemailer');
 const dotenv = require('dotenv').config({ path: __dirname+'/.env' });
 
 import  accountRoute from './routes/accountRoute'
