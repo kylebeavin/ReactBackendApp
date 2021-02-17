@@ -7,26 +7,26 @@ const  truckSchema: Schema = new Schema({
     // Vehicle Body Subtype
     body_subtype: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Vehicle Body Type
     body_type: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Vehicle Color
     color: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
 
     // Truck related documents
     documents: {
         type: [String],
-        default: null,
+        required: true,
         trim: true
     },
     // Franchise ID
@@ -49,13 +49,13 @@ const  truckSchema: Schema = new Schema({
     // License Plate
     license_number: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Vehicle MSRP
     msrp: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Truck display name
@@ -73,25 +73,25 @@ const  truckSchema: Schema = new Schema({
     // User ID of user assigned to this vehicle
     operator: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Vehicle Ownership Status
     ownership: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Truck related pictures
     pictures: {
         type: [String],
-        default: null,
+        required: true,
         trim: true
     },
     // Corrosponding truck inspection forms
     service_history: {
         type: [String],
-        default: null,
+        required: true,
         trim: true
     },
     // Whether or not the truck is overdue for service
@@ -104,25 +104,25 @@ const  truckSchema: Schema = new Schema({
     // Vehicle Trim
     trim: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Vehicle Registration
     registration: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Vehicle Make
     vehicle_make: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Vehicle Model
     vehicle_model: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
     // Type of vehicle
@@ -141,7 +141,7 @@ const  truckSchema: Schema = new Schema({
     // Vehicle Year
     year: {
         type: String,
-        default: null,
+        required: true,
         trim: true
     },
 },
