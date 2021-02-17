@@ -1,4 +1,4 @@
-import IWeekly from "../../../interfaces/inspectionInterfaces/driver/weeklyDriverInterface"
+import IWeekly from "../../../interfaces/inspectionInterfaces/driver/weeklyInterface"
 import mongoose, { Schema } from "mongoose";
 
 const WeeklySchema: Schema = new Schema(

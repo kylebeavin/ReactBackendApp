@@ -1,5 +1,5 @@
 
-import Weekly from '../../../models/inspectionModels/tech/
+import Weekly from '../../../models/inspectionModels/tech/weeklyModel'
 import {Request, Response } from 'express'
 
 //for queries
@@ -37,7 +37,6 @@ export const add = async function (req:Request, res:Response) {
         weekly.def_unit = req.body.def_unit;
         weekly.boom_arm = req.body.boom_arm;
         weekly.boom_drum = req.body.boom_drum;
-        weekly.clean_cab = req.body.clean_cab;
         weekly.hydraulics = req.body.hydraulics;
         weekly.tools = req.body.tools;
         weekly.greased_rails = req.body.greased_rails;
@@ -84,9 +83,10 @@ export const add = async function (req:Request, res:Response) {
         weekly.reflectives = req.body.reflectives;
         weekly.spare_bulbs = req.body.spare_bulbs;
         weekly.remarks = req.body.remarks;
+        weekly.cab_condition = req.body.cab_condition;
         weekly.vehicle_condition = req.body.vehicle_condition;
         weekly.defects_corrected = req.body.defects_corrected;
-        weekly.drivers_signature = req.body.drivers_signature;
+        weekly.tech_signature = req.body.tech_signature;
         
         //Save and check error
         let newWeekly = await weekly.save()
