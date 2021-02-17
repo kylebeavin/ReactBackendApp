@@ -1,7 +1,7 @@
-import IWeekly from "../../../interfaces/inspectionInterfaces/driver/weeklyInterface"
+import IWeeklyDriver from "../../../interfaces/inspectionInterfaces/driver/weeklyInterface"
 import mongoose, { Schema } from "mongoose";
 
-const WeeklySchema: Schema = new Schema(
+const WeeklyDriverSchema: Schema = new Schema(
 	{
 		// Document ID of Franchise
 		group_id: {
@@ -18,7 +18,7 @@ const WeeklySchema: Schema = new Schema(
 			required: true,
 			trim: true,
 		},
-		// Weekly status active/inactive
+		// WeeklyDriver status active/inactive
 		is_active: {
 			type: Boolean,
 			default: true,
@@ -308,4 +308,4 @@ const WeeklySchema: Schema = new Schema(
 	{ timestamps: true }
 );
 
-export default mongoose.model<IWeekly>("Weekly", WeeklySchema);
+export default mongoose.model<IWeeklyDriver>("WeeklyDriver", WeeklyDriverSchema);

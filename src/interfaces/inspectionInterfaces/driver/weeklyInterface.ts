@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-export default interface IWeekly extends Document {
+export default interface IWeeklyDriver extends Document {
 	// Identify truck
 	group_id: string;
 	owner_id: string;
