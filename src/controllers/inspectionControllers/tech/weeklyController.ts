@@ -1,5 +1,5 @@
 
-import Weekly from '../../../models/inspectionModels/tech/weeklyModel'
+import Weekly from '../../../models/inspectionModels/tech/weeklyTechModel'
 import {Request, Response } from 'express'
 
 //for queries
