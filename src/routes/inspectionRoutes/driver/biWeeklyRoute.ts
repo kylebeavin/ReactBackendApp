@@ -6,7 +6,7 @@ import {verifyToken} from '../../../middleware/verifyToken'
 import BiWeekly from '../../../models/inspectionModels/driver/biWeeklyModel'
 const router = express.Router()
 // Inspection routes
-router.route('/biweekly')
+router.route('/bi-weekly')
     .get(verifyToken, view)
     .post(verifyToken, add)
     // .put(verifyToken, update)
