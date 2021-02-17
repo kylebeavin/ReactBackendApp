@@ -3,7 +3,7 @@ import express from 'express'
 //Import Controllers
 import {view, add , update } from '../../../controllers/inspectionControllers/driver/weeklyController'
 import {verifyToken} from '../../../middleware/verifyToken'
-import Weekly from '../../../models/inspectionModels/driver/weeklyDriverModel'
+import Weekly from '../../../models/inspectionModels/driver/weeklyModel'
 const router = express.Router()
 // Inspection routes
 router.route('/weekly')
