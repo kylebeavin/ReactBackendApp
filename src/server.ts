@@ -17,8 +17,16 @@ import contactRoute from './routes/contactRoute'
 import groupRoute from './routes/groupRoute'
 import pretripRoute from './routes/inspectionRoutes/driver/pretripRoute'
 import posttripRoute from './routes/inspectionRoutes/driver/posttripRoute'
-import weeklyRoute from './routes/inspectionRoutes/driver/weeklyRoute'
+import weeklyDriverRoute from './routes/inspectionRoutes/driver/weeklyRoute'
 import biweeklyRoute from './routes/inspectionRoutes/driver/biWeeklyRoute'
+import bigRigServiceRoute from './routes/inspectionRoutes/info/bigRigServiceRoute'
+import emergencyServiceRoute from './routes/inspectionRoutes/info/emergencyServiceRoute'
+import kenworthDealerRoute from './routes/inspectionRoutes/info/kenworthDealerRoute'
+import localPartsRoute from './routes/inspectionRoutes/info/localPartsRoute'
+import tireVendorRoute from './routes/inspectionRoutes/info/tireVendorRoute'
+import gearboxRoute from './routes/inspectionRoutes/tech/gearboxRoute'
+import hydraulicFilterRoute from './routes/inspectionRoutes/tech/hydraulicFilterRoute'
+import weeklyTechRoute from './routes/inspectionRoutes/tech/weeklyRoute'
 import invoiceRoute from './routes/invoiceRoute'
 import orderRoute from './routes/orderRoute'
 import truckRoute from './routes/truckRoute'
@@ -66,8 +74,16 @@ app.use('/api', contactRoute)
 app.use('/api', groupRoute)
 app.use('/api', pretripRoute)
 app.use('/api', posttripRoute)
-app.use('/api', weeklyRoute)
+app.use('/api', weeklyDriverRoute)
 app.use('/api', biweeklyRoute)
+app.use('/api', bigRigServiceRoute)
+app.use('/api', emergencyServiceRoute)
+app.use('/api', kenworthDealerRoute)
+app.use('/api', localPartsRoute)
+app.use('/api', tireVendorRoute)
+app.use('/api', gearboxRoute)
+app.use('/api', hydraulicFilterRoute)
+app.use('/api', weeklyTechRoute)
 app.use('/api', invoiceRoute)
 app.use('/api', orderRoute)
 app.use('/api', truckRoute)
