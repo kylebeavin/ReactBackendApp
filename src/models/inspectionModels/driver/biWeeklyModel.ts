@@ -1,4 +1,4 @@
-import IBiWeekly from "../../../interfaces/inspectionInterfaces/driver/biWeeklyDriverInterface"
+import IBiWeekly from "../../../interfaces/inspectionInterfaces/driver/biWeeklyInterface"
 import mongoose, { Schema } from "mongoose";
 
 const BiWeeklySchema: Schema = new Schema(
