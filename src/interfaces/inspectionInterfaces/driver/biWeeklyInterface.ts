@@ -10,7 +10,7 @@ export default interface IBiWeekly extends Document {
     // Truck Checklist
     odometer_reading: string;
     hydraulic_pump: boolean;
-    hydraudic_cylinder: boolean;
+    hydraulic_cylinder: boolean;
     sprocket_motor: boolean;
     boom_arm: boolean;
     boom_drum: boolean;
