@@ -13,8 +13,8 @@ router.route('/pre-trip')
     // .patch(verifyToken, update)
     // .delete(verifyToken)
 
-// router.route('/inspectionsBy')
-//     .post(verifyToken, view)
+router.route('/pre-tripBy')
+    .post(verifyToken, view)
 
 //Export API routes
 export default router
