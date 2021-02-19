@@ -1,8 +1,12 @@
 import Gearbox from "../../../models/inspectionModels/tech/gearboxModel";
 import { Request, Response } from "express";
+import fs from "fs";
+import ejs from "ejs";
+import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
 
 // For emailing forms
+
 var transporter = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
@@ -10,13 +14,6 @@ var transporter = nodemailer.createTransport({
 		pass: "Lizard2021!",
 	},
 });
-
-var mailOptions = {
-	from: "lizardsfleetmgmt@smashmytrash.com",
-	to: "suravita.roy@tcmcllc.com",
-	subject: "Fleet Management Inspection",
-	text: "Blinker Fluid Inspection",
-};
 
 //for queries
 
@@ -59,13 +56,38 @@ export const add = async function (req: Request, res: Response) {
 
 				message: "New gearbox inspection created!",
 			});
-			transporter.sendMail(mailOptions, function (error, info) {
-				if (error) {
-					console.log(error);
-				} else {
-					console.log("Email sent: " + info.response);
+
+			ejs.renderFile(
+				"src/utils/emailTemplates/gearboxForm.ejs",
+				{
+					franchise: "Franchise Name",
+					group_id: gearbox.group_id,
+					owner_id: gearbox.owner_id,
+					type: gearbox.type,
+					truck_id: gearbox.truck_id,
+					gearbox: gearbox.gearbox,
+				},
+				function (err, data) {
+					if (err) {
+						console.log(err);
+					} else {
+						var mailOptions = {
+							from: "lizardsfleetmgmt@smashmytrash.com",
+							to: "alec.davidson@smashmytrash.com",
+							subject: "Fleet Management Inspection",
+							html: data,
+						};
+						console.log("html data ======================>", mailOptions.html);
+						transporter.sendMail(mailOptions, function (err, info) {
+							if (err) {
+								console.log(err);
+							} else {
+								console.log("Message sent: " + info.response);
+							}
+						});
+					}
 				}
-			});
+			);
 		} else {
 			res.json({ message: "Failed to create gearbox inspection" });
 		}
