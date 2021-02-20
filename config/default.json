@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://backend:Smash123@cluster-test.jm4qz.mongodb.net/smash-app-dev?retryWrites=true&w=majority"
+}
