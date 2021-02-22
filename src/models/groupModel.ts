@@ -2,10 +2,6 @@ import IGroup from "../interfaces/groupInterface";
 import mongoose, { Schema } from "mongoose";
 
 
-
-
-
-
 const groupSchema = new Schema(
 	{
 		address: {

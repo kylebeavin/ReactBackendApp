@@ -1,7 +1,7 @@
 //initialize express router
 import express from 'express'
 //Import Controllers
-import {view, add , update, remove} from '../controllers/groupController'
+import {view, add , update} from '../controllers/groupController'
 const router = express.Router()
 import {verifyToken } from '../middleware/verifyToken'
 import {groupValidatorPost, groupValidatorUpdate} from '../validators'
@@ -12,7 +12,7 @@ router.route('/groups')
     .post(verifyToken, groupValidatorPost(),add)
     .put(verifyToken, groupValidatorUpdate(),update)
     .patch(verifyToken,groupValidatorUpdate(),update)
-    .delete( remove )
+    .delete(  )
 router.route('/groupsBy')
     .post(view)
 

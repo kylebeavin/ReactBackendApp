@@ -94,41 +94,41 @@ export const update = async function(req:Request, res:Response) {
 };
 
 // Delete Group by _id
-export const remove = async function (req:Request, res:Response) {
-    let group = await Group.findOne({ _id: req.body._id }).exec()
-    if (group) {
+// export const remove = async function (req:Request, res:Response) {
+//     let group = await Group.findOne({ _id: req.body._id }).exec()
+//     if (group) {
        
-        group.address.address_city = group.address.address_city;
-        group.address.address_state = group.address.address_state;
-        group.address.address_street = group.address.address_street;
-        group.address.address_zip = group.address.address_zip;
-        group.dba = group.dba;
-        group.ein = group.ein;
-        group.email = group.email;
-        group.is_active = false;
-        group.launch_date = group.launch_date;
-        group.legal_company = group.legal_company;
-        group.name = group.name;
-        group.phone = group.phone;
-        group.region = group.region;
-        group.signing_date = group.signing_date
-        group.tax_rate = group.tax_rate;
-        group.territory_zips = group.territory_zips;
-        group.time_zone = group.time_zone;
-        group.webpage = group.webpage;
-        if (group) {
-            res.status(200).json({
-                status: 200,
+//         group.address_city = group.address_city;
+//         group.address_state = group.address_state;
+//         group.address_street = group.address_street;
+//         group.address_zip = group.address_zip;
+//         group.dba = group.dba;
+//         group.ein = group.ein;
+//         group.email = group.email;
+//         group.is_active = false;
+//         group.launch_date = group.launch_date;
+//         group.legal_company = group.legal_company;
+//         group.name = group.name;
+//         group.phone = group.phone;
+//         group.region = group.region;
+//         group.signing_date = group.signing_date
+//         group.tax_rate = group.tax_rate;
+//         group.territory_zips = group.territory_zips;
+//         group.time_zone = group.time_zone;
+//         group.webpage = group.webpage;
+//         if (group) {
+//             res.status(200).json({
+//                 status: "success",
                 
-                message: "Group deactivated Successfully",
-                data: group
-            })
-        }
-    } else {
-        res.json({ message: 'Group not found' })
-    }
+//                 message: "Group deactivated Successfully",
+//                 data: group
+//             })
+//         }
+//     } else {
+//         res.json({ message: 'Group not found' })
+//     }
    
-};
+// };
 
 
 
