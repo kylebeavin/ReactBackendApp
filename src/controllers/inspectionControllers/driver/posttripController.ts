@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allPostTrips = await PostTrip.find(req.body).sort({created_at:1}).exec()
     if(allPostTrips){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allPostTrips
         })
@@ -66,7 +66,7 @@ export const add = async function (req:Request, res:Response) {
         let newPostTrip = await posttrip.save()
         if (newPostTrip) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New post-trip inspection created!",
             })
@@ -89,7 +89,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedPostTrip)
             if (updatedPostTrip) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Post-Trip Inspection Updated Successfully",
                     data: updatedPostTrip
                 })

@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allRoutes = await Route.find(req.body).sort({created_at:1}).exec()
     if(allRoutes){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allRoutes
         })
@@ -42,7 +42,7 @@ export const add = async function (req:Request, res:Response) {
         let newRoute = await route.save()
         if (newRoute) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New route created!",
             })
@@ -65,7 +65,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedRoute)
             if (updatedRoute) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Route Updated Successfully",
                     data: updatedRoute
                 })

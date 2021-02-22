@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allBiWeeklys = await BiWeekly.find(req.body).sort({created_at:1}).exec()
     if(allBiWeeklys){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allBiWeeklys
         })
@@ -48,7 +48,7 @@ export const add = async function (req:Request, res:Response) {
         let newBiWeekly = await biWeekly.save()
         if (newBiWeekly) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New BiWeekly inspection created!",
             })
@@ -71,7 +71,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedBiWeekly)
             if (updatedBiWeekly) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "BiWeekly Inspection Updated Successfully",
                     data: updatedBiWeekly
                 })

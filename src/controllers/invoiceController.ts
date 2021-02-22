@@ -7,7 +7,7 @@ export const view = async(req:Request, res:Response)=>{
     let allGroups = await Invoice.find(req.body).exec()
     if(allGroups){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allGroups
         })
@@ -46,7 +46,7 @@ export const add = async function(req:Request, res:Response) {
         let newInvoice = await invoice.save()
         if (newInvoice) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New invoice created!",
             })
@@ -68,7 +68,7 @@ export const update = async function(req:Request, res:Response) {
         
             if (updatedGroup) {
                 res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Invoice Updated Successfully",
                     data: updatedGroup
                 })
@@ -101,7 +101,7 @@ export const remove = async function (req:Request, res:Response) {
             invoice.type = invoice.type;
             if (invoice) {
                 res.status(200).json({
-                    status: "success",
+                    status: 200,
                    
                     message: "Invoice deactivated Successfully",
                     data: invoice

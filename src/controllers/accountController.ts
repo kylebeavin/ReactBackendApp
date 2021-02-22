@@ -10,7 +10,7 @@ export const view = async(req:Request, res:Response)=>{
     let allAccounts = await Account.find(req.body).sort({account_name:1}).exec()
     if(allAccounts){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allAccounts
         })
@@ -61,7 +61,7 @@ export const add = async (req:Request, res:Response)=>{
          let newAccount = await account.save()
          if (newAccount) {
              res.status(201).json({
-                 status: "success",
+                 status: "201",
                  
                  message: "New Account Added!",
  
@@ -89,7 +89,7 @@ export const update = async function(req:Request, res:Response) {
         
             if (updatedAccount) {
                 res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Account Updated Successfully",
                     data: updatedAccount
                 })
@@ -131,7 +131,7 @@ export const remove = async (req:Request, res:Response) =>{
 
             if (account) {
                 res.status(204).json({
-                    status: "success",
+                    status: "204",
                     
                     message: "account deactivated Successfully",
                     data: account

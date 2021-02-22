@@ -24,7 +24,7 @@ export const view = async (req: Request, res: Response) => {
 			.exec();
 		if (allGearboxs) {
 			return res.status(200).json({
-				status: "success",
+				status: 200,
 				message: "Working",
 				data: allGearboxs,
 			});
@@ -52,7 +52,7 @@ export const add = async function (req: Request, res: Response) {
 		let newGearbox = await gearbox.save();
 		if (newGearbox) {
 			res.status(201).json({
-				status: "success",
+				status: 201,
 
 				message: "New gearbox inspection created!",
 			});
@@ -109,7 +109,7 @@ export const update = async function (req: Request, res: Response) {
 		console.log(updatedGearbox);
 		if (updatedGearbox) {
 			return res.status(200).json({
-				status: "success",
+				status: 200,
 				message: "Gearbox Inspection Updated Successfully",
 				data: updatedGearbox,
 			});

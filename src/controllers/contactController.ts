@@ -8,7 +8,7 @@ export const view = async(req:Request, res:Response)=>{
     let allContacts = await Contact.find(req.body).exec()
     if(allContacts){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allContacts
         })
@@ -47,7 +47,7 @@ export const add = async function (req:Request, res:Response) {
         let newContact = await contact.save()
         if (newContact) {
             res.status(201).json({
-                status: "success",
+                status: "201",
                 message: "New contact created!",
             })
         } else {
@@ -72,7 +72,7 @@ export const update = async function(req:Request, res:Response) {
         
             if (updatedContact) {
                 res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Account Updated Successfully",
                     data: updatedContact
                 })
@@ -101,7 +101,7 @@ export const remove = async function (req:Request, res:Response) {
             contact.type = req.body.type;
             if (contact) {
                 res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Contact deactivated Successfully",
                     data: contact
                 })

@@ -7,7 +7,7 @@ export const view = async(req:Request, res:Response)=>{
     let allGroups = await Group.find(req.body).exec()
     if(allGroups){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allGroups
         })
@@ -54,7 +54,7 @@ export const add = async function (req:Request, res:Response) {
         let newGroup = await group.save()
         if (newGroup) {
             res.status(201).json({
-                status: "success",
+                status: "201",
                 
                 message: "New group created!",
             })
@@ -80,7 +80,7 @@ export const update = async function(req:Request, res:Response) {
         
             if (updatedGroup) {
                 res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Group Updated Successfully",
                     data: updatedGroup
                 })
@@ -118,7 +118,7 @@ export const remove = async function (req:Request, res:Response) {
         group.webpage = group.webpage;
         if (group) {
             res.status(200).json({
-                status: "success",
+                status: 200,
                 
                 message: "Group deactivated Successfully",
                 data: group

@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allHydraulicFilters = await HydraulicFilter.find(req.body).sort({created_at:1}).exec()
     if(allHydraulicFilters){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allHydraulicFilters
         })
@@ -40,7 +40,7 @@ export const add = async function (req:Request, res:Response) {
         let newHydraulicFilter = await hydraulicFilter.save()
         if (newHydraulicFilter) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New Hydraulic Filter inspection created!",
             })
@@ -63,7 +63,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedHydraulicFilter)
             if (updatedHydraulicFilter) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Hydraulic Filter Inspection Updated Successfully",
                     data: updatedHydraulicFilter
                 })

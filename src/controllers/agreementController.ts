@@ -8,7 +8,7 @@ export const view = async(req:Request, res:Response)=>{
     let allAgreements = await Agreement.find(req.body).sort({created_at:1}).exec()
     if(allAgreements){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allAgreements
         })
@@ -53,7 +53,7 @@ export const add = async function (req:Request, res:Response) {
         let newAgreement = await agreement.save()
         if (newAgreement) {
             res.status(201).json({
-                status: "success",
+                status: "201",
                 message: "New agreement created!",
             })
         } else {
@@ -80,7 +80,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedAgreement)
             if (updatedAgreement) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Account Updated Successfully",
                     data: updatedAgreement
                 })

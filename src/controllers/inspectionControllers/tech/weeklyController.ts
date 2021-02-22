@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allWeeklys = await Weekly.find(req.body).sort({created_at:1}).exec()
     if(allWeeklys){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allWeeklys
         })
@@ -92,7 +92,7 @@ export const add = async function (req:Request, res:Response) {
         let newWeekly = await weekly.save()
         if (newWeekly) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New weekly inspection created!",
             })
@@ -115,7 +115,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedWeekly)
             if (updatedWeekly) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Weekly Inspection Updated Successfully",
                     data: updatedWeekly
                 })

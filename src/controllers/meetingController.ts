@@ -8,7 +8,7 @@ export const view = async(req:Request, res:Response)=>{
     let allMeetings = await Meeting.find(req.body).sort({created_at:1}).exec()
     if(allMeetings){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allMeetings
 
@@ -49,7 +49,7 @@ export const add = async function (req:Request, res:Response) {
         let newMeeting = await meeting.save()
         if (newMeeting) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 message: "New meeting created!",
             })
         } else {
@@ -76,7 +76,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedAgreement)
             if (updatedAgreement) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Meeting Updated Successfully",
                     data: updatedAgreement
                 })

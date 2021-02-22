@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allOrders = await Order.find(req.body).sort({created_at:1}).exec()
     if(allOrders){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allOrders
         })
@@ -53,7 +53,7 @@ export const add = async function (req:Request, res:Response) {
         let newOrder = await order.save()
         if (newOrder) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New order created!",
             })
@@ -76,7 +76,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedOrder)
             if (updatedOrder) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Account Updated Successfully",
                     data: updatedOrder
                 })
