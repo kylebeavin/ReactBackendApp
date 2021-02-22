@@ -95,15 +95,18 @@ export const update = async function(req:Request, res:Response) {
 
         
             if (updatedAccount) {
-                let httpResponse = new HttpResponse(200,'success','Account updated successfully',updatedAccount)
+                
                 // res.status(200).json({
                 //     status: "success",
                 //     message: "Account Updated Successfully",
                 //     data: updatedAccount
                 // })
-                res.status(200).json(httpResponse.sendResponse())
+                res.status(200).json(HttpResponse.successResponse(200,'Account updated successfully',updatedAccount))
             } else {
-                res.status(400).json({ message: 'Failed to update', status: 400 })
+               // res.status(400).json({ message: 'Failed to update', status: 400 })
+               let httpResponse = new HttpResponse(304,'error','Failed to update account',null)
+               //res.status(304).json({ status: 'Failed to create account' })
+               res.status(304).json(httpResponse.sendResponse())
             }
         } 
      catch (err) {

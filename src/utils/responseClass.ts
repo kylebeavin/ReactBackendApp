@@ -29,4 +29,14 @@ export class HttpResponse {
         }
     }
 
+    static successResponse(status:number, message:string, data:object|object[]){
+        return{
+            status:status,
+            type:'success',
+            message:message,
+            data:data
+        }
+    }
+    
+
 }

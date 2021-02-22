@@ -1,25 +1,23 @@
 import {Request, Response, NextFunction } from 'express'
 import Agreement from '../models/agreementModel'
 import {validationResult} from 'express-validator'
+import {HttpResponse} from '../utils/responseClass'
 //for queries
 
 export const view = async(req:Request, res:Response)=>{
     try{
     let allAgreements = await Agreement.find(req.body).sort({created_at:1}).exec()
     if(allAgreements){
-        return res.status(200).json({
-            status: 200,
-            message: "Working",
-            data: allAgreements
-        })
-    
+        // return res.status(200).json({
+        //     status: 200,
+        //     message: "Working",
+        //     data: allAgreements
+        // })
+        res.status(200).json(HttpResponse.successResponse(200,'working',allAgreements))
     }
     }
 catch(err){
-    return res.status(500).json({
-        status: 500,
-        message: err.stack,
-    })
+    return res.status(500).json(HttpResponse.sendErrorMessage(err.message))
 }
 
 }
@@ -52,16 +50,22 @@ export const add = async function (req:Request, res:Response) {
         //Save and check error
         let newAgreement = await agreement.save()
         if (newAgreement) {
-            res.status(201).json({
-                status: "201",
-                message: "New agreement created!",
-            })
+           
+            // res.status(201).json({
+            //     status: "201",
+            //     message: "New agreement created!",
+            // })
+            res.status(201).json(HttpResponse.successResponse(201,'New agreement created', newAgreement))
         } else {
-            res.json({ status: 'Failed to create agreement' })
+            //res.json({ status: 'Failed to create agreement' })
+            let httpResponse = new HttpResponse(304,'error','Failed to create agreement',null)
+            //res.status(304).json({ status: 'Failed to create account' })
+            res.status(304).json(httpResponse.sendResponse())
         }
 
     } catch (err) {
-        res.json({ message: err.message })
+        //res.json({ message: err.message })
+        res.status(500).json(HttpResponse.sendErrorMessage(err.message))
     }
 
 };
@@ -79,11 +83,12 @@ export const update = async function(req:Request, res:Response) {
 
         console.log(updatedAgreement)
             if (updatedAgreement) {
-                return res.status(200).json({
-                    status: 200,
-                    message: "Account Updated Successfully",
-                    data: updatedAgreement
-                })
+                // return res.status(200).json({
+                //     status: 200,
+                //     message: "Account Updated Successfully",
+                //     data: updatedAgreement
+                // })
+                return res.
             } else {
                 return res.status(400).json({ message: 'Failed to update', status: 400 })
             }
