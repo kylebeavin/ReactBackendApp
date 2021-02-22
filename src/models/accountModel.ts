@@ -135,4 +135,4 @@ var accountSchema = new mongoose.Schema(
 );
 
 // Export Account Model
-var Account = (module.exports = mongoose.model("account", accountSchema));
+export default mongoose.model<IAccount>("Account", accountSchema);

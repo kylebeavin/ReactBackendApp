@@ -79,3 +79,4 @@ var invoiceSchema = new mongoose.Schema({
 },
 { timestamps: true })
 // Export Invoice Model
+export default mongoose.model<IInvoice>("Invoice", invoiceSchema);
