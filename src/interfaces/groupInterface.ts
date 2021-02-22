@@ -1,10 +1,7 @@
 import { Date, Document } from 'mongoose';
 
 export default interface IGroup extends Document {
-    address_city:string
-    address_state:string
-    address_street:string
-    address_zip:string
+    address: Address
     dba:string //doing business as name
     ein:string
     email:string
@@ -20,4 +17,11 @@ export default interface IGroup extends Document {
     time_zone:string
     webpage:string
 
+}
+
+interface Address{
+    address_city:string
+    address_state:string
+    address_street:string
+    address_zip:string
 }
