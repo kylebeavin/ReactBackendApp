@@ -45,7 +45,7 @@ export const add = async function (req: Request, res: Response) {
 		gearbox.owner_id = req.body.owner_id;
 		gearbox.type = req.body.type;
 		gearbox.truck_id = req.body.truck_id;
-		gearbox.gearbox = req.body.gearbox;
+		gearbox.gearbox = req.body.gearbox != 'pass' ? req.body.gearbox : 'false';
 		gearbox.tech_signature = req.body.tech_signature;
 
 		//Save and check error

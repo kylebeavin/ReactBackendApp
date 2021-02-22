@@ -34,7 +34,7 @@ const GearboxSchema: Schema = new Schema(
 			trim: true,
 		},
 		gearbox: {
-			type: Boolean,
+			type: String,
 			required: true,
 			trim: true,
 		},
