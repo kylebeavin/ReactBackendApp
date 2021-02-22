@@ -2,6 +2,7 @@ import IGroup from "../interfaces/groupInterface";
 import mongoose, { Schema } from "mongoose";
 
 //schema
+<<<<<<< HEAD
 var groupSchema = new mongoose.Schema(
 	{
 		// Address City
@@ -24,10 +25,43 @@ var groupSchema = new mongoose.Schema(
 		},
 		// Address Zip
 		address_zip: {
+=======
+const groupSchema = new Schema(
+	{
+		address: {
+			// Address City
+			address_city: {
+				type: String,
+				required: true,
+				trim: true,
+			},
+			// Address State
+			address_state: {
+				type: String,
+				required: true,
+				trim: true,
+			},
+			// Address Street
+			address_street: {
+				type: String,
+				required: true,
+				trim: true,
+			},
+			// Address Zip
+			address_zip: {
+				type: String,
+				required: true,
+				trim: true,
+			},
+		},
+		// Doing Business As Name
+		dba: {
+>>>>>>> dailyDev
 			type: String,
 			required: true,
 			trim: true,
 		},
+<<<<<<< HEAD
 		// Document Creation Date
 		created: {
 			type: Date,
@@ -36,6 +70,10 @@ var groupSchema = new mongoose.Schema(
 		},
 		// Doing Business As Name
 		dba: {
+=======
+		// Federal Tax ID
+		ein: {
+>>>>>>> dailyDev
 			type: String,
 			required: true,
 			trim: true,
@@ -115,3 +153,10 @@ var groupSchema = new mongoose.Schema(
 
 // Export Contact Model
 export default mongoose.model<IGroup>("Group", groupSchema);
+<<<<<<< HEAD
+=======
+
+// module.exports.get = function (callback, limit) {
+//     Group.find(callback).limit(limit);
+// }
+>>>>>>> dailyDev
