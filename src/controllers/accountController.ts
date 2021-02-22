@@ -63,18 +63,22 @@ export const add = async (req:Request, res:Response)=>{
          //Save and check error
          let newAccount = await account.save()
          if (newAccount) {
-             res.status(201).json({
-                 status: "success",
+            let httpResponse = new HttpResponse(201,'success','New Account Added!',newAccount)
+            //  res.status(201).json({
+            //      status: "success",
                  
-                 message: "New Account Added!",
+            //      message: "New Account Added!",
  
-             })
+            //  })
+            res.status(201).json(httpResponse.sendResponse())
          } else {
-             res.status(304).json({ status: 'Failed to create account' })
+            let httpResponse = new HttpResponse(304,'error','Failed to create account',null)
+             //res.status(304).json({ status: 'Failed to create account' })
+             res.status(304).json(httpResponse.sendResponse())
          }
  
      } catch (err) {
-         res.json({ message: err.message })
+         res.status(500).json(HttpResponse.sendErrorMessage(err.message))
      }
 
     }
@@ -91,17 +95,19 @@ export const update = async function(req:Request, res:Response) {
 
         
             if (updatedAccount) {
-                res.status(200).json({
-                    status: "success",
-                    message: "Account Updated Successfully",
-                    data: updatedAccount
-                })
+                let httpResponse = new HttpResponse(200,'success','Account updated successfully',updatedAccount)
+                // res.status(200).json({
+                //     status: "success",
+                //     message: "Account Updated Successfully",
+                //     data: updatedAccount
+                // })
+                res.status(200).json(httpResponse.sendResponse())
             } else {
                 res.status(400).json({ message: 'Failed to update', status: 400 })
             }
         } 
      catch (err) {
-        res.status(400).json({ message: err.message })
+        res.status(500).json(HttpResponse.sendErrorMessage(err.message))
     }
 };
 

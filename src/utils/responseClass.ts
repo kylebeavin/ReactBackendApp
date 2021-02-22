@@ -3,7 +3,7 @@ export class HttpResponse {
     message:string;
     type:string;
     data: object | object[] |null
-    constructor(status:number, type:string, message:string, data:object|object[]|null){
+    constructor(status:number, type:string, message:string, data:object|object[]|null=null){
         this.status = status
         this.message = message
         this.data = data
@@ -17,6 +17,15 @@ export class HttpResponse {
             message:this.message,
             data:this.data
             
+        }
+    }
+
+    static sendErrorMessage(message:string){
+        return {
+            status:500,
+            type:'error',
+            message:message,
+            data:null
         }
     }
 

@@ -59,9 +59,3 @@ var contactSchema = new Schema({
 // Export Contact Model
 export default mongoose.model<IContact>('Contact', contactSchema)
 
-<<<<<<< HEAD:models/contactModel.js
-module.exports.get = function (callback, limit) {
-    Contact.find(callback).limit(limit);
-}
-=======
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/contactModel.ts
