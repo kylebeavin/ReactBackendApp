@@ -4,11 +4,7 @@ import IAgreement from '../interfaces/agreementInterface'
 import mongoose, {Schema} from 'mongoose'
 
 //schema
-<<<<<<< HEAD:models/agreementModel.js
-var agreementSchema = mongoose.Schema({
-=======
-const  agreementSchema:Schema = new Schema({
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/agreementModel.ts
+var agreementSchema = new mongoose.Schema({
 
     // Customer account the agreement belongs to
     account_id: {
@@ -116,10 +112,3 @@ const  agreementSchema:Schema = new Schema({
 
 // Export Agreement Model
 export default  mongoose.model<IAgreement>('agreement', agreementSchema);
-
-<<<<<<< HEAD:models/agreementModel.js
-module.exports.get = function (callback, limit) {
-    Agreement.find(callback).limit(limit);
-}
-=======
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/agreementModel.ts
