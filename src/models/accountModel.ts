@@ -1,11 +1,6 @@
 import IAccount from '../interfaces/accountInterface'
 import mongoose, { Schema} from 'mongoose'
 
-<<<<<<< HEAD:models/accountModel.js
-//schema
-var accountSchema = mongoose.Schema({
-
-=======
 const AccountSchema : Schema = new Schema({
     // Document ID of Franchise
     group_id: {
@@ -16,7 +11,6 @@ const AccountSchema : Schema = new Schema({
         // ref:'groups',
         // required:true
     },
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/accountModel.ts
     // Account Name
     account_name: {
         type: String,
@@ -26,13 +20,6 @@ const AccountSchema : Schema = new Schema({
     // Account City
     address_city: {
         type: String,
-<<<<<<< HEAD:models/accountModel.js
-        default: null,
-        trim: true
-    },
-    // Account State
-    address_state: {
-=======
         required: true,
         trim: true
     },
@@ -62,7 +49,6 @@ const AccountSchema : Schema = new Schema({
     },
     // Dumpster location coordinates
     geo_location: {
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/accountModel.ts
         type: String,
         default: null,
         trim: true
@@ -80,24 +66,12 @@ const AccountSchema : Schema = new Schema({
         trim: true
     },
     // Document ID's of contacts associated with the account
-    contacts: {
-        type: [String],
-        default: null,
-        trim: true
-    },
-<<<<<<< HEAD:models/accountModel.js
-    // When lead becomes account
-    conversion: {
-        type: Date,
-        default: null
-    },
-=======
+    
     // // When the document was created
     // created: {
     //     type: Date,
     //     default: Date.now
     // },
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/accountModel.ts
     // Date for the demo smash
     demo: {
         type: Date,
@@ -110,17 +84,9 @@ const AccountSchema : Schema = new Schema({
         trim: true
     },
     // Dumpster location coordinates
-    geo_location: {
-        type: String,
-        default: null,
-        trim: true
-    },
+    
     // Document ID of Franchise
-    group_id: {
-        type: [String],
-        required: true,
-        trim: true
-    },
+  
     // Hauling contract status
     hauling_contract: {
         type: Boolean,
@@ -138,10 +104,7 @@ const AccountSchema : Schema = new Schema({
         trim: true
     },
     // Account status active/inactive
-    is_active: {
-        type: Boolean,
-        default: true
-    },
+   
     // Whether or not this is a national account
     national: {
         type: Boolean,
@@ -160,11 +123,7 @@ const AccountSchema : Schema = new Schema({
         trim: true
     },
     // Display name that is cached during initial sign in from user
-    owner_name: {
-        type: String,
-        required: true,
-        trim: true
-    },
+   
     // Whether or not this account is a referral
     referral: {
         type: Boolean,
@@ -177,23 +136,7 @@ const AccountSchema : Schema = new Schema({
         trim: true
     },
     // Account stage
-    stage: {
-        type: String,
-        enum: ['prospect', 'lead', 'account'],
-        default: 'prospect',
-        lowercase: true
-    },
-<<<<<<< HEAD:models/accountModel.js
-},
-{ timestamps: true })
-
-// Export Account Model
-var Account = module.exports = mongoose.model('account', accountSchema);
-
-module.exports.get = function (callback, limit) {
-    Account.find(callback).limit(limit);
-}
-=======
+  
 }, 
 {
     timestamps:true
@@ -201,4 +144,3 @@ module.exports.get = function (callback, limit) {
 )
 
 export default mongoose.model<IAccount>('Account', AccountSchema)
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/accountModel.ts

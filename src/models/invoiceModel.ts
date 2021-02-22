@@ -2,11 +2,7 @@ import IInvoice from '../interfaces/invoiceInterface'
 import mongoose, {Schema} from 'mongoose'
 
 //schema
-<<<<<<< HEAD:models/invoiceModel.js
-var invoiceSchema = mongoose.Schema({
-=======
 const  invoiceSchema = new Schema({
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/invoiceModel.ts
     // Customer Document ID
     account_id: {
         type: String,
@@ -84,13 +80,7 @@ const  invoiceSchema = new Schema({
 { timestamps: true })
 // Export Invoice Model
 
-<<<<<<< HEAD:models/invoiceModel.js
-module.exports.get = function (callback, limit) {
-    Invoice.find(callback).limit(limit);
-}
-=======
 export default mongoose.model<IInvoice>('Invoice', invoiceSchema)
 // module.exports.get = function (callback, limit) {
 //     Invoice.find(callback).limit(limit);
 // }
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/invoiceModel.ts
