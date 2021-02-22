@@ -2,11 +2,11 @@ export class HttpResponse {
     status : number;
     message:string;
     type:string;
-    data: string | null
-    constructor(status:number, type:string, message:string, data:string|null){
+    data: object | object[] |null
+    constructor(status:number, type:string, message:string, data:object|object[]|null){
         this.status = status
         this.message = message
-        this.data = JSON.stringify(data)
+        this.data = data
         this.type = type
     }
     

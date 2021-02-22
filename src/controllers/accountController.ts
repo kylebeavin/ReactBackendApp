@@ -1,27 +1,30 @@
 import {NextFunction, Request, Response} from 'express'
 import Account from '../models/accountModel'
 import {validationResult } from 'express-validator'
-
-
+import {HttpResponse} from '../utils/responseClass'
 //for queries
 export const view = async(req:Request, res:Response)=>{
     try{
        
     let allAccounts = await Account.find(req.body).sort({account_name:1}).exec()
     if(allAccounts){
-        return res.status(200).json({
-            status: "success",
-            message: "Working",
-            data: allAccounts
-        })
+        let httpResponse = new HttpResponse(200,'success','working',allAccounts)
+        // return res.status(200).json({
+        //     status: "success",
+        //     message: "Working",
+        //     data: allAccounts
+        // })
+        return res.status(200).json(httpResponse.sendResponse())
     
     }
     }
 catch(err){
-    return res.status(500).json({
-        status: "error",
-        message: err.stack,
-    })
+    let httpResponse = new HttpResponse(500,"error",err.stack,null)
+    // return res.status(500).json({
+    //     status: "error",
+    //     message: err.stack,
+    // })
+    return res.status(500).json(httpResponse.sendResponse())
 }
 
 }
