@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allLocalParts = await LocalParts.find(req.body).sort({created_at:1}).exec()
     if(allLocalParts){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allLocalParts
         })
@@ -18,7 +18,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -40,8 +40,7 @@ export const add = async function (req:Request, res:Response) {
         let newLocalParts = await localParts.save()
         if (newLocalParts) {
             res.status(201).json({
-                status: "success",
-                
+                status: 201,
                 message: "New local Parts inspection created!",
             })
         } else {
@@ -63,7 +62,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedLocalParts)
             if (updatedLocalParts) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Local Parts Inspection Updated Successfully",
                     data: updatedLocalParts
                 })
@@ -72,7 +71,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        return res.status(400).json({ message: err.message })
+        return res.status(400).json({status: 400, message: err.message })
     }
 };
 

@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allKenworthDealers = await KenworthDealer.find(req.body).sort({created_at:1}).exec()
     if(allKenworthDealers){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allKenworthDealers
         })
@@ -18,7 +18,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -43,7 +43,7 @@ export const add = async function (req:Request, res:Response) {
         let newKenworthDealer = await kenworthDealer.save()
         if (newKenworthDealer) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New Kenworth Dealer inspection created!",
             })
@@ -66,7 +66,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedKenworthDealer)
             if (updatedKenworthDealer) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Kenworth Dealer Inspection Updated Successfully",
                     data: updatedKenworthDealer
                 })
@@ -75,7 +75,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        return res.status(400).json({ message: err.message })
+        return res.status(400).json({status: 400, message: err.message })
     }
 };
 

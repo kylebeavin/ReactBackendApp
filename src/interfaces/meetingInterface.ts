@@ -1,6 +1,6 @@
 import { Date, Document } from 'mongoose';
 
-export default interface IAgreement extends Document {
+export default interface IMeeting extends Document {
     account_id: string
     address_city:string
     address_state:string

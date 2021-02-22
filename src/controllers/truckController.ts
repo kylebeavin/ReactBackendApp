@@ -8,7 +8,7 @@ export const view = async(req:Request, res:Response)=>{
     let allTrucks= await Truck.find(req.body).sort({created_at:1}).exec()
     if(allTrucks){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allTrucks
         })
@@ -17,7 +17,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -56,7 +56,7 @@ export const add = async function (req:Request, res:Response) {
         let newTruck = await truck.save()
         if (newTruck) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 message: "New truck created!",
             })
         } else {
@@ -80,7 +80,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedTruck)
             if (updatedTruck) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Account Updated Successfully",
                     data: updatedTruck
                 })
@@ -89,7 +89,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        return res.status(400).json({ message: err.message })
+        return res.status(400).json({status: 400, message: err.message })
     }
 };
 

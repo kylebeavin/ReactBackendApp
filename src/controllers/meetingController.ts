@@ -8,7 +8,7 @@ export const view = async(req:Request, res:Response)=>{
     let allMeetings = await Meeting.find(req.body).sort({created_at:1}).exec()
     if(allMeetings){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allMeetings
 
@@ -18,7 +18,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -30,7 +30,7 @@ export const add = async function (req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         const meeting = new Meeting();
         meeting.account_id = req.body.account_id // String, required
@@ -49,7 +49,7 @@ export const add = async function (req:Request, res:Response) {
         let newMeeting = await meeting.save()
         if (newMeeting) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 message: "New meeting created!",
             })
         } else {
@@ -68,7 +68,7 @@ export const update = async function(req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         const data = {...req.body}
         let updatedAgreement = await Meeting.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false,runValidators:true})
@@ -76,7 +76,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedAgreement)
             if (updatedAgreement) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Meeting Updated Successfully",
                     data: updatedAgreement
                 })
@@ -85,7 +85,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        return res.status(400).json({ message: err.message })
+        return res.status(400).json({status: 400, message: err.message })
     }
 };
 

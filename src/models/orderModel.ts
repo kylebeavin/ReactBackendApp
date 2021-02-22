@@ -111,10 +111,3 @@ const  orderSchema = new Schema({
 
 // Export Order Model
 export default mongoose.model<IOrder>('Order',orderSchema)
-
-<<<<<<< HEAD:models/orderModel.js
-module.exports.get = function (callback, limit) {
-    Order.find(callback).limit(limit);
-}
-=======
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/orderModel.ts
