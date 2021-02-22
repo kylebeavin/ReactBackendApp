@@ -60,7 +60,7 @@ export const add = async function (req:Request, res:Response) {
 export const update = async function(req:Request, res:Response) {
     try {
         const data = {...req.body}
-        let updatedRoute = await Route.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
+        let updatedRoute = await Route.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false, runValidators:true})
 
         console.log(updatedRoute)
             if (updatedRoute) {
