@@ -31,10 +31,10 @@ export const add = async function (req:Request, res:Response) {
             return res.status(400).json({errors:errors.array()})
         }
         var group = new Group();
-        group.address_city = req.body.address_city;
-        group.address_state = req.body.address_state;
-        group.address_street = req.body.address_street;
-        group.address_zip = req.body.address_zip;
+        group.address.address_city = req.body.address_city;
+        group.address.address_state = req.body.address_state;
+        group.address.address_street = req.body.address_street;
+        group.address.address_zip = req.body.address_zip;
         group.dba = req.body.dba;
         group.ein = req.body.ein;
         group.email = req.body.email;
