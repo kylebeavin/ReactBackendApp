@@ -69,7 +69,7 @@ export const add = async function(req:Request, res:Response) {
 export const auth = async (req:Request , res:Response)=>{
 
     try {
-        let foundUser = User.findOne({token:req.body.token}).exec()
+        let foundUser = await User.findOne({token:req.body.token}).exec()
         if(foundUser){
             return res.status(200).json({message:'Token Valid', auth:true})
         }
