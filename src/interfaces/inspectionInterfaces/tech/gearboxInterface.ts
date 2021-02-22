@@ -8,6 +8,6 @@ export default interface IGearbox extends Document {
     truck_id: string;
 
     // Truck Checklist
-    gearbox: boolean
+    gearbox: string
     tech_signature: string // will point to url of driver signature image.
 }

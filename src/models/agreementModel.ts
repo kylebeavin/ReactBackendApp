@@ -4,7 +4,7 @@ import IAgreement from '../interfaces/agreementInterface'
 import mongoose, {Schema} from 'mongoose'
 
 //schema
-const  agreementSchema:Schema = new Schema({
+var agreementSchema = new mongoose.Schema({
 
     // Customer account the agreement belongs to
     account_id: {
@@ -112,4 +112,3 @@ const  agreementSchema:Schema = new Schema({
 
 // Export Agreement Model
 export default  mongoose.model<IAgreement>('agreement', agreementSchema);
-

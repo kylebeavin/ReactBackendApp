@@ -9,7 +9,7 @@ export const view = async(req:Request, res:Response)=>{
     let allOrders = await Order.find(req.body).sort({created_at:1}).exec()
     if(allOrders){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allOrders
         })
@@ -18,7 +18,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -30,7 +30,7 @@ export const add = async function (req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         const order = new Order();
         order.account_id = req.body.account_id;
@@ -53,7 +53,7 @@ export const add = async function (req:Request, res:Response) {
         let newOrder = await order.save()
         if (newOrder) {
             res.status(201).json({
-                status: "success",
+                status: 201,
                 
                 message: "New order created!",
             })
@@ -76,7 +76,7 @@ export const update = async function(req:Request, res:Response) {
         console.log(updatedOrder)
             if (updatedOrder) {
                 return res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Account Updated Successfully",
                     data: updatedOrder
                 })
@@ -85,7 +85,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        return res.status(400).json({ message: err.message })
+        return res.status(400).json({status: 400, message: err.message })
     }
 };
 

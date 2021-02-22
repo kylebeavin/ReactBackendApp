@@ -2,7 +2,7 @@ import IMeeting from '../interfaces/meetingInterface'
 import mongoose, {Schema} from 'mongoose'
 
 //schema
-const MeetingSchema: Schema = new Schema({
+var meetingSchema = new mongoose.Schema({
 
     // Customer ID
     account_id: {
@@ -74,8 +74,4 @@ const MeetingSchema: Schema = new Schema({
 { timestamps: true })
 
 // Export Meeting Model
-export default mongoose.model<IMeeting>('Meeting', MeetingSchema)
-
-// module.exports.get = function (callback, limit) {
-//     Meeting.find(callback).limit(limit);
-// }
+export default mongoose.model<IMeeting>('Meeting', meetingSchema)

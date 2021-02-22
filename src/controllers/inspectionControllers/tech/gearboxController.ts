@@ -24,7 +24,7 @@ export const view = async (req: Request, res: Response) => {
 			.exec();
 		if (allGearboxs) {
 			return res.status(200).json({
-				status: "success",
+				status: 200,
 				message: "Working",
 				data: allGearboxs,
 			});
@@ -45,14 +45,14 @@ export const add = async function (req: Request, res: Response) {
 		gearbox.owner_id = req.body.owner_id;
 		gearbox.type = req.body.type;
 		gearbox.truck_id = req.body.truck_id;
-		gearbox.gearbox = req.body.gearbox;
+		gearbox.gearbox = req.body.gearbox != 'pass' ? req.body.gearbox : 'false';
 		gearbox.tech_signature = req.body.tech_signature;
 
 		//Save and check error
 		let newGearbox = await gearbox.save();
 		if (newGearbox) {
 			res.status(201).json({
-				status: "success",
+				status: 201,
 
 				message: "New gearbox inspection created!",
 			});
@@ -109,7 +109,7 @@ export const update = async function (req: Request, res: Response) {
 		console.log(updatedGearbox);
 		if (updatedGearbox) {
 			return res.status(200).json({
-				status: "success",
+				status: 200,
 				message: "Gearbox Inspection Updated Successfully",
 				data: updatedGearbox,
 			});
@@ -117,7 +117,7 @@ export const update = async function (req: Request, res: Response) {
 			return res.status(400).json({ message: "Failed to update" });
 		}
 	} catch (err) {
-		return res.status(400).json({ message: err.message });
+		return res.status(400).json({status: 400, message: err.message });
 	}
 };
 

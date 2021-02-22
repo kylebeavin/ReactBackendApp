@@ -7,7 +7,7 @@ export const view = async(req:Request, res:Response)=>{
     let allGroups = await Group.find(req.body).exec()
     if(allGroups){
         return res.status(200).json({
-            status: "success",
+            status: 200,
             message: "Working",
             data: allGroups
         })
@@ -16,7 +16,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -28,13 +28,13 @@ export const add = async function (req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         var group = new Group();
-        group.address_city = req.body.address_city;
-        group.address_state = req.body.address_state;
-        group.address_street = req.body.address_street;
-        group.address_zip = req.body.address_zip;
+        group.address.address_city = req.body.address_city;
+        group.address.address_state = req.body.address_state;
+        group.address.address_street = req.body.address_street;
+        group.address.address_zip = req.body.address_zip;
         group.dba = req.body.dba;
         group.ein = req.body.ein;
         group.email = req.body.email;
@@ -54,7 +54,7 @@ export const add = async function (req:Request, res:Response) {
         let newGroup = await group.save()
         if (newGroup) {
             res.status(201).json({
-                status: "success",
+                status: "201",
                 
                 message: "New group created!",
             })
@@ -72,7 +72,7 @@ export const update = async function(req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         const data = {...req.body}
         let updatedGroup = await Group.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
@@ -80,7 +80,7 @@ export const update = async function(req:Request, res:Response) {
         
             if (updatedGroup) {
                 res.status(200).json({
-                    status: "success",
+                    status: 200,
                     message: "Group Updated Successfully",
                     data: updatedGroup
                 })
@@ -89,7 +89,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        res.status(400).json({ message: err.message })
+        res.status(400).json({status: 400, message: err.message })
     }
 };
 
@@ -98,10 +98,10 @@ export const remove = async function (req:Request, res:Response) {
     let group = await Group.findOne({ _id: req.body._id }).exec()
     if (group) {
        
-        group.address_city = group.address_city;
-        group.address_state = group.address_state;
-        group.address_street = group.address_street;
-        group.address_zip = group.address_zip;
+        group.address.address_city = group.address.address_city;
+        group.address.address_state = group.address.address_state;
+        group.address.address_street = group.address.address_street;
+        group.address.address_zip = group.address.address_zip;
         group.dba = group.dba;
         group.ein = group.ein;
         group.email = group.email;
@@ -118,7 +118,7 @@ export const remove = async function (req:Request, res:Response) {
         group.webpage = group.webpage;
         if (group) {
             res.status(200).json({
-                status: "success",
+                status: 200,
                 
                 message: "Group deactivated Successfully",
                 data: group
