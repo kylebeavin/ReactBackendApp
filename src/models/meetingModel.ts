@@ -2,11 +2,7 @@ import IMeeting from '../interfaces/meetingInterface'
 import mongoose, {Schema} from 'mongoose'
 
 //schema
-<<<<<<< HEAD:models/meetingModel.js
-var meetingSchema = mongoose.Schema({
-=======
 const MeetingSchema: Schema = new Schema({
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/meetingModel.ts
 
     // Customer ID
     account_id: {
@@ -80,12 +76,6 @@ const MeetingSchema: Schema = new Schema({
 // Export Meeting Model
 export default mongoose.model<IMeeting>('Meeting', MeetingSchema)
 
-<<<<<<< HEAD:models/meetingModel.js
-module.exports.get = function (callback, limit) {
-    Meeting.find(callback).limit(limit);
-}
-=======
 // module.exports.get = function (callback, limit) {
 //     Meeting.find(callback).limit(limit);
 // }
->>>>>>> 7044b547d4c3cc4915e92c2cdb7b954e11f9b573:src/models/meetingModel.ts
