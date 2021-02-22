@@ -16,7 +16,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -28,7 +28,7 @@ export const add = async function (req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         var group = new Group();
         group.address_city = req.body.address_city;
@@ -72,7 +72,7 @@ export const update = async function(req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         const data = {...req.body}
         let updatedGroup = await Group.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
@@ -89,7 +89,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        res.status(400).json({ message: err.message })
+        res.status(400).json({status: 400, message: err.message })
     }
 };
 

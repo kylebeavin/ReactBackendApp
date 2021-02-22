@@ -117,7 +117,7 @@ export const update = async function (req: Request, res: Response) {
 			return res.status(400).json({ message: "Failed to update" });
 		}
 	} catch (err) {
-		return res.status(400).json({ message: err.message });
+		return res.status(400).json({status: 400, message: err.message });
 	}
 };
 

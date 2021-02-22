@@ -16,6 +16,6 @@ export const verifyToken = (req:Request, res:Response, next:NextFunction)=> {
      
     }
     catch(err){
-        return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+        return res.status(500).send({ status: 500, auth: false, message: 'Failed to authenticate token.' });
     }
 }

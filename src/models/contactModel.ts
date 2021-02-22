@@ -58,4 +58,3 @@ var contactSchema = new Schema({
 
 // Export Contact Model
 export default mongoose.model<IContact>('Contact', contactSchema)
-

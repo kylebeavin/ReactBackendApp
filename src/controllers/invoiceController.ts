@@ -16,7 +16,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -77,7 +77,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        res.status(400).json({ message: err.message })
+        res.status(400).json({status: 400, message: err.message })
     }
 };
 

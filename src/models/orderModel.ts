@@ -111,4 +111,3 @@ const  orderSchema = new Schema({
 
 // Export Order Model
 export default mongoose.model<IOrder>('Order',orderSchema)
-

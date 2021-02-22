@@ -19,7 +19,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -32,7 +32,7 @@ export const add = async (req:Request, res:Response)=>{
     try{
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         const {group_id,account_name,owner_id,owner_name, contacts, is_active, stage,geo_location, address_street, address_city,address_state,address_zip,email, demo, conversion, hauling_contract,hauling_expiration, national,referral,referral_group_id,notes} = req.body
         var account = new Account();
@@ -62,12 +62,11 @@ export const add = async (req:Request, res:Response)=>{
          if (newAccount) {
              res.status(201).json({
                  status: "201",
-                 
                  message: "New Account Added!",
  
              })
          } else {
-             res.status(304).json({ status: 'Failed to create account' })
+             res.status(304).json({ status: 304 })
          }
  
      } catch (err) {
@@ -81,7 +80,7 @@ export const update = async function(req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array()})
         }
         const data = {...req.body}
         let updatedAccount = await Account.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false,runValidators:true})
@@ -98,7 +97,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        res.status(400).json({ message: err.message })
+        res.status(400).json({status: 400, message: err.message })
     }
 };
 

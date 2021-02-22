@@ -18,7 +18,7 @@ export const view = async(req:Request, res:Response)=>{
     }
 catch(err){
     return res.status(500).json({
-        status: "error",
+        status: 500,
         message: err.stack,
     })
 }
@@ -41,7 +41,6 @@ export const add = async function (req:Request, res:Response) {
         if (newLocalParts) {
             res.status(201).json({
                 status: 201,
-                
                 message: "New local Parts inspection created!",
             })
         } else {
@@ -72,7 +71,7 @@ export const update = async function(req:Request, res:Response) {
             }
         } 
      catch (err) {
-        return res.status(400).json({ message: err.message })
+        return res.status(400).json({status: 400, message: err.message })
     }
 };
 
