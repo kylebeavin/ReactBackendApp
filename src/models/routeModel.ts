@@ -10,7 +10,7 @@ const RouteSchema: Schema = new Schema(
 		},
 		truck_id: {
 			type: String,
-			required: false,,
+			required: false,
 			trim: true,
 		},
 		is_active: {
