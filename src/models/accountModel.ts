@@ -64,7 +64,7 @@ var accountSchema = new mongoose.Schema(
 		},
 		// Document ID of Franchise
 		group_id: {
-			type: [String],
+			type: String,
 			required: true,
 			trim: true,
 		},

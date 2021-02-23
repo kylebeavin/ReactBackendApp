@@ -8,23 +8,23 @@ export const view = async(req:Request, res:Response)=>{
        
     let allAccounts = await Account.find(req.body).sort({account_name:1}).exec()
     if(allAccounts){
-        let httpResponse = new HttpResponse(200,'success','working',allAccounts)
+        
         // return res.status(200).json({
         //     status: "success",
         //     message: "Working",
         //     data: allAccounts
         // })
-        return res.status(200).json(httpResponse.sendResponse())
+        return res.status(200).json(HttpResponse.successResponse(200,"Working",allAccounts))
     
     }
     }
 catch(err){
-    let httpResponse = new HttpResponse(500,"error",err.stack,null)
+    
     // return res.status(500).json({
     //     status: "error",
     //     message: err.stack,
     // })
-    return res.status(500).json(httpResponse.sendResponse())
+    return res.status(500).json(HttpResponse.sendErrorMessage(err.message))
 }
 
 }
@@ -35,7 +35,8 @@ export const add = async (req:Request, res:Response)=>{
     try{
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({status: 400, errors:errors.array()})
+          
+            return res.status(400).json({status: 400, errors:errors.array(), message:'Validation Error'})
         }
         const {group_id,account_name,owner_id,owner_name, contacts, is_active, stage,geo_location, address_street, address_city,address_state,address_zip,email, demo, conversion, hauling_contract,hauling_expiration, national,referral,referral_group_id,notes} = req.body
         var account = new Account();

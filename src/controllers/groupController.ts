@@ -28,7 +28,7 @@ export const add = async function (req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({status: 400, errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array(), message:'Validation Error'})
         }
         var group = new Group();
         group.address_city = req.body.address_city;
