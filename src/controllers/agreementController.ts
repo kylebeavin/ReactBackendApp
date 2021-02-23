@@ -90,11 +90,12 @@ export const update = async function(req:Request, res:Response) {
                 })
                
             } else {
-                return res.status(400).json({ message: 'Failed to update', status: 400 })
+                let httpResponse = new HttpResponse(400,'error','Failed to update account',null)
+                return res.status(400).json(httpResponse.sendResponse())
             }
         } 
      catch (err) {
-        return res.status(400).json({status: 400, message: err.message })
+        return res.status(500).json(HttpResponse.sendErrorMessage(err.message))
     }
 };
 
