@@ -44,7 +44,7 @@ var meetingSchema = new mongoose.Schema({
 
     // Franchise this belongs to
     group_id: {
-        type: [String],
+        type: String,
         required: true,
         trim: true
     },

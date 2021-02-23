@@ -25,7 +25,7 @@ var invoiceSchema = new mongoose.Schema({
 
     // Franchise ID
     group_id: {
-        type: [String],
+        type: String,
         required: true,
         trim: true
     },

@@ -28,7 +28,7 @@ const  orderSchema = new Schema({
     },
     // Franchise
     group_id: {
-        type: [String],
+        type: String,
         required: true,
         trim: true
     },

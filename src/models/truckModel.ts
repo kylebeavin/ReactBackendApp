@@ -31,7 +31,7 @@ const  truckSchema: Schema = new Schema({
     },
     // Franchise ID
     group_id: {
-        type: [String],
+        type: String,
         required: true,
         trim: true
     },
