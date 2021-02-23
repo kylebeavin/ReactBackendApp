@@ -83,12 +83,12 @@ export const update = async function(req:Request, res:Response) {
 
         console.log(updatedAgreement)
             if (updatedAgreement) {
-                // return res.status(200).json({
-                //     status: 200,
-                //     message: "Account Updated Successfully",
-                //     data: updatedAgreement
-                // })
-                return res.
+                return res.status(200).json({
+                    status: 200,
+                    message: "Account Updated Successfully",
+                    data: updatedAgreement
+                })
+               
             } else {
                 return res.status(400).json({ message: 'Failed to update', status: 400 })
             }

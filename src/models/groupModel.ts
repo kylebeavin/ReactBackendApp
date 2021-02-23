@@ -4,7 +4,7 @@ import mongoose, { Schema } from "mongoose";
 
 const groupSchema = new Schema(
 	{
-		address: {
+	
 			// Address City
 			address_city: {
 				type: String,
@@ -29,7 +29,7 @@ const groupSchema = new Schema(
 				required: true,
 				trim: true,
 			},
-		},
+		
 		// Doing Business As Name
 		dba: {
 			type: String,

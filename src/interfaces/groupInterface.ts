@@ -1,7 +1,10 @@
 import {  Document } from 'mongoose';
 
 export default interface IGroup extends Document {
-    address:Address
+    address_city:string
+    address_state:string
+    address_street:string
+    address_zip:string
     dba:string //doing business as name
     ein:string
     email:string
@@ -19,9 +22,3 @@ export default interface IGroup extends Document {
 
 }
 
-interface Address {
-    address_city:string
-    address_state:string
-    address_street:string
-    address_zip:string
-}
