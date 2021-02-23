@@ -91,9 +91,9 @@ var add = function (req, res) {
                     _a.trys.push([0, 2, , 3]);
                     route = new routeModel_1.default();
                     route.group_id = req.body.group_id;
-                    route.truck_id = req.body.truck_id;
+                    route.truck_id = req.body.truck_id != null ? req.body.truck_id : null;
                     route.start_location = req.body.start_location;
-                    route.driver = req.body.driver;
+                    route.driver = req.body.driver != null ? req.body.driver : null;
                     route.truck_vin = req.body.truck_vin;
                     route.service_stop = req.body.service_stop;
                     route.time = req.body.time;
