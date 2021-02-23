@@ -64,14 +64,14 @@ export const add = async (req:Request, res:Response)=>{
          //Save and check error
          let newAccount = await account.save()
          if (newAccount) {
-            let httpResponse = new HttpResponse(201,'success','New Account Added!',newAccount)
+           
             //  res.status(201).json({
             //      status: "success",
                  
             //      message: "New Account Added!",
  
             //  })
-            res.status(201).json(httpResponse.sendResponse())
+            res.status(201).json(HttpResponse.successResponse(201,'New Account Added!', newAccount))
          } else {
             let httpResponse = new HttpResponse(304,'error','Failed to create account',null)
              //res.status(304).json({ status: 'Failed to create account' })
@@ -89,7 +89,7 @@ export const update = async function(req:Request, res:Response) {
     try {
         const errors = validationResult(req)
         if(!errors.isEmpty()){
-            return res.status(400).json({status: 400, errors:errors.array()})
+            return res.status(400).json({status: 400, errors:errors.array(), message:'Validation Error'})
         }
         const data = {...req.body}
         let updatedAccount = await Account.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false,runValidators:true})
