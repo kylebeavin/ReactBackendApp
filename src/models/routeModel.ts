@@ -8,6 +8,12 @@ const RouteSchema: Schema = new Schema(
 			required: true,
 			trim: true,
 		},
+		inspection_id: {
+			type:String,
+			required:false,
+			default:null
+		},
+
 		truck_id: {
 			type: String,
 			required: false,
@@ -20,8 +26,8 @@ const RouteSchema: Schema = new Schema(
 		// Account stage
 		route_stage: {
 			type: String,
-			enum: ["assigned", "in-progress", "completed", 'unassigned'],
-			default: "unassigned",
+			enum: ["Empty", "Built", "Routed", "Assigned", "Inspected", "Finalized", "Completed"],
+			default: "Empty",
 			lower: true,
 		},
 		start_location: {
