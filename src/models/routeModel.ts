@@ -11,7 +11,8 @@ const RouteSchema: Schema = new Schema(
 		inspection_id: {
 			type:String,
 			required:false,
-			default:null
+			default:null,
+			trim:true
 		},
 
 		truck_id: {
@@ -29,6 +30,7 @@ const RouteSchema: Schema = new Schema(
 			enum: ["Empty", "Built", "Routed", "Assigned", "Inspected", "Finalized", "Completed"],
 			default: "Empty",
 			lower: true,
+			trim:true
 		},
 		start_location: {
 			type: String,
