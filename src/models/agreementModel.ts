@@ -4,7 +4,7 @@ import IAgreement from '../interfaces/agreementInterface'
 import mongoose, {Schema} from 'mongoose'
 
 //schema
-var agreementSchema = new mongoose.Schema({
+const  agreementSchema:Schema = new Schema({
 
     // Customer account the agreement belongs to
     account_id: {

@@ -2,7 +2,7 @@
   import mongoose, {Schema} from 'mongoose'
 
 //schema
-const  orderSchema = new Schema({
+const  orderSchema:Schema = new Schema({
     // Customer account the order belongs to
     account_id: {
         type: String,

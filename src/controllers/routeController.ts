@@ -22,6 +22,7 @@ export const view = async (req: Request, res: Response) => {
 };
 
 //For creating new route
+<<<<<<< HEAD
 export const add = async function (req: Request, res: Response) {
 	try {
 		const route = new Route();
@@ -33,6 +34,19 @@ export const add = async function (req: Request, res: Response) {
 		route.service_stop = req.body.service_stop;
 		route.time = req.body.time;
 		route.notes = req.body.notes;
+=======
+export const add = async function (req:Request, res:Response) {
+    try {
+        const route = new Route();
+        route.group_id = req.body.group_id;
+        route.truck_id = req.body.truck_id != null ? req.body.truck_id : null;
+        route.start_location = req.body.start_location;
+        route.driver = req.body.driver != null ? req.body.driver : null;
+        route.truck_vin = req.body.truck_vin;
+        route.service_stop = req.body.service_stop;
+        route.time = req.body.time;
+        route.notes = req.body.notes;
+>>>>>>> 9f5613a6be512b65cfddc895455bc93cb61f8a38
 
 		//Save and check error
 		let newRoute = await route.save();
