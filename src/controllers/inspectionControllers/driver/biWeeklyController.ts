@@ -68,7 +68,7 @@ export const update = async function(req:Request, res:Response) {
         const data = {...req.body}
         let updatedBiWeekly = await BiWeekly.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
 
-        console.log(updatedBiWeekly)
+        
             if (updatedBiWeekly) {
                 return res.status(200).json({
                     status: 200,

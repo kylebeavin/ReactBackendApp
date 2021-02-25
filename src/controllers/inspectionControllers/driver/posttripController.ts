@@ -86,7 +86,7 @@ export const update = async function(req:Request, res:Response) {
         const data = {...req.body}
         let updatedPostTrip = await PostTrip.findByIdAndUpdate(req.body._id, data,{new:true, useFindAndModify:false})
 
-        console.log(updatedPostTrip)
+      
             if (updatedPostTrip) {
                 return res.status(200).json({
                     status: 200,

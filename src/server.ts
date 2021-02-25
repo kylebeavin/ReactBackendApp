@@ -1,9 +1,9 @@
 // server.js
 import express, {Application , Request,Response , NextFunction} from 'express'
-import path from 'path'
+//import path from 'path'
 import mongoose from 'mongoose'
 import expressValidator from 'express-validator'
-require('dotenv').config();
+
 //import helmet
 import helmet from 'helmet'
 //import cors
