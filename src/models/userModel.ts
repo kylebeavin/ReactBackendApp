@@ -17,6 +17,7 @@ const UserSchema: Schema = new Schema(
 			required: true,
 			unique: true,
 			trim: true,
+			lowercase:true
 		},
 		// First name of the user
 		first_name: {
