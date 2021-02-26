@@ -1,10 +1,10 @@
 import IGroup from "../interfaces/groupInterface";
 import mongoose, { Schema } from "mongoose";
 
-
+//schema
 const groupSchema = new Schema(
 	{
-	
+		address: {
 			// Address City
 			address_city: {
 				type: String,
@@ -29,7 +29,7 @@ const groupSchema = new Schema(
 				required: true,
 				trim: true,
 			},
-		
+		},
 		// Doing Business As Name
 		dba: {
 			type: String,
@@ -121,4 +121,3 @@ export default mongoose.model<IGroup>("Group", groupSchema);
 // module.exports.get = function (callback, limit) {
 //     Group.find(callback).limit(limit);
 // }
-
