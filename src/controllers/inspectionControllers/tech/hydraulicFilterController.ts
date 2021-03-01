@@ -33,7 +33,7 @@ export const add = async function (req: Request, res: Response) {
 		hydraulicFilter.owner_id = req.body.owner_id;
 		hydraulicFilter.type = req.body.type;
 		hydraulicFilter.truck_id = req.body.truck_id;
-		hydraulicFilter.hydraulics = req.body.hydraulics;
+		hydraulicFilter.hydraulics = req.body.hydraulics != "pass" ? req.body.hydraulics : "false";
 		hydraulicFilter.tech_signature = req.body.tech_signature;
 
 		//Save and check error
