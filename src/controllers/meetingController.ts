@@ -5,7 +5,7 @@ import {validationResult} from 'express-validator'
 
 export const view = async(req:Request, res:Response)=>{
     try{
-    let allMeetings = await Meeting.find(req.body).sort({created_at:1}).exec()
+    let allMeetings = await Meeting.find(req.body).populate({path:'account_id', select:'account_name'}).sort({created_at:1}).exec()
     if(allMeetings){
         return res.status(200).json({
             status: 200,

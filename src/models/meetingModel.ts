@@ -6,9 +6,10 @@ const MeetingSchema: Schema = new Schema({
 
     // Customer ID
     account_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
-        trim: true
+        ref:'Account',
+        
     },
     // Address City
     address_city: {

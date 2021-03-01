@@ -5,8 +5,11 @@
 const  orderSchema:Schema = new Schema({
     // Customer account the order belongs to
     account_id: {
-        type: String,
-        required: true
+        // type: String,
+        // required: true
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref:'Account',
     },
     // Document ID of the corrosponding agreement.
     agreement_id: {
