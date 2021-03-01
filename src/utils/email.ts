@@ -3,12 +3,16 @@ import path from 'path'
 import * as dotenv from 'dotenv';
 dotenv.config();
 // For emailing forms
+
+const fleetEmail = process.env.FLEET_USER
+const fleetPass = process.env.FLEET_PASS
+
 var transporter = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
 		
-		user: process.env.FLEET_USER,
-		pass: process.env.FLEET_PASS,
+		user: fleetEmail,
+		pass: fleetPass,
 	},
 });
 
@@ -28,3 +32,4 @@ export const sendInspection = async function (data: any) {
 		}
 	});
 };
+
