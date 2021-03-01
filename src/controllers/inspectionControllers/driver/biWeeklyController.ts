@@ -99,7 +99,6 @@ export const update = async function (req: Request, res: Response) {
 			useFindAndModify: false,
 		});
 
-<<<<<<< HEAD
         
             if (updatedBiWeekly) {
                 return res.status(200).json({
@@ -114,21 +113,6 @@ export const update = async function (req: Request, res: Response) {
      catch (err) {
         return res.status(400).json({status: 400, message: err.message })
     }
-=======
-		console.log(updatedBiWeekly);
-		if (updatedBiWeekly) {
-			return res.status(200).json({
-				status: 200,
-				message: "BiWeekly Inspection Updated Successfully",
-				data: updatedBiWeekly,
-			});
-		} else {
-			return res.status(400).json({ message: "Failed to update" });
-		}
-	} catch (err) {
-		return res.status(400).json({ status: 400, message: err.message });
-	}
->>>>>>> dev
 };
 
 //delete by biWeekly id

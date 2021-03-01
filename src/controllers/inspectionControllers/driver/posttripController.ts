@@ -136,7 +136,6 @@ export const add = async function (req: Request, res: Response) {
 
 //update posttrip by object id
 
-<<<<<<< HEAD
 export const update = async function(req:Request, res:Response) {
     try {
         const data = {...req.body}
@@ -156,29 +155,6 @@ export const update = async function(req:Request, res:Response) {
      catch (err) {
         return res.status(400).json({status: 400, message: err.message })
     }
-=======
-export const update = async function (req: Request, res: Response) {
-	try {
-		const data = { ...req.body };
-		let updatedPostTrip = await PostTrip.findByIdAndUpdate(req.body._id, data, {
-			new: true,
-			useFindAndModify: false,
-		});
-
-		console.log(updatedPostTrip);
-		if (updatedPostTrip) {
-			return res.status(200).json({
-				status: 200,
-				message: "Post-Trip Inspection Updated Successfully",
-				data: updatedPostTrip,
-			});
-		} else {
-			return res.status(400).json({ message: "Failed to update" });
-		}
-	} catch (err) {
-		return res.status(400).json({ status: 400, message: err.message });
-	}
->>>>>>> dev
 };
 
 //delete by posttrip id
