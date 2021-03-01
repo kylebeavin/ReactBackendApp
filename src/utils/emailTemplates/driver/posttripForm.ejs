@@ -1,0 +1,95 @@
+<style type="text/css">
+    .header {
+      background: #8a8a8a;
+    }
+    .header .columns {
+      padding-bottom: 0;
+    }
+    .header p {
+      color: #fff;
+      padding-top: 15px;
+    }
+    .header .wrapper-inner {
+      padding: 20px;
+    }
+    .header .container {
+      background: transparent;
+    }
+    table.button.facebook table td {
+      background: #3B5998 !important;
+      border-color: #3B5998;
+    }
+    table.button.twitter table td {
+      background: #1daced !important;
+      border-color: #1daced;
+    }
+    table.button.google table td {
+      background: #DB4A39 !important;
+      border-color: #DB4A39;
+    }
+    .wrapper.secondary {
+      background: #f3f3f3;
+    }
+  </style>
+  
+  
+  
+  <wrapper class="header">
+    <container>
+      <row class="collapse">
+        <columns small="6">
+          <img src="https://drive.google.com/file/d/1jJj-c7QUgdXnWpW_copELY_l-ntRxuLb/view">
+        </columns>
+        <columns small="6">
+          <p class="text-right">SMT Fleet Management</p>
+        </columns>
+      </row>
+    </container>
+  </wrapper>
+  
+  <container>
+  
+    <spacer size="16"></spacer>
+  
+    <row>
+      <columns small="12">
+  
+        <h1>Hi, <%= franchise %></h1>
+        <p class="lead">Completed Form</p>
+        <p>Franchise ID: <%= group_id%></p>
+        <p>User ID: <%= owner_id%></p>
+        <p>Inspection Type: <%= type%></p>
+        <p>Truck ID: <%= truck_id%></p>
+        <p>Odometer Reading: <%= odometer_reading%></p>
+        <p>Fuel Level: <%= fuel_level%></p>
+        <p>Seat Belts: <%= seat_belts%></p>
+        <p>PTO Switch: <%= pto_switch%></p>
+        <p>Engine Fluids: <%= engine_fluids%></p>
+        <p>Transmission: <%= transmission%></p>
+        <p>Steering Mechanism: <%= steering_mechanism%></p>
+        <p>Horn: <%= horn%></p>
+        <p>Windshield Wipers: <%= windshield_wipers%></p>
+        <p>Mirrors: <%= mirrors%></p>
+        <p>Truck Lights: <%= truck_lights%></p>
+        <p>Parking Brake: <%= parking_brake%></p>
+        <p>Service Brake: <%= service_brake%></p>
+        <p>Tires: <%= tires%></p>
+        <p>Rims: <%= rims%></p>
+        <p>Emergency Equipment: <%= emergency_equipment%></p>
+        <p>Tools & Gear: <%= tools_gear%></p>
+        <p>Chocks & Chains: <%= chocks_chains%></p>
+        <p>Drum Cap: <%= drum_cap%></p>
+        <p>Grease Distribution: <%= grease_distribution%></p>
+        <p>Chain Tension: <%= chain_tension%></p>
+        <p>Machine Lights: <%= machine_lights%></p>
+        <p>Machine Hours: <%= machine_hours%></p>
+        <p>Vehicle Condition: <%= vehicle_condition%></p>
+        <p>Required Documents: <%= required_documents%></p>
+        <p>Engine Warning: <%= engine_warning%></p>
+        <p>Signature: <%= tech_signature%></p>
+        <callout class="primary">
+          <p>Thank you for completing your inspection</p>
+        </callout>
+      </columns>
+    </row>
+  </container>

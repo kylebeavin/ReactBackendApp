@@ -1,19 +1,9 @@
 import Gearbox from "../../../models/inspectionModels/tech/gearboxModel";
 import { Request, Response } from "express";
-import fs from "fs";
 import ejs from "ejs";
-import bodyParser from "body-parser";
-import nodemailer from "nodemailer";
+import { sendInspection  } from "../../../utils/email"
 
-// For emailing forms
 
-var transporter = nodemailer.createTransport({
-	service: "gmail",
-	auth: {
-		user: "lizardsfleetmgmt@smashmytrash.com",
-		pass: "Lizard2021!",
-	},
-});
 
 //for queries
 
@@ -45,19 +35,18 @@ export const add = async function (req: Request, res: Response) {
 		gearbox.owner_id = req.body.owner_id;
 		gearbox.type = req.body.type;
 		gearbox.truck_id = req.body.truck_id;
-		gearbox.gearbox = req.body.gearbox != 'pass' ? req.body.gearbox : 'false';
+		gearbox.gearbox = req.body.gearbox != "pass" ? req.body.gearbox : "false";
 		gearbox.tech_signature = req.body.tech_signature;
 
 		//Save and check error
 		let newGearbox = await gearbox.save();
+		
 		if (newGearbox) {
 			res.status(201).json({
 				status: 201,
-
-				message: "New gearbox inspection created!",
-			});
-
-			ejs.renderFile(
+				message: "New inspection created!",
+			})
+			var data = await ejs.renderFile(
 				"src/utils/emailTemplates/gearboxForm.ejs",
 				{
 					franchise: "Franchise Name",
@@ -66,30 +55,12 @@ export const add = async function (req: Request, res: Response) {
 					type: gearbox.type,
 					truck_id: gearbox.truck_id,
 					gearbox: gearbox.gearbox,
-				},
-				function (err, data) {
-					if (err) {
-						console.log(err);
-					} else {
-						var mailOptions = {
-							from: "lizardsfleetmgmt@smashmytrash.com",
-							to: "alec.davidson@smashmytrash.com",
-							subject: "Fleet Management Inspection",
-							html: data,
-						};
-						console.log("html data ======================>", mailOptions.html);
-						transporter.sendMail(mailOptions, function (err, info) {
-							if (err) {
-								console.log(err);
-							} else {
-								console.log("Message sent: " + info.response);
-							}
-						});
-					}
-				}
-			);
+					tech_signature: gearbox.tech_signature
+				})
+		sendInspection(data);
+			
 		} else {
-			res.json({ message: "Failed to create gearbox inspection" });
+			res.json({ message: "Failed to create inspection" });
 		}
 	} catch (err) {
 		res.json({ message: err.message });
@@ -117,7 +88,7 @@ export const update = async function (req: Request, res: Response) {
 			return res.status(400).json({ message: "Failed to update" });
 		}
 	} catch (err) {
-		return res.status(400).json({status: 400, message: err.message });
+		return res.status(400).json({ status: 400, message: err.message });
 	}
 };
 

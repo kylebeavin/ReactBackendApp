@@ -14,7 +14,7 @@ export default interface IBiWeekly extends Document {
     sprocket_motor: boolean;
     boom_arm: boolean;
     boom_drum: boolean;
-    machine_assemby: boolean;
+    machine_assembly: boolean;
     hook_mount: boolean;
 
     // Sign-Off
